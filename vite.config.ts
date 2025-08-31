@@ -1,8 +1,10 @@
 
-  import { defineConfig } from 'vite'
-  import react from '@vitejs/plugin-react-swc'
-  import { VitePWA } from 'vite-plugin-pwa'
-  import { resolve } from 'path'
+/// <reference types="vite/client" />
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import { VitePWA } from "vite-plugin-pwa";
+import { resolve } from "node:path";
+
 
   // https://vitejs.dev/config/
   export default defineConfig({
@@ -51,9 +53,6 @@
                 expiration: {
                   maxEntries: 10,
                   maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-                },
-                cacheKeyWillBeUsed: async ({ request }) => {
-                  return `${request.url}?${Date.now()}`
                 }
               }
             },
@@ -107,9 +106,9 @@
       port: 4173,
       host: true
     },
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'motion']
-    },
+      optimizeDeps: {
+    include: ['react', 'react-dom']
+  },
     css: {
       devSourcemap: true
     }

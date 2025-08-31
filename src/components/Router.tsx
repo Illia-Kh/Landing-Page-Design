@@ -1,5 +1,5 @@
 import { ReactNode, Children, cloneElement, isValidElement } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export type Page = "home" | "about" | "services" | "contact";
 
