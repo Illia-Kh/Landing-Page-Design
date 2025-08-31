@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://codehero.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/?lang=cs" />
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://codehero.com/about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/about?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/about?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/about?lang=de" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/about?lang=cs" />
+  </url>
+  
+  <!-- Services Page -->
+  <url>
+    <loc>https://codehero.com/services</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/services?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/services?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/services?lang=de" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/services?lang=cs" />
+  </url>
+  
+  <!-- Gallery Page -->
+  <url>
+    <loc>https://codehero.com/gallery</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/gallery?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/gallery?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/gallery?lang=de" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/gallery?lang=cs" />
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://codehero.com/contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/contact?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/contact?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/contact?lang=de" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/contact?lang=cs" />
+  </url>
+  
+</urlset>

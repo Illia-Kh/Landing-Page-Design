@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://codehero.com/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /gallery
+
+# Crawl delay
+Crawl-delay: 1
