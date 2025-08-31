@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Logo, LogoCompact } from "../components/Logo";
 import { HeroLogo } from "../components/HeroLogo";
 import { CodeLogo, CodeLogoCompact } from "../components/CodeLogo";

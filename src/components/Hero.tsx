@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { EnhancedSlideCarousel } from "./EnhancedSlideCarousel";
 import { CodeLogo } from "./CodeLogo";
 import { Page } from "./Router";

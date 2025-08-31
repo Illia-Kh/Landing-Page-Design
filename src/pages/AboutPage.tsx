@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Users, Target, Award, Globe, Lightbulb, Trophy } from "lucide-react";
 
