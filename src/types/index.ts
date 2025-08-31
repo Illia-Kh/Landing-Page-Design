@@ -1,5 +1,5 @@
 // Основные типы приложения
-export type Page = 'home' | 'about' | 'services' | 'contact'
+export type Page = 'home' | 'about' | 'services' | 'contact' | 'logo-showcase'
 
 export type Language = 'ru' | 'en' | 'de' | 'cs'
 

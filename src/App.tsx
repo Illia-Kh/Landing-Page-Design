@@ -134,6 +134,28 @@ export default function App() {
           description: "Kontaktujte tým CodeHero pro diskusi o vašem projektu. IT konzultace a vývoj řešení.",
           keywords: "kontakt, kontaktovat, IT konzultace, vývoj projektů"
         }
+      },
+      "logo-showcase": {
+        ru: {
+          title: "Портфолио логотипов - CodeHero | Примеры работ",
+          description: "Портфолио логотипов и брендинга от CodeHero. Примеры работ и креативных решений.",
+          keywords: "портфолио, логотипы, брендинг, примеры работ"
+        },
+        en: {
+          title: "Logo Portfolio - CodeHero | Work Examples",
+          description: "Logo and branding portfolio from CodeHero. Examples of work and creative solutions.",
+          keywords: "portfolio, logos, branding, work examples"
+        },
+        de: {
+          title: "Logo-Portfolio - CodeHero | Arbeitsbeispiele",
+          description: "Logo- und Branding-Portfolio von CodeHero. Beispiele für Arbeiten und kreative Lösungen.",
+          keywords: "portfolio, logos, branding, arbeitsbeispiele"
+        },
+        cs: {
+          title: "Portfolio log - CodeHero | Příklady práce",
+          description: "Portfolio log a brandingu od CodeHero. Příklady práce a kreativních řešení.",
+          keywords: "portfolio, loga, branding, příklady práce"
+        }
       }
     };
 

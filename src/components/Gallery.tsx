@@ -186,7 +186,6 @@ export function Gallery({ language, onPageChange }: GalleryProps) {
                   key={image.id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   animate={{
                     scale: styles.scale,
@@ -194,8 +193,9 @@ export function Gallery({ language, onPageChange }: GalleryProps) {
                     filter: styles.filter
                   }}
                   whileHover={selectedImage === null ? { scale: 1.05 } : {}}
-                  transition={{
-                    duration: 0.4,
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
                     ease: "easeOut"
                   }}
                   className={`relative overflow-hidden rounded-xl cursor-pointer ${image.gridClass}`}
