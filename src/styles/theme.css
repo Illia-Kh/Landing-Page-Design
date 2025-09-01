@@ -1,102 +1,108 @@
 /* Unified color palette for both themes */
 
-/* Light theme colors */
+/* Light theme colors - softer palette */
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-card: #ffffff;
   --bg-muted: #f1f5f9;
-  --text-primary: #0f172a;
+  --text-primary: #1e293b;
   --text-secondary: #475569;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
   --accent-color: #3b82f6;
   --accent-hover: #2563eb;
+  --transition-duration: 0.8s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme colors */
+/* Dark theme colors - softer palette */
 .dark {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
   --bg-card: #1e293b;
   --bg-muted: #334155;
-  --text-primary: #f8fafc;
+  --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
   --border-color: #475569;
   --accent-color: #60a5fa;
   --accent-hover: #3b82f6;
+  --transition-duration: 0.8s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Apply unified colors with smooth transitions */
 body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing);
 }
 
 .bg-background {
   background-color: var(--bg-primary) !important;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
 .text-foreground {
   color: var(--text-primary) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .bg-card {
   background-color: var(--bg-card) !important;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
 .text-card-foreground {
   color: var(--text-primary) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .bg-muted {
   background-color: var(--bg-muted) !important;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
 .text-muted-foreground {
   color: var(--text-muted) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .border-border {
   border-color: var(--border-color) !important;
-  transition: border-color 0.3s ease;
+  transition: border-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Hero section specific styles */
 .hero-section {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing);
 }
 
 .hero-title {
   color: var(--text-primary) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .hero-subtitle {
   color: var(--text-secondary) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .hero-description {
   color: var(--text-muted) !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 /* Button styles */
 .btn-primary {
   background-color: var(--accent-color) !important;
   color: white !important;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
 .btn-primary:hover {
@@ -107,7 +113,8 @@ body {
 header {
   background-color: var(--bg-primary) !important;
   border-color: var(--border-color) !important;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Switch component improvements */
@@ -127,22 +134,29 @@ header {
 /* Ensure icons are always visible */
 .lucide {
   color: inherit !important;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 /* Global smooth transitions for all elements */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Specific transitions for interactive elements */
 button, a, input, textarea, select {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing), 
+              transform 0.2s ease;
 }
 
 /* Smooth transitions for Tailwind classes */
 .bg-*, .text-*, .border-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Force scrollbar to always be visible */
@@ -156,6 +170,31 @@ body {
   scrollbar-gutter: stable;
   scrollbar-width: auto;
   scrollbar-color: #888 #f1f1f1;
+  position: relative;
+}
+
+/* Theme transition overlay effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0) 0%,
+    rgba(15, 23, 42, 0.1) 50%,
+    rgba(15, 23, 42, 0.2) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity var(--transition-duration) var(--transition-timing);
+}
+
+.dark body::before {
+  opacity: 1;
 }
 
 /* Prevent layout shift on all elements */
