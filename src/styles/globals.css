@@ -3,6 +3,10 @@
   /* Prevent layout shift when scrollbar appears */
   scrollbar-gutter: stable;
   
+  /* Smooth theme transitions */
+  --transition-duration: 0.3s;
+  --transition-timing: ease;
+  
   /* Prevent layout shift on body */
   body {
     overflow-y: scroll;

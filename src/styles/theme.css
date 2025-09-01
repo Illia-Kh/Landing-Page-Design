@@ -28,62 +28,75 @@
   --accent-hover: #3b82f6;
 }
 
-/* Apply unified colors */
+/* Apply unified colors with smooth transitions */
 body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .bg-background {
   background-color: var(--bg-primary) !important;
+  transition: background-color 0.3s ease;
 }
 
 .text-foreground {
   color: var(--text-primary) !important;
+  transition: color 0.3s ease;
 }
 
 .bg-card {
   background-color: var(--bg-card) !important;
+  transition: background-color 0.3s ease;
 }
 
 .text-card-foreground {
   color: var(--text-primary) !important;
+  transition: color 0.3s ease;
 }
 
 .bg-muted {
   background-color: var(--bg-muted) !important;
+  transition: background-color 0.3s ease;
 }
 
 .text-muted-foreground {
   color: var(--text-muted) !important;
+  transition: color 0.3s ease;
 }
 
 .border-border {
   border-color: var(--border-color) !important;
+  transition: border-color 0.3s ease;
 }
 
 /* Hero section specific styles */
 .hero-section {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .hero-title {
   color: var(--text-primary) !important;
+  transition: color 0.3s ease;
 }
 
 .hero-subtitle {
   color: var(--text-secondary) !important;
+  transition: color 0.3s ease;
 }
 
 .hero-description {
   color: var(--text-muted) !important;
+  transition: color 0.3s ease;
 }
 
 /* Button styles */
 .btn-primary {
   background-color: var(--accent-color) !important;
   color: white !important;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -94,6 +107,7 @@ body {
 header {
   background-color: var(--bg-primary) !important;
   border-color: var(--border-color) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Switch component improvements */
@@ -113,6 +127,22 @@ header {
 /* Ensure icons are always visible */
 .lucide {
   color: inherit !important;
+  transition: color 0.3s ease;
+}
+
+/* Global smooth transitions for all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Specific transitions for interactive elements */
+button, a, input, textarea, select {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Smooth transitions for Tailwind classes */
+.bg-*, .text-*, .border-* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Force scrollbar to always be visible */
