@@ -1,5 +1,12 @@
 :root {
   --font-size: 14px;
+  /* Prevent layout shift when scrollbar appears */
+scrollbar-gutter: stable;
+
+/* Prevent layout shift on body */
+body {
+  overflow-y: scroll;
+}
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;

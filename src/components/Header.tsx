@@ -222,37 +222,36 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
 
         {/* Right side controls */}
         <div className="flex items-center gap-4">
-          {/* Language selector - скрываем на мобильных устройствах */}
-          {!isMobileDevice && (
-            <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4" />
-              <Select value={language} onValueChange={onLanguageChange}>
-                <SelectTrigger className="w-20 h-8">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ru">RU</SelectItem>
-                  <SelectItem value="en">EN</SelectItem>
-                  <SelectItem value="de">DE</SelectItem>
-                  <SelectItem value="cs">CS</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          )}
+          {/* Language selector - показываем всегда на десктопе */}
+          <div className="hidden md:flex items-center gap-2">
+            <Globe className="h-4 w-4" />
+            <Select value={language} onValueChange={onLanguageChange}>
+              <SelectTrigger className="w-20 h-8">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ru">RU</SelectItem>
+                <SelectItem value="en">EN</SelectItem>
+                <SelectItem value="de">DE</SelectItem>
+                <SelectItem value="cs">CS</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-          {/* Theme toggle - скрываем на мобильных устройствах */}
-          {!isMobileDevice && (
-            <div className="flex items-center gap-2">
-              <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-muted-foreground'}`} />
-              <Switch
-                checked={isDark}
-                onCheckedChange={onThemeToggle}
-                className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-300 border-2 border-gray-400"
-                style={{ minWidth: '44px', minHeight: '24px' }}
-              />
-              <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-muted-foreground'}`} />
-            </div>
-          )}
+          {/* Theme toggle - показываем всегда на десктопе */}
+          <div className="hidden md:flex items-center gap-2">
+            <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-muted-foreground'}`} />
+            <Switch
+              checked={isDark}
+              onCheckedChange={(checked) => {
+                console.log('Switch clicked! New value:', checked);
+                onThemeToggle();
+              }}
+              className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-300 border-2 border-gray-400"
+              style={{ minWidth: '44px', minHeight: '24px' }}
+            />
+            <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-muted-foreground'}`} />
+          </div>
 
           {/* Mobile menu button */}
           <Button
