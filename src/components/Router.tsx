@@ -27,11 +27,10 @@ export function Router({ currentPage, children }: RouterProps) {
 
 interface RouteProps {
   page: Page;
-  currentPage: Page;
   children: ReactNode;
 }
 
-export function Route({ page, currentPage, children }: RouteProps) {
+export function Route({ page, children }: RouteProps) {
   // This component now only renders when selected by Router
   return (
     <motion.div

@@ -9,7 +9,6 @@ interface CodeLogoProps {
 
 export function CodeLogo({ animated = true, size = "md", className = "" }: CodeLogoProps) {
   const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const [hasFinishedFirstAnimation, setHasFinishedFirstAnimation] = useState(false);
 
   const fullText = "<IKH-TechSystems>";
@@ -46,7 +45,6 @@ export function CodeLogo({ animated = true, size = "md", className = "" }: CodeL
     }
 
     const typeText = () => {
-      setIsTyping(true);
       setDisplayedText("");
       
       let currentIndex = 0;
@@ -56,7 +54,6 @@ export function CodeLogo({ animated = true, size = "md", className = "" }: CodeL
 
         if (currentIndex >= fullText.length) {
           clearInterval(typingInterval);
-          setIsTyping(false);
           setHasFinishedFirstAnimation(true);
         }
       }, 100); // Speed of typing
@@ -109,7 +106,6 @@ export function CodeLogo({ animated = true, size = "md", className = "" }: CodeL
 // Compact version for header
 export function CodeLogoCompact({ animated = false, className = "" }: { animated?: boolean; className?: string }) {
   const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const [hasFinishedFirstAnimation, setHasFinishedFirstAnimation] = useState(false);
 
   const fullText = "<IKH-TechSystems>";
@@ -123,7 +119,6 @@ export function CodeLogoCompact({ animated = false, className = "" }: { animated
     }
 
     const typeText = () => {
-      setIsTyping(true);
       setDisplayedText("");
       
       let currentIndex = 0;
@@ -133,7 +128,6 @@ export function CodeLogoCompact({ animated = false, className = "" }: { animated
 
         if (currentIndex >= fullText.length) {
           clearInterval(typingInterval);
-          setIsTyping(false);
           setHasFinishedFirstAnimation(true);
         }
       }, 80);

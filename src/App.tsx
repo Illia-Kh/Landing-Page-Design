@@ -159,7 +159,7 @@ export default function App() {
       }
     };
 
-    const currentSeo = seoData[currentPage]?.[language] || seoData.home.ru;
+    const currentSeo = seoData[currentPage as keyof typeof seoData]?.[language as keyof typeof seoData.home] || seoData.home.ru;
     const currentUrl = currentPage === 'home' ? baseUrl : `${baseUrl}/${currentPage}`;
     
     return {
@@ -219,21 +219,21 @@ export default function App() {
           />
         )}
         <Router currentPage={currentPage}>
-          <Route key="home-route" page="home" currentPage={currentPage}>
+          <Route key="home-route" page="home">
             <HomePage language={language} onPageChange={handlePageChange} />
           </Route>
-          <Route key="about-route" page="about" currentPage={currentPage}>
+          <Route key="about-route" page="about">
             <AboutPage language={language} />
           </Route>
-          <Route key="services-route" page="services" currentPage={currentPage}>
+          <Route key="services-route" page="services">
             <ServicesPage language={language} onPageChange={handlePageChange} />
           </Route>
 
-          <Route key="contact-route" page="contact" currentPage={currentPage}>
+          <Route key="contact-route" page="contact">
             <ContactPage language={language} />
           </Route>
           {/* Temporary showcase route - can be removed later */}
-          {currentPage === "logo-showcase" && (
+          {currentPage === 'logo-showcase' && (
             <LogoShowcase language={language} />
           )}
         </Router>

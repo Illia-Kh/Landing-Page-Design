@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { ArrowRight, Users, Target, Lightbulb, Trophy } from "lucide-react";
-import { Button } from "./ui/button";
+import { Users, Target, Lightbulb, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface AboutUsProps {
@@ -9,7 +8,6 @@ interface AboutUsProps {
 }
 
 export function AboutUs({ language }: AboutUsProps) {
-  const [activeTab, setActiveTab] = useState(0);
 
   const text = {
     ru: {
@@ -286,19 +284,7 @@ export function AboutUs({ language }: AboutUsProps) {
     }
   };
 
-  const handleTabClick = (index: number) => {
-    setActiveTab(index);
-    setTimeout(() => {
-      const sectionIds = ["team-section", "mission-section", "innovations-section", "achievements-section"];
-      const targetSection = document.getElementById(sectionIds[index] || '');
-      if (targetSection) {
-        targetSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }, 100);
-  };
+
 
   return (
     <section className="py-20 bg-secondary/30">

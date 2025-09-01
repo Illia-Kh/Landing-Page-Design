@@ -121,7 +121,7 @@ export function Logo({ size = "md", animated = true, className = "" }: LogoProps
 }
 
 // Alternative compact version for header
-export function LogoCompact({ animated = false, className = "" }: { animated?: boolean; className?: string }) {
+export function LogoCompact({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center h-8 ${className}`}>
       <div className="relative w-7 h-7 mr-2">

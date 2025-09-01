@@ -21,8 +21,7 @@ export function useMobileDevice() {
         // Проверяем на iOS устройства (iPhone, iPad, iPod)
         const isIOS = /iphone|ipad|ipod/.test(userAgent);
         
-        // Дополнительная проверка на touch устройства
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
         
         // Проверяем размер экрана - основное условие для скрытия CodeLogo
         const isSmallScreen = window.innerWidth < 768; // md breakpoint в Tailwind

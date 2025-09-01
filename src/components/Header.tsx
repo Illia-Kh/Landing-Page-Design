@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
@@ -6,7 +6,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Switch } from "./ui/switch";
 import { Menu, Sun, Moon, Globe, X } from "lucide-react";
 import { Page } from "./Router";
-import { LogoCompact } from "./Logo";
 import { CodeLogoCompact } from "./CodeLogo";
 import { useMobileDevice } from "./ui/use-mobile-device";
 

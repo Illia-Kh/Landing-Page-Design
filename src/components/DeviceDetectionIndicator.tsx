@@ -4,7 +4,7 @@ export function DeviceDetectionIndicator() {
   const isMobileDevice = useMobileDevice();
 
   // Показываем индикатор только в режиме разработки
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env['NODE_ENV'] === 'production') {
     return null;
   }
 
