@@ -22,16 +22,31 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const isMobileDevice = useMobileDevice();
 
-  // Apply theme to document
+  // Apply theme to document with smooth transition
   useEffect(() => {
+    console.log('useEffect triggered! isDark:', isDark);
+    
+    // Add transition class for smooth animation
+    document.documentElement.classList.add('theme-transitioning');
+    
     if (isDark) {
       document.documentElement.classList.add("dark");
+      console.log('Added dark class');
+      console.log('Document classes:', document.documentElement.classList.toString());
     } else {
       document.documentElement.classList.remove("dark");
+      console.log('Removed dark class');
+      console.log('Document classes:', document.documentElement.classList.toString());
     }
+    
+    // Remove transition class after animation completes
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 800);
   }, [isDark]);
 
   const handleThemeToggle = () => {
+    console.log('Theme toggle clicked! Current isDark:', isDark);
     setIsDark(!isDark);
   };
 
