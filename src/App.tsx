@@ -42,7 +42,7 @@ export default function App() {
     // Remove transition class after animation completes
     setTimeout(() => {
       document.documentElement.classList.remove('theme-transitioning');
-    }, 800);
+    }, 300);
   }, [isDark]);
 
   const handleThemeToggle = () => {
