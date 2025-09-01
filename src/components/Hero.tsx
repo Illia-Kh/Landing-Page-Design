@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { EnhancedSlideCarousel } from "./EnhancedSlideCarousel";
 import { CodeLogo } from "./CodeLogo";
 import { Page } from "./Router";
-import { useMobileDevice } from "./ui/use-mobile-device";
+import { useIsMobile } from "./ui/use-mobile";
 
 interface HeroProps {
   language: string;
@@ -38,7 +38,7 @@ const content = {
 
 export function Hero({ language, onPageChange }: HeroProps) {
   const text = content[language as keyof typeof content] || content.ru;
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
 
   return (
     <section className="min-h-[60vh] pt-8 pb-12 flex items-center bg-gradient-to-br from-background to-accent/20">

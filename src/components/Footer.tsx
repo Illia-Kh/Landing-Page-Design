@@ -3,7 +3,7 @@ import { Separator } from "./ui/separator";
 import { X, Facebook, Instagram, Send, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { Page } from "./Router";
 import { CodeLogo } from "./CodeLogo";
-import { useMobileDevice } from "./ui/use-mobile-device";
+import { useIsMobile } from "./ui/use-mobile";
 
 interface FooterProps {
   language: string;
@@ -72,7 +72,7 @@ const content = {
 
 export function Footer({ language, onPageChange, currentPage }: FooterProps) {
   const text = content[language as keyof typeof content] || content.ru;
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
 
   const handleLinkClick = (link: { page: Page | "gallery"; isGallery?: boolean }) => {
     if (link.isGallery) {

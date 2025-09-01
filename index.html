@@ -3,7 +3,8 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Viewport configuration with responsive handling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     
     <!-- Primary Meta Tags -->
     <title>IKH-TechSystems - Инновационные IT решения для бизнеса</title>
@@ -41,20 +42,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Force scrollbar styles -->
+    <!-- Optimized scrollbar styles for server compatibility -->
     <style>
       html {
         overflow-y: scroll !important;
         scrollbar-gutter: stable;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
       body {
         overflow-y: scroll !important;
         scrollbar-gutter: stable;
         scrollbar-width: auto;
         scrollbar-color: #888 #f1f1f1;
+        margin: 0;
+        padding: 0;
       }
       * {
         scrollbar-gutter: stable;
+        box-sizing: border-box;
+      }
+      
+      /* Prevent flash of unstyled content */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Loading state */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, sans-serif;
       }
     </style>
     

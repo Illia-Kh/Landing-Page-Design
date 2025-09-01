@@ -139,12 +139,10 @@ header {
   transition: color var(--transition-duration) var(--transition-timing);
 }
 
-/* Global smooth transitions for all elements */
+/* Optimized global transitions - less aggressive */
 * {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing),
-              box-shadow var(--transition-duration) var(--transition-timing);
+  transition: color var(--transition-duration) var(--transition-timing), 
+              background-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Specific transitions for interactive elements */
@@ -156,12 +154,8 @@ button, a, input, textarea, select {
               box-shadow var(--transition-duration) var(--transition-timing);
 }
 
-/* Smooth transitions for Tailwind classes */
-.bg-*, .text-*, .border-* {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing);
-}
+/* Smooth transitions for Tailwind classes - removed problematic selector */
+/* Note: Global transitions are handled by the * selector above */
 
 /* Enhanced transitions for specific components */
 .hero-section, .bg-card, .bg-muted, header, footer {
@@ -195,97 +189,7 @@ body {
   position: relative;
 }
 
-/* Theme transition overlay effect */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0) 0%,
-    rgba(15, 23, 42, 0.05) 25%,
-    rgba(15, 23, 42, 0.1) 50%,
-    rgba(15, 23, 42, 0.15) 75%,
-    rgba(15, 23, 42, 0.2) 100%
-  );
-  opacity: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: opacity var(--transition-duration) var(--transition-timing);
-}
-
-.dark body::before {
-  opacity: 1;
-}
-
-/* Additional overlay for smoother transitions */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at center,
-    rgba(15, 23, 42, 0) 0%,
-    rgba(15, 23, 42, 0.02) 50%,
-    rgba(15, 23, 42, 0.05) 100%
-  );
-  opacity: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: opacity var(--transition-duration) var(--transition-timing);
-}
-
-.dark body::after {
-  opacity: 1;
-}
-
 /* Prevent layout shift on all elements */
 * {
   scrollbar-gutter: stable;
-}
-
-/* Prevent layout shift on dropdown menus */
-[data-radix-popper-content-wrapper] {
-  scrollbar-gutter: stable;
-}
-
-/* Fix dropdown menu positioning */
-[role="listbox"] {
-  scrollbar-gutter: stable;
-}
-
-/* Component-specific smooth transitions */
-.hero-section, .about-section, .services-section, .contact-section {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing),
-              box-shadow var(--transition-duration) var(--transition-timing);
-}
-
-/* Card and container transitions */
-.card, .container, .section {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing),
-              box-shadow var(--transition-duration) var(--transition-timing);
-}
-
-/* Navigation and menu transitions */
-nav, .navigation, .menu {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing);
-}
-
-/* Form elements transitions */
-input, textarea, select, label {
-  transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing);
 }

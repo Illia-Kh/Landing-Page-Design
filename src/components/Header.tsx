@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Menu, Sun, Moon, Globe, X } from "lucide-react";
 import { Page } from "./Router";
 import { CodeLogoCompact } from "./CodeLogo";
-import { useMobileDevice } from "./ui/use-mobile-device";
+import { useIsMobile } from "./ui/use-mobile";
 import { SimpleToggle } from "./ui/simple-toggle";
 
 interface HeaderProps {
@@ -68,7 +68,7 @@ const content = {
 export function Header({ isDark, onThemeToggle, language, onLanguageChange, currentPage, onPageChange }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogoMenuOpen, setIsLogoMenuOpen] = useState(false);
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
   const text = content[language as keyof typeof content] || content.ru;
 
 

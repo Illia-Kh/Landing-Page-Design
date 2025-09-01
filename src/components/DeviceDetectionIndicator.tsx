@@ -1,7 +1,7 @@
-import { useMobileDevice } from "./ui/use-mobile-device";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function DeviceDetectionIndicator() {
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
 
   // Показываем индикатор только в режиме разработки
   if (process.env['NODE_ENV'] === 'production') {

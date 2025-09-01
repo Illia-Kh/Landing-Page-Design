@@ -86,11 +86,10 @@ export function CoreWebVitalsMonitor() {
       const lcpObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
-        console.log('LCP:', lastEntry.startTime);
         
         // Send to analytics if needed
         if (lastEntry.startTime > 2500) {
-          console.warn('LCP is too slow:', lastEntry.startTime);
+          // LCP is too slow - could send to analytics service
         }
       });
       
@@ -100,10 +99,8 @@ export function CoreWebVitalsMonitor() {
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
         entries.forEach((entry) => {
-          console.log('FID:', entry.processingStart - entry.startTime);
-          
           if (entry.processingStart - entry.startTime > 100) {
-            console.warn('FID is too slow:', entry.processingStart - entry.startTime);
+            // FID is too slow - could send to analytics service
           }
         });
       });
@@ -115,11 +112,10 @@ export function CoreWebVitalsMonitor() {
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (!entry.hadRecentInput) {
-            clsValue += (entry as any).value;
-            console.log('CLS:', clsValue);
+            clsValue += (entry as PerformanceEntry & { value: number }).value;
             
             if (clsValue > 0.1) {
-              console.warn('CLS is too high:', clsValue);
+              // CLS is too high - could send to analytics service
             }
           }
         }
@@ -143,11 +139,11 @@ export function ServiceWorkerRegistration() {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('SW registered: ', registration);
+        .then(() => {
+          // Service worker registered successfully
         })
-        .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
+        .catch(() => {
+          // Service worker registration failed
         });
     }
   }, []);

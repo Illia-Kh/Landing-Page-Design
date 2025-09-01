@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { TelegramContact } from "../components/TelegramContact";
-import { useMobileDevice } from "../components/ui/use-mobile-device";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 interface ContactPageProps {
   language: string;
@@ -145,7 +145,7 @@ const content = {
 
 export function ContactPage({ language }: ContactPageProps) {
   const text = content[language as keyof typeof content] || content.ru;
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
 
   return (
     <div className="py-20">

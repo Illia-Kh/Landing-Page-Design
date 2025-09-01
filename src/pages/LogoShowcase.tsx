@@ -4,14 +4,14 @@ import { HeroLogo } from "../components/HeroLogo";
 import { CodeLogo, CodeLogoCompact } from "../components/CodeLogo";
 import { CodeHeroLogo } from "../components/CodeHeroLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-import { useMobileDevice } from "../components/ui/use-mobile-device";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 interface LogoShowcaseProps {
   language: string;
 }
 
 export function LogoShowcase({ language }: LogoShowcaseProps) {
-  const isMobileDevice = useMobileDevice();
+  const isMobileDevice = useIsMobile();
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">

@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SimpleToggleProps {
   isDark: boolean;
   onToggle: () => void;
