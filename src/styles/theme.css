@@ -1,40 +1,93 @@
-/* Dark theme styles */
+/* Unified color palette for both themes */
+
+/* Light theme colors */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-muted: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+}
+
+/* Dark theme colors */
 .dark {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --bg-muted: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --accent-color: #60a5fa;
+  --accent-hover: #3b82f6;
 }
 
-.dark body {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
+/* Apply unified colors */
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
 }
 
-.dark .bg-background {
-  background-color: #0f172a !important;
+.bg-background {
+  background-color: var(--bg-primary) !important;
 }
 
-.dark .text-foreground {
-  color: #f8fafc !important;
+.text-foreground {
+  color: var(--text-primary) !important;
 }
 
-.dark .bg-card {
-  background-color: #1e293b !important;
+.bg-card {
+  background-color: var(--bg-card) !important;
 }
 
-.dark .text-card-foreground {
-  color: #f8fafc !important;
+.text-card-foreground {
+  color: var(--text-primary) !important;
 }
 
-.dark .bg-muted {
-  background-color: #334155 !important;
+.bg-muted {
+  background-color: var(--bg-muted) !important;
 }
 
-.dark .text-muted-foreground {
-  color: #94a3b8 !important;
+.text-muted-foreground {
+  color: var(--text-muted) !important;
 }
 
-.dark .border-border {
-  border-color: #334155 !important;
+.border-border {
+  border-color: var(--border-color) !important;
+}
+
+/* Hero section specific styles */
+.hero-section {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.hero-title {
+  color: var(--text-primary) !important;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+.hero-description {
+  color: var(--text-muted) !important;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
 }
 
 /* Force scrollbar to always be visible */
@@ -52,5 +105,15 @@ body {
 
 /* Prevent layout shift on all elements */
 * {
+  scrollbar-gutter: stable;
+}
+
+/* Prevent layout shift on dropdown menus */
+[data-radix-popper-content-wrapper] {
+  scrollbar-gutter: stable;
+}
+
+/* Fix dropdown menu positioning */
+[role="listbox"] {
   scrollbar-gutter: stable;
 }
