@@ -247,7 +247,8 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
               <Switch
                 checked={isDark}
                 onCheckedChange={onThemeToggle}
-                className="data-[state=checked]:bg-primary data-[state=unchecked]:bg-muted"
+                className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-300 border-2 border-gray-400"
+                style={{ minWidth: '44px', minHeight: '24px' }}
               />
               <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-muted-foreground'}`} />
             </div>

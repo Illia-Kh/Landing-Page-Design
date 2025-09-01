@@ -32,6 +32,7 @@ export default function App() {
   }, [isDark]);
 
   const handleThemeToggle = () => {
+    console.log('Theme toggle clicked! Current isDark:', isDark);
     setIsDark(!isDark);
   };
 
