@@ -28,9 +28,11 @@ export default function App() {
     if (isDark) {
       document.documentElement.classList.add("dark");
       console.log('Added dark class');
+      console.log('Document classes:', document.documentElement.classList.toString());
     } else {
       document.documentElement.classList.remove("dark");
       console.log('Removed dark class');
+      console.log('Document classes:', document.documentElement.classList.toString());
     }
   }, [isDark]);
 

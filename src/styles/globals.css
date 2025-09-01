@@ -14,6 +14,18 @@
   /* Force scrollbar to always be visible */
   html {
     overflow-y: scroll;
+    /* Prevent layout shift */
+    scrollbar-gutter: stable;
+  }
+  
+  /* Force scrollbar to always be visible */
+  body {
+    overflow-y: scroll !important;
+    /* Prevent layout shift */
+    scrollbar-gutter: stable;
+    /* Force scrollbar to always be visible */
+    scrollbar-width: auto;
+    scrollbar-color: #888 #f1f1f1;
   }
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
