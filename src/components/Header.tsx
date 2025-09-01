@@ -164,11 +164,9 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
                   {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
                   <span className="text-sm">{text.theme}: {isDark ? text.dark : text.light}</span>
                 </div>
-                <Switch
-                  checked={isDark}
-                  onCheckedChange={onThemeToggle}
-                  className="ml-auto"
-                  onClick={(e) => e.stopPropagation()}
+                <ThemeSwitch
+                  isDark={isDark}
+                  onToggle={onThemeToggle}
                 />
               </DropdownMenuItem>
             </DropdownMenuContent>
