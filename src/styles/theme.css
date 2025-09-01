@@ -1,7 +1,30 @@
 /* Unified color palette for both themes */
 
-/* Light theme colors - softer palette */
+/* Light theme colors - using Tailwind's CSS variable system */
 :root {
+  /* Tailwind CSS Variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+  
+  /* Legacy custom variables for backward compatibility */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-card: #ffffff;
@@ -14,11 +37,31 @@
   --accent-hover: #2563eb;
   --transition-duration: 0.3s;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-  --switch-transition: 0.3s;
 }
 
-/* Dark theme colors - softer palette */
+/* Dark theme colors - using Tailwind's CSS variable system */
 .dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+  
+  /* Legacy custom variables for backward compatibility */
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
   --bg-card: #1e293b;
@@ -29,9 +72,6 @@
   --border-color: #475569;
   --accent-color: #60a5fa;
   --accent-hover: #3b82f6;
-  --transition-duration: 0.3s;
-  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-  --switch-transition: 0.3s;
 }
 
 /* Apply unified colors with smooth transitions */
@@ -139,10 +179,12 @@ header {
   transition: color var(--transition-duration) var(--transition-timing);
 }
 
-/* Simplified global transitions for better mobile performance */
-* {
+/* Optimized global transitions - more selective for better mobile performance */
+body, .bg-background, .text-foreground, .bg-card, .text-card-foreground, 
+.bg-muted, .text-muted-foreground, .border-border {
   transition: background-color var(--transition-duration) var(--transition-timing), 
-              color var(--transition-duration) var(--transition-timing);
+              color var(--transition-duration) var(--transition-timing),
+              border-color var(--transition-duration) var(--transition-timing);
 }
 
 /* Specific transitions for interactive elements */
@@ -154,8 +196,8 @@ button, a, input, textarea, select {
               box-shadow var(--transition-duration) var(--transition-timing);
 }
 
-/* Smooth transitions for Tailwind classes */
-.bg-*, .text-*, .border-* {
+/* Smooth transitions for common Tailwind classes */
+[class*="bg-"], [class*="text-"], [class*="border-"] {
   transition: background-color var(--transition-duration) var(--transition-timing), 
               color var(--transition-duration) var(--transition-timing), 
               border-color var(--transition-duration) var(--transition-timing);
@@ -177,6 +219,17 @@ button, a, input, textarea, select {
 /* Text transitions */
 h1, h2, h3, h4, h5, h6, p, span, div {
   transition: color var(--transition-duration) var(--transition-timing);
+}
+
+/* Theme transitioning animation */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *:before,
+html.theme-transitioning *:after {
+  transition: background-color var(--transition-duration) var(--transition-timing) !important,
+              color var(--transition-duration) var(--transition-timing) !important,
+              border-color var(--transition-duration) var(--transition-timing) !important;
+  transition-delay: 0s !important;
 }
 
 /* Force scrollbar to always be visible */

@@ -26,23 +26,32 @@ export default function App() {
   useEffect(() => {
     console.log('useEffect triggered! isDark:', isDark);
     
+    // Force reflow to ensure proper state
+    document.documentElement.offsetHeight;
+    
     // Add transition class for smooth animation
     document.documentElement.classList.add('theme-transitioning');
     
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      console.log('Added dark class');
+    // Apply theme class with proper timing
+    requestAnimationFrame(() => {
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+        console.log('Added dark class');
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.setAttribute("data-theme", "light");
+        console.log('Removed dark class');
+      }
       console.log('Document classes:', document.documentElement.classList.toString());
-    } else {
-      document.documentElement.classList.remove("dark");
-      console.log('Removed dark class');
-      console.log('Document classes:', document.documentElement.classList.toString());
-    }
+    });
     
     // Remove transition class after animation completes
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       document.documentElement.classList.remove('theme-transitioning');
-    }, 300);
+    }, 350);
+    
+    return () => clearTimeout(timeout);
   }, [isDark]);
 
   const handleThemeToggle = () => {
