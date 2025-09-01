@@ -7,7 +7,7 @@ import { Menu, Sun, Moon, Globe, X } from "lucide-react";
 import { Page } from "./Router";
 import { CodeLogoCompact } from "./CodeLogo";
 import { useMobileDevice } from "./ui/use-mobile-device";
-import { ThemeSwitch } from "./ui/theme-switch";
+import { ToggleTheme } from "./ui/toggle-theme";
 
 interface HeaderProps {
   isDark: boolean;
@@ -164,7 +164,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
                   {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
                   <span className="text-sm">{text.theme}: {isDark ? text.dark : text.light}</span>
                 </div>
-                <ThemeSwitch
+                <ToggleTheme
                   isDark={isDark}
                   onToggle={onThemeToggle}
                 />
@@ -239,7 +239,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
           {/* Theme toggle - показываем всегда на десктопе */}
           <div className="hidden md:flex items-center gap-2">
             <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-gray-400'}`} />
-            <ThemeSwitch
+            <ToggleTheme
               isDark={isDark}
               onToggle={onThemeToggle}
             />
