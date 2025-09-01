@@ -24,10 +24,13 @@ export default function App() {
 
   // Apply theme to document
   useEffect(() => {
+    console.log('useEffect triggered! isDark:', isDark);
     if (isDark) {
       document.documentElement.classList.add("dark");
+      console.log('Added dark class');
     } else {
       document.documentElement.classList.remove("dark");
+      console.log('Removed dark class');
     }
   }, [isDark]);
 
