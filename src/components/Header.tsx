@@ -243,12 +243,13 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
           {/* Theme toggle - скрываем на мобильных устройствах */}
           {!isMobileDevice && (
             <div className="flex items-center gap-2">
-              <Sun className="h-4 w-4" />
+              <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-muted-foreground'}`} />
               <Switch
                 checked={isDark}
                 onCheckedChange={onThemeToggle}
+                className="data-[state=checked]:bg-primary data-[state=unchecked]:bg-muted"
               />
-              <Moon className="h-4 w-4" />
+              <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-muted-foreground'}`} />
             </div>
           )}
 
