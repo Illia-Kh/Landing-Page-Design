@@ -17,47 +17,9 @@ import { CoreWebVitalsMonitor } from "./components/PerformanceOptimization";
 import { ResourceHints } from "./components/PerformanceOptimization";
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false);
   const [language, setLanguage] = useState("ru");
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const isMobileDevice = useMobileDevice();
-
-  // Apply theme to document with smooth transition
-  useEffect(() => {
-    console.log('useEffect triggered! isDark:', isDark);
-    
-    // Force reflow to ensure proper state
-    document.documentElement.offsetHeight;
-    
-    // Add transition class for smooth animation
-    document.documentElement.classList.add('theme-transitioning');
-    
-    // Apply theme class with proper timing
-    requestAnimationFrame(() => {
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-        document.documentElement.setAttribute("data-theme", "dark");
-        console.log('Added dark class');
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.setAttribute("data-theme", "light");
-        console.log('Removed dark class');
-      }
-      console.log('Document classes:', document.documentElement.classList.toString());
-    });
-    
-    // Remove transition class after animation completes
-    const timeout = setTimeout(() => {
-      document.documentElement.classList.remove('theme-transitioning');
-    }, 350);
-    
-    return () => clearTimeout(timeout);
-  }, [isDark]);
-
-  const handleThemeToggle = () => {
-    console.log('Theme toggle clicked! Current isDark:', isDark);
-    setIsDark(!isDark);
-  };
 
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage);
@@ -226,8 +188,6 @@ export default function App() {
       />
       
       <Header
-        isDark={isDark}
-        onThemeToggle={handleThemeToggle}
         language={language}
         onLanguageChange={handleLanguageChange}
         currentPage={currentPage}

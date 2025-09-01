@@ -3,15 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Menu, Sun, Moon, Globe, X } from "lucide-react";
+import { Menu, Globe, X } from "lucide-react";
 import { Page } from "./Router";
 import { CodeLogoCompact } from "./CodeLogo";
 import { useMobileDevice } from "./ui/use-mobile-device";
-import { SimpleToggle } from "./ui/simple-toggle";
+
 
 interface HeaderProps {
-  isDark: boolean;
-  onThemeToggle: () => void;
   language: string;
   onLanguageChange: (language: string) => void;
   currentPage: Page;
@@ -25,10 +23,7 @@ const content = {
     about: "О нас",
     services: "Услуги",
     contact: "Контакты",
-    language: "Язык",
-    theme: "Тема",
-    light: "Светлая",
-    dark: "Тёмная"
+    language: "Язык"
   },
   en: {
     menu: "Menu",
@@ -36,10 +31,7 @@ const content = {
     about: "About",
     services: "Services",
     contact: "Contact",
-    language: "Language",
-    theme: "Theme",
-    light: "Light",
-    dark: "Dark"
+    language: "Language"
   },
   de: {
     menu: "Menü",
@@ -47,10 +39,7 @@ const content = {
     about: "Über uns",
     services: "Dienstleistungen",
     contact: "Kontakt",
-    language: "Sprache",
-    theme: "Thema",
-    light: "Hell",
-    dark: "Dunkel"
+    language: "Sprache"
   },
   cs: {
     menu: "Nabídka",
@@ -58,14 +47,11 @@ const content = {
     about: "O nás",
     services: "Služby",
     contact: "Kontakt",
-    language: "Jazyk",
-    theme: "Motiv",
-    light: "Světlý",
-    dark: "Tmavý"
+    language: "Jazyk"
   }
 };
 
-export function Header({ isDark, onThemeToggle, language, onLanguageChange, currentPage, onPageChange }: HeaderProps) {
+export function Header({ language, onLanguageChange, currentPage, onPageChange }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogoMenuOpen, setIsLogoMenuOpen] = useState(false);
   const isMobileDevice = useMobileDevice();
@@ -152,23 +138,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
                 </div>
               </div>
               
-              {/* Переключатель темы */}
-              <DropdownMenuItem 
-                className="flex items-center justify-between cursor-pointer" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  onThemeToggle();
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-                  <span className="text-sm">{text.theme}: {isDark ? text.dark : text.light}</span>
-                </div>
-                <SimpleToggle
-                  isDark={isDark}
-                  onToggle={onThemeToggle}
-                />
-              </DropdownMenuItem>
+
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
@@ -222,7 +192,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
         <div className="flex items-center gap-4">
           {/* Language selector - показываем всегда на десктопе */}
           <div className="hidden md:flex items-center gap-2">
-            <Globe className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-gray-600'}`} />
+            <Globe className="h-4 w-4 text-gray-600" />
             <Select value={language} onValueChange={onLanguageChange}>
               <SelectTrigger className="w-20 h-8">
                 <SelectValue />
@@ -236,15 +206,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
             </Select>
           </div>
 
-          {/* Theme toggle - показываем всегда на десктопе */}
-          <div className="hidden md:flex items-center gap-2">
-            <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-gray-400'}`} />
-            <SimpleToggle
-              isDark={isDark}
-              onToggle={onThemeToggle}
-            />
-            <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-gray-400'}`} />
-          </div>
+
 
           {/* Mobile menu button */}
           <Button
