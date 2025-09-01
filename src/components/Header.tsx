@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Switch } from "./ui/switch";
 import { Menu, Sun, Moon, Globe, X } from "lucide-react";
 import { Page } from "./Router";
 import { CodeLogoCompact } from "./CodeLogo";
 import { useMobileDevice } from "./ui/use-mobile-device";
+import { ThemeSwitch } from "./ui/theme-switch";
 
 interface HeaderProps {
   isDark: boolean;
@@ -224,7 +224,7 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
         <div className="flex items-center gap-4">
           {/* Language selector - показываем всегда на десктопе */}
           <div className="hidden md:flex items-center gap-2">
-            <Globe className="h-4 w-4" />
+            <Globe className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-gray-600'}`} />
             <Select value={language} onValueChange={onLanguageChange}>
               <SelectTrigger className="w-20 h-8">
                 <SelectValue />
@@ -240,17 +240,12 @@ export function Header({ isDark, onThemeToggle, language, onLanguageChange, curr
 
           {/* Theme toggle - показываем всегда на десктопе */}
           <div className="hidden md:flex items-center gap-2">
-            <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-muted-foreground'}`} />
-            <Switch
-              checked={isDark}
-              onCheckedChange={(checked) => {
-                console.log('Switch clicked! New value:', checked);
-                onThemeToggle();
-              }}
-              className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-300 border-2 border-gray-400"
-              style={{ minWidth: '44px', minHeight: '24px' }}
+            <Sun className={`h-4 w-4 ${!isDark ? 'text-yellow-500' : 'text-gray-400'}`} />
+            <ThemeSwitch
+              isDark={isDark}
+              onToggle={onThemeToggle}
             />
-            <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-muted-foreground'}`} />
+            <Moon className={`h-4 w-4 ${isDark ? 'text-blue-400' : 'text-gray-400'}`} />
           </div>
 
           {/* Mobile menu button */}

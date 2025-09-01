@@ -90,6 +90,31 @@ body {
   background-color: var(--accent-hover) !important;
 }
 
+/* Header specific styles for better visibility */
+header {
+  background-color: var(--bg-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Switch component improvements */
+[data-state="checked"] {
+  background-color: #3b82f6 !important;
+}
+
+[data-state="unchecked"] {
+  background-color: #d1d5db !important;
+}
+
+/* Icon visibility improvements */
+.text-muted-foreground {
+  color: var(--text-muted) !important;
+}
+
+/* Ensure icons are always visible */
+.lucide {
+  color: inherit !important;
+}
+
 /* Force scrollbar to always be visible */
 html {
   overflow-y: scroll !important;
