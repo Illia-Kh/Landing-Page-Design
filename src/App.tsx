@@ -27,11 +27,15 @@ export default function App() {
     console.log('useEffect triggered! isDark:', isDark);
     if (isDark) {
       document.documentElement.classList.add("dark");
-      console.log('Added dark class');
+      document.body.style.backgroundColor = "#0f172a";
+      document.body.style.color = "#f8fafc";
+      console.log('Added dark class and styles');
       console.log('Document classes:', document.documentElement.classList.toString());
     } else {
       document.documentElement.classList.remove("dark");
-      console.log('Removed dark class');
+      document.body.style.backgroundColor = "#ffffff";
+      document.body.style.color = "#000000";
+      console.log('Removed dark class and styles');
       console.log('Document classes:', document.documentElement.classList.toString());
     }
   }, [isDark]);

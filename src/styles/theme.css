@@ -1,0 +1,56 @@
+/* Dark theme styles */
+.dark {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+.dark body {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+.dark .bg-background {
+  background-color: #0f172a !important;
+}
+
+.dark .text-foreground {
+  color: #f8fafc !important;
+}
+
+.dark .bg-card {
+  background-color: #1e293b !important;
+}
+
+.dark .text-card-foreground {
+  color: #f8fafc !important;
+}
+
+.dark .bg-muted {
+  background-color: #334155 !important;
+}
+
+.dark .text-muted-foreground {
+  color: #94a3b8 !important;
+}
+
+.dark .border-border {
+  border-color: #334155 !important;
+}
+
+/* Force scrollbar to always be visible */
+html {
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Prevent layout shift on all elements */
+* {
+  scrollbar-gutter: stable;
+}
