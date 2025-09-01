@@ -11,7 +11,7 @@ export function ThemeSwitch({ isDark, onToggle }: ThemeSwitchProps) {
     <button
       onClick={onToggle}
       className={`
-        relative w-11 h-6 rounded-full transition-colors duration-200
+        relative w-11 h-6 rounded-full
         ${isDark ? 'bg-blue-600' : 'bg-gray-300'}
         border-2 border-gray-400
       `}
@@ -23,9 +23,8 @@ export function ThemeSwitch({ isDark, onToggle }: ThemeSwitchProps) {
           x: isDark ? 20 : 0,
         }}
         transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30
+          duration: 0.8,
+          ease: [0.4, 0, 0.2, 1]
         }}
       />
     </button>

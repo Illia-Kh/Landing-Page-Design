@@ -14,6 +14,7 @@
   --accent-hover: #2563eb;
   --transition-duration: 0.8s;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --switch-transition: 0.8s;
 }
 
 /* Dark theme colors - softer palette */
@@ -30,6 +31,7 @@
   --accent-hover: #3b82f6;
   --transition-duration: 0.8s;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --switch-transition: 0.8s;
 }
 
 /* Apply unified colors with smooth transitions */
@@ -141,7 +143,8 @@ header {
 * {
   transition: background-color var(--transition-duration) var(--transition-timing), 
               color var(--transition-duration) var(--transition-timing), 
-              border-color var(--transition-duration) var(--transition-timing);
+              border-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 /* Specific transitions for interactive elements */
@@ -149,7 +152,8 @@ button, a, input, textarea, select {
   transition: background-color var(--transition-duration) var(--transition-timing), 
               color var(--transition-duration) var(--transition-timing), 
               border-color var(--transition-duration) var(--transition-timing), 
-              transform 0.2s ease;
+              transform 0.2s ease,
+              box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 /* Smooth transitions for Tailwind classes */
@@ -157,6 +161,24 @@ button, a, input, textarea, select {
   transition: background-color var(--transition-duration) var(--transition-timing), 
               color var(--transition-duration) var(--transition-timing), 
               border-color var(--transition-duration) var(--transition-timing);
+}
+
+/* Enhanced transitions for specific components */
+.hero-section, .bg-card, .bg-muted, header, footer {
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+}
+
+/* Logo and button transitions */
+.logo, .btn-primary, .btn-secondary {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+/* Text transitions */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 /* Force scrollbar to always be visible */
@@ -184,7 +206,9 @@ body::before {
   background: linear-gradient(
     135deg,
     rgba(15, 23, 42, 0) 0%,
+    rgba(15, 23, 42, 0.05) 25%,
     rgba(15, 23, 42, 0.1) 50%,
+    rgba(15, 23, 42, 0.15) 75%,
     rgba(15, 23, 42, 0.2) 100%
   );
   opacity: 0;
@@ -194,6 +218,30 @@ body::before {
 }
 
 .dark body::before {
+  opacity: 1;
+}
+
+/* Additional overlay for smoother transitions */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(15, 23, 42, 0) 0%,
+    rgba(15, 23, 42, 0.02) 50%,
+    rgba(15, 23, 42, 0.05) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity var(--transition-duration) var(--transition-timing);
+}
+
+.dark body::after {
   opacity: 1;
 }
 
@@ -210,4 +258,34 @@ body::before {
 /* Fix dropdown menu positioning */
 [role="listbox"] {
   scrollbar-gutter: stable;
+}
+
+/* Component-specific smooth transitions */
+.hero-section, .about-section, .services-section, .contact-section {
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+}
+
+/* Card and container transitions */
+.card, .container, .section {
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+}
+
+/* Navigation and menu transitions */
+nav, .navigation, .menu {
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing);
+}
+
+/* Form elements transitions */
+input, textarea, select, label {
+  transition: background-color var(--transition-duration) var(--transition-timing), 
+              color var(--transition-duration) var(--transition-timing), 
+              border-color var(--transition-duration) var(--transition-timing);
 }
