@@ -9,13 +9,37 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    /* Smooth theme transitions */
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Ensure body also transitions smoothly */
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  html {
-    scroll-behavior: smooth;
+
+  /* All elements that use CSS variables should transition */
+  * {
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                fill 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                stroke 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html, body, * {
+    transition: none !important;
+    animation: none !important;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Theme } from '../types/theme';
 
 export const useTheme = () => {
@@ -38,16 +38,14 @@ export const useTheme = () => {
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
-    // Применяем тему только через CSS классы - никаких инлайн стилей!
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-    }
+    // Apply theme using data-theme attribute for consistency
+    document.documentElement.setAttribute('data-theme', newTheme);
     
-    // Убираем все принудительно установленные стили
+    // Remove any old class-based theme application
+    document.documentElement.classList.remove('dark', 'light');
+    document.body.classList.remove('dark', 'light');
+    
+    // Remove any forced inline styles
     document.body.style.removeProperty('backgroundColor');
     document.body.style.removeProperty('color');
   };
