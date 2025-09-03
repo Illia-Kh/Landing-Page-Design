@@ -118,7 +118,7 @@ export function SlideCarousel({ autoplay = true, interval = 4000 }: SlideCarouse
   };
 
   return (
-    <div className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-muted/20 to-accent/20">
+    <div className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[color-mix(in_oklab,var(--bg),white_4%)] to-[color-mix(in_oklab,var(--bg),white_10%)]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
@@ -165,7 +165,7 @@ export function SlideCarousel({ autoplay = true, interval = 4000 }: SlideCarouse
           ))}
 
           {/* Gradient overlay for better contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--backdrop))]/20 via-transparent to-[hsl(var(--backdrop))]/10" />
         </motion.div>
       </AnimatePresence>
 
@@ -173,23 +173,23 @@ export function SlideCarousel({ autoplay = true, interval = 4000 }: SlideCarouse
       <div className="absolute bottom-4 right-4 flex items-center gap-2">
         <button
           onClick={togglePlayPause}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          {isPlaying ? <Pause className="h-4 w-4 text-white" /> : <Play className="h-4 w-4 text-white" />}
+          {isPlaying ? <Pause className="h-4 w-4 text-[var(--text)]" /> : <Play className="h-4 w-4 text-[var(--text)]" />}
         </button>
 
         <button
           onClick={goToPrevious}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          <ChevronLeft className="h-4 w-4 text-white" />
+          <ChevronLeft className="h-4 w-4 text-[var(--text)]" />
         </button>
 
         <button
           onClick={goToNext}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          <ChevronRight className="h-4 w-4 text-white" />
+          <ChevronRight className="h-4 w-4 text-[var(--text)]" />
         </button>
       </div>
 
@@ -201,8 +201,8 @@ export function SlideCarousel({ autoplay = true, interval = 4000 }: SlideCarouse
             onClick={() => goToSlide(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-white scale-125' 
-                : 'bg-white/50 hover:bg-white/70'
+                ? 'bg-[var(--text)] scale-125' 
+                : 'bg-[var(--text)]/50 hover:bg-[var(--text)]/70'
             }`}
           />
         ))}

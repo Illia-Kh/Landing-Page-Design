@@ -122,7 +122,7 @@
 }
 
 /* Dark Mode Variables */
-:root[data-theme="dark"] {
+html[data-theme="dark"] {
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
   --card: 222.2 84% 4.9%;
@@ -151,6 +151,31 @@
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
+}
+
+/* Aliases for Tailwind arbitrary var(...) usage */
+:root {
+  /* Semantic color aliases */
+  --bg: hsl(var(--background));
+  --text: hsl(var(--foreground));
+  --card-bg: hsl(var(--card));
+  --card-text: hsl(var(--card-foreground));
+  --popover-bg: hsl(var(--popover));
+  --popover-text: hsl(var(--popover-foreground));
+  --accent: hsl(var(--primary));
+  --accent-contrast: hsl(var(--primary-foreground));
+  --secondary-bg: hsl(var(--secondary));
+  --secondary-text: hsl(var(--secondary-foreground));
+  --muted-bg: hsl(var(--muted));
+  --muted-text: hsl(var(--muted-foreground));
+  --danger: hsl(var(--destructive));
+  --danger-contrast: hsl(var(--destructive-foreground));
+  --border-color: hsl(var(--border));
+  --input-border: hsl(var(--input));
+  --ring-color: hsl(var(--ring));
+
+  /* Overlays/Glass */
+  --backdrop: 0 0% 0%;
 }
 
 /* High Contrast Mode */

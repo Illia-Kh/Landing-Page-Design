@@ -107,8 +107,10 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
       return;
     }
     
-    // If not spam, toggle theme
-    toggleTheme();
+    // If not spam, toggle theme with a short delay for perceived responsiveness
+    setTimeout(() => {
+      toggleTheme();
+    }, 120);
   }, [isBlocked, toggleTheme, checkForSpam, TIME_WINDOW, CLICK_LIMIT]);
 
   return (
@@ -205,18 +207,18 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
             className="absolute -left-2 -top-20 z-50"
           >
             {/* Comic Speech Bubble */}
-            <div className="relative bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 shadow-lg max-w-xs">
+            <div className="relative bg-[var(--card-bg)] border-2 border-[var(--border-color)] rounded-lg px-4 py-3 shadow-lg max-w-xs">
               {/* Speech bubble tail */}
-              <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white dark:bg-gray-800 border-r-2 border-b-2 border-gray-300 dark:border-gray-600 transform rotate-45"></div>
+              <div className="absolute -bottom-2 left-6 w-4 h-4 bg-[var(--card-bg)] border-r-2 border-b-2 border-[var(--border-color)] transform rotate-45"></div>
               
               {/* Message content */}
-              <div className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-tight">
+              <div className="text-sm font-medium text-[var(--text)] leading-tight">
                 {getSpamMessage(language)}
               </div>
               
               {/* Optional comic-style decoration */}
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full opacity-80"></div>
-              <div className="absolute -top-0.5 -right-2 w-2 h-2 bg-yellow-300 rounded-full opacity-60"></div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-[var(--accent)] rounded-full opacity-80"></div>
+              <div className="absolute -top-0.5 -right-2 w-2 h-2 bg-[var(--accent)]/70 rounded-full opacity-60"></div>
             </div>
           </motion.div>
         )}

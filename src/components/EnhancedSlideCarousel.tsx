@@ -220,7 +220,7 @@ export function EnhancedSlideCarousel({
   const currentDescription = currentSlideData.description[language as keyof typeof currentSlideData.description] || currentSlideData.description.ru;
 
   return (
-    <div className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-muted/20 to-accent/20">
+    <div className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[color-mix(in_oklab,var(--bg),white_4%)] to-[color-mix(in_oklab,var(--bg),white_10%)]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
@@ -267,7 +267,7 @@ export function EnhancedSlideCarousel({
           ))}
 
           {/* Gradient overlay for better contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--backdrop))]/40 via-transparent to-[hsl(var(--backdrop))]/20" />
         </motion.div>
       </AnimatePresence>
 
@@ -278,10 +278,10 @@ export function EnhancedSlideCarousel({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute top-4 left-4 right-16 bg-black/60 backdrop-blur-md rounded-lg p-4 text-white"
+            className="absolute top-4 left-4 right-16 bg-[hsl(var(--backdrop))]/60 backdrop-blur-md rounded-lg p-4 text-[var(--text)]"
           >
             <h3 className="font-semibold mb-1">{currentTitle}</h3>
-            <p className="text-sm text-white/80">{currentDescription}</p>
+            <p className="text-sm text-[color-mix(in_oklab,var(--text),transparent_20%)]">{currentDescription}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -292,32 +292,32 @@ export function EnhancedSlideCarousel({
           <button
             onClick={toggleSlideInfo}
             className={`p-2 backdrop-blur-md rounded-full transition-colors ${
-              showSlideInfo ? 'bg-white/30' : 'bg-white/20 hover:bg-white/30'
+              showSlideInfo ? 'bg-[var(--card-bg)]/30' : 'bg-[var(--card-bg)]/20 hover:bg-[var(--card-bg)]/30'
             }`}
           >
-            <Info className="h-4 w-4 text-white" />
+            <Info className="h-4 w-4 text-[var(--text)]" />
           </button>
         )}
 
         <button
           onClick={togglePlayPause}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          {isPlaying ? <Pause className="h-4 w-4 text-white" /> : <Play className="h-4 w-4 text-white" />}
+          {isPlaying ? <Pause className="h-4 w-4 text-[var(--text)]" /> : <Play className="h-4 w-4 text-[var(--text)]" />}
         </button>
 
         <button
           onClick={goToPrevious}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          <ChevronLeft className="h-4 w-4 text-white" />
+          <ChevronLeft className="h-4 w-4 text-[var(--text)]" />
         </button>
 
         <button
           onClick={goToNext}
-          className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+          className="p-2 bg-[var(--card-bg)]/20 backdrop-blur-md rounded-full hover:bg-[var(--card-bg)]/30 transition-colors"
         >
-          <ChevronRight className="h-4 w-4 text-white" />
+          <ChevronRight className="h-4 w-4 text-[var(--text)]" />
         </button>
       </div>
 
@@ -329,8 +329,8 @@ export function EnhancedSlideCarousel({
             onClick={() => goToSlide(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-white scale-125' 
-                : 'bg-white/50 hover:bg-white/70'
+                ? 'bg-[var(--text)] scale-125' 
+                : 'bg-[var(--text)]/50 hover:bg-[var(--text)]/70'
             }`}
           />
         ))}
@@ -348,7 +348,7 @@ export function EnhancedSlideCarousel({
       )}
 
       {/* Slide Counter */}
-      <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-full px-3 py-1 text-white text-sm">
+      <div className="absolute top-4 right-4 bg-[hsl(var(--backdrop))]/40 backdrop-blur-md rounded-full px-3 py-1 text-[var(--text)] text-sm">
         {currentSlide + 1} / {slidesData.length}
       </div>
     </div>

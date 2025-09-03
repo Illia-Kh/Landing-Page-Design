@@ -35,10 +35,10 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-20"
           >
-            <Card className="p-12 text-center bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700">
+            <Card className="p-12 text-center bg-gradient-to-br from-[var(--bg)] to-[color-mix(in_oklab,var(--bg),black_15%)] border-[var(--border-color)]">
               <CardHeader>
-                <CardTitle className="text-2xl mb-4 text-white">Code Hero Logo</CardTitle>
-                <CardDescription className="text-gray-300">Интерактивный логотип в стиле IDE для главных страниц</CardDescription>
+                <CardTitle className="text-2xl mb-4 text-[var(--text)]">Code Hero Logo</CardTitle>
+                <CardDescription className="text-[color-mix(in_oklab,var(--text),transparent_35%)]">Интерактивный логотип в стиле IDE для главных страниц</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeHeroLogo language={language} />
@@ -74,10 +74,10 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="p-8 text-center h-full bg-gray-900 border-gray-700">
+            <Card className="p-8 text-center h-full bg-[var(--bg)] border-[var(--border-color)]">
               <CardHeader>
-                <CardTitle className="text-white">Large Code Logo</CardTitle>
-                <CardDescription className="text-gray-300">Полноразмерный терминальный интерфейс</CardDescription>
+                <CardTitle className="text-[var(--text)]">Large Code Logo</CardTitle>
+                <CardDescription className="text-[color-mix(in_oklab,var(--text),transparent_35%)]">Полноразмерный терминальный интерфейс</CardDescription>
               </CardHeader>
               <CardContent className="flex items-center justify-center py-8">
                 <CodeLogo size="lg" animated={true} />
@@ -91,10 +91,10 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <Card className="p-8 text-center h-full bg-gray-900 border-gray-700">
+            <Card className="p-8 text-center h-full bg-[var(--bg)] border-[var(--border-color)]">
               <CardHeader>
-                <CardTitle className="text-white">Medium Code Logo</CardTitle>
-                <CardDescription className="text-gray-300">Универсальный размер для секций</CardDescription>
+                <CardTitle className="text-[var(--text)]">Medium Code Logo</CardTitle>
+                <CardDescription className="text-[color-mix(in_oklab,var(--text),transparent_35%)]">Универсальный размер для секций</CardDescription>
               </CardHeader>
               <CardContent className="flex items-center justify-center py-8">
                 <CodeLogo size="md" animated={true} />
@@ -108,10 +108,10 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Card className="p-8 text-center h-full bg-gray-900 border-gray-700">
+            <Card className="p-8 text-center h-full bg-[var(--bg)] border-[var(--border-color)]">
               <CardHeader>
-                <CardTitle className="text-white">Small Code Logo</CardTitle>
-                <CardDescription className="text-gray-300">Компактный для интерфейсов</CardDescription>
+                <CardTitle className="text-[var(--text)]">Small Code Logo</CardTitle>
+                <CardDescription className="text-[color-mix(in_oklab,var(--text),transparent_35%)]">Компактный для интерфейсов</CardDescription>
               </CardHeader>
               <CardContent className="flex items-center justify-center py-8">
                 <CodeLogo size="sm" animated={true} />
@@ -189,15 +189,15 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
             </CardHeader>
             <CardContent className="space-y-8">
               {!isMobileDevice && (
-                <div className="bg-gray-900 p-6 rounded-lg">
-                  <h4 className="text-white text-lg mb-4 text-center">Code Logo Compact</h4>
+                <div className="bg-[var(--bg)] p-6 rounded-lg border border-[var(--border-color)]">
+                  <h4 className="text-[var(--text)] text-lg mb-4 text-center">Code Logo Compact</h4>
                   <div className="flex items-center justify-center space-x-12">
                     <div className="text-center">
-                      <p className="text-sm text-gray-300 mb-4">Анимированная</p>
+                      <p className="text-sm text-[color-mix(in_oklab,var(--text),transparent_35%)] mb-4">Анимированная</p>
                       <CodeLogoCompact animated={true} />
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-gray-300 mb-4">Статичная</p>
+                      <p className="text-sm text-[color-mix(in_oklab,var(--text),transparent_35%)] mb-4">Статичная</p>
                       <CodeLogoCompact animated={false} />
                     </div>
                   </div>
@@ -251,10 +251,10 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
               </div>
 
               {/* Footer simulation */}
-              <div className="bg-gray-900 text-white rounded-lg p-6">
+              <div className="bg-[var(--bg)] text-[var(--text)] rounded-lg p-6 border border-[var(--border-color)]">
                 <div className="flex items-center justify-between">
                   <Logo size="md" animated={false} />
-                  <div className="text-sm text-gray-300">
+                  <div className="text-sm text-[color-mix(in_oklab,var(--text),transparent_35%)]">
                     © 2025 IKH-TechFlow. Все права защищены.
                   </div>
                 </div>

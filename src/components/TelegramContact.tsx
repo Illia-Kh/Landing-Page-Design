@@ -192,16 +192,16 @@ export function TelegramContact({ language }: TelegramContactProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <Card className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
+      <Card className="p-8 bg-gradient-to-br from-[color-mix(in_oklab,var(--bg),white_6%)] to-[color-mix(in_oklab,var(--bg),white_12%)] border-[var(--border-color)]">
         {/* Header */}
         <div className="text-center mb-8">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4"
+            className="inline-flex items-center justify-center w-16 h-16 bg-[var(--accent)] rounded-full mb-4"
           >
-            <Send className="h-8 w-8 text-white" />
+            <Send className="h-8 w-8 text-[var(--accent-contrast)]" />
           </motion.div>
           <h2 className="text-2xl font-bold mb-2">{text.title}</h2>
           <p className="text-muted-foreground">{text.subtitle}</p>
@@ -214,8 +214,8 @@ export function TelegramContact({ language }: TelegramContactProps) {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-sm border mb-4">
-            <Bot className="h-5 w-5 text-blue-500" />
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-[var(--card-bg)] rounded-full shadow-sm border border-[var(--border-color)] mb-4">
+            <Bot className="h-5 w-5 text-[var(--accent)]" />
             <code className="font-mono text-lg font-semibold">{text.botName}</code>
           </div>
           <p className="text-muted-foreground max-w-md mx-auto">{text.description}</p>
@@ -234,7 +234,7 @@ export function TelegramContact({ language }: TelegramContactProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              className="text-center p-4 rounded-lg bg-white/50 dark:bg-gray-800/50"
+              className="text-center p-4 rounded-lg bg-[color-mix(in_oklab,var(--card-bg),black_5%)]"
             >
               <feature.icon className="h-8 w-8 text-blue-500 mx-auto mb-3" />
               <h3 className="font-semibold mb-2">{feature.title}</h3>
@@ -260,7 +260,7 @@ export function TelegramContact({ language }: TelegramContactProps) {
                 transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                 className="flex items-center gap-3"
               >
-                <div className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                <div className="flex-shrink-0 w-6 h-6 bg-[var(--accent)] text-[var(--accent-contrast)] rounded-full flex items-center justify-center text-sm font-semibold">
                   {index + 1}
                 </div>
                 <p className="text-sm">{step}</p>
@@ -278,7 +278,7 @@ export function TelegramContact({ language }: TelegramContactProps) {
         >
           <Button 
             onClick={handleOpenTelegram}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3"
+            className="bg-[var(--accent)] hover:bg-[color-mix(in_oklab,var(--accent),black_10%)] text-[var(--accent-contrast)] px-8 py-3"
           >
             <Send className="h-4 w-4 mr-2" />
             {text.buttons.openTelegram}
