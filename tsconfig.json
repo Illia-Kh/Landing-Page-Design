@@ -38,10 +38,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "exactOptionalPropertyTypes": false,
-    "noImplicitReturns": false,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": false
+    "noPropertyAccessFromIndexSignature": false
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

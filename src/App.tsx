@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { Router, Route, Page } from "./components/Router";
 import { Language } from "./types";
+import { useTranslations } from "./i18n/translations";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ServicesPage } from "./pages/ServicesPage";
