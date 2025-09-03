@@ -48,6 +48,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
     "Разработка ПО — запуск продукта в кратчайшие сроки"
   ];
   const [benefitIndex, setBenefitIndex] = useState(0);
+  const [slideCount, setSlideCount] = useState<number>(0);
   const syncingRef = useRef(false);
 
   // Rotation timer (setTimeout chain to avoid interval drift)
@@ -227,7 +228,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 interval={3500}
                 language={language}
                 showInfo={true}
-                activeIndex={benefitIndex % 4}
+                activeIndex={slideCount > 0 ? (benefitIndex % slideCount) : 0}
                 onActiveIndexChange={(idx) => {
                   // Map slides to phrases by modulo if counts differ
                   const mapped = idx % benefits.length;
@@ -237,6 +238,13 @@ export function Hero({ language, onPageChange }: HeroProps) {
                     return;
                   }
                   setBenefitIndex(mapped);
+                }}
+                minimal={true}
+                onSlidesReady={(count) => {
+                  // keep latest count of discovered slides for modulo mapping
+                  if (typeof count === 'number' && count > 0) {
+                    setSlideCount(count);
+                  }
                 }}
               />
             </motion.div>
