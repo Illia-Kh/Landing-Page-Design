@@ -223,9 +223,9 @@ export function EnhancedSlideCarousel({
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: 0,
       opacity: 0,
-      scale: 0.9
+      scale: 0.98
     }),
     center: {
       zIndex: 1,
@@ -235,9 +235,9 @@ export function EnhancedSlideCarousel({
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: 0,
       opacity: 0,
-      scale: 0.9
+      scale: 0.98
     })
   };
 
@@ -256,9 +256,8 @@ export function EnhancedSlideCarousel({
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.3 },
-            scale: { duration: 0.4 }
+            opacity: { duration: 0.65, ease: [0.4, 0.0, 0.2, 1] },
+            scale: { duration: 0.65, ease: [0.4, 0.0, 0.2, 1] }
           }}
           className="absolute inset-0"
         >

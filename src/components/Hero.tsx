@@ -52,7 +52,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
 
   // Rotation timer (setTimeout chain to avoid interval drift)
   const rotationTimeoutRef = useRef<number | null>(null);
-  const ROTATION_MS = 3500; // 3.5s between switches
+  const ROTATION_MS = 5800; // ~5.8s visible time per phrase
 
   const scheduleNextRotation = () => {
     if (rotationTimeoutRef.current) {
@@ -144,7 +144,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-xl lg:text-3xl text-muted-foreground"
+                className="text-xl lg:text-3xl text-muted-foreground hero-rotating-subheadline"
               >
                 {/* Fixed-height crossfade container */}
                 <div
@@ -164,7 +164,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.35, ease: "easeOut" }}
+                          transition={{ duration: 0.65, ease: [0.4, 0.0, 0.2, 1] }}
                           style={{ pointerEvents: "none" }}
                         >
                           {phrase}
