@@ -22,7 +22,6 @@ const content = {
     links: [
       { name: "О нас", page: "about" as Page },
       { name: "Услуги", page: "services" as Page },
-      { name: "Галерея", page: "gallery" as const, isGallery: true },
       { name: "Контакты", page: "contact" as Page }
     ]
   },
@@ -36,7 +35,6 @@ const content = {
     links: [
       { name: "About", page: "about" as Page },
       { name: "Services", page: "services" as Page },
-      { name: "Gallery", page: "gallery" as const, isGallery: true },
       { name: "Contact", page: "contact" as Page }
     ]
   },
@@ -50,7 +48,6 @@ const content = {
     links: [
       { name: "Über uns", page: "about" as Page },
       { name: "Dienstleistungen", page: "services" as Page },
-      { name: "Galerie", page: "gallery" as const, isGallery: true },
       { name: "Kontakt", page: "contact" as Page }
     ]
   },
@@ -64,7 +61,6 @@ const content = {
     links: [
       { name: "O nás", page: "about" as Page },
       { name: "Služby", page: "services" as Page },
-      { name: "Galerie", page: "gallery" as const, isGallery: true },
       { name: "Kontakt", page: "contact" as Page }
     ]
   }

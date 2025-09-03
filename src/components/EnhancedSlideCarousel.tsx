@@ -148,43 +148,69 @@ interface EnhancedSlideCarouselProps {
   interval?: number;
   language: string;
   showInfo?: boolean;
+  activeIndex?: number; // controlled index from parent (sync with text rotator)
+  onActiveIndexChange?: (index: number) => void; // notify parent on user-driven change
 }
 
 export function EnhancedSlideCarousel({ 
   autoplay = true, 
   interval = 6000, 
   language = "ru",
-  showInfo = true 
+  showInfo = true,
+  activeIndex,
+  onActiveIndexChange
 }: EnhancedSlideCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoplay);
   const [direction, setDirection] = useState(1);
   const [showSlideInfo, setShowSlideInfo] = useState(false);
+  const isControlled = typeof activeIndex === 'number';
 
+  // Controlled sync: when parent provides activeIndex, mirror it locally without emitting callback
   useEffect(() => {
+    if (isControlled) {
+      const target = (activeIndex as number) % slidesData.length;
+      if (target !== currentSlide) {
+        setDirection(target > currentSlide ? 1 : -1);
+        setCurrentSlide(target);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex]);
+
+  // Uncontrolled autoplay only when not controlled
+  useEffect(() => {
+    if (isControlled) return; 
     if (!isPlaying) return;
 
     const timer = setInterval(() => {
       setDirection(1);
-      setCurrentSlide((prev) => (prev + 1) % slidesData.length);
+      const next = (currentSlide + 1) % slidesData.length;
+      setCurrentSlide(next);
+      onActiveIndexChange?.(next);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [isPlaying, interval]);
+  }, [isPlaying, interval, isControlled, currentSlide, onActiveIndexChange]);
 
   const goToSlide = (index: number) => {
     setDirection(index > currentSlide ? 1 : -1);
     setCurrentSlide(index);
+    onActiveIndexChange?.(index);
   };
 
   const goToPrevious = () => {
     setDirection(-1);
     setCurrentSlide((prev) => (prev - 1 + slidesData.length) % slidesData.length);
+    const next = (currentSlide - 1 + slidesData.length) % slidesData.length;
+    onActiveIndexChange?.(next);
   };
 
   const goToNext = () => {
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % slidesData.length);
+    const next = (currentSlide + 1) % slidesData.length;
+    onActiveIndexChange?.(next);
   };
 
   const togglePlayPause = () => {

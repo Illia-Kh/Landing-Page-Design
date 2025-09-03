@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { EnhancedSlideCarousel } from "./EnhancedSlideCarousel";
 import { CodeLogo } from "./CodeLogo";
 import { Page } from "./Router";
 import { useMobileDevice } from "./ui/use-mobile-device";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface HeroProps {
   language: string;
@@ -39,6 +40,69 @@ const content = {
 export function Hero({ language, onPageChange }: HeroProps) {
   const text = content[language as keyof typeof content] || content.ru;
   const isMobileDevice = useMobileDevice();
+  
+  // Rotating benefit phrases (RU) — exact copy per requirements
+  const benefits = [
+    "Автоматизация процессов —  Существенное сокращение издержек",
+    "Маркетинг и аналитика — Эффективное привлечение клиентов",
+    "Разработка ПО — запуск продукта в кратчайшие сроки"
+  ];
+  const [benefitIndex, setBenefitIndex] = useState(0);
+  const syncingRef = useRef(false);
+
+  // Rotation timer (setTimeout chain to avoid interval drift)
+  const rotationTimeoutRef = useRef<number | null>(null);
+  const ROTATION_MS = 3500; // 3.5s between switches
+
+  const scheduleNextRotation = () => {
+    if (rotationTimeoutRef.current) {
+      clearTimeout(rotationTimeoutRef.current);
+    }
+    rotationTimeoutRef.current = window.setTimeout(() => {
+      syncingRef.current = true;
+      setBenefitIndex((prev) => (prev + 1) % benefits.length);
+    }, ROTATION_MS);
+  };
+
+  useEffect(() => {
+    scheduleNextRotation();
+    return () => {
+      if (rotationTimeoutRef.current) {
+        clearTimeout(rotationTimeoutRef.current);
+      }
+    };
+  }, [benefitIndex]);
+
+  // Stable height measurement to avoid layout shift (CLS≈0)
+  const phraseContainerRef = useRef<HTMLDivElement | null>(null);
+  const measureRef = useRef<HTMLDivElement | null>(null);
+  const [minHeightPx, setMinHeightPx] = useState<number>(0);
+
+  const measureHeights = () => {
+    if (!measureRef.current) return;
+    const children = Array.from(measureRef.current.children) as HTMLElement[];
+    let maxH = 0;
+    children.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      maxH = Math.max(maxH, rect.height);
+    });
+    setMinHeightPx(Math.ceil(maxH));
+  };
+
+  // Measure on mount and on resize
+  useLayoutEffect(() => {
+    measureHeights();
+  }, []);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(() => {
+      measureHeights();
+    });
+    if (phraseContainerRef.current) {
+      ro.observe(phraseContainerRef.current);
+    }
+    return () => ro.disconnect();
+  }, []);
 
   return (
     <section className="min-h-[60vh] pt-8 pb-12 flex items-center bg-gradient-to-br from-background to-accent/20">
@@ -65,7 +129,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-3xl lg:text-5xl font-bold"
               >
-                {text.title}
+                {"Технологии, которые работают на результат"}
               </motion.h1>
               
               {/* Animated divider block */}
@@ -82,7 +146,50 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-xl lg:text-3xl text-muted-foreground"
               >
-                {text.subtitle}
+                {/* Fixed-height crossfade container */}
+                <div
+                  ref={phraseContainerRef}
+                  className="relative"
+                  style={{ minHeight: minHeightPx ? `${minHeightPx}px` : undefined }}
+                  aria-live="polite"
+                  aria-atomic="true"
+                  role="status"
+                >
+                  <AnimatePresence initial={false} mode="wait">
+                    {benefits.map((phrase, idx) => (
+                      idx === benefitIndex ? (
+                        <motion.span
+                          key={phrase}
+                          className="absolute inset-0"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.35, ease: "easeOut" }}
+                          style={{ pointerEvents: "none" }}
+                        >
+                          {phrase}
+                        </motion.span>
+                      ) : null
+                    ))}
+                  </AnimatePresence>
+
+                  {/* Offscreen measurer to compute max height without affecting layout */}
+                  <div
+                    ref={measureRef}
+                    className="absolute left-0 right-0"
+                    style={{
+                      visibility: "hidden",
+                      pointerEvents: "none",
+                      top: 0,
+                    }}
+                  >
+                    {benefits.map((phrase) => (
+                      <div key={`measure-${phrase}`} className="whitespace-normal">
+                        {phrase}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.h2>
             </div>
 
@@ -116,10 +223,21 @@ export function Hero({ language, onPageChange }: HeroProps) {
               transition={{ duration: 1, delay: 0.6 }}
             >
               <EnhancedSlideCarousel 
-                autoplay={true} 
-                interval={6000}
+                autoplay={false}
+                interval={3500}
                 language={language}
                 showInfo={true}
+                activeIndex={benefitIndex % 4}
+                onActiveIndexChange={(idx) => {
+                  // Map slides to phrases by modulo if counts differ
+                  const mapped = idx % benefits.length;
+                  if (syncingRef.current) {
+                    // Ignore immediate feedback from our own programmatic change
+                    syncingRef.current = false;
+                    return;
+                  }
+                  setBenefitIndex(mapped);
+                }}
               />
             </motion.div>
           </div>
