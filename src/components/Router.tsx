@@ -1,7 +1,9 @@
 import { ReactNode, Children, cloneElement, isValidElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Page } from "../types";
 
-export type Page = "home" | "about" | "services" | "contact";
+// Re-export Page for backward compatibility
+export type { Page } from "../types";
 
 interface RouterProps {
   currentPage: Page;
