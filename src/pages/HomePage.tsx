@@ -1,11 +1,11 @@
 import { Hero } from "../components/Hero";
 import { AboutUs } from "../components/AboutUs";
 import { Gallery } from "../components/Gallery";
-import { Page } from "../components/Router";
+import { Language } from "../types";
 
 interface HomePageProps {
-  language: string;
-  onPageChange: (page: Page) => void;
+  language: Language;
+  onPageChange: (page: string) => void;
 }
 
 export function HomePage({ language, onPageChange }: HomePageProps) {

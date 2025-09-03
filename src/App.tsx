@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { Router, Route, Page } from "./components/Router";
+import { Language } from "./types";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ServicesPage } from "./pages/ServicesPage";
@@ -17,11 +18,11 @@ import { CoreWebVitalsMonitor } from "./components/PerformanceOptimization";
 import { ResourceHints } from "./components/PerformanceOptimization";
 
 export default function App() {
-  const [language, setLanguage] = useState("ru");
+  const [language, setLanguage] = useState<Language>("ru");
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const isMobileDevice = useMobileDevice();
 
-  const handleLanguageChange = (newLanguage: string) => {
+  const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);
   };
 
@@ -216,10 +217,10 @@ export default function App() {
           <Route key="contact-route" page="contact">
             <ContactPage language={language} />
           </Route>
-          {/* Temporary showcase route - can be removed later */}
-          {currentPage === 'logo-showcase' && (
+          {/* Add the logo-showcase route properly */}
+          <Route key="logo-showcase-route" page="logo-showcase">
             <LogoShowcase language={language} />
-          )}
+          </Route>
         </Router>
       </main>
 

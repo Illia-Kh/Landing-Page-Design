@@ -209,11 +209,11 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
                 <div className="flex items-center justify-center space-x-12">
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground mb-4">Анимированная</p>
-                    <LogoCompact animated={true} />
+                    <LogoCompact />
                   </div>
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground mb-4">Статичная</p>
-                    <LogoCompact animated={false} />
+                    <LogoCompact />
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export function LogoShowcase({ language }: LogoShowcaseProps) {
                   {!isMobileDevice ? (
                     <CodeLogoCompact animated={false} />
                   ) : (
-                    <LogoCompact animated={false} />
+                    <LogoCompact />
                   )}
                   <div className="flex items-center space-x-4">
                     <span className="text-sm text-muted-foreground">Навигация</span>

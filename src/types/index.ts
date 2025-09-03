@@ -314,39 +314,4 @@ export interface AppSettings {
   }
 }
 
-// Экспорт всех типов
-export type {
-  Page,
-  Language,
-  Theme,
-  SEOData,
-  StructuredDataProps,
-  NavigationItem,
-  BreadcrumbItem,
-  BaseComponentProps,
-  ImageProps,
-  FormField,
-  ContactFormData,
-  Service,
-  GalleryImage,
-  TeamMember,
-  Testimonial,
-  Project,
-  BlogPost,
-  AnimationProps,
-  PerformanceMetrics,
-  AnalyticsEvent,
-  LocalizedContent,
-  LocaleConfig,
-  ApiResponse,
-  PaginatedResponse,
-  DeepPartial,
-  RequiredFields,
-  OptionalFields,
-  UseLocalStorageOptions,
-  UseIntersectionObserverOptions,
-  AppContextType,
-  AppEvent,
-  AppError,
-  AppSettings
-}
+// Note: All types are exported inline above, no need for re-export

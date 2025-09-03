@@ -80,15 +80,24 @@
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.16",
+    "depcheck": "^1.4.7",
     "eslint": "^8.56.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unused-imports": "^4.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "tailwindcss": "^3.3.6",
+    "ts-prune": "^0.10.3",
     "typescript": "^5.3.3",
     "vite": "^5.4.8",
+    "vite-bundle-analyzer": "^1.2.3",
     "vite-plugin-pwa": "^0.17.4"
   },
   "scripts": {
@@ -102,6 +111,18 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "depcheck": "depcheck",
+    "ts-prune": "ts-prune",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
   }
 }

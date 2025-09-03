@@ -3,11 +3,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Users, Target, Lightbulb, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { Language } from "../types";
+
 interface AboutUsProps {
-  language: "ru" | "en" | "de" | "cs";
+  language: Language;
+  onPageChange?: (page: string) => void;
 }
 
-export function AboutUs({ language }: AboutUsProps) {
+export function AboutUs({ language, onPageChange }: AboutUsProps) {
 
   const text = {
     ru: {

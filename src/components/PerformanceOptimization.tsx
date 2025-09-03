@@ -100,10 +100,12 @@ export function CoreWebVitalsMonitor() {
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
         entries.forEach((entry) => {
-          console.log('FID:', entry.processingStart - entry.startTime);
+          // First Input Delay calculation
+          const fid = (entry as PerformanceEventTiming).processingStart - entry.startTime;
+          console.warn('FID:', fid);
           
-          if (entry.processingStart - entry.startTime > 100) {
-            console.warn('FID is too slow:', entry.processingStart - entry.startTime);
+          if (fid > 100) {
+            console.warn('FID is too slow:', fid);
           }
         });
       });
@@ -114,9 +116,10 @@ export function CoreWebVitalsMonitor() {
       let clsValue = 0;
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += (entry as any).value;
-            console.log('CLS:', clsValue);
+          const layoutShiftEntry = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+          if (!layoutShiftEntry.hadRecentInput) {
+            clsValue += layoutShiftEntry.value || 0;
+            console.warn('CLS:', clsValue);
             
             if (clsValue > 0.1) {
               console.warn('CLS is too high:', clsValue);
