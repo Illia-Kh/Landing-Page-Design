@@ -1,7 +1,7 @@
 import { Hero } from "../components/Hero";
 import ChallengesWeSolve from "../components/sections/ChallengesWeSolve";
-import { Gallery } from "../components/Gallery";
 import { Language } from "../types";
+import Vision from "../components/sections/Vision";
 
 interface HomePageProps {
   language: Language;
@@ -13,7 +13,8 @@ export function HomePage({ language, onPageChange }: HomePageProps) {
     <>
       <Hero language={language} onPageChange={onPageChange} />
       <ChallengesWeSolve language={language} />
-      <Gallery language={language} onPageChange={onPageChange} />
+      <Vision language={language} />
+      {/* Gallery removed */}
     </>
   );
 }

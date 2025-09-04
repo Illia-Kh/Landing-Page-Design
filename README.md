@@ -80,7 +80,7 @@ src/
 │   ├── Header.tsx          # Шапка сайта
 │   ├── Footer.tsx          # Подвал
 │   ├── Hero.tsx            # Герой‑секция
-│   ├── Gallery.tsx         # Галерея (Embla)
+│   ├── (removed)           # Gallery.tsx — removed
 │   ├── Router.tsx          # Кастомный роутер (см. ниже)
 │   ├── SEO.tsx             # Управление мета‑тегами
 │   ├── StructuredData.tsx  # Schema.org разметка

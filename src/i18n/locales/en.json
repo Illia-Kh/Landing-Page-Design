@@ -19,7 +19,39 @@
         { "title": "Launch faster with reliable engineering", "desc": "From idea to product with predictable timelines and confident quality." },
         { "title": "Keep systems resilient and secure", "desc": "We harden infrastructure and protect data so the business runs without disruptions." }
       ]
+    },
+    "vision": {
+      "title": "Our Vision",
+      "ctaTitle": "Ready to take this journey together?",
+      "ctaButton": "Contact us",
+      "subtitle": "We share a global view on technology and build our solutions in the same direction.",
+      "expertLink": "Expert insight →",
+      "ourApproach": "Our approach →",
+      "steps": [
+        {
+          "imageAlt": "Discovery and goal setting",
+          "image": "/media/vision/website.webp",
+          "title": "Discovery and goals",
+          "view": "We listen first, dive into context and data, and mark bottlenecks. Then we define measurable goals.\nThis gives the team a shared focus and clear expectations."
+        },
+        {
+          "imageAlt": "Architecture and quick hypothesis checks",
+          "image": "/media/vision/deploy.webp",
+          "title": "Architecture and fast checks",
+          "view": "We assemble the solution: architecture, prototypes, event analytics. Early hypothesis checks save time and budget.\nWe build for scale and security from the start."
+        },
+        {
+          "imageAlt": "Launch, reliability and scale",
+          "image": "/media/vision/marketing.webp",
+          "title": "Launch and scale",
+          "view": "We launch an MVP with monitoring and alerts. We iterate by metrics and scale what actually works.\nReliability is not optional — it is the default."
+        }
+      ]
     }
+  }
+,
+  "common": {
+    "readMore": "Read more"
   }
 }
 

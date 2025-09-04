@@ -19,7 +19,39 @@
         { "title": "Schneller starten – verlässlich entwickeln", "desc": "Von der Idee zum Produkt mit planbaren Terminen und sicherer Qualität." },
         { "title": "Resiliente und sichere Systeme", "desc": "Wir härten die Infrastruktur und schützen Daten, damit der Betrieb ohne Störungen läuft." }
       ]
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "ctaTitle": "Bereit, diesen Weg gemeinsam zu gehen?",
+      "ctaButton": "Kontakt aufnehmen",
+      "subtitle": "Wir teilen den globalen Blick auf Technologie und bauen unsere Lösungen in diese Richtung.",
+      "expertLink": "Expertenmeinung →",
+      "ourApproach": "Unser Ansatz →",
+      "steps": [
+        {
+          "imageAlt": "Analyse und Zieldefinition",
+          "image": "/media/vision/website.webp",
+          "title": "Analyse und Ziele",
+          "view": "Wir hören zu, tauchen in Kontext und Daten ein und markieren Engpässe. Dann definieren wir messbare Ziele.\nSo entsteht gemeinsamer Fokus und klare Erwartungen."
+        },
+        {
+          "imageAlt": "Architektur und schnelle Hypothesentests",
+          "image": "/media/vision/deploy.webp",
+          "title": "Architektur und schnelle Checks",
+          "view": "Wir bauen die Lösung: Architektur, Prototypen, Event-Analytics. Frühe Hypothesentests sparen Zeit und Budget.\nSkalierung und Sicherheit sind von Anfang an eingeplant."
+        },
+        {
+          "imageAlt": "Launch, Zuverlässigkeit und Skalierung",
+          "image": "/media/vision/marketing.webp",
+          "title": "Launch und Skalierung",
+          "view": "Wir launchen ein MVP mit Monitoring und Alerts. Wir verbessern nach Metriken und skalieren, was wirklich funktioniert.\nZuverlässigkeit ist Standard, nicht optional."
+        }
+      ]
     }
+  }
+,
+  "common": {
+    "readMore": "Weiterlesen"
   }
 }
 

@@ -38,17 +38,7 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/services?lang=cs" />
   </url>
   
-  <!-- Gallery Page -->
-  <url>
-    <loc>https://codehero.com/gallery</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://codehero.com/gallery?lang=ru" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://codehero.com/gallery?lang=en" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://codehero.com/gallery?lang=de" />
-    <xhtml:link rel="alternate" hreflang="cs" href="https://codehero.com/gallery?lang=cs" />
-  </url>
+  <!-- Gallery page removed -->
   
   <!-- Contact Page -->
   <url>

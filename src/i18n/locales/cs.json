@@ -19,7 +19,39 @@
         { "title": "Rychlý start a spolehlivý vývoj", "desc": "Od nápadu k produktu — předvídatelné termíny a jistá kvalita." },
         { "title": "Odolné a bezpečné systémy", "desc": "Zpevňujeme infrastrukturu a chráníme data, aby byznys běžel bez výpadků." }
       ]
+    },
+    "vision": {
+      "title": "Naše vize",
+      "ctaTitle": "Připraveni projít tuto cestu společně?",
+      "ctaButton": "Kontaktujte nás",
+      "subtitle": "Sdílíme globální pohled na technologie a stavíme řešení tímto směrem.",
+      "expertLink": "Odborný názor →",
+      "ourApproach": "Náš přístup →",
+      "steps": [
+        {
+          "imageAlt": "Diagnostika a stanovení cílů",
+          "image": "/media/vision/website.webp",
+          "title": "Diagnostika a cíle",
+          "view": "Nejprve nasloucháme, vstřebáme kontext a data a pojmenujeme slabá místa. Poté definujeme měřitelné cíle.\nTím vzniká sdílené zaměření a jasná očekávání."
+        },
+        {
+          "imageAlt": "Architektura a rychlé ověření hypotéz",
+          "image": "/media/vision/deploy.webp",
+          "title": "Architektura a rychlé ověření",
+          "view": "Skládáme řešení: architekturu, prototypy, eventovou analytiku. Brzké ověření hypotéz šetří čas i rozpočet.\nŠkálování a bezpečnost řešíme od začátku."
+        },
+        {
+          "imageAlt": "Spuštění, spolehlivost a škálování",
+          "image": "/media/vision/marketing.webp",
+          "title": "Spuštění a škálování",
+          "view": "Spouštíme MVP s monitoringem a alerty. Iterujeme podle metrik a škálujeme to, co skutečně funguje.\nSpolehlivost je výchozí hodnota, ne volitelná."
+        }
+      ]
     }
+  }
+,
+  "common": {
+    "readMore": "Číst více"
   }
 }
 

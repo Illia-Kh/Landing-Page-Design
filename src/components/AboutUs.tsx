@@ -10,7 +10,7 @@ interface AboutUsProps {
   onPageChange?: (page: string) => void;
 }
 
-export function AboutUs({ language, onPageChange }: AboutUsProps) {
+export function AboutUs({ language }: AboutUsProps) {
 
   const text = {
     ru: {

@@ -70,31 +70,14 @@ export function Footer({ language, onPageChange, currentPage }: FooterProps) {
   const text = content[language as keyof typeof content] || content.ru;
   const isMobileDevice = useMobileDevice();
 
-  const handleLinkClick = (link: { page: Page | "gallery"; isGallery?: boolean }) => {
-    if (link.isGallery) {
-      // Navigate to home first if not already there
-      if (currentPage !== "home") {
-        onPageChange("home");
-      }
-      // Wait a bit for navigation, then scroll to gallery
-      setTimeout(() => {
-        const galleryElement = document.getElementById("gallery");
-        if (galleryElement) {
-          galleryElement.scrollIntoView({ 
-            behavior: "smooth", 
-            block: "start" 
-          });
-        }
-      }, currentPage !== "home" ? 500 : 100);
-    } else {
-      onPageChange(link.page as Page);
-    }
+  const handleLinkClick = (link: { page: Page }) => {
+    onPageChange(link.page as Page);
   };
 
   return (
-    <footer className="bg-secondary/50 border-t border-border">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-secondary/30">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,77 +87,6 @@ export function Footer({ language, onPageChange, currentPage }: FooterProps) {
             className="space-y-4"
           >
             {!isMobileDevice && <CodeLogo size="md" animated={false} />}
-            <p className="text-muted-foreground">{text.description}</p>
-            <div className="flex space-x-4">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                title="X (Twitter)"
-              >
-                <X className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                title="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                title="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                title="Telegram"
-              >
-                <Send className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                title="WhatsApp"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <h4 className="font-semibold">{text.quickLinks}</h4>
-            <ul className="space-y-2">
-              {text.links.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleLinkClick(link)}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-left"
-                  >
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
           </motion.div>
 
           {/* Contact Info */}
@@ -185,7 +97,6 @@ export function Footer({ language, onPageChange, currentPage }: FooterProps) {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="font-semibold">{text.contact}</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="h-4 w-4" />
@@ -202,39 +113,73 @@ export function Footer({ language, onPageChange, currentPage }: FooterProps) {
             </div>
           </motion.div>
 
-          {/* Newsletter */}
+          {/* Social links moved here */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="flex items-center justify-center md:justify-end gap-3"
           >
-            <h4 className="font-semibold">Newsletter</h4>
-            <p className="text-muted-foreground text-sm">
-              {text.newsletter}
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Email"
-                className="flex-1 px-3 py-2 bg-input-background border border-border rounded-md text-sm"
-              />
-              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm">
-                OK
-              </button>
-            </div>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              href="#"
+              aria-label="X (Twitter)"
+              className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+              title="X (Twitter)"
+            >
+              <X className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              href="#"
+              aria-label="Facebook"
+              className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+              title="Facebook"
+            >
+              <Facebook className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              href="#"
+              aria-label="Instagram"
+              className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+              title="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              href="#"
+              aria-label="Telegram"
+              className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+              title="Telegram"
+            >
+              <Send className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              href="#"
+              aria-label="WhatsApp"
+              className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+              title="WhatsApp"
+            >
+              <MessageCircle className="h-5 w-5" />
+            </motion.a>
           </motion.div>
         </div>
-
-        <Separator className="my-8" />
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center text-muted-foreground text-sm"
+          className="mt-8 text-center text-muted-foreground text-sm"
         >
           © 2025 IKH-TechSystems. {text.rights}
         </motion.div>

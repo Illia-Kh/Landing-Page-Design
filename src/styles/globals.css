@@ -233,3 +233,55 @@ body, p, li {
   font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
   line-height: 1.65;
 }
+
+/* Vision card gradient utilities */
+.card-grad {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  isolation: isolate;
+}
+
+.card-grad-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary) / 0.18) 40%,
+    hsl(var(--primary) / 0.08) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.card-grad-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  background: linear-gradient(
+    270deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary) / 0.18) 40%,
+    hsl(var(--primary) / 0.08) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.card-surface {
+  backdrop-filter: saturate(110%) blur(0.5px);
+}
+
+.card-hover {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px hsl(var(--foreground) / 0.08);
+}
