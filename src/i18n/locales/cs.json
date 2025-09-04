@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "Technologie, které přinášejí výsledky",
+    "subtitle": "Inovativní IT řešení pro byznys",
+    "description": "Vytváříme moderní technologická řešení, která pomáhají firmám dosahovat nových výšin v digitálním věku.",
+    "cta": "Kontaktujte nás",
+    "benefits": [
+      "Automatizace procesů — výrazné zjednodušení provozu",
+      "Marketing a analytika — efektivnější získávání zákazníků",
+      "Vývoj software — rychlejší nasazení do produkce"
+    ]
+  },
+  "sections": {
+    "challenges": {
+      "heading": "Složité technologické úkoly převádíme do jasných a spolehlivých výsledků.",
+      "cards": [
+        { "title": "Snižujeme provozní náklady", "desc": "Zjednodušujeme procesy a systémy, aby firma fungovala stabilněji a s menšími náklady." },
+        { "title": "Zákazníky přivádíme efektivněji", "desc": "Ladíme analytiku a marketing, aby byla cesta zákazníka kompaktní a přinášela výsledky." },
+        { "title": "Rychlý start a spolehlivý vývoj", "desc": "Od nápadu k produktu — předvídatelné termíny a jistá kvalita." },
+        { "title": "Odolné a bezpečné systémy", "desc": "Zpevňujeme infrastrukturu a chráníme data, aby byznys běžel bez výpadků." }
+      ]
+    }
+  }
+}
+
+

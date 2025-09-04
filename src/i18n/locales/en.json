@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "Technologies that drive outcomes",
+    "subtitle": "Innovative IT Solutions for Business",
+    "description": "We create modern technological solutions that help companies reach new heights in the digital age.",
+    "cta": "Contact us",
+    "benefits": [
+      "Process automation — meaningful cost reduction",
+      "Marketing and analytics — acquire customers efficiently",
+      "Software engineering — launch to production faster"
+    ]
+  },
+  "sections": {
+    "challenges": {
+      "heading": "We turn complex tech challenges into clear, reliable outcomes.",
+      "cards": [
+        { "title": "Reduce operating overhead", "desc": "We simplify processes and systems, so your business runs steadier with lower costs." },
+        { "title": "Acquire customers more effectively", "desc": "We align analytics and marketing so the customer journey feels unified and brings results." },
+        { "title": "Launch faster with reliable engineering", "desc": "From idea to product with predictable timelines and confident quality." },
+        { "title": "Keep systems resilient and secure", "desc": "We harden infrastructure and protect data so the business runs without disruptions." }
+      ]
+    }
+  }
+}
+
+

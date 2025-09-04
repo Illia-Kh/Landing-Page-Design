@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "Technologien, die Ergebnisse liefern",
+    "subtitle": "Innovative IT-Lösungen für Unternehmen",
+    "description": "Wir schaffen moderne technologische Lösungen, die Unternehmen dabei helfen, im digitalen Zeitalter neue Höhen zu erreichen.",
+    "cta": "Kontakt aufnehmen",
+    "benefits": [
+      "Prozessautomatisierung — spürbare Kostensenkung",
+      "Marketing und Analytics — Kunden effizient gewinnen",
+      "Softwareentwicklung — schneller in die Produktion"
+    ]
+  },
+  "sections": {
+    "challenges": {
+      "heading": "Wir verwandeln komplexe Technologiethemen in klare, verlässliche Ergebnisse.",
+      "cards": [
+        { "title": "Betriebskosten senken", "desc": "Wir vereinfachen Prozesse und Systeme, damit Ihr Geschäft stabiler und kostenschonender läuft." },
+        { "title": "Kunden wirkungsvoller gewinnen", "desc": "Wir verzahnen Analytics und Marketing, damit die Customer Journey stimmig ist und wirkt." },
+        { "title": "Schneller starten – verlässlich entwickeln", "desc": "Von der Idee zum Produkt mit planbaren Terminen und sicherer Qualität." },
+        { "title": "Resiliente und sichere Systeme", "desc": "Wir härten die Infrastruktur und schützen Daten, damit der Betrieb ohne Störungen läuft." }
+      ]
+    }
+  }
+}
+
+

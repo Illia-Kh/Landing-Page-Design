@@ -4,50 +4,29 @@ import { CodeLogo } from "./CodeLogo";
 import { Page } from "./Router";
 import { useMobileDevice } from "./ui/use-mobile-device";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import en from "../i18n/locales/en.json";
+import cs from "../i18n/locales/cs.json";
+import ru from "../i18n/locales/ru.json";
+import de from "../i18n/locales/de.json";
 
 interface HeroProps {
   language: string;
   onPageChange: (page: Page) => void;
 }
 
-const content = {
-  ru: {
-    title: "Инновационные решения",
-    subtitle: "для вашего бизнеса",
-    description: "Мы создаем современные технологические решения, которые помогают компаниям достигать новых высот в цифровой эпохе.",
-    cta: "Связаться с нами"
-  },
-  en: {
-    title: "Innovative solutions",
-    subtitle: "for your business",
-    description: "We create modern technological solutions that help companies reach new heights in the digital age.",
-    cta: "Contact us"
-  },
-  de: {
-    title: "Innovative Lösungen",
-    subtitle: "für Ihr Unternehmen",
-    description: "Wir schaffen moderne technologische Lösungen, die Unternehmen dabei helfen, im digitalen Zeitalter neue Höhen zu erreichen.",
-    cta: "Kontaktieren Sie uns"
-  },
-  cs: {
-    title: "Inovativní řešení",
-    subtitle: "pro váš byznys",
-    description: "Vytváříme moderní technologická řešení, která pomáhají společnostem dosáhnout nových výšin v digitální éře.",
-    cta: "Kontaktujte nás"
-  }
-};
+const localeMap: Record<string, any> = { en, cs, ru, de };
 
 export function Hero({ language, onPageChange }: HeroProps) {
-  const text = content[language as keyof typeof content] || content.ru;
+  const t = localeMap[language] ?? localeMap.ru;
+  const heroTitle: string = t?.hero?.title ?? "";
+  const heroSubtitle: string = t?.hero?.subtitle ?? "";
+  const heroDescription: string = t?.hero?.description ?? "";
+  const heroCta: string = typeof t?.hero?.cta === "string" ? t.hero.cta : (t?.hero?.cta?.primary ?? "");
   const isMobileDevice = useMobileDevice();
   
-  // Rotating benefit phrases (RU) — exact copy per requirements
-  const benefits = [
-    "Автоматизация процессов —  Существенное сокращение издержек",
-    "Маркетинг и аналитика — Эффективное привлечение клиентов",
-    "Разработка ПО — запуск продукта в кратчайшие сроки"
-  ];
-  const [benefitIndex, setBenefitIndex] = useState(0);
+  // Rotating benefit phrases from locale JSON
+  const benefits: string[] = Array.isArray(t?.hero?.benefits) ? t.hero.benefits : [];
+  const [slideIndex, setSlideIndex] = useState(0); // single controller for text+banner
   const [slideCount, setSlideCount] = useState<number>(0);
   const syncingRef = useRef(false);
 
@@ -61,7 +40,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
     }
     rotationTimeoutRef.current = window.setTimeout(() => {
       syncingRef.current = true;
-      setBenefitIndex((prev) => (prev + 1) % benefits.length);
+      setSlideIndex((prev) => prev + 1);
     }, ROTATION_MS);
   };
 
@@ -72,7 +51,16 @@ export function Hero({ language, onPageChange }: HeroProps) {
         clearTimeout(rotationTimeoutRef.current);
       }
     };
-  }, [benefitIndex]);
+  }, [slideIndex]);
+
+  // Reset rotation on language change
+  useEffect(() => {
+    setSlideIndex(0);
+    if (rotationTimeoutRef.current) {
+      clearTimeout(rotationTimeoutRef.current);
+    }
+    scheduleNextRotation();
+  }, [language]);
 
   // Stable height measurement to avoid layout shift (CLS≈0)
   const phraseContainerRef = useRef<HTMLDivElement | null>(null);
@@ -130,7 +118,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-3xl lg:text-5xl font-bold"
               >
-                {"Технологии, которые работают на результат"}
+                {heroTitle}
               </motion.h1>
               
               {/* Animated divider block */}
@@ -157,21 +145,17 @@ export function Hero({ language, onPageChange }: HeroProps) {
                   role="status"
                 >
                   <AnimatePresence initial={false} mode="wait">
-                    {benefits.map((phrase, idx) => (
-                      idx === benefitIndex ? (
-                        <motion.span
-                          key={phrase}
-                          className="absolute inset-0"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.65, ease: [0.4, 0.0, 0.2, 1] }}
-                          style={{ pointerEvents: "none" }}
-                        >
-                          {phrase}
-                        </motion.span>
-                      ) : null
-                    ))}
+                    <motion.span
+                      key={`${language}-${benefits[slideIndex % (benefits.length || 1)] || ''}`}
+                      className="absolute inset-0"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.65, ease: [0.4, 0.0, 0.2, 1] }}
+                      style={{ pointerEvents: "none" }}
+                    >
+                      {benefits.length > 0 ? benefits[slideIndex % benefits.length] : ""}
+                    </motion.span>
                   </AnimatePresence>
 
                   {/* Offscreen measurer to compute max height without affecting layout */}
@@ -185,7 +169,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
                     }}
                   >
                     {benefits.map((phrase) => (
-                      <div key={`measure-${phrase}`} className="whitespace-normal">
+                      <div key={`measure-${language}-${phrase}`} className="whitespace-normal">
                         {phrase}
                       </div>
                     ))}
@@ -200,7 +184,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="text-base text-muted-foreground max-w-2xl"
             >
-              {text.description}
+              {heroDescription}
             </motion.p>
 
             <motion.button
@@ -212,7 +196,7 @@ export function Hero({ language, onPageChange }: HeroProps) {
               onClick={() => onPageChange("contact")}
               className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-base font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
             >
-              {text.cta}
+              {heroCta}
             </motion.button>
           </div>
 
@@ -228,16 +212,14 @@ export function Hero({ language, onPageChange }: HeroProps) {
                 interval={3500}
                 language={language}
                 showInfo={true}
-                activeIndex={slideCount > 0 ? (benefitIndex % slideCount) : 0}
+                activeIndex={slideCount > 0 ? (slideIndex % slideCount) : 0}
                 onActiveIndexChange={(idx) => {
-                  // Map slides to phrases by modulo if counts differ
-                  const mapped = idx % benefits.length;
                   if (syncingRef.current) {
                     // Ignore immediate feedback from our own programmatic change
                     syncingRef.current = false;
                     return;
                   }
-                  setBenefitIndex(mapped);
+                  setSlideIndex(idx);
                 }}
                 minimal={true}
                 onSlidesReady={(count) => {
