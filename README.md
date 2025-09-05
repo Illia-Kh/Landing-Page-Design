@@ -1,247 +1,294 @@
-# 🚀 IKH Systems — Landing Page (React + Vite + Tailwind)
+# 🚀 IKH-TechSystems - Landing Page
 
-Современная, высокопроизводительная лендинг‑страница для IKH Systems с упором на SEO, мультиязычность, PWA и качественный UI. Репозиторий оптимизирован для разработки, сборки и продакшен‑развертывания через Docker/Nginx и поддерживает авто‑деплой с сервера.
+Modern, SEO-optimized landing page for IKH-TechSystems with multilingual support, automated auditing, and cutting-edge web technologies.
 
----
+![Preview](./public/preview.jpg)
 
-## 📌 Ключевые возможности
-- **Современный стек**: React 18 + TypeScript + Vite 5
-- **UI/UX**: Tailwind CSS 3, Radix UI, Lucide Icons, анимации Framer Motion
-- **Карусели и медиа**: Embla Carousel
-- **SEO‑компоненты**: `SEO.tsx`, `StructuredData.tsx`, `Hreflang.tsx`
-- **PWA**: `vite-plugin-pwa` (service worker, manifest, авто‑обновление)
-- **Мультиязычность**: RU / EN / DE / CS, авто‑детект языка браузера
-- **Производительность**: ручное разбиение чанков, gzip, кэш статики в Nginx
-- **Деплой**: Dockerfile, docker-compose, Nginx, скрипты авто‑деплоя
+## ✨ Features
 
----
+- **🌍 Multilingual Support**: English, German, Czech, Polish
+- **🔍 Advanced SEO**: Dynamic meta tags, Open Graph, Twitter Cards, structured data
+- **📱 Progressive Web App**: Web manifest, service worker, offline support
+- **♿ Accessibility First**: WCAG compliance, semantic HTML, proper ARIA labels
+- **🎨 Modern Design**: Tailwind CSS, Framer Motion animations, responsive design
+- **🚀 Performance Optimized**: Code splitting, lazy loading, Core Web Vitals monitoring
+- **🔧 SEO Auditing**: Automated Lighthouse, accessibility, and SEO checks
+- **📊 Analytics Ready**: Performance monitoring and tracking
 
-## 🧱 Технологии и версии
-- React: 18.3.x
-- TypeScript: 5.3.x
-- Vite: 5.x
-- Tailwind CSS: 3.3.x
-- vite-plugin-pwa: 0.17.x
-- UI: Radix UI, Lucide React, Embla Carousel, Framer Motion
+## 🛠 Tech Stack
 
-См. точные версии в `package.json`.
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Build Tool**: Vite 5
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+- **SEO**: Custom SEO components with meta tag management
+- **PWA**: Vite PWA plugin
+- **Auditing**: Puppeteer, Lighthouse CI, Axe-core
+- **Testing**: Jest, Lighthouse CI
 
----
+## 🚀 Quick Start
 
-## ⚙️ Требования
-- Node.js >= 18
-- npm >= 9
-- Git (для работы с репозиторием)
-
----
-
-## ▶️ Быстрый старт (локально)
 ```bash
-# Установка зависимостей
+# Install dependencies
 npm install
 
-# Запуск в dev-режиме (порт 3000)
+# Start development server
 npm run dev
 
-# Сборка продакшен‑бандла в папку dist
+# Build for production
 npm run build
 
-# Предпросмотр собранной версии
+# Preview production build
 npm run preview
 ```
 
-Если порт 3000 занят, настройте `server.port` в `vite.config.ts` или освободите порт.
+## 📊 SEO & Auditing
 
----
+### Running Audits
 
-## 📜 Скрипты
+The project includes comprehensive SEO, accessibility, and performance auditing:
+
 ```bash
-npm run dev          # Dev сервер Vite
-npm run build        # Продакшен сборка в dist/
-npm run preview      # Предпросмотр dist/
-npm run lint         # ESLint (ошибки = 0 предупреждений)
-npm run lint:fix     # ESLint c авто‑исправлением
-npm run format       # Prettier для src/**/*.{ts,tsx,css,md}
-npm run type-check   # Проверка типов (tsc --noEmit)
-npm run analyze      # Сборка + анализ бандла (vite-bundle-analyzer)
-npm run test         # Запуск тестов (Vitest)
-npm run test:ui      # UI‑режим Vitest
-npm run test:coverage# Покрытие тестов
+# Run complete audit suite
+npm run check
+
+# Individual audit commands
+npm run audit:seo      # SEO and accessibility audit
+npm run audit:lh:ci    # Lighthouse CI audit
+npm run audit:links    # Link checking
+npm run report         # Generate final report
 ```
-Примечание: для `analyze` используется `npx vite-bundle-analyzer`. Для тестов требуется Vitest (см. `scripts`).
 
----
+### Audit Reports
 
-## 📂 Структура проекта
+After running `npm run check`, you'll find reports in the `docs/` directory:
+
+- `docs/SEO_AUDIT.md` - Comprehensive SEO analysis
+- `docs/SUMMARY.md` - Quick overview with scores
+- `docs/screens/` - Above-the-fold screenshots
+- `docs/lhci/` - Lighthouse CI reports
+
+### SEO Configuration
+
+Edit SEO metadata in `src/components/SEO.tsx`:
+
+```tsx
+// Dynamic SEO for each page and language
+const seoContent = {
+  title: "Your Page Title",
+  description: "Your meta description (120-160 chars)",
+  keywords: "relevant, keywords, here",
+  url: "https://yourdomain.com/page",
+  language: "en" // en, de, cs, pl
+};
+```
+
+### Adding Images with Alt Text
+
+Always include descriptive alt attributes:
+
+```tsx
+<img 
+  src="/path/to/image.jpg" 
+  alt="Descriptive alt text for accessibility"
+  className="..."
+/>
+```
+
+### Open Graph Images
+
+Add OG images in the SEO component:
+
+```tsx
+<SEO 
+  title="Page Title"
+  description="Page description"
+  image="https://yourdomain.com/og-image.jpg"
+  url="https://yourdomain.com/page"
+/>
+```
+
+## 🌍 Internationalization
+
+### Supported Languages
+
+- 🇬🇧 **English** (en) - Default
+- 🇩🇪 **German** (de)
+- 🇨🇿 **Czech** (cs)
+- 🇵🇱 **Polish** (pl)
+
+### Adding New Content
+
+1. Edit translations in `src/i18n/translations.ts`
+2. Add language-specific SEO data in `src/App.tsx`
+3. Update hreflang links in `src/components/Hreflang.tsx`
+
+### URL Structure
+
+- Default: `https://yourdomain.com/` (English)
+- Language-specific: `https://yourdomain.com/?lang=de`
+- Auto-detection based on browser language
+
+## 📁 Project Structure
+
 ```
 src/
-├── components/
-│   ├── ui/                 # Набор UI-компонентов (Radix/shadcn-style)
-│   ├── Header.tsx          # Шапка сайта
-│   ├── Footer.tsx          # Подвал
-│   ├── Hero.tsx            # Герой‑секция
-│   ├── (removed)           # Gallery.tsx — removed
-│   ├── Router.tsx          # Кастомный роутер (см. ниже)
-│   ├── SEO.tsx             # Управление мета‑тегами
-│   ├── StructuredData.tsx  # Schema.org разметка
-│   └── Hreflang.tsx        # hreflang ссылки
-├── pages/                  # Страницы: Home, About, Services, Contact, др.
-├── hooks/                  # Хуки (напр. useTheme)
-├── styles/                 # Стили (globals.css, variables.css)
-├── utils/                  # Утилиты (напр. language.ts)
-├── types/                  # Типы TS
-├── main.tsx                # Точка входа
-└── App.tsx                 # Корневой компонент
+├── components/           # Reusable components
+│   ├── SEO.tsx          # SEO meta tag management
+│   ├── Header.tsx       # Navigation header
+│   ├── Footer.tsx       # Site footer
+│   └── ...              # Other components
+├── pages/               # Page components
+│   ├── HomePage.tsx     # Landing page (/)
+│   ├── AboutPage.tsx    # About page (/about)
+│   ├── ServicesPage.tsx # Services page (/services)
+│   └── ContactPage.tsx  # Contact page (/contact)
+├── i18n/               # Internationalization
+│   ├── translations.ts  # Translation dictionaries
+│   └── locales/        # JSON translation files
+├── hooks/              # Custom React hooks
+├── styles/             # CSS and styling
+└── types/              # TypeScript type definitions
 
-public/                     # Статика (favicon, robots.txt, sitemap.xml)
-dist/                       # Результат сборки (продакшен)
+public/                 # Static assets
+├── favicon.ico         # Favicon
+├── site.webmanifest   # PWA manifest
+├── robots.txt         # Search engine directives
+├── sitemap.xml        # Site structure for search engines
+└── preview.jpg        # Social media preview image
+
+scripts/               # Audit and build scripts
+├── seo-audit.ts      # SEO and accessibility auditing
+├── generate-report.ts # Report generation
+└── tsconfig.json     # TypeScript config for scripts
+
+docs/                 # Generated audit reports
+├── SEO_AUDIT.md      # Detailed SEO report
+├── SUMMARY.md        # Quick audit summary
+├── screens/          # Page screenshots
+└── lhci/            # Lighthouse CI reports
 ```
 
----
+## 🔧 Development Scripts
 
-## 🧭 Роутинг
-Кастомный роутер без внешних зависимостей, с анимациями переходов:
-- `src/components/Router.tsx` экспортирует `Router` и `Route`
-- `Page` тип: "home" | "about" | "services" | "contact"
-- Анимации на базе Framer Motion (`AnimatePresence`, `motion.div`)
-
----
-
-## 🌓 Темизация и UI
-- Tailwind CSS с кастомными переменными в `src/styles/variables.css`
-- Компоненты на базе Radix UI (в `src/components/ui`)
-- Иконки: Lucide
-- Готовые элементы: аккордеон, диалоги, дровер, формы, таблицы и др.
-
----
-
-## 🌍 Мультиязычность
-- Поддерживаемые языки: `ru`, `en`, `de`, `cs`
-- Авто‑детект языка браузера: `getNavigatorLanguage()` из `src/utils/language.ts`
-- Хранение выбранного языка может осуществляться через URL/LocalStorage (см. реализацию приложения)
-- Компонент `Hreflang.tsx` добавляет `<link rel="alternate" hreflang>` для SEO
-
----
-
-## 🔍 SEO
-- `SEO.tsx`: мета‑теги (title, description, keywords, Open Graph, Twitter, canonical)
-- `StructuredData.tsx`: JSON‑LD (Organization, LocalBusiness, Service, ContactPage, BreadcrumbList)
-- `Hreflang.tsx`: корректные hreflang ссылки, включая `x-default`
-- `sitemap.xml`, `robots.txt` в `public/`
-
-Совет: заполняйте реальные значения (URL, изображения, контакты) для корректной индексации.
-
----
-
-## ⚡ Производительность
-- Разделение чанков в `vite.config.ts` (`manualChunks`: vendor/ui)
-- Минификация `terser`, отключены sourcemaps в продакшене
-- Gzip и агрессивное кэширование статики в `nginx.conf`
-- Оптимизация изображений и шрифтов на уровне проекта (см. компоненты/стили)
-
----
-
-## 📱 PWA
-- Подключен `vite-plugin-pwa` (авто‑обновление service worker)
-- В продакшене генерируются `dist/manifest.webmanifest`, `dist/sw.js` и пр.
-- Регистрация SW — автоматически, см. конфиг в `vite.config.ts`
-
----
-
-## 🔧 Качество кода
-- ESLint (`npm run lint`, zero‑warnings policy)
-- Prettier (`npm run format`)
-- TypeScript строгий (`npm run type-check`)
-- Тесты (Vitest) — см. `npm run test*`
-
----
-
-## 🐳 Продакшен через Docker
-### Вариант 1: Docker build/run
 ```bash
-# Сборка образа
-docker build -t ikh-landing .
+# Development
+npm run dev              # Start dev server (port 3000)
+npm run build           # Production build
+npm run preview         # Preview production build
+npm run type-check      # TypeScript check
 
-# Запуск контейнера (Nginx на 80 порту)
-docker run --name ikh-landing -p 80:80 --restart unless-stopped -d ikh-landing
+# Code Quality  
+npm run lint            # ESLint check
+npm run lint:fix        # Fix ESLint issues
+npm run format          # Prettier formatting
+
+# Analysis
+npm run analyze         # Bundle size analysis
+npm run depcheck        # Check unused dependencies
+npm run ts-prune        # Find unused TypeScript code
+
+# Testing & Auditing
+npm run test            # Run tests
+npm run audit:seo       # SEO audit with Puppeteer
+npm run audit:lh:ci     # Lighthouse CI
+npm run audit:links     # Link validation
+npm run audit:all       # Complete audit suite
+npm run report          # Generate audit reports
+npm run check           # Full audit + report
 ```
-Образ собирается многоступенчато: билд на Node 18, затем статика обслуживается Nginx с конфигом `nginx.conf`.
 
-### Вариант 2: docker-compose
+## 🚀 Deployment
+
+### Prerequisites
+
+- Node.js 18+ 
+- SSL/HTTPS certificate
+- Modern web server (Nginx, Apache, or CDN)
+
+### Build & Deploy
+
 ```bash
-docker-compose up -d
-```
-- Сервис: `ikh-website`
-- Порт: `80:80`
-- Логи Nginx: маунт `./logs:/var/log/nginx`
+# 1. Build production assets
+npm run build
 
----
+# 2. Upload dist/ contents to your web server
+scp -r dist/* user@server:/var/www/html/
 
-## 🌐 Nginx (коротко)
-Конфиг `nginx.conf`:
-- SPA‑роутинг: `try_files $uri $uri/ /index.html;`
-- Gzip: включён для основных типов
-- Кэширование статики: 1 год, `Cache-Control: public, immutable`
-- Базовые security‑заголовки: X-Frame-Options, X-Content-Type-Options и др.
+# 3. Configure web server for SPA routing
+# Nginx example:
+location / {
+  try_files $uri $uri/ /index.html;
+}
 
----
-
-## 🤖 Авто‑деплой с сервера (main ветка)
-Проекты на продакшене обновляются из ветки `main`.
-
-- Скрипт деплоя: `deploy.sh`
-  - `git fetch origin main` → `git pull`
-  - `npm install` → `npm run build`
-  - Копирование `dist/*` в веб‑директорию
-  - `systemctl reload nginx`
-
-- Настройка таймера/cron: `setup-auto-deploy.sh`
-  - Создаёт `auto-deploy.service` и `auto-deploy.timer` (каждые 5 минут)
-  - Ведёт логи в `/var/log/auto-deploy.log`
-
-- Пошаговое руководство: см. `AUTO-DEPLOY-SETUP.md`
-
-Быстрые команды на сервере:
-```bash
-# Ручной запуск деплоя
-./deploy.sh
-
-# Проверка таймера
-systemctl status auto-deploy.timer
-
-# Просмотр логов
-tail -f /var/log/auto-deploy.log
+# 4. Set up proper headers
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+add_header X-XSS-Protection "1; mode=block";
 ```
 
+### Performance Optimization
+
+- **Static Assets**: Enable Gzip/Brotli compression
+- **Caching**: Set appropriate cache headers for assets
+- **CDN**: Use a CDN for global content delivery
+- **Monitoring**: Set up Core Web Vitals monitoring
+
+### SEO Checklist for Production
+
+- [ ] SSL certificate installed (HTTPS)
+- [ ] Custom 404 page configured
+- [ ] robots.txt accessible at `/robots.txt`
+- [ ] sitemap.xml accessible at `/sitemap.xml`
+- [ ] Web manifest accessible at `/site.webmanifest`
+- [ ] Open Graph images properly sized (1200x630)
+- [ ] All images have alt attributes
+- [ ] Page load time < 3 seconds
+- [ ] Core Web Vitals in green zone
+- [ ] Google Search Console configured
+- [ ] Analytics tracking implemented
+
+## 📊 Performance Thresholds
+
+The project is configured with the following Lighthouse thresholds:
+
+- **Performance**: ≥85% (warning below)
+- **Accessibility**: ≥90% (error below)
+- **SEO**: ≥90% (error below)
+- **Best Practices**: ≥90% (monitoring)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes and test thoroughly
+4. Run audits: `npm run check`
+5. Commit changes: `git commit -m 'Add amazing feature'`
+6. Push to branch: `git push origin feature/amazing-feature`
+7. Open a Pull Request
+
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Maintain 90%+ test coverage
+- Ensure all accessibility audits pass
+- Keep bundle size optimized
+- Document any new features
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🏆 Badges
+
+![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)
+![Vite](https://img.shields.io/badge/Vite-5.0+-purple.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)
+![React](https://img.shields.io/badge/React-18+-61dafb.svg)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-95+-orange.svg)
+
 ---
 
-## 🚀 Деплой без Docker (статический хостинг)
-1) Соберите проект: `npm run build`
-2) Загрузите содержимое `dist/` на ваш статический хостинг (Netlify, Vercel, S3+CloudFront, и т.п.)
-3) Убедитесь, что для SPA настроен редирект всех путей на `index.html`
+**Built with ❤️ by IKH-TechSystems**
 
----
-
-## 🧩 Полезные заметки
-- Обновите доменные параметры (base URL, контакты, соцсети) в SEO/Schema файлах перед релизом
-- Для корректной локализации добавьте переводы контента на все поддерживаемые языки
-- Если порт 80 занят в Docker/compose — остановите конфликтующие сервисы или измените маппинг
-
----
-
-## 🤝 Вклад
-- Вносите изменения в отдельной ветке, пишите понятные коммиты
-- Проверяйте линт/типы/тесты перед PR
-- Следуйте существующему стилю кода и архитектуре компонентов
-
----
-
-## 📄 Лицензия
-MIT. При необходимости добавьте файл `LICENSE` с текстом лицензии.
-
----
-
-## 📬 Контакты
-- Веб‑сайт: https://ikhsystems.com
-- Поддержка: укажите корпоративный e‑mail/telegram при необходимости
-  
+For support, email us at support@ikhsystems.com or visit our [website](https://ikhsystems.com).
