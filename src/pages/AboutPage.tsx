@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Users, Target, Award, Globe, Lightbulb } from "lucide-react";
+import { JsonLd, schemas } from "../components/JsonLd";
 
 interface AboutPageProps {
   language: string;
@@ -232,8 +233,17 @@ const content = {
 export function AboutPage({ language }: AboutPageProps) {
   const text = content[language as keyof typeof content] || content.ru;
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://ikhsystems.com/" },
+    { name: text.title, url: "https://ikhsystems.com/about" }
+  ];
+
   return (
     <div className="py-20">
+      <JsonLd 
+        type="BreadcrumbList" 
+        data={schemas.breadcrumbList(breadcrumbItems)} 
+      />
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <motion.div

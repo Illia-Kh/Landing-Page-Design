@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { TelegramContact } from "../components/TelegramContact";
 import { useMobileDevice } from "../components/ui/use-mobile-device";
+import { JsonLd, schemas } from "../components/JsonLd";
 
 interface ContactPageProps {
   language: string;
@@ -147,8 +148,21 @@ export function ContactPage({ language }: ContactPageProps) {
   const text = content[language as keyof typeof content] || content.ru;
   const isMobileDevice = useMobileDevice();
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://ikhsystems.com/" },
+    { name: text.title, url: "https://ikhsystems.com/contact" }
+  ];
+
   return (
     <div className="py-20">
+      <JsonLd 
+        type="BreadcrumbList" 
+        data={schemas.breadcrumbList(breadcrumbItems)} 
+      />
+      <JsonLd 
+        type="ContactPage" 
+        data={schemas.contactPage} 
+      />
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <motion.div

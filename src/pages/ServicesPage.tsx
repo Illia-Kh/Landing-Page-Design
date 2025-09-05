@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { PreliminaryPrices } from "../components/PreliminaryPrices";
+import { JsonLd, schemas } from "../components/JsonLd";
 import { 
   Code, 
   Smartphone, 
@@ -180,8 +181,40 @@ const content = {
 export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
   const text = content[language as keyof typeof content] || content.ru;
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://ikhsystems.com/" },
+    { name: text.title, url: "https://ikhsystems.com/services" }
+  ];
+
+  const faqData = [
+    {
+      question: "Kolik stojí vývoj webové stránky na klíč?",
+      answer: "Základní cena za vývoj webové stránky na klíč začína od 500 EUR. Konečná cena závisí na složitosti projektu, požadovaných funkcionalitách a designu."
+    },
+    {
+      question: "Jak dlouho trvá vývoj webové stránky?",
+      answer: "Typický vývoj webové stránky trvá 2-8 týdnů v závislosti na složitosti projektu. Jednoduché weby můžeme dokončit rychleji, složitější projekty mohou trvat déle."
+    },
+    {
+      question: "Poskytujete podporu po dokončení projektu?",
+      answer: "Ano, poskytujeme technickou podporu a údržbu všech našich projektů. Nabízíme různé balíčky podpory podle vašich potřeb."
+    },
+    {
+      question: "Vytváříte responzivní weby?",
+      answer: "Všechny naše weby jsou responzivní a optimalizované pro všechna zařízení - počítače, tablety i mobilní telefony."
+    }
+  ];
+
   return (
     <div className="py-20">
+      <JsonLd 
+        type="BreadcrumbList" 
+        data={schemas.breadcrumbList(breadcrumbItems)} 
+      />
+      <JsonLd 
+        type="FAQPage" 
+        data={schemas.faqPage(faqData)} 
+      />
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <motion.div

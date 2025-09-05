@@ -17,8 +17,8 @@ export interface SEOData {
 }
 
 // Структурированные данные
-export interface StructuredDataProps {
-  type: 'Organization' | 'LocalBusiness' | 'Service' | 'ContactPage' | 'BreadcrumbList'
+export interface JsonLdProps {
+  type: 'Organization' | 'LocalBusiness' | 'Service' | 'ContactPage' | 'BreadcrumbList' | 'FAQPage'
   data: any
 }
 

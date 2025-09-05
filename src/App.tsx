@@ -11,7 +11,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { LogoShowcase } from "./pages/LogoShowcase";
 // Removed breadcrumb, so mobile device detection is no longer needed here
 import { SEO } from "./components/SEO";
-import { StructuredData, schemas } from "./components/StructuredData";
+import { JsonLd, schemas } from "./components/JsonLd";
 import { Hreflang } from "./components/Hreflang";
 import { PreloadResources } from "./components/PerformanceOptimization";
 import { CoreWebVitalsMonitor } from "./components/PerformanceOptimization";
@@ -182,9 +182,17 @@ export default function App() {
       />
       
       {/* Structured Data */}
-      <StructuredData 
+      <JsonLd 
         type="Organization" 
         data={schemas.organization} 
+      />
+      <JsonLd 
+        type="LocalBusiness" 
+        data={schemas.localBusiness} 
+      />
+      <JsonLd 
+        type="Service" 
+        data={schemas.websiteTurnkeyService} 
       />
       
       <Header
