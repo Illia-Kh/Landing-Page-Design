@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { TelegramContact } from "../components/TelegramContact";
+import { ContactForm } from "../components/ContactForm";
 import { useMobileDevice } from "../components/ui/use-mobile-device";
 import { JsonLd, schemas } from "../components/JsonLd";
+import { trackCallClick } from "../lib/analytics";
 
 interface ContactPageProps {
   language: string;
@@ -148,6 +150,10 @@ export function ContactPage({ language }: ContactPageProps) {
   const text = content[language as keyof typeof content] || content.ru;
   const isMobileDevice = useMobileDevice();
 
+  const handlePhoneClick = (phoneNumber: string) => {
+    trackCallClick(phoneNumber);
+  };
+
   const breadcrumbItems = [
     { name: "Home", url: "https://ikhsystems.com/" },
     { name: text.title, url: "https://ikhsystems.com/contact" }
@@ -213,7 +219,24 @@ export function ContactPage({ language }: ContactPageProps) {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">{info.title}</h3>
-                        <p className="text-lg mb-1">{info.value}</p>
+                        {info.icon === Phone ? (
+                          <a 
+                            href={`tel:${info.value}`}
+                            onClick={() => handlePhoneClick(info.value)}
+                            className="text-lg mb-1 text-primary hover:text-primary/80 transition-colors cursor-pointer"
+                          >
+                            {info.value}
+                          </a>
+                        ) : info.icon === Mail ? (
+                          <a 
+                            href={`mailto:${info.value}`}
+                            className="text-lg mb-1 text-primary hover:text-primary/80 transition-colors"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className="text-lg mb-1">{info.value}</p>
+                        )}
                         <p className="text-sm text-muted-foreground">{info.description}</p>
                       </div>
                     </div>
@@ -252,6 +275,15 @@ export function ContactPage({ language }: ContactPageProps) {
               <TelegramContact language={language} />
             </motion.div>
           )}
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <ContactForm language={language} />
+          </motion.div>
         </div>
       </div>
     </div>

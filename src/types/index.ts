@@ -289,6 +289,66 @@ export interface AppEvent {
   userId?: string
 }
 
+// Cookie Consent & Analytics
+export interface ConsentState {
+  necessary: boolean
+  analytics: boolean
+  marketing: boolean
+  timestamp?: number
+}
+
+export interface CookieConsentConfig {
+  storageKey: string
+  expirationDays: number
+  defaultConsent: ConsentState
+}
+
+export interface GAEvent {
+  event_name: string
+  event_parameters?: {
+    [key: string]: string | number | boolean
+  }
+}
+
+export type ConsentCategory = 'necessary' | 'analytics' | 'marketing'
+
+export interface ConsentBannerTexts {
+  title: string
+  description: string
+  categories: {
+    necessary: {
+      title: string
+      description: string
+    }
+    analytics: {
+      title: string
+      description: string
+    }
+    marketing: {
+      title: string
+      description: string
+    }
+  }
+  buttons: {
+    acceptAll: string
+    rejectAll: string
+    savePreferences: string
+    showDetails: string
+    hideDetails: string
+  }
+}
+
+// Extend existing AnalyticsEvent for GA4 compatibility
+export interface GA4Event extends AnalyticsEvent {
+  event_name: 'lead_submit' | 'call_click' | 'telegram_click' | 'page_view_city'
+  parameters?: {
+    city?: string
+    form_type?: string
+    contact_method?: string
+    [key: string]: string | number | boolean | undefined
+  }
+}
+
 // Ошибки
 export interface AppError {
   id: string

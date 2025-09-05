@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Send, MessageCircle, ArrowRight, Bot, Zap } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
+import { trackTelegramClick } from "../lib/analytics";
 
 interface TelegramContactProps {
   language: string;
@@ -162,6 +163,7 @@ export function TelegramContact({ language }: TelegramContactProps) {
   const text = content[language as keyof typeof content] || content.ru;
 
   const handleOpenTelegram = () => {
+    trackTelegramClick(text.botName);
     window.open(`https://t.me/IKHTechSystemsBot`, '_blank');
   };
 

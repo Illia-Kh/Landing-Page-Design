@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { CookieConsentBanner } from "./components/CookieConsentBanner";
 import { Router, Route, Page } from "./components/Router";
 import { Language } from "./types";
 import { useTranslations } from "./i18n/translations";
+import { usePageTracking } from "./hooks/usePageTracking";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ServicesPage } from "./pages/ServicesPage";
@@ -20,6 +22,9 @@ import { ResourceHints } from "./components/PerformanceOptimization";
 export default function App() {
   const [language, setLanguage] = useState<Language>("en");
   const [currentPage, setCurrentPage] = useState<Page>("home");
+
+  // Track page views for analytics
+  usePageTracking(currentPage, language);
 
   // Update HTML lang attribute when language changes
   useEffect(() => {
@@ -230,6 +235,9 @@ export default function App() {
       </main>
 
       <Footer language={language} onPageChange={handlePageChange} currentPage={currentPage} />
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsentBanner language={language} />
     </div>
   );
 }
