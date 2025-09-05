@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://codehero.com/sitemap.xml
+Sitemap: https://ikhsystems.com/sitemap.xml
 
 # Disallow admin areas (if any)
 Disallow: /admin/
@@ -13,7 +13,6 @@ Allow: /
 Allow: /about
 Allow: /services
 Allow: /contact
-# Gallery removed
 
 # Crawl delay
 Crawl-delay: 1
