@@ -173,41 +173,41 @@ export interface TranslationDictionary {
 }
 
 export const translations: Record<Language, TranslationDictionary> = {
-  ru: {
+  pl: {
     common: {
       navigation: {
-        home: "Главная",
-        about: "О нас",
-        services: "Услуги",
-        contact: "Контакты",
-        logoPortfolio: "Портфолио логотипов",
+        home: "Główna",
+        about: "O nas",
+        services: "Usługi",
+        contact: "Kontakt",
+        logoPortfolio: "Portfolio logo",
       },
       actions: {
-        learnMore: "Узнать больше",
-        getStarted: "Начать",
-        contactUs: "Связаться с нами",
-        readMore: "Читать далее",
-        close: "Закрыть",
-        submit: "Отправить",
-        cancel: "Отмена",
+        learnMore: "Dowiedz się więcej",
+        getStarted: "Rozpocznij",
+        contactUs: "Skontaktuj się z nami",
+        readMore: "Czytaj więcej",
+        close: "Zamknij",
+        submit: "Wyślij",
+        cancel: "Anuluj",
       },
-      loading: "Загрузка...",
-      error: "Произошла ошибка",
-      success: "Успешно выполнено",
+      loading: "Ładowanie...",
+      error: "Wystąpił błąd",
+      success: "Pomyślnie wykonano",
     },
     hero: {
       title: "IKH-TechSystems",
-      subtitle: "Инновационные IT решения для бизнеса",
-      description: "Мы создаем современные технологические решения, которые помогают компаниям достигать новых высот в цифровую эпоху.",
+      subtitle: "Innowacyjne rozwiązania IT dla biznesu",
+      description: "Tworzymy nowoczesne rozwiązania technologiczne, które pomagają firmom osiągać nowe wyżyny w erze cyfrowej.",
       cta: {
-        primary: "Начать проект",
-        secondary: "Узнать больше",
+        primary: "Rozpocznij projekt",
+        secondary: "Dowiedz się więcej",
       },
     },
     sections: {
       about: {
-        title: "О нас",
-        subtitle: "Познакомьтесь с командой CodeHero и узнайте о нашей миссии",
+        title: "O nas",
+        subtitle: "Poznaj zespół IKH-TechSystems i dowiedz się o naszej misji",
         tabs: ["Команда", "Миссия", "Инновации", "Достижения"],
         cards: [
           {
@@ -324,10 +324,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       links: {
         title: "Быстрые ссылки",
         items: [
-          { label: "Главная", href: "#home" },
-          { label: "О нас", href: "#about" },
-          { label: "Услуги", href: "#services" },
-          { label: "Контакты", href: "#contact" },
+          { label: "Główna", href: "#home" },
+          { label: "O nas", href: "#about" },
+          { label: "Usługi", href: "#services" },
+          { label: "Kontakt", href: "#contact" },
         ],
       },
       contact: {
@@ -964,7 +964,7 @@ export const translations: Record<Language, TranslationDictionary> = {
 
 // Helper function to get translations for a specific language
 export const useTranslations = (language: Language): TranslationDictionary => {
-  return translations[language] || translations.ru;
+  return translations[language] || translations.en;
 };
 
 // Helper function to get nested translation by path

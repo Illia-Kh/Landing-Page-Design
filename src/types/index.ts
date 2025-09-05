@@ -1,7 +1,7 @@
 // Основные типы приложения
 export type Page = 'home' | 'about' | 'services' | 'contact' | 'logo-showcase'
 
-export type Language = 'ru' | 'en' | 'de' | 'cs'
+export type Language = 'cs' | 'de' | 'pl' | 'en'
 
 export type Theme = 'light' | 'dark' | 'system'
 
@@ -212,10 +212,10 @@ export interface AnalyticsEvent {
 
 // Локализация
 export interface LocalizedContent<T> {
-  ru: T
-  en: T
-  de: T
   cs: T
+  de: T
+  pl: T
+  en: T
 }
 
 export interface LocaleConfig {

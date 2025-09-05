@@ -7,8 +7,8 @@ interface HreflangProps {
 
 export function Hreflang({ currentPage, currentLanguage }: HreflangProps) {
   useEffect(() => {
-    const baseUrl = "https://codehero.com";
-    const languages = ['ru', 'en', 'de', 'cs'];
+    const baseUrl = "https://ikhsystems.com";
+    const languages = ['cs', 'de', 'pl', 'en'];
     
     // Remove existing hreflang tags
     const existingHreflangs = document.querySelectorAll('link[rel="alternate"][hreflang]');
@@ -21,7 +21,7 @@ export function Hreflang({ currentPage, currentLanguage }: HreflangProps) {
       link.hreflang = lang;
       
       // Set appropriate locale for hreflang
-      const locale = lang === 'ru' ? 'ru-RU' : 
+      const locale = lang === 'pl' ? 'pl-PL' : 
                     lang === 'en' ? 'en-US' : 
                     lang === 'de' ? 'de-DE' : 'cs-CZ';
       link.hreflang = locale;
@@ -40,8 +40,8 @@ export function Hreflang({ currentPage, currentLanguage }: HreflangProps) {
     defaultLink.rel = 'alternate';
     defaultLink.hreflang = 'x-default';
     const defaultUrl = currentPage === 'home' ? 
-      `${baseUrl}/?lang=ru` : 
-      `${baseUrl}/${currentPage}?lang=ru`;
+      `${baseUrl}/?lang=en` : 
+      `${baseUrl}/${currentPage}?lang=en`;
     defaultLink.href = defaultUrl;
     document.head.appendChild(defaultLink);
     

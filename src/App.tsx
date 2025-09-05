@@ -18,7 +18,7 @@ import { CoreWebVitalsMonitor } from "./components/PerformanceOptimization";
 import { ResourceHints } from "./components/PerformanceOptimization";
 
 export default function App() {
-  const [language, setLanguage] = useState<Language>("ru");
+  const [language, setLanguage] = useState<Language>("en");
   const [currentPage, setCurrentPage] = useState<Page>("home");
 
   const handleLanguageChange = (newLanguage: Language) => {
@@ -34,10 +34,10 @@ export default function App() {
     const baseUrl = "https://ikhsystems.com";
     const seoData = {
       home: {
-        ru: {
-          title: "IKH-TechSystems - Инновационные IT решения для бизнеса",
-          description: "Создаем современные технологические решения, которые помогают компаниям достигать новых высот в цифровой эпохе.",
-          keywords: "IT решения, веб-разработка, мобильные приложения, программное решения"
+        pl: {
+          title: "IKH-TechSystems - Innowacyjne rozwiązania IT dla biznesu",
+          description: "Tworzymy nowoczesne rozwiązania technologiczne, które pomagają firmom osiągać nowe wyżyny w erze cyfrowej.",
+          keywords: "rozwiązania IT, tworzenie stron, aplikacje mobilne, rozwiązania software"
         },
         en: {
           title: "IKH-TechSystems - Innovative IT Solutions for Business",
@@ -56,10 +56,10 @@ export default function App() {
         }
       },
       about: {
-        ru: {
-          title: "О нас - IKH-TechSystems | IT консалтинг и разработка",
-          description: "Узнайте больше о команде IKH-TechSystems, наших ценностях и опыте в создании инновационных IT решений.",
-          keywords: "о нас, команда, IT консалтинг, опыт разработки"
+        pl: {
+          title: "O nas - IKH-TechSystems | Konsulting IT i rozwój",
+          description: "Dowiedz się więcej o zespole IKH-TechSystems, naszych wartościach i doświadczeniu w tworzeniu innowacyjnych rozwiązań IT.",
+          keywords: "o nas, zespół, konsulting IT, doświadczenie w rozwoju"
         },
         en: {
           title: "About Us - IKH-TechSystems | IT Consulting & Development",
@@ -78,10 +78,10 @@ export default function App() {
         }
       },
       services: {
-        ru: {
-          title: "Услуги - IKH-TechSystems | Веб-разработка и IT консалтинг",
-          description: "Полный спектр IT услуг: веб-разработка, мобильные приложения, программное обеспечение, IT консалтинг.",
-          keywords: "услуги, веб-разработка, мобильные приложения, IT консалтинг"
+        pl: {
+          title: "Usługi - IKH-TechSystems | Tworzenie stron i konsulting IT",
+          description: "Pełna gama usług IT: tworzenie stron internetowych, aplikacje mobilne, oprogramowanie, konsulting IT.",
+          keywords: "usługi, tworzenie stron, aplikacje mobilne, konsulting IT"
         },
         en: {
           title: "Services - IKH-TechSystems | Web Development & IT Consulting",
@@ -100,10 +100,10 @@ export default function App() {
         }
       },
       contact: {
-        ru: {
-          title: "Контакты - IKH-TechSystems | Свяжитесь с нами",
-          description: "Свяжитесь с командой IKH-TechSystems для обсуждения вашего проекта. Консультации и разработка IT решений.",
-          keywords: "контакты, связаться, IT консультации, разработка проектов"
+        pl: {
+          title: "Kontakt - IKH-TechSystems | Skontaktuj się z nami",
+          description: "Skontaktuj się z zespołem IKH-TechSystems, aby omówić swój projekt. Konsultacje IT i rozwój rozwiązań.",
+          keywords: "kontakt, skontaktuj się, konsultacje IT, rozwój projektów"
         },
         en: {
           title: "Contact - IKH-TechSystems | Get in Touch",
@@ -122,10 +122,10 @@ export default function App() {
         }
       },
       "logo-showcase": {
-        ru: {
-          title: "Портфолио логотипов - IKH-TechSystems | Примеры работ",
-          description: "Портфолио логотипов и брендинга от IKH-TechSystems. Примеры работ и креативных решений.",
-          keywords: "портфолио, логотипы, брендинг, примеры работ"
+        pl: {
+          title: "Portfolio logo - IKH-TechSystems | Przykłady prac",
+          description: "Portfolio logo i brandingu od IKH-TechSystems. Przykłady prac i kreatywnych rozwiązań.",
+          keywords: "portfolio, loga, branding, przykłady prac"
         },
         en: {
           title: "Logo Portfolio - IKH-TechSystems | Work Examples",
@@ -145,7 +145,7 @@ export default function App() {
       }
     };
 
-    const currentSeo = seoData[currentPage as keyof typeof seoData]?.[language as keyof typeof seoData.home] || seoData.home.ru;
+    const currentSeo = seoData[currentPage as keyof typeof seoData]?.[language as keyof typeof seoData.home] || seoData.home.en;
     const currentUrl = currentPage === 'home' ? baseUrl : `${baseUrl}/${currentPage}`;
     
     return {
