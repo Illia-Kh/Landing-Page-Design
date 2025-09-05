@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Router, Route, Page } from "./components/Router";
@@ -20,6 +20,11 @@ import { ResourceHints } from "./components/PerformanceOptimization";
 export default function App() {
   const [language, setLanguage] = useState<Language>("en");
   const [currentPage, setCurrentPage] = useState<Page>("home");
+
+  // Update HTML lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);

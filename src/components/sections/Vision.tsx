@@ -1,6 +1,7 @@
 import type { Language } from "../../types";
 import { motion } from "framer-motion";
 import { Button } from "../ui/button";
+import { ImageOptimization } from "../ImageOptimization";
 
 import en from "../../i18n/locales/en.json";
 import cs from "../../i18n/locales/cs.json";
@@ -29,7 +30,7 @@ const steps: VisionStep[] = [
   {
     key: "discovery",
     align: "left",
-    imageSrc: "/media/vision/discovery.webp",
+    imageSrc: "/media/vision/marketing.webp",
     imageAltKey: "sections.vision.steps.0.imageAlt",
     titleKey: "sections.vision.steps.0.title",
     viewKey: "sections.vision.steps.0.view",
@@ -40,7 +41,7 @@ const steps: VisionStep[] = [
   {
     key: "design",
     align: "left",
-    imageSrc: "/media/vision/design.webp",
+    imageSrc: "/media/vision/website.webp",
     imageAltKey: "sections.vision.steps.1.imageAlt",
     titleKey: "sections.vision.steps.1.title",
     viewKey: "sections.vision.steps.1.view",
@@ -51,7 +52,7 @@ const steps: VisionStep[] = [
   {
     key: "delivery",
     align: "right",
-    imageSrc: "/media/vision/delivery.webp",
+    imageSrc: "/media/vision/deploy.webp",
     imageAltKey: "sections.vision.steps.2.imageAlt",
     titleKey: "sections.vision.steps.2.title",
     viewKey: "sections.vision.steps.2.view",
@@ -107,14 +108,14 @@ export default function Vision({ language }: VisionProps) {
                       <article className={`relative overflow-hidden card-hover w-full rounded-2xl p-6 md:p-8 shadow-sm transition hover:shadow-md motion-safe:hover:scale-[1.01] before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none ${isRight ? 'before:bg-gradient-to-l' : 'before:bg-gradient-to-r'} before:from-[hsl(var(--primary)_/_0.35)] before:to-transparent`}>
                         <div className="relative z-10 md:grid md:grid-cols-12 md:gap-6 items-center">
                           <div className={`flex items-center justify-center md:col-span-5 ${isRight ? 'md:order-2' : 'md:order-1'}`}>
-                            <img
+                            <ImageOptimization
                               src={imageSrc}
                               alt={imageAlt || title}
                               className="mx-auto mb-4 md:mb-0 h-32 w-auto object-contain rounded-xl"
                               width={800}
                               height={450}
-                              decoding="async"
                               loading={index === 0 ? "eager" : "lazy"}
+                              priority={index === 0}
                             />
                           </div>
                           <div className={`md:col-span-7 ${isRight ? 'md:order-1' : 'md:order-2'}`}>

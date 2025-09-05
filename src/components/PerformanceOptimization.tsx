@@ -45,33 +45,19 @@ export function LazySection({
 // Component for preloading critical resources
 export function PreloadResources() {
   useEffect(() => {
-    // Preload critical CSS
-    const criticalCSS = document.createElement('link');
-    criticalCSS.rel = 'preload';
-    criticalCSS.as = 'style';
-    criticalCSS.href = '/src/index.css';
-    document.head.appendChild(criticalCSS);
-
-    // Preload critical fonts
+    // Only preload font which is actually used
     const fontPreload = document.createElement('link');
     fontPreload.rel = 'preload';
     fontPreload.as = 'font';
-    fontPreload.href = '/fonts/inter-var.woff2';
+    fontPreload.href = 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2';
     fontPreload.crossOrigin = 'anonymous';
     document.head.appendChild(fontPreload);
 
-    // Preload critical images
-    const imagePreload = document.createElement('link');
-    imagePreload.rel = 'preload';
-    imagePreload.as = 'image';
-    imagePreload.href = '/logo.png';
-    document.head.appendChild(imagePreload);
-
     return () => {
       // Cleanup
-      document.head.removeChild(criticalCSS);
-      document.head.removeChild(fontPreload);
-      document.head.removeChild(imagePreload);
+      if (document.head.contains(fontPreload)) {
+        document.head.removeChild(fontPreload);
+      }
     };
   }, []);
 
