@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { PreliminaryPrices } from "../components/PreliminaryPrices";
 import { 
   Code, 
   Smartphone, 
   Cloud, 
   BarChart, 
-  Shield, 
-  Zap,
-  ArrowRight,
   CheckCircle
 } from "lucide-react";
 
@@ -50,20 +48,6 @@ const content = {
         features: ["Business Intelligence", "Machine Learning", "Визуализация данных", "Прогнозная аналитика"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhkYXRhJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       },
-      {
-        icon: Shield,
-        title: "Кибербезопасность",
-        description: "Защита вашего бизнеса от современных киберугроз",
-        features: ["Анализ уязвимостей", "Защита данных", "Соответствие стандартам"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5fGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      },
-      {
-        icon: Zap,
-        title: "Автоматизация процессов",
-        description: "Оптимизация бизнес-процессов через умную автоматизацию",
-        features: ["RPA решения", "Workflow автоматизация", "API интеграции", "Цифровая трансформация"],
-        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTY0OTM3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      }
     ],
     cta: {
       title: "Готовы начать проект?",
@@ -104,20 +88,6 @@ const content = {
         features: ["Business Intelligence", "Machine Learning", "Data visualization", "Predictive analytics"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhkYXRhJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       },
-      {
-        icon: Shield,
-        title: "Cybersecurity",
-        description: "Protecting your business from modern cyber threats",
-        features: ["Vulnerability analysis", "Data protection", "Compliance standards"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5fGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      },
-      {
-        icon: Zap,
-        title: "Process Automation",
-        description: "Optimizing business processes through smart automation",
-        features: ["RPA solutions", "Workflow automation", "API integrations", "Digital transformation"],
-        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTY0OTM3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      }
     ],
     cta: {
       title: "Ready to start a project?",
@@ -158,20 +128,6 @@ const content = {
         features: ["Business Intelligence", "Machine Learning", "Datenvisualisierung", "Predictive Analytics"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhkYXRhJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       },
-      {
-        icon: Shield,
-        title: "Cybersicherheit",
-        description: "Schutz Ihres Unternehmens vor modernen Cyber-Bedrohungen",
-        features: ["Schwachstellenanalyse", "Datenschutz", "Compliance-Standards"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5fGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      },
-      {
-        icon: Zap,
-        title: "Prozessautomatisierung",
-        description: "Optimierung von Geschäftsprozessen durch intelligente Automatisierung",
-        features: ["RPA-Lösungen", "Workflow-Automatisierung", "API-Integrationen", "Digitale Transformation"],
-        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTY0OTM3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      }
     ],
     cta: {
       title: "Bereit, ein Projekt zu starten?",
@@ -212,20 +168,6 @@ const content = {
         features: ["Business Intelligence", "Machine Learning", "Vizualizace dat", "Prediktivní analytika"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhkYXRhJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       },
-      {
-        icon: Shield,
-        title: "Kybernetická bezpečnost",
-        description: "Ochrana vašeho byznysu před moderními kybernetickými hrozbami",
-        features: ["Analýza zranitelností", "Ochrana dat", "Dodržování standardů"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5fGVufDF8fHx8MTc1NjQ5Mzc2OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      },
-      {
-        icon: Zap,
-        title: "Automatizace procesů",
-        description: "Optimalizace obchodních procesů prostřednictvím chytré automatizace",
-        features: ["RPA řešení", "Workflow automatizace", "API integrace", "Digitální transformace"],
-        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTY0OTM3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      }
     ],
     cta: {
       title: "Připraveni začít projekt?",
@@ -279,7 +221,7 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
                 <p className="text-lg text-muted-foreground mb-6">
                   {service.description}
                 </p>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -287,13 +229,6 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
                     </li>
                   ))}
                 </ul>
-                <button 
-                  onClick={() => onPageChange?.("contact")}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                  {text.cta.button}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
               </div>
 
               {/* Image */}
@@ -310,25 +245,12 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center bg-card border rounded-2xl p-12"
-        >
-          <h2 className="text-3xl font-bold mb-4">{text.cta.title}</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {text.cta.description}
-          </p>
-          <button 
-            onClick={() => onPageChange?.("contact")}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-lg"
-          >
-            {text.cta.button}
-            <ArrowRight className="h-5 w-5" />
-          </button>
-        </motion.div>
+        {/* Preliminary Prices Section */}
+        <PreliminaryPrices 
+          language={language} 
+          onPageChange={onPageChange} 
+        />
+
       </div>
     </div>
   );

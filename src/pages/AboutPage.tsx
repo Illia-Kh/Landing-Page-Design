@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { Users, Target, Award, Globe, Lightbulb, Trophy } from "lucide-react";
+import { Users, Target, Award, Globe, Lightbulb } from "lucide-react";
 
 interface AboutPageProps {
   language: string;
@@ -8,47 +8,47 @@ interface AboutPageProps {
 
 const content = {
   ru: {
-    title: "О нашей компании",
-    subtitle: "Мы создаем инновационные решения для цифрового будущего",
-    description: "Наша команда экспертов работает над созданием передовых технологических решений, которые помогают бизнесу расти и развиваться в современном цифровом мире.",
+    title: "О нас",
+    subtitle: "Небольшая команда, которая делает проекты под ключ",
+    description: "Мы — команда специалистов в разработке, дизайне и технологиях. При необходимости подключаем проверенных фрилансеров — так остаёмся гибкими и собранными под любую задачу.",
     stats: [
-      { icon: Users, value: "35+", label: "Специалистов в команде" },
-      { icon: Target, value: "150+", label: "Реализованных решений" },
-      { icon: Award, value: "12", label: "Отраслевых признаний" },
-      { icon: Globe, value: "8", label: "Стран партнерства" }
+      { icon: Users, value: "10+", label: "Специалистов в команде" },
+      { icon: Target, value: "50+", label: "Реализованных решений" },
+      { icon: Award, value: "5", label: "Отраслевых признаний" },
+      { icon: Globe, value: "4", label: "Стран партнерства" }
     ],
     mission: {
       title: "Наша миссия",
-      text: "Мы стремимся создавать технологические решения, которые не просто решают задачи, но и вдохновляют на новые достижения."
+      text: "Наша цель помочь клиенту реально достичь результата: увеличить продажи, улучшить удобство для пользователей или автоматизировать процессы."
     },
     values: {
       title: "Наши ценности",
       items: [
-        { title: "Инновации", description: "Постоянный поиск новых решений" },
-        { title: "Качество", description: "Безупречное выполнение каждого проекта" },
-        { title: "Партнерство", description: "Долгосрочные отношения с клиентами" }
+        { title: "Честность", description: "Мы открыто говорим, что умеем, а чему ещё учимся." },
+        { title: "Качество", description: "Даже небольшой проект должен работать стабильно." },
+        { title: "Партнёрство", description: "Строим отношения так, чтобы клиенту хотелось вернуться." }
       ]
     },
     team: {
       title: "Наша команда",
-      subtitle: "Профессионалы с многолетним опытом",
-      description: "Мы объединили лучших специалистов в области разработки, дизайна и управления проектами. Каждый член нашей команды вносит уникальный вклад в создание инновационных решений.",
+      subtitle: "Маленькая, собранная и гибкая",
+      description: "Мы — небольшая команда специалистов. Каждый отвечает за свою часть работы, а вместе мы закрываем проекты под ключ. Если задача требует расширения, привлекаем проверенных фрилансеров и быстро собираем нужную экспертизу.",
       members: [
-        { name: "Illia Kharchenko", role: "Технический директор", experience: "15+ лет опыта" },
-        { name: "Elyzabet Zakharchenko", role: "Ведущий дизайнер", experience: "12+ лет опыта" },
-        { name: "Viktor Novák", role: "Архитектор решений", experience: "18+ лет опыта" },
-        { name: "Anastasia Kowalski", role: "Менеджер проектов", experience: "10+ лет опыта" }
+        { name: "Illia Kharchenko", role: "Технический директор", experience: "5+ лет опыта" },
+        { name: "Elyzabet Zakharchenko", role: "Ведущий дизайнер", experience: "4+ лет опыта" },
+        { name: "Viktor Novák", role: "Архитектор решений", experience: "6+ лет опыта" },
+        { name: "Anastasia Kowalski", role: "Менеджер проектов", experience: "3+ лет опыта" }
       ]
     },
     innovations: {
       title: "Инновации",
-      subtitle: "Передовые технологии в действии",
-      description: "Мы используем самые современные технологии и методологии разработки для создания решений будущего.",
+      subtitle: "Современные инструменты без лишнего пафоса",
+      description: "Мы используем современные инструменты и подходы, которые помогают быстро запускать проекты и масштабировать их, когда бизнес растёт.",
       technologies: [
-        { name: "Искусственный интеллект", description: "Machine Learning и Deep Learning для интеллектуальной автоматизации" },
-        { name: "Облачные технологии", description: "Масштабируемые решения на базе AWS, Azure и Google Cloud" },
-        { name: "DevOps практики", description: "Непрерывная интеграция и развертывание для быстрой доставки продуктов" },
-        { name: "Микросервисная архитектура", description: "Гибкие и устойчивые системы нового поколения" }
+        { name: "Искусственный интеллект", description: "Пробуем решения, которые автоматизируют рутину и помогают анализировать данные." },
+        { name: "Облачные технологии", description: "Используем платформы AWS, Azure и Google Cloud для надёжной работы проектов." },
+        { name: "DevOps практика", description: "Настраиваем процессы так, чтобы обновления выкатывались без сбоев." },
+        { name: "Микросервисная архитектура", description: "Строим гибкие решения, которые легко дорабатывать и развивать." }
       ]
     },
     achievements: {
@@ -63,47 +63,47 @@ const content = {
     }
   },
   en: {
-    title: "About Our Company",
-    subtitle: "We create innovative solutions for the digital future",
-    description: "Our team of experts works on creating cutting-edge technological solutions that help businesses grow and develop in the modern digital world.",
+    title: "About Us",
+    subtitle: "A small team that delivers turnkey projects",
+    description: "We are a team of specialists in development, design, and technology. When needed, we bring in trusted freelancers — this keeps us flexible and assembled for any task.",
     stats: [
-      { icon: Users, value: "35+", label: "Team Specialists" },
-      { icon: Target, value: "150+", label: "Delivered Solutions" },
-      { icon: Award, value: "12", label: "Industry Recognitions" },
-      { icon: Globe, value: "8", label: "Partner Countries" }
+      { icon: Users, value: "10+", label: "Team Specialists" },
+      { icon: Target, value: "50+", label: "Delivered Solutions" },
+      { icon: Award, value: "5", label: "Industry Recognitions" },
+      { icon: Globe, value: "4", label: "Partner Countries" }
     ],
     mission: {
       title: "Our Mission",
-      text: "We strive to create technological solutions that don't just solve problems, but also inspire new achievements."
+      text: "Our goal is to help clients actually achieve results: increase sales, improve user experience, or automate processes."
     },
     values: {
       title: "Our Values",
       items: [
-        { title: "Innovation", description: "Constant search for new solutions" },
-        { title: "Quality", description: "Flawless execution of every project" },
-        { title: "Partnership", description: "Long-term relationships with clients" }
+        { title: "Honesty", description: "We openly say what we can do and what we're still learning." },
+        { title: "Quality", description: "Even a small project should work reliably." },
+        { title: "Partnership", description: "We build relationships so clients want to come back." }
       ]
     },
     team: {
       title: "Our Team",
-      subtitle: "Professionals with years of experience",
-      description: "We've brought together the best specialists in development, design, and project management. Each team member contributes uniquely to creating innovative solutions.",
+      subtitle: "Small, focused, and flexible",
+      description: "We are a small team of specialists. Each person handles their part of the work, and together we deliver turnkey projects. When a task requires expansion, we bring in trusted freelancers and quickly assemble the needed expertise.",
       members: [
-        { name: "Illia Kharchenko", role: "Technical Director", experience: "15+ years experience" },
-        { name: "Elyzabet Zakharchenko", role: "Lead Designer", experience: "12+ years experience" },
-        { name: "Viktor Novák", role: "Solutions Architect", experience: "18+ years experience" },
-        { name: "Anastasia Kowalski", role: "Project Manager", experience: "10+ years experience" }
+        { name: "Illia Kharchenko", role: "Technical Director", experience: "5+ years experience" },
+        { name: "Elyzabet Zakharchenko", role: "Lead Designer", experience: "4+ years experience" },
+        { name: "Viktor Novák", role: "Solutions Architect", experience: "6+ years experience" },
+        { name: "Anastasia Kowalski", role: "Project Manager", experience: "3+ years experience" }
       ]
     },
     innovations: {
       title: "Innovation",
-      subtitle: "Cutting-edge technologies in action",
-      description: "We use the most modern technologies and development methodologies to create solutions of the future.",
+      subtitle: "Modern tools without unnecessary hype",
+      description: "We use modern tools and approaches that help quickly launch projects and scale them when business grows.",
       technologies: [
-        { name: "Artificial Intelligence", description: "Machine Learning and Deep Learning for intelligent automation" },
-        { name: "Cloud Technologies", description: "Scalable solutions based on AWS, Azure and Google Cloud" },
-        { name: "DevOps Practices", description: "Continuous integration and deployment for fast product delivery" },
-        { name: "Microservices Architecture", description: "Flexible and fault-tolerant systems of the new generation" }
+        { name: "Artificial Intelligence", description: "We try solutions that automate routine tasks and help analyze data." },
+        { name: "Cloud Technologies", description: "We use AWS, Azure, and Google Cloud platforms for reliable project operation." },
+        { name: "DevOps Practice", description: "We set up processes so updates deploy without failures." },
+        { name: "Microservices Architecture", description: "We build flexible solutions that are easy to improve and develop." }
       ]
     },
     achievements: {
@@ -118,47 +118,47 @@ const content = {
     }
   },
   de: {
-    title: "Über unser Unternehmen",
-    subtitle: "Wir schaffen innovative Lösungen für die digitale Zukunft",
-    description: "Unser Expertenteam arbeitet an der Entwicklung modernster technologischer Lösungen, die Unternehmen beim Wachstum und der Entwicklung in der modernen digitalen Welt helfen.",
+    title: "Über uns",
+    subtitle: "Ein kleines Team, das schlüsselfertige Projekte liefert",
+    description: "Wir sind ein Team von Spezialisten in Entwicklung, Design und Technologie. Bei Bedarf holen wir vertrauenswürdige Freelancer hinzu — so bleiben wir flexibel und für jede Aufgabe gerüstet.",
     stats: [
-      { icon: Users, value: "35+", label: "Team-Spezialisten" },
-      { icon: Target, value: "150+", label: "Umgesetzte Lösungen" },
-      { icon: Award, value: "12", label: "Branchenanerkennung" },
-      { icon: Globe, value: "8", label: "Partnerländer" }
+      { icon: Users, value: "10+", label: "Team-Spezialisten" },
+      { icon: Target, value: "50+", label: "Umgesetzte Lösungen" },
+      { icon: Award, value: "5", label: "Branchenanerkennung" },
+      { icon: Globe, value: "4", label: "Partnerländer" }
     ],
     mission: {
       title: "Unsere Mission",
-      text: "Wir streben danach, technologische Lösungen zu schaffen, die nicht nur Probleme lösen, sondern auch zu neuen Erfolgen inspirieren."
+      text: "Unser Ziel ist es, Kunden dabei zu helfen, tatsächlich Ergebnisse zu erzielen: Verkäufe steigern, Benutzerfreundlichkeit verbessern oder Prozesse automatisieren."
     },
     values: {
       title: "Unsere Werte",
       items: [
-        { title: "Innovation", description: "Ständige Suche nach neuen Lösungen" },
-        { title: "Qualität", description: "Tadellose Ausführung jedes Projekts" },
-        { title: "Partnerschaft", description: "Langfristige Beziehungen zu Kunden" }
+        { title: "Ehrlichkeit", description: "Wir sagen offen, was wir können und wobei wir noch lernen." },
+        { title: "Qualität", description: "Auch ein kleines Projekt sollte zuverlässig funktionieren." },
+        { title: "Partnerschaft", description: "Wir bauen Beziehungen auf, damit Kunden gerne zurückkommen." }
       ]
     },
     team: {
       title: "Unser Team",
-      subtitle: "Profis mit jahrelanger Erfahrung",
-      description: "Wir haben die besten Spezialisten in den Bereichen Entwicklung, Design und Projektmanagement zusammengebracht. Jedes Teammitglied trägt einzigartig zur Schaffung innovativer Lösungen bei.",
+      subtitle: "Klein, fokussiert und flexibel",
+      description: "Wir sind ein kleines Team von Spezialisten. Jeder übernimmt seinen Teil der Arbeit, und zusammen liefern wir schlüsselfertige Projekte. Wenn eine Aufgabe Erweiterung erfordert, holen wir vertrauenswürdige Freelancer hinzu und sammeln schnell die benötigte Expertise.",
       members: [
-        { name: "Illia Kharchenko", role: "Technischer Direktor", experience: "15+ Jahre Erfahrung" },
-        { name: "Elyzabet Zakharchenko", role: "Lead Designer", experience: "12+ Jahre Erfahrung" },
-        { name: "Viktor Novák", role: "Lösungsarchitekt", experience: "18+ Jahre Erfahrung" },
-        { name: "Anastasia Kowalski", role: "Projektmanager", experience: "10+ Jahre Erfahrung" }
+        { name: "Illia Kharchenko", role: "Technischer Direktor", experience: "5+ Jahre Erfahrung" },
+        { name: "Elyzabet Zakharchenko", role: "Lead Designer", experience: "4+ Jahre Erfahrung" },
+        { name: "Viktor Novák", role: "Lösungsarchitekt", experience: "6+ Jahre Erfahrung" },
+        { name: "Anastasia Kowalski", role: "Projektmanager", experience: "3+ Jahre Erfahrung" }
       ]
     },
     innovations: {
       title: "Innovation",
-      subtitle: "Spitzentechnologien in Aktion",
-      description: "Wir verwenden die modernsten Technologien und Entwicklungsmethoden, um Lösungen der Zukunft zu schaffen.",
+      subtitle: "Moderne Tools ohne unnötigen Hype",
+      description: "Wir verwenden moderne Tools und Ansätze, die helfen, Projekte schnell zu starten und zu skalieren, wenn das Geschäft wächst.",
       technologies: [
-        { name: "Künstliche Intelligenz", description: "Machine Learning und Deep Learning für intelligente Automatisierung" },
-        { name: "Cloud-Technologien", description: "Skalierbare Lösungen basierend auf AWS, Azure und Google Cloud" },
-        { name: "DevOps-Praktiken", description: "Kontinuierliche Integration und Bereitstellung für schnelle Produktlieferung" },
-        { name: "Microservices-Architektur", description: "Flexible und ausfallsichere Systeme der neuen Generation" }
+        { name: "Künstliche Intelligenz", description: "Wir probieren Lösungen aus, die Routineaufgaben automatisieren und bei der Datenanalyse helfen." },
+        { name: "Cloud-Technologien", description: "Wir nutzen AWS-, Azure- und Google Cloud-Plattformen für zuverlässigen Projektbetrieb." },
+        { name: "DevOps-Praxis", description: "Wir richten Prozesse so ein, dass Updates ohne Ausfälle bereitgestellt werden." },
+        { name: "Microservices-Architektur", description: "Wir bauen flexible Lösungen, die einfach zu verbessern und zu entwickeln sind." }
       ]
     },
     achievements: {
@@ -173,47 +173,47 @@ const content = {
     }
   },
   cs: {
-    title: "O naší společnosti",
-    subtitle: "Vytváříme inovativní řešení pro digitální budoucnost",
-    description: "Náš tým expertů pracuje na vytváření špičkových technologických řešení, která pomáhají firmám růst a rozvíjet se v moderním digitálním světě.",
+    title: "O nás",
+    subtitle: "Malý tým, který dodává projekty na klíč",
+    description: "Jsme tým specialistů ve vývoji, designu a technologiích. V případě potřeby přizveme ověřené freelancery — tak zůstáváme flexibilní a připravení na jakýkoli úkol.",
     stats: [
-      { icon: Users, value: "35+", label: "Specialistů v týmu" },
-      { icon: Target, value: "150+", label: "Realizovaných řešení" },
-      { icon: Award, value: "12", label: "Oborových uznání" },
-      { icon: Globe, value: "8", label: "Partnerských zemí" }
+      { icon: Users, value: "10+", label: "Specialistů v týmu" },
+      { icon: Target, value: "50+", label: "Realizovaných řešení" },
+      { icon: Award, value: "5", label: "Oborových uznání" },
+      { icon: Globe, value: "4", label: "Partnerských zemí" }
     ],
     mission: {
       title: "Naše mise",
-      text: "Snažíme se vytvářet technologická řešení, která nejen řeší problémy, ale také inspirují k novým úspěchům."
+      text: "Naším cílem je pomoci klientům skutečně dosáhnout výsledků: zvýšit prodeje, zlepšit uživatelskou přívětivost nebo automatizovat procesy."
     },
     values: {
       title: "Naše hodnoty",
       items: [
-        { title: "Inovace", description: "Neustálé hledání nových řešení" },
-        { title: "Kvalita", description: "Dokonalé provedení každého projektu" },
-        { title: "Partnerství", description: "Dlouhodobé vztahy s klienty" }
+        { title: "Upřímnost", description: "Otevřeně říkáme, co umíme a čemu se ještě učíme." },
+        { title: "Kvalita", description: "I malý projekt musí fungovat spolehlivě." },
+        { title: "Partnerství", description: "Budujeme vztahy tak, aby se klienti rádi vraceli." }
       ]
     },
     team: {
       title: "Náš tým",
-      subtitle: "Profesionálové s mnohaletými zkušenostmi",
-      description: "Spojili jsme nejlepší specialisty v oblasti vývoje, designu a řízení projektů. Každý člen týmu jedinečně přispívá k vytváření inovativních řešení.",
+      subtitle: "Malý, soustředěný a flexibilní",
+      description: "Jsme malý tým specialistů. Každý má na starosti svou část práce a společně dodáváme projekty na klíč. Když úkol vyžaduje rozšíření, přizveme ověřené freelancery a rychle sestavíme potřebnou expertizu.",
       members: [
-        { name: "Illia Kharchenko", role: "Technický ředitel", experience: "15+ let zkušeností" },
-        { name: "Elyzabet Zakharchenko", role: "Vedoucí designér", experience: "12+ let zkušeností" },
-        { name: "Viktor Novák", role: "Architekt řešení", experience: "18+ let zkušeností" },
-        { name: "Anastasia Kowalski", role: "Projektový manažer", experience: "10+ let zkušeností" }
+        { name: "Illia Kharchenko", role: "Technický ředitel", experience: "5+ let zkušeností" },
+        { name: "Elyzabet Zakharchenko", role: "Vedoucí designér", experience: "4+ let zkušeností" },
+        { name: "Viktor Novák", role: "Architekt řešení", experience: "6+ let zkušeností" },
+        { name: "Anastasia Kowalski", role: "Projektový manažer", experience: "3+ let zkušeností" }
       ]
     },
     innovations: {
       title: "Inovace",
-      subtitle: "Špičkové technologie v akci",
-      description: "Používáme nejmodernější technologie a metodiky vývoje pro vytváření řešení budoucnosti.",
+      subtitle: "Moderní nástroje bez zbytečného humbuku",
+      description: "Používáme moderní nástroje a přístupy, které pomáhají rychle spouštět projekty a škálovat je, když podnikání roste.",
       technologies: [
-        { name: "Umělá inteligence", description: "Machine Learning a Deep Learning pro inteligentní automatizaci" },
-        { name: "Cloudové technologie", description: "Škálovatelná řešení založená na AWS, Azure a Google Cloud" },
-        { name: "DevOps praktiky", description: "Kontinuální integrace a nasazování pro rychlé dodávky produktů" },
-        { name: "Mikroservisní architektura", description: "Flexibilní a odolné systémy nové generace" }
+        { name: "Umělá inteligence", description: "Zkoušíme řešení, která automatizují rutinní úkoly a pomáhají analyzovat data." },
+        { name: "Cloudové technologie", description: "Používáme platformy AWS, Azure a Google Cloud pro spolehlivý provoz projektů." },
+        { name: "DevOps praxe", description: "Nastavujeme procesy tak, aby se aktualizace nasazovaly bez výpadků." },
+        { name: "Mikroservisní architektura", description: "Stavíme flexibilní řešení, která se snadno vylepšují a rozvíjejí." }
       ]
     },
     achievements: {
@@ -415,43 +415,7 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
         </section>
 
-        {/* Achievements Section */}
-        <section id="achievements-section" className="scroll-mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
-              <Trophy className="h-8 w-8 text-primary" />
-            </div>
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">{text.achievements.title}</h2>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto">{text.achievements.description}</p>
-          </motion.div>
-
-          <div className="space-y-8">
-            {text.achievements.milestones.map((milestone, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`flex items-center gap-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
-              >
-                <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary">{milestone.year}</span>
-                </div>
-                <div className="bg-card border rounded-lg p-6 flex-grow">
-                  <h3 className="text-xl font-semibold mb-2">{milestone.title}</h3>
-                  <p className="text-muted-foreground">{milestone.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        
       </div>
     </div>
   );

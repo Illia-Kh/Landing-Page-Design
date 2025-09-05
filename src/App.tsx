@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { Breadcrumb } from "./components/Breadcrumb";
 import { Router, Route, Page } from "./components/Router";
 import { Language } from "./types";
 import { useTranslations } from "./i18n/translations";
@@ -10,7 +9,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { ContactPage } from "./pages/ContactPage";
 import { LogoShowcase } from "./pages/LogoShowcase";
-import { useMobileDevice } from "./components/ui/use-mobile-device";
+// Removed breadcrumb, so mobile device detection is no longer needed here
 import { SEO } from "./components/SEO";
 import { StructuredData, schemas } from "./components/StructuredData";
 import { Hreflang } from "./components/Hreflang";
@@ -21,7 +20,6 @@ import { ResourceHints } from "./components/PerformanceOptimization";
 export default function App() {
   const [language, setLanguage] = useState<Language>("ru");
   const [currentPage, setCurrentPage] = useState<Page>("home");
-  const isMobileDevice = useMobileDevice();
 
   const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);
@@ -197,13 +195,6 @@ export default function App() {
       />
 
       <main className={currentPage === "home" ? "pt-16" : "pt-20"}>
-        {!isMobileDevice && (
-          <Breadcrumb 
-            currentPage={currentPage} 
-            language={language} 
-            onPageChange={handlePageChange} 
-          />
-        )}
         <Router currentPage={currentPage}>
           <Route key="home-route" page="home">
             <HomePage language={language} onPageChange={handlePageChange} />
