@@ -49,9 +49,12 @@ export function SEO({
     updateMetaTag('og:type', type);
     updateMetaTag('og:locale', language === 'ru' ? 'ru_RU' : language === 'en' ? 'en_US' : language === 'de' ? 'de_DE' : 'cs_CZ');
     
-    if (image) {
-      updateMetaTag('og:image', image);
-    }
+    // Use default preview image if no image is provided
+    const ogImage = image || `${window.location.origin}/preview.jpg`;
+    updateMetaTag('og:image', ogImage);
+    updateMetaTag('og:image:width', '1200');
+    updateMetaTag('og:image:height', '630');
+    updateMetaTag('og:image:type', 'image/jpeg');
     
     if (url) {
       updateMetaTag('og:url', url);
@@ -61,9 +64,7 @@ export function SEO({
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
-    if (image) {
-      updateMetaTag('twitter:image', image);
-    }
+    updateMetaTag('twitter:image', ogImage);
     
     // Update canonical URL
     if (url) {
