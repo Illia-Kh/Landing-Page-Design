@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language } from '@/types'
-import { Analytics } from '@/components/Analytics'
+import { Analytics } from '@/lib/analytics'
 import { PageViewTracker } from '@/components/PageViewTracker'
-import { StructuredData } from '@/components/StructuredData'
+import { StructuredData } from '@/lib/seo/structured-data'
 import { env } from '@/lib/env'
 
 // ISR configuration

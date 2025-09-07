@@ -7,6 +7,10 @@ import { getTranslation } from '@/lib/i18n'
 import { Language } from '@/types'
 import { Send, User, Mail, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react'
 import { MotionSection } from '@/components/client/MotionSection'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface ContactFormProps {
   lang: Language
@@ -107,116 +111,117 @@ export function ContactForm({ lang }: ContactFormProps) {
   }
 
   return (
-    <MotionSection className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-      {response?.success ? (
-        <div className="text-center py-8">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Message Sent!
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
-            {response.message}
-          </p>
-          <button
-            onClick={() => {
-              setResponse(null)
-              setFormStartTime(Date.now())
-            }}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Send Another Message
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Honeypot field - hidden from users */}
-          <input
-            type="text"
-            name="website"
-            style={{ display: 'none' }}
-            tabIndex={-1}
-            autoComplete="off"
-          />
-          
-          <div>
-            <label htmlFor="name" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              <User className="w-4 h-4 mr-2" />
-              {t.contact.form.name.label}
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.name.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              <Mail className="w-4 h-4 mr-2" />
-              {t.contact.form.email.label}
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.email.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              <MessageSquare className="w-4 h-4 mr-2" />
-              {t.contact.form.message.label}
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              value={formData.message}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.message.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-              required
-            />
-          </div>
-
-          {response && !response.success && (
-            <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400">
-              <div className="flex items-center">
-                <AlertCircle className="w-5 h-5 mr-2" />
+    <MotionSection>
+      <Card className="p-8">
+        <CardContent className="p-0">
+          {response?.success ? (
+            <div className="text-center py-8">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-2">
+                Message Sent!
+              </h3>
+              <p className="text-muted-foreground mb-6">
                 {response.message}
-              </div>
+              </p>
+              <Button
+                onClick={() => {
+                  setResponse(null)
+                  setFormStartTime(Date.now())
+                }}
+              >
+                Send Another Message
+              </Button>
             </div>
-          )}
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field - hidden from users */}
+              <input
+                type="text"
+                name="website"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+              
+              <div>
+                <label htmlFor="name" className="flex items-center text-sm font-medium mb-2">
+                  <User className="w-4 h-4 mr-2" />
+                  {t.contact.form.name.label}
+                </label>
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder={t.contact.form.name.placeholder}
+                  required
+                />
+              </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            {isSubmitting ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
-                Sending...
-              </>
-            ) : (
-              <>
-                <Send className="w-5 h-5 mr-2" />
-                {t.contact.form.submit}
-              </>
-            )}
-          </button>
-        </form>
-      )}
+              <div>
+                <label htmlFor="email" className="flex items-center text-sm font-medium mb-2">
+                  <Mail className="w-4 h-4 mr-2" />
+                  {t.contact.form.email.label}
+                </label>
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder={t.contact.form.email.placeholder}
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="flex items-center text-sm font-medium mb-2">
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  {t.contact.form.message.label}
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder={t.contact.form.message.placeholder}
+                  required
+                />
+              </div>
+
+              {response && !response.success && (
+                <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive">
+                  <div className="flex items-center">
+                    <AlertCircle className="w-5 h-5 mr-2" />
+                    {response.message}
+                  </div>
+                </div>
+              )}
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full"
+                size="lg"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    {t.contact.form.submit}
+                  </>
+                )}
+              </Button>
+            </form>
+          )}
+        </CardContent>
+      </Card>
     </MotionSection>
   )
 }

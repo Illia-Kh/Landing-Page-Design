@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { isSupportedLanguage, getTranslation } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import { createPageMetadata } from '@/lib/seo/metadata'
 import { Target, Lightbulb, Award } from 'lucide-react'
 import Link from 'next/link'
-import { env } from '@/lib/env'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -21,44 +21,15 @@ export async function generateMetadata({
   }
 
   const t = getTranslation(lang as Language)
-  const baseUrl = env.NEXT_PUBLIC_SITE_URL || 'https://ikhsystems.com'
-  const canonicalUrl = getLocalizedUrl('/about', lang as Language)
   
-  return {
+  return createPageMetadata({
     title: t.seo.about.title,
     description: t.seo.about.description,
     keywords: t.seo.about.keywords,
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        'en-US': `${baseUrl}/en/about`,
-        'cs-CZ': `${baseUrl}/cs/about`,
-        'de-DE': `${baseUrl}/de/about`,
-      },
-    },
-    openGraph: {
-      type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
-      url: canonicalUrl,
-      siteName: 'IKH-TechSystems',
-      title: t.seo.about.title,
-      description: t.seo.about.description,
-      images: [
-        {
-          url: `${baseUrl}/og-about.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t.seo.about.title,
-        }
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t.seo.about.title,
-      description: t.seo.about.description,
-      images: [`${baseUrl}/og-about.jpg`],
-    },
-  }
+    url: '/about',
+    language: lang as Language,
+    image: '/og-about.jpg',
+  })
 }
 
 export default async function AboutPage({ params }: PageProps) {

@@ -27,11 +27,14 @@
     "lighthouse": "lighthouse http://localhost:3000 --output=json --output=html --output-path=./lighthouse-report"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "next": "^15.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
