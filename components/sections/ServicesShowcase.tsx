@@ -1,0 +1,88 @@
+import { Language } from '@/types'
+import { getTranslation } from '@/lib/i18n'
+import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import { Code, Smartphone, Layers, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+
+interface ServicesShowcaseProps {
+  lang: Language
+}
+
+const serviceIcons = {
+  web: Code,
+  mobile: Smartphone,
+  integration: Layers,
+}
+
+export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
+  const t = getTranslation(lang)
+
+  return (
+    <section className="py-20 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-6">
+        <MotionSection className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            {t.services.title}
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            {t.services.subtitle}
+          </p>
+        </MotionSection>
+
+        <MotionStagger className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
+          {t.services.items.map((service, index) => {
+            const IconComponent = Object.values(serviceIcons)[index] || Code
+            
+            return (
+              <div 
+                key={index}
+                className="group relative p-8 bg-gradient-secondary rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <IconComponent className="w-8 h-8 text-white" />
+                </div>
+                
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature, featureIndex) => (
+                    <li 
+                      key={featureIndex}
+                      className="flex items-center text-gray-600 dark:text-gray-300"
+                    >
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                    {t.common.actions.learnMore}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </MotionStagger>
+
+        <MotionSection className="text-center mt-16" delay={0.6}>
+          <Link
+            href={`/${lang}/services`}
+            className="inline-flex items-center px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            {t.common.actions.learnMore}
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
+        </MotionSection>
+      </div>
+    </section>
+  )
+}
