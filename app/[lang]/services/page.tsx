@@ -3,8 +3,10 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import { StructuredData } from '@/components/StructuredData'
 import { Code, Smartphone, Layers, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { env } from '@/lib/env'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -20,19 +22,42 @@ export async function generateMetadata({
   }
 
   const t = getTranslation(lang as Language)
+  const baseUrl = env.NEXT_PUBLIC_SITE_URL
+  const canonicalUrl = getLocalizedUrl('/services', lang as Language)
   
   return {
     title: t.seo.services.title,
     description: t.seo.services.description,
     keywords: t.seo.services.keywords,
     alternates: {
-      canonical: getLocalizedUrl('/services', lang as Language),
+      canonical: canonicalUrl,
+      languages: {
+        'en-US': `${baseUrl}/en/services`,
+        'cs-CZ': `${baseUrl}/cs/services`,
+        'de-DE': `${baseUrl}/de/services`,
+      },
     },
     openGraph: {
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
+      url: canonicalUrl,
+      siteName: 'IKH-TechSystems',
       title: t.seo.services.title,
       description: t.seo.services.description,
-      url: getLocalizedUrl('/services', lang as Language),
-      type: 'website',
+      images: [
+        {
+          url: `${baseUrl}/og-services.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t.seo.services.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.seo.services.title,
+      description: t.seo.services.description,
+      images: [`${baseUrl}/og-services.jpg`],
     },
   }
 }
@@ -50,6 +75,19 @@ export default async function ServicesPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Structured Data for Services */}
+      {t.services.items.map((service, index) => (
+        <StructuredData
+          key={index}
+          type="Service"
+          lang={lang as Language}
+          serviceData={{
+            name: service.title,
+            description: service.description,
+          }}
+        />
+      ))}
+      
       {/* Navigation */}
       <nav className="py-6 border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-6 flex justify-between items-center">
