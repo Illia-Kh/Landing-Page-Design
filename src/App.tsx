@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Suspense, lazy, useEffect } from "react";
-import Layout from "./components/Layout";
+import SimpleLayout from "./components/SimpleLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import { trackPageView } from "./lib/analytics";
 
@@ -23,7 +23,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Navigate to="/cs" replace />} />
-          <Route path="/:lang(en|cs|de)" element={<Layout />}>
+          <Route path="/:lang" element={<SimpleLayout />}>
             <Route
               index
               element={
