@@ -16,23 +16,24 @@ interface MotionSectionProps extends Omit<MotionProps, 'children'> {
 /**
  * Reusable motion section component for consistent animations across the app
  * This is a client component that wraps Framer Motion functionality
+ * Updated with design-spec animation patterns
  */
 export function MotionSection({
   children,
   className = '',
   delay = 0,
-  duration = 0.6,
+  duration = 0.8,
   direction = 'up',
-  distance = 50,
+  distance = 20,
   once = true,
   ...motionProps
 }: MotionSectionProps) {
-  // Define animation variants based on direction
+  // Define animation variants based on direction with design-spec timing
   const getVariants = () => {
     const baseTransition = {
       duration,
       delay,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number], // Proper typing for cubic bezier
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     }
 
     switch (direction) {
@@ -93,6 +94,7 @@ export function MotionSection({
 
 /**
  * Staggered container for animating multiple children with delays
+ * Enhanced with design-spec stagger patterns
  */
 interface MotionStaggerProps {
   children: ReactNode
@@ -104,7 +106,7 @@ interface MotionStaggerProps {
 export function MotionStagger({
   children,
   className = '',
-  staggerDelay = 0.1,
+  staggerDelay = 0.2,
   direction = 'up',
 }: MotionStaggerProps) {
   const container = {
@@ -121,17 +123,17 @@ export function MotionStagger({
     hidden: (() => {
       switch (direction) {
         case 'up':
-          return { opacity: 0, y: 30 }
+          return { opacity: 0, y: 40 }
         case 'down':
-          return { opacity: 0, y: -30 }
+          return { opacity: 0, y: -40 }
         case 'left':
-          return { opacity: 0, x: 30 }
+          return { opacity: 0, x: 40 }
         case 'right':
-          return { opacity: 0, x: -30 }
+          return { opacity: 0, x: -40 }
         case 'fade':
           return { opacity: 0 }
         default:
-          return { opacity: 0, y: 30 }
+          return { opacity: 0, y: 40 }
       }
     })(),
     show: {
@@ -139,7 +141,7 @@ export function MotionStagger({
       x: 0,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     },
@@ -195,7 +197,7 @@ export function MotionCounter({
 }
 
 /**
- * Hover effect wrapper
+ * Hover effect wrapper - enhanced with design-spec interactions
  */
 interface MotionHoverProps {
   children: ReactNode
@@ -219,7 +221,7 @@ export function MotionHover({
         scale,
         rotate,
         y,
-        transition: { duration: 0.2 },
+        transition: { duration: 0.25, ease: 'easeOut' },
       }}
       whileTap={{ scale: 0.95 }}
     >
