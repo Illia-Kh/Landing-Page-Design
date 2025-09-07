@@ -1,0 +1,881 @@
+{
+  "pages": {
+    "home": {
+      "title": "Home Page",
+      "sections": [
+        {
+          "name": "Hero",
+          "element": "section",
+          "className": "min-h-[60vh] pt-8 pb-12 flex items-center bg-gradient-to-br from-background to-accent/20",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 lg:grid-cols-12 gap-6 items-center",
+          "motionVariants": {
+            "initial": { "opacity": 0, "y": 20 },
+            "animate": { "opacity": 1, "y": 0 },
+            "transition": { "duration": 0.8 }
+          },
+          "children": [
+            {
+              "name": "Content",
+              "className": "lg:col-span-7 space-y-6",
+              "elements": [
+                {
+                  "name": "AnimatedLogo", 
+                  "className": "mb-6",
+                  "responsive": "hidden on mobile (!isMobileDevice)"
+                },
+                {
+                  "name": "Title",
+                  "element": "h1",
+                  "className": "text-3xl lg:text-5xl font-bold",
+                  "motionDelay": 0.3
+                },
+                {
+                  "name": "RotatingSubtitle",
+                  "element": "h2", 
+                  "className": "text-xl lg:text-2xl text-muted-foreground",
+                  "motionDelay": 0.6
+                },
+                {
+                  "name": "Description",
+                  "element": "p",
+                  "className": "text-lg text-muted-foreground leading-relaxed max-w-2xl",
+                  "motionDelay": 0.9
+                },
+                {
+                  "name": "CTA Button",
+                  "element": "button",
+                  "className": "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors",
+                  "motionDelay": 1.2
+                }
+              ]
+            },
+            {
+              "name": "Carousel",
+              "className": "lg:col-span-5",
+              "component": "EnhancedSlideCarousel"
+            }
+          ]
+        },
+        {
+          "name": "ChallengesWeSolve",
+          "element": "section",
+          "id": "challenges",
+          "className": "py-20 bg-secondary/30",
+          "container": "container mx-auto px-4",
+          "motionVariants": {
+            "initial": { "opacity": 0, "y": 20 },
+            "whileInView": { "opacity": 1, "y": 0 },
+            "transition": { "duration": 0.8 },
+            "viewport": { "once": true }
+          },
+          "children": [
+            {
+              "name": "Header",
+              "className": "text-center mb-16",
+              "elements": [
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-4xl font-bold text-foreground mb-4"
+                }
+              ]
+            },
+            {
+              "name": "CardsGrid",
+              "className": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+              "children": [
+                {
+                  "name": "ChallengeCard",
+                  "component": "Card",
+                  "className": "h-full text-center hover:shadow-lg transition-shadow duration-300",
+                  "motionVariants": {
+                    "initial": { "opacity": 0, "y": 20 },
+                    "whileInView": { "opacity": 1, "y": 0 },
+                    "transition": { "duration": 0.6, "delay": "index * 0.1" },
+                    "viewport": { "once": true }
+                  },
+                  "structure": [
+                    {
+                      "name": "IconContainer",
+                      "className": "mx-auto mb-4 p-3 bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center"
+                    },
+                    {
+                      "name": "Title",
+                      "component": "CardTitle",
+                      "className": "text-xl"
+                    },
+                    {
+                      "name": "Description",
+                      "component": "CardDescription", 
+                      "className": "text-base"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Vision",
+          "element": "section",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "children": [
+            {
+              "name": "Header",
+              "element": "h2",
+              "className": "text-4xl font-bold text-center mb-16"
+            },
+            {
+              "name": "StepsContainer",
+              "className": "space-y-16",
+              "children": [
+                {
+                  "name": "VisionStep",
+                  "element": "article",
+                  "motionVariants": {
+                    "initial": { "opacity": 0, "y": 40 },
+                    "whileInView": { "opacity": 1, "y": 0 },
+                    "transition": { "duration": 0.8, "delay": "index * 0.2" },
+                    "viewport": { "once": true }
+                  },
+                  "layout": "grid grid-cols-1 lg:grid-cols-2 gap-8 items-center",
+                  "structure": [
+                    {
+                      "name": "ImageContainer",
+                      "className": "order-2 lg:order-1"
+                    },
+                    {
+                      "name": "ContentContainer", 
+                      "className": "order-1 lg:order-2 space-y-4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "CTA",
+              "className": "text-center mt-16",
+              "elements": [
+                {
+                  "name": "CTATitle",
+                  "element": "h3",
+                  "className": "text-2xl font-semibold mb-4"
+                },
+                {
+                  "name": "CTAButton",
+                  "element": "link",
+                  "className": "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "about": {
+      "title": "About Page",
+      "sections": [
+        {
+          "name": "Hero",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "text-center max-w-4xl mx-auto",
+          "elements": [
+            {
+              "name": "Title",
+              "element": "h1",
+              "className": "text-4xl lg:text-5xl font-bold mb-6"
+            },
+            {
+              "name": "Subtitle",
+              "element": "p",
+              "className": "text-xl text-muted-foreground mb-4"
+            },
+            {
+              "name": "Description",
+              "element": "p",
+              "className": "text-lg text-muted-foreground leading-relaxed"
+            }
+          ]
+        },
+        {
+          "name": "Stats",
+          "className": "py-16 bg-secondary/30",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8",
+          "children": [
+            {
+              "name": "StatCard",
+              "className": "text-center",
+              "motionVariants": {
+                "initial": { "opacity": 0, "y": 20 },
+                "whileInView": { "opacity": 1, "y": 0 },
+                "transition": { "duration": 0.6, "delay": "index * 0.1" },
+                "viewport": { "once": true }
+              },
+              "structure": [
+                {
+                  "name": "Icon",
+                  "className": "mx-auto mb-4 w-12 h-12 text-primary"
+                },
+                {
+                  "name": "Value",
+                  "className": "text-3xl font-bold text-primary mb-2"
+                },
+                {
+                  "name": "Label",
+                  "className": "text-muted-foreground"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Team",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center",
+          "children": [
+            {
+              "name": "TeamContent",
+              "className": "space-y-6",
+              "elements": [
+                {
+                  "name": "Image",
+                  "className": "w-full rounded-lg"
+                },
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-3xl font-bold"
+                },
+                {
+                  "name": "Subtitle",
+                  "element": "p",
+                  "className": "text-xl text-muted-foreground"
+                },
+                {
+                  "name": "Description",
+                  "element": "p",
+                  "className": "text-muted-foreground leading-relaxed"
+                }
+              ]
+            },
+            {
+              "name": "TeamGrid",
+              "className": "grid grid-cols-1 md:grid-cols-2 gap-6",
+              "children": [
+                {
+                  "name": "TeamMember",
+                  "className": "text-center",
+                  "structure": [
+                    {
+                      "name": "Avatar",
+                      "className": "w-24 h-24 rounded-full mx-auto mb-4"
+                    },
+                    {
+                      "name": "Name",
+                      "element": "h3",
+                      "className": "text-lg font-semibold"
+                    },
+                    {
+                      "name": "Role",
+                      "element": "p",
+                      "className": "text-muted-foreground"
+                    },
+                    {
+                      "name": "Experience",
+                      "element": "p",
+                      "className": "text-sm text-muted-foreground"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mission",
+          "className": "py-20 bg-secondary/30",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center",
+          "children": [
+            {
+              "name": "MissionContent",
+              "elements": [
+                {
+                  "name": "Image",
+                  "className": "w-full rounded-lg mb-6"
+                },
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-3xl font-bold mb-4"
+                },
+                {
+                  "name": "Quote",
+                  "element": "p",
+                  "className": "text-lg italic mb-6"
+                },
+                {
+                  "name": "ValuesTitle",
+                  "element": "h3",
+                  "className": "text-xl font-semibold mb-4"
+                },
+                {
+                  "name": "ValuesList",
+                  "className": "space-y-4",
+                  "children": [
+                    {
+                      "name": "Value",
+                      "structure": [
+                        {
+                          "name": "ValueTitle",
+                          "element": "h4",
+                          "className": "font-semibold"
+                        },
+                        {
+                          "name": "ValueDescription",
+                          "element": "p",
+                          "className": "text-muted-foreground"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Innovation",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center",
+          "children": [
+            {
+              "name": "InnovationContent",
+              "elements": [
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-3xl font-bold mb-4"
+                },
+                {
+                  "name": "Subtitle",
+                  "element": "p",
+                  "className": "text-xl text-muted-foreground mb-4"
+                },
+                {
+                  "name": "Description",
+                  "element": "p",
+                  "className": "text-muted-foreground leading-relaxed"
+                }
+              ]
+            },
+            {
+              "name": "TechnologiesGrid",
+              "className": "grid grid-cols-1 md:grid-cols-2 gap-6",
+              "children": [
+                {
+                  "name": "Technology",
+                  "structure": [
+                    {
+                      "name": "Icon",
+                      "className": "w-12 h-12 text-primary mb-4"
+                    },
+                    {
+                      "name": "Name",
+                      "element": "h3",
+                      "className": "text-lg font-semibold mb-2"
+                    },
+                    {
+                      "name": "Description",
+                      "element": "p",
+                      "className": "text-muted-foreground"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "services": {
+      "title": "Services Page",
+      "sections": [
+        {
+          "name": "Hero",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "text-center max-w-4xl mx-auto",
+          "elements": [
+            {
+              "name": "Title",
+              "element": "h1",
+              "className": "text-4xl lg:text-5xl font-bold mb-6"
+            },
+            {
+              "name": "Subtitle",
+              "element": "p",
+              "className": "text-xl text-muted-foreground mb-4"
+            },
+            {
+              "name": "Description",
+              "element": "p",
+              "className": "text-lg text-muted-foreground leading-relaxed"
+            }
+          ]
+        },
+        {
+          "name": "ServicesGrid",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "space-y-20",
+          "children": [
+            {
+              "name": "ServiceSection",
+              "motionVariants": {
+                "initial": { "opacity": 0, "y": 40 },
+                "whileInView": { "opacity": 1, "y": 0 },
+                "transition": { "duration": 0.8, "delay": "index * 0.2" },
+                "viewport": { "once": true }
+              },
+              "layout": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center",
+              "structure": [
+                {
+                  "name": "ServiceContent",
+                  "className": "space-y-6",
+                  "elements": [
+                    {
+                      "name": "Icon",
+                      "className": "w-16 h-16 text-primary mb-4"
+                    },
+                    {
+                      "name": "Title",
+                      "element": "h2",
+                      "className": "text-3xl font-bold"
+                    },
+                    {
+                      "name": "Description",
+                      "element": "p",
+                      "className": "text-muted-foreground leading-relaxed"
+                    },
+                    {
+                      "name": "FeaturesList",
+                      "element": "ul",
+                      "className": "space-y-2",
+                      "children": [
+                        {
+                          "name": "Feature",
+                          "className": "flex items-center gap-2",
+                          "structure": [
+                            {
+                              "name": "CheckIcon",
+                              "className": "w-5 h-5 text-green-500"
+                            },
+                            {
+                              "name": "FeatureText",
+                              "className": "text-muted-foreground"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ServiceImage",
+                  "className": "w-full rounded-lg"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pricing",
+          "className": "py-20 bg-secondary/30",
+          "container": "container mx-auto px-4",
+          "children": [
+            {
+              "name": "PricingHeader",
+              "className": "text-center mb-16",
+              "elements": [
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-3xl font-bold mb-4"
+                },
+                {
+                  "name": "Description",
+                  "element": "p",
+                  "className": "text-muted-foreground max-w-2xl mx-auto"
+                }
+              ]
+            },
+            {
+              "name": "PricingGrid",
+              "className": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12",
+              "children": [
+                {
+                  "name": "PricingCard",
+                  "className": "text-center p-6 bg-card rounded-lg border",
+                  "structure": [
+                    {
+                      "name": "Icon",
+                      "className": "w-12 h-12 text-primary mx-auto mb-4"
+                    },
+                    {
+                      "name": "ServiceName",
+                      "className": "font-semibold text-lg"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "PricingDisclaimer",
+              "className": "text-center space-y-4",
+              "elements": [
+                {
+                  "name": "DisclaimerIcon",
+                  "className": "w-8 h-8 text-muted-foreground mx-auto"
+                },
+                {
+                  "name": "DisclaimerText",
+                  "element": "p",
+                  "className": "text-muted-foreground"
+                },
+                {
+                  "name": "ContactButton",
+                  "element": "button",
+                  "className": "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact Page",
+      "sections": [
+        {
+          "name": "Hero",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "text-center max-w-4xl mx-auto",
+          "elements": [
+            {
+              "name": "Title",
+              "element": "h1",
+              "className": "text-4xl lg:text-5xl font-bold mb-6"
+            },
+            {
+              "name": "Subtitle",
+              "element": "p",
+              "className": "text-xl text-muted-foreground"
+            }
+          ]
+        },
+        {
+          "name": "ContactInfo",
+          "className": "py-20",
+          "container": "container mx-auto px-4",
+          "layout": "grid grid-cols-1 lg:grid-cols-2 gap-12",
+          "children": [
+            {
+              "name": "ContactDetails",
+              "elements": [
+                {
+                  "name": "SectionTitle",
+                  "element": "h2",
+                  "className": "text-3xl font-bold mb-8"
+                },
+                {
+                  "name": "ContactList",
+                  "className": "space-y-6",
+                  "children": [
+                    {
+                      "name": "ContactItem",
+                      "component": "Card",
+                      "className": "p-6",
+                      "structure": [
+                        {
+                          "name": "Icon",
+                          "className": "w-8 h-8 text-primary mb-4"
+                        },
+                        {
+                          "name": "Title",
+                          "element": "h3",
+                          "className": "text-lg font-semibold mb-2"
+                        },
+                        {
+                          "name": "Value",
+                          "element": "p",
+                          "className": "font-medium mb-1"
+                        },
+                        {
+                          "name": "Description",
+                          "element": "p",
+                          "className": "text-muted-foreground"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Map",
+              "element": "iframe",
+              "className": "w-full h-96 rounded-lg border"
+            }
+          ]
+        },
+        {
+          "name": "Telegram",
+          "className": "py-20 bg-secondary/30",
+          "container": "container mx-auto px-4",
+          "layout": "max-w-4xl mx-auto",
+          "children": [
+            {
+              "name": "TelegramHeader",
+              "className": "text-center mb-12",
+              "elements": [
+                {
+                  "name": "Icon",
+                  "className": "w-16 h-16 text-primary mx-auto mb-4"
+                },
+                {
+                  "name": "Title",
+                  "element": "h2",
+                  "className": "text-3xl font-bold mb-4"
+                },
+                {
+                  "name": "Subtitle",
+                  "element": "p",
+                  "className": "text-muted-foreground"
+                }
+              ]
+            },
+            {
+              "name": "BotInfo",
+              "className": "text-center mb-12",
+              "elements": [
+                {
+                  "name": "BotName",
+                  "element": "code",
+                  "className": "bg-muted px-3 py-1 rounded font-mono"
+                },
+                {
+                  "name": "BotDescription",
+                  "element": "p",
+                  "className": "text-muted-foreground mt-4"
+                }
+              ]
+            },
+            {
+              "name": "Features",
+              "className": "grid grid-cols-1 md:grid-cols-3 gap-6 mb-12",
+              "children": [
+                {
+                  "name": "Feature",
+                  "className": "text-center",
+                  "structure": [
+                    {
+                      "name": "Icon",
+                      "className": "w-12 h-12 text-primary mx-auto mb-4"
+                    },
+                    {
+                      "name": "Title",
+                      "element": "h3",
+                      "className": "text-lg font-semibold mb-2"
+                    },
+                    {
+                      "name": "Description",
+                      "element": "p",
+                      "className": "text-muted-foreground"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Steps",
+              "className": "mb-12",
+              "elements": [
+                {
+                  "name": "StepsTitle",
+                  "element": "h3",
+                  "className": "text-xl font-semibold text-center mb-6"
+                },
+                {
+                  "name": "StepsList",
+                  "className": "space-y-4",
+                  "children": [
+                    {
+                      "name": "Step",
+                      "className": "flex items-start gap-4",
+                      "structure": [
+                        {
+                          "name": "StepNumber",
+                          "className": "w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-semibold shrink-0"
+                        },
+                        {
+                          "name": "StepText",
+                          "element": "p",
+                          "className": "text-muted-foreground"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "TelegramActions",
+              "className": "flex flex-col sm:flex-row gap-4 justify-center",
+              "children": [
+                {
+                  "name": "OpenTelegramButton",
+                  "element": "button",
+                  "className": "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors flex items-center gap-2"
+                },
+                {
+                  "name": "CopyBotButton",
+                  "element": "button",
+                  "className": "border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground px-6 py-3 rounded-md font-medium transition-colors flex items-center gap-2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "commonComponents": {
+    "Header": {
+      "element": "header",
+      "className": "fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b",
+      "container": "container mx-auto px-4",
+      "layout": "flex items-center justify-between h-16",
+      "children": [
+        {
+          "name": "Logo",
+          "className": "text-xl font-bold"
+        },
+        {
+          "name": "Navigation",
+          "className": "hidden md:flex items-center space-x-8",
+          "children": [
+            {
+              "name": "NavItem",
+              "element": "button",
+              "className": "text-foreground hover:text-primary transition-colors"
+            }
+          ]
+        },
+        {
+          "name": "HeaderActions",
+          "className": "flex items-center gap-4",
+          "children": [
+            {
+              "name": "ThemeToggle",
+              "className": "w-9 h-9"
+            },
+            {
+              "name": "LanguageSelector",
+              "className": "w-12 h-9"
+            }
+          ]
+        }
+      ]
+    },
+    "Footer": {
+      "element": "footer",
+      "className": "bg-secondary/30 border-t",
+      "container": "container mx-auto px-4 py-12",
+      "layout": "grid grid-cols-1 md:grid-cols-3 gap-8",
+      "children": [
+        {
+          "name": "Company",
+          "elements": [
+            {
+              "name": "Logo",
+              "className": "text-xl font-bold mb-4"
+            },
+            {
+              "name": "ContactInfo",
+              "className": "space-y-2"
+            }
+          ]
+        },
+        {
+          "name": "SocialLinks",
+          "className": "flex space-x-4",
+          "children": [
+            {
+              "name": "SocialLink",
+              "className": "w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "frequentPatterns": {
+    "containerStyles": [
+      "container mx-auto px-4",
+      "max-w-4xl mx-auto",
+      "max-w-6xl mx-auto"
+    ],
+    "gridLayouts": [
+      "grid grid-cols-1 md:grid-cols-2 gap-6",
+      "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+      "grid grid-cols-1 lg:grid-cols-2 gap-12",
+      "grid grid-cols-1 lg:grid-cols-12 gap-6"
+    ],
+    "spacingPatterns": [
+      "space-y-6",
+      "space-y-4",
+      "space-y-2",
+      "gap-6",
+      "gap-8",
+      "gap-12"
+    ],
+    "paddingPatterns": [
+      "py-20",
+      "py-16",
+      "py-12",
+      "py-8",
+      "px-4",
+      "px-6",
+      "p-6"
+    ],
+    "textStyles": [
+      "text-4xl font-bold",
+      "text-3xl font-bold",
+      "text-xl text-muted-foreground",
+      "text-lg text-muted-foreground leading-relaxed",
+      "text-muted-foreground"
+    ],
+    "buttonStyles": [
+      "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors",
+      "border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground px-6 py-3 rounded-md font-medium transition-colors"
+    ],
+    "cardStyles": [
+      "bg-card text-card-foreground rounded-xl border",
+      "p-6 bg-card rounded-lg border",
+      "hover:shadow-lg transition-shadow duration-300"
+    ],
+    "motionPatterns": [
+      "{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, transition: { duration: 0.8 }, viewport: { once: true } }",
+      "{ initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay: index * 0.2 }, viewport: { once: true } }",
+      "{ initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay: 0.3 } }"
+    ]
+  }
+}
