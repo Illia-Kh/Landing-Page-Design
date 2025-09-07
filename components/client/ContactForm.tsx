@@ -94,7 +94,7 @@ export function ContactForm({ lang }: ContactFormProps) {
       } else {
         trackFormSubmission('contact', false)
       }
-    } catch (error) {
+    } catch {
       setResponse({
         success: false,
         error: 'Network error',
