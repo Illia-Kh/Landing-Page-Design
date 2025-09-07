@@ -1,7 +1,10 @@
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { PreliminaryPrices } from "../components/PreliminaryPrices";
 import { JsonLd, schemas } from "../components/JsonLd";
+import { Language } from "../types";
 import { 
   Code, 
   Smartphone, 
@@ -11,7 +14,7 @@ import {
 } from "lucide-react";
 
 interface ServicesPageProps {
-  language: string;
+  language?: Language;
   onPageChange?: (page: "home" | "about" | "services" | "contact") => void;
 }
 
@@ -178,12 +181,14 @@ const content = {
   }
 };
 
-export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
-  const text = content[language as keyof typeof content] || content.ru;
+function ServicesPageComponent({ language, onPageChange }: ServicesPageProps) {
+  const { lang = "cs" } = useParams();
+  const currentLanguage = language || (lang as Language);
+  const text = content[currentLanguage as keyof typeof content] || content.ru;
 
   const breadcrumbItems = [
-    { name: "Home", url: "https://ikhsystems.com/" },
-    { name: text.title, url: "https://ikhsystems.com/services" }
+    { name: "Home", url: `https://ikhsystems.com/${lang}` },
+    { name: text.title, url: `https://ikhsystems.com/${lang}/services` }
   ];
 
   const faqData = [
@@ -207,6 +212,13 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
 
   return (
     <div className="py-20">
+      <Helmet>
+        <title>Služby — IKH Systems</title>
+        <meta name="description" content="Kompletní spektrum IT služeb: webový vývoj, mobilní aplikace, software, IT konzultace." />
+        <link rel="canonical" href={`https://ikhsystems.com/${lang}/services`} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      
       <JsonLd 
         type="BreadcrumbList" 
         data={schemas.breadcrumbList(breadcrumbItems)} 
@@ -280,7 +292,7 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
 
         {/* Preliminary Prices Section */}
         <PreliminaryPrices 
-          language={language} 
+          language={currentLanguage} 
           onPageChange={onPageChange} 
         />
 
@@ -288,3 +300,9 @@ export function ServicesPage({ language, onPageChange }: ServicesPageProps) {
     </div>
   );
 }
+
+// Default export for lazy loading
+export default ServicesPageComponent;
+
+// Keep named export for backward compatibility
+export { ServicesPageComponent as ServicesPage };

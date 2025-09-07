@@ -1,10 +1,13 @@
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Users, Target, Award, Globe, Lightbulb } from "lucide-react";
 import { JsonLd, schemas } from "../components/JsonLd";
+import { Language } from "../types";
 
 interface AboutPageProps {
-  language: string;
+  language?: Language;
 }
 
 const content = {
@@ -230,16 +233,25 @@ const content = {
   }
 };
 
-export function AboutPage({ language }: AboutPageProps) {
-  const text = content[language as keyof typeof content] || content.ru;
+function AboutPageComponent({ language }: AboutPageProps) {
+  const { lang = "cs" } = useParams();
+  const currentLanguage = language || (lang as Language);
+  const text = content[currentLanguage as keyof typeof content] || content.ru;
 
   const breadcrumbItems = [
-    { name: "Home", url: "https://ikhsystems.com/" },
-    { name: text.title, url: "https://ikhsystems.com/about" }
+    { name: "Home", url: `https://ikhsystems.com/${lang}` },
+    { name: text.title, url: `https://ikhsystems.com/${lang}/about` }
   ];
 
   return (
     <div className="py-20">
+      <Helmet>
+        <title>O nás — IKH Systems</title>
+        <meta name="description" content="IKH Systems: tým, přístup a hodnoty. Vyvíjíme webové stránky, automatizaci a marketing pro SMB." />
+        <link rel="canonical" href={`https://ikhsystems.com/${lang}/about`} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      
       <JsonLd 
         type="BreadcrumbList" 
         data={schemas.breadcrumbList(breadcrumbItems)} 
@@ -430,3 +442,9 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
+// Default export for lazy loading
+export default AboutPageComponent;
+
+// Keep named export for backward compatibility
+export { AboutPageComponent as AboutPage };

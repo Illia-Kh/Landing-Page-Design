@@ -97,6 +97,20 @@ export function trackTelegramClick(botName?: string): void {
 }
 
 /**
+ * Track page view for router navigation
+ */
+export function trackPageView(pathname: string): void {
+  if (typeof window !== 'undefined' && window.gtag) {
+    // Send page_view event to GA4
+    window.gtag('config', 'G-XXXX', { page_path: pathname });
+    console.log('[page_view]', pathname);
+  } else {
+    // Fallback when gtag is not available
+    console.log('[page_view]', pathname);
+  }
+}
+
+/**
  * Track city page view
  */
 export function trackCityPageView(city: string): void {

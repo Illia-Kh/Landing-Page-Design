@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card } from "../components/ui/card";
@@ -6,9 +8,10 @@ import { ContactForm } from "../components/ContactForm";
 import { useMobileDevice } from "../components/ui/use-mobile-device";
 import { JsonLd, schemas } from "../components/JsonLd";
 import { trackCallClick } from "../lib/analytics";
+import { Language } from "../types";
 
 interface ContactPageProps {
-  language: string;
+  language?: Language;
 }
 
 const content = {
@@ -146,8 +149,10 @@ const content = {
   }
 };
 
-export function ContactPage({ language }: ContactPageProps) {
-  const text = content[language as keyof typeof content] || content.ru;
+function ContactPageComponent({ language }: ContactPageProps) {
+  const { lang = "cs" } = useParams();
+  const currentLanguage = language || (lang as Language);
+  const text = content[currentLanguage as keyof typeof content] || content.ru;
   const isMobileDevice = useMobileDevice();
 
   const handlePhoneClick = (phoneNumber: string) => {
@@ -155,12 +160,19 @@ export function ContactPage({ language }: ContactPageProps) {
   };
 
   const breadcrumbItems = [
-    { name: "Home", url: "https://ikhsystems.com/" },
-    { name: text.title, url: "https://ikhsystems.com/contact" }
+    { name: "Home", url: `https://ikhsystems.com/${lang}` },
+    { name: text.title, url: `https://ikhsystems.com/${lang}/contacts` }
   ];
 
   return (
     <div className="py-20">
+      <Helmet>
+        <title>Kontakt — IKH Systems</title>
+        <meta name="description" content="Kontaktujte tým IKH-TechSystems pro diskusi o vašem projektu. IT konzultace a vývoj řešení." />
+        <link rel="canonical" href={`https://ikhsystems.com/${lang}/contacts`} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      
       <JsonLd 
         type="BreadcrumbList" 
         data={schemas.breadcrumbList(breadcrumbItems)} 
@@ -191,7 +203,7 @@ export function ContactPage({ language }: ContactPageProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-4xl mx-auto mb-20"
           >
-            <TelegramContact language={language} />
+            <TelegramContact language={currentLanguage} />
           </motion.div>
         )}
 
@@ -272,7 +284,7 @@ export function ContactPage({ language }: ContactPageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <TelegramContact language={language} />
+              <TelegramContact language={currentLanguage} />
             </motion.div>
           )}
 
@@ -282,10 +294,16 @@ export function ContactPage({ language }: ContactPageProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <ContactForm language={language} />
+            <ContactForm language={currentLanguage} />
           </motion.div>
         </div>
       </div>
     </div>
   );
 }
+
+// Default export for lazy loading
+export default ContactPageComponent;
+
+// Keep named export for backward compatibility
+export { ContactPageComponent as ContactPage };
