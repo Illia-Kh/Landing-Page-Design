@@ -1,163 +1,222 @@
 'use client'
 
-import { useState } from 'react'
-import { Send, User, Mail, MessageSquare } from 'lucide-react'
-import { MotionSection } from '@/components/client/MotionSection'
-import { Language } from '@/types'
+import { useState, useEffect } from 'react'
+import { ContactFormData, ContactFormResponse } from '@/types'
+import { trackFormSubmission } from '@/components/PageViewTracker'
 import { getTranslation } from '@/lib/i18n'
+import { Language } from '@/types'
+import { Send, User, Mail, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react'
+import { MotionSection } from '@/components/client/MotionSection'
 
 interface ContactFormProps {
   lang: Language
 }
 
 export function ContactForm({ lang }: ContactFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
-    message: ''
+    message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [response, setResponse] = useState<ContactFormResponse | null>(null)
+  const [formStartTime, setFormStartTime] = useState<number>(0)
   
   const t = getTranslation(lang)
 
+  // Track when form is first interacted with for anti-spam
+  useEffect(() => {
+    setFormStartTime(Date.now())
+  }, [])
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    setResponse(null) // Clear previous response when user types
+  }
+
+  const validateForm = (): string[] => {
+    const errors: string[] = []
+    
+    if (!formData.name.trim() || formData.name.length < 2) {
+      errors.push('Name must be at least 2 characters long')
+    }
+    
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.push('Please enter a valid email address')
+    }
+    
+    if (!formData.message.trim() || formData.message.length < 10) {
+      errors.push('Message must be at least 10 characters long')
+    }
+    
+    return errors
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    const errors = validateForm()
+    if (errors.length > 0) {
+      setResponse({
+        success: false,
+        error: 'Validation failed',
+        message: errors.join('. ')
+      })
+      trackFormSubmission('contact', false)
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Simulate form submission delay
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    try {
+      const submissionData = {
+        ...formData,
+        timestamp: formStartTime,
+      }
 
-    // In a real application, you would send this data to:
-    // - Email service (EmailJS, SendGrid, etc.)
-    // - External form handler (Formspree, Netlify Forms, etc.)
-    // - Your own backend API
-    
-    console.log('Contact form submission:', {
-      ...formData,
-      timestamp: new Date().toISOString()
-    })
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      })
 
-    setSubmitted(true)
-    setIsSubmitting(false)
-  }
+      const result: ContactFormResponse = await res.json()
+      setResponse(result)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
-  }
-
-  if (submitted) {
-    return (
-      <MotionSection className="text-center p-12 bg-green-50 dark:bg-green-900/20 rounded-2xl border border-green-200 dark:border-green-800">
-        <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-          {t.common.success}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300">
-          Thank you for your message. We&rsquo;ll get back to you soon!
-        </p>
-        <button
-          onClick={() => {
-            setSubmitted(false)
-            setFormData({ name: '', email: '', message: '' })
-          }}
-          className="mt-6 px-6 py-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-        >
-          Send another message
-        </button>
-      </MotionSection>
-    )
+      if (result.success) {
+        setFormData({ name: '', email: '', message: '' })
+        trackFormSubmission('contact', true)
+      } else {
+        trackFormSubmission('contact', false)
+      }
+    } catch (error) {
+      setResponse({
+        success: false,
+        error: 'Network error',
+        message: 'Failed to send message. Please try again.',
+      })
+      trackFormSubmission('contact', false)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <MotionSection className="w-full">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name Field */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            {t.contact.form.name.label}
-          </label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+    <MotionSection className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+      {response?.success ? (
+        <div className="text-center py-8">
+          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            Message Sent!
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            {response.message}
+          </p>
+          <button
+            onClick={() => {
+              setResponse(null)
+              setFormStartTime(Date.now())
+            }}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Send Another Message
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Honeypot field - hidden from users */}
+          <input
+            type="text"
+            name="website"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+          
+          <div>
+            <label htmlFor="name" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <User className="w-4 h-4 mr-2" />
+              {t.contact.form.name.label}
+            </label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+              onChange={handleInputChange}
               placeholder={t.contact.form.name.placeholder}
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
             />
           </div>
-        </div>
 
-        {/* Email Field */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            {t.contact.form.email.label}
-          </label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <div>
+            <label htmlFor="email" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <Mail className="w-4 h-4 mr-2" />
+              {t.contact.form.email.label}
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+              onChange={handleInputChange}
               placeholder={t.contact.form.email.placeholder}
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
             />
           </div>
-        </div>
 
-        {/* Message Field */}
-        <div>
-          <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            {t.contact.form.message.label}
-          </label>
-          <div className="relative">
-            <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-gray-400" />
+          <div>
+            <label htmlFor="message" className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              {t.contact.form.message.label}
+            </label>
             <textarea
               id="message"
               name="message"
-              rows={6}
+              rows={5}
               value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none"
+              onChange={handleInputChange}
               placeholder={t.contact.form.message.placeholder}
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
             />
           </div>
-        </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-        >
-          {isSubmitting ? (
-            <>
-              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              {t.common.loading}
-            </>
-          ) : (
-            <>
-              <Send className="w-5 h-5" />
-              {t.contact.form.submit}
-            </>
+          {response && !response.success && (
+            <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400">
+              <div className="flex items-center">
+                <AlertCircle className="w-5 h-5 mr-2" />
+                {response.message}
+              </div>
+            </div>
           )}
-        </button>
-      </form>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isSubmitting ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="w-5 h-5 mr-2" />
+                {t.contact.form.submit}
+              </>
+            )}
+          </button>
+        </form>
+      )}
     </MotionSection>
   )
 }

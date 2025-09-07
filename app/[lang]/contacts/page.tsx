@@ -6,6 +6,7 @@ import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
 import { ContactForm } from '@/components/client/ContactForm'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import Link from 'next/link'
+import { env } from '@/lib/env'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -21,19 +22,42 @@ export async function generateMetadata({
   }
 
   const t = getTranslation(lang as Language)
+  const baseUrl = env.NEXT_PUBLIC_SITE_URL || 'https://ikhsystems.com'
+  const canonicalUrl = getLocalizedUrl('/contacts', lang as Language)
   
   return {
     title: t.seo.contact.title,
     description: t.seo.contact.description,
     keywords: t.seo.contact.keywords,
     alternates: {
-      canonical: getLocalizedUrl('/contacts', lang as Language),
+      canonical: canonicalUrl,
+      languages: {
+        'en-US': `${baseUrl}/en/contacts`,
+        'cs-CZ': `${baseUrl}/cs/contacts`,
+        'de-DE': `${baseUrl}/de/contacts`,
+      },
     },
     openGraph: {
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
+      url: canonicalUrl,
+      siteName: 'IKH-TechSystems',
       title: t.seo.contact.title,
       description: t.seo.contact.description,
-      url: getLocalizedUrl('/contacts', lang as Language),
-      type: 'website',
+      images: [
+        {
+          url: `${baseUrl}/og-contact.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t.seo.contact.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.seo.contact.title,
+      description: t.seo.contact.description,
+      images: [`${baseUrl}/og-contact.jpg`],
     },
   }
 }
