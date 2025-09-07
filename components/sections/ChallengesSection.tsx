@@ -1,7 +1,10 @@
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
-import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import { MotionSection, MotionStagger, MotionHover } from '@/components/client/MotionSection'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { Monitor, Smartphone, Settings } from 'lucide-react'
+import Link from 'next/link'
 
 interface ChallengesSectionProps {
   lang: Language
@@ -13,66 +16,76 @@ export function ChallengesSection({ lang }: ChallengesSectionProps) {
   const t = getTranslation(lang)
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-6">
+    <section className="py-20 bg-muted/30">
+      {/* Container with design-spec standards: mx-auto px-4 */}
+      <div className="container mx-auto px-4">
+        {/* Section header with design-spec typography */}
         <MotionSection className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          {/* H2 typography as per design-spec: text-3xl font-bold */}
+          <h2 className="text-3xl font-bold text-foreground mb-6">
             {t.challenges.title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          {/* Large body text as per design-spec: text-lg leading-relaxed */}
+          <p className="text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto">
             {t.challenges.subtitle}
           </p>
         </MotionSection>
 
-        <MotionStagger className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
+        {/* Grid layout following design-spec: responsive 1→2→3 */}
+        <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.2}>
           {t.challenges.items.map((challenge, index) => {
             const IconComponent = challengeIcons[index] || Monitor
             
             return (
-              <div key={index} className="relative group">
-                <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
+              <MotionHover key={index} scale={1.02} y={-4}>
+                <Card className="h-full group relative overflow-hidden">
+                  {/* Background gradient effect */}
+                  <div className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-250"></div>
                   
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    {challenge.title}
-                  </h3>
+                  <CardHeader className="relative z-10">
+                    {/* Icon with brand colors */}
+                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-xl mb-4 group-hover:shadow-brand transition-all duration-250">
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    {/* Card title with design-spec typography */}
+                    <CardTitle className="text-xl font-semibold mb-3">
+                      {challenge.title}
+                    </CardTitle>
+                  </CardHeader>
                   
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {challenge.description}
-                  </p>
-                </div>
-
-                {/* Hover effect background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-              </div>
+                  <CardContent className="relative z-10">
+                    <CardDescription className="text-sm leading-relaxed">
+                      {challenge.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </MotionHover>
             )
           })}
         </MotionStagger>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA with design-spec card pattern */}
         <MotionSection className="text-center mt-16" delay={0.8}>
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              {t.common.actions.getStarted}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              {t.hero.description}
-            </p>
-            <Link 
-              href={`/${lang}/contacts`}
-              className="inline-flex items-center px-6 py-3 bg-gradient-primary text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-            >
-              {t.common.actions.contactUs}
-            </Link>
-          </div>
+          <Card className="max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">
+                {t.common.actions.getStarted}
+              </CardTitle>
+              <CardDescription className="text-base">
+                {t.hero.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Link href={`/${lang}/contacts`}>
+                <Button variant="brandGradient" size="lg">
+                  {t.common.actions.contactUs}
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
         </MotionSection>
       </div>
     </section>
   )
 }
-
-import Link from 'next/link'
