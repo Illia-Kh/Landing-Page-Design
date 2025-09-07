@@ -169,20 +169,14 @@ export function MotionStagger({
  * Animated counter component
  */
 interface MotionCounterProps {
-  from?: number
   to: number
-  duration?: number
-  delay?: number
   className?: string
   suffix?: string
   prefix?: string
 }
 
 export function MotionCounter({
-  from = 0,
   to,
-  duration = 2,
-  delay = 0,
   className = '',
   suffix = '',
   prefix = '',
@@ -192,7 +186,7 @@ export function MotionCounter({
       className={className}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
       {prefix}{to}{suffix}

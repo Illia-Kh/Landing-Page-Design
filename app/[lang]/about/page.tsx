@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
-import { Users, Target, Lightbulb, Award } from 'lucide-react'
+import { Target, Lightbulb, Award } from 'lucide-react'
 import Link from 'next/link'
 import { env } from '@/lib/env'
 

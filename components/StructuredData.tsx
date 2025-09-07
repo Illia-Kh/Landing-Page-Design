@@ -4,14 +4,13 @@ import { Language } from '@/types'
 interface StructuredDataProps {
   type: 'Organization' | 'WebSite' | 'Service'
   lang: Language
-  pageType?: 'home' | 'about' | 'services' | 'contact'
   serviceData?: {
     name: string
     description: string
   }
 }
 
-export function StructuredData({ type, lang, pageType = 'home', serviceData }: StructuredDataProps) {
+export function StructuredData({ type, lang, serviceData }: StructuredDataProps) {
   const getSchema = () => {
     const baseUrl = siteConfig.url
     const langCode = lang === 'en' ? 'en-US' : lang === 'cs' ? 'cs-CZ' : 'de-DE'
