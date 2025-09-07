@@ -6,7 +6,7 @@ import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
 import { ContactForm } from '@/components/client/ContactForm'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import Link from 'next/link'
-import { env } from '@/lib/env'
+import { env } from '@/lib/utils/env'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours

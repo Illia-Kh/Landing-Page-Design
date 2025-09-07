@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language } from '@/types'
 import { Analytics } from '@/components/Analytics'
-import { PageViewTracker } from '@/components/PageViewTracker'
+import { PageViewTracker } from '@/components/client/PageViewTracker'
 import { StructuredData } from '@/components/StructuredData'
-import { env } from '@/lib/env'
+import { env } from '@/lib/utils/env'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours

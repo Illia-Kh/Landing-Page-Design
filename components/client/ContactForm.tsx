@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { ContactFormData, ContactFormResponse } from '@/types'
-import { trackFormSubmission } from '@/components/PageViewTracker'
+import { trackFormSubmission } from '@/lib/analytics'
 import { getTranslation } from '@/lib/i18n'
 import { Language } from '@/types'
 import { Send, User, Mail, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react'
 import { MotionSection } from '@/components/client/MotionSection'
+import { Input, TextArea, Button } from '@/components/ui'
 
 interface ContactFormProps {
   lang: Language
@@ -117,15 +118,15 @@ export function ContactForm({ lang }: ContactFormProps) {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             {response.message}
           </p>
-          <button
+          <Button
             onClick={() => {
               setResponse(null)
               setFormStartTime(Date.now())
             }}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            variant="outline"
           >
             Send Another Message
-          </button>
+          </Button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -143,14 +144,14 @@ export function ContactForm({ lang }: ContactFormProps) {
               <User className="w-4 h-4 mr-2" />
               {t.contact.form.name.label}
             </label>
-            <input
+            <Input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
               placeholder={t.contact.form.name.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              inputSize="lg"
               required
             />
           </div>
@@ -160,14 +161,14 @@ export function ContactForm({ lang }: ContactFormProps) {
               <Mail className="w-4 h-4 mr-2" />
               {t.contact.form.email.label}
             </label>
-            <input
+            <Input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
               placeholder={t.contact.form.email.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              inputSize="lg"
               required
             />
           </div>
@@ -177,14 +178,14 @@ export function ContactForm({ lang }: ContactFormProps) {
               <MessageSquare className="w-4 h-4 mr-2" />
               {t.contact.form.message.label}
             </label>
-            <textarea
+            <TextArea
               id="message"
               name="message"
               rows={5}
               value={formData.message}
               onChange={handleInputChange}
               placeholder={t.contact.form.message.placeholder}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              textareaSize="lg"
               required
             />
           </div>
@@ -198,10 +199,11 @@ export function ContactForm({ lang }: ContactFormProps) {
             </div>
           )}
 
-          <button
+          <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            size="lg"
+            className="w-full"
           >
             {isSubmitting ? (
               <>
@@ -214,7 +216,7 @@ export function ContactForm({ lang }: ContactFormProps) {
                 {t.contact.form.submit}
               </>
             )}
-          </button>
+          </Button>
         </form>
       )}
     </MotionSection>

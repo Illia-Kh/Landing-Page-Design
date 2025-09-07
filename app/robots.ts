@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { env } from '@/lib/env'
+import { env } from '@/lib/utils/env'
 
 export const dynamic = 'force-static'
 

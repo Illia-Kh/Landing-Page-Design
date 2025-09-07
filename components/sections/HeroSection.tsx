@@ -2,7 +2,9 @@ import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
 import { LangSwitcher } from '@/components/client/LangSwitcher'
+import { buttonVariants } from '@/components/ui'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 interface HeroSectionProps {
   lang: Language
@@ -75,13 +77,13 @@ export function HeroSection({ lang }: HeroSectionProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href={`/${lang}/contacts`}
-              className="px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className={cn(buttonVariants({ size: "xl" }))}
             >
               {t.hero.cta.primary}
             </Link>
             <Link
               href={`/${lang}/about`}
-              className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold text-lg hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+              className={cn(buttonVariants({ variant: "outline", size: "xl" }))}
             >
               {t.hero.cta.secondary}
             </Link>
