@@ -18,7 +18,8 @@ export async function generateStaticParams() {
   return [
     { lang: 'cs' },
     { lang: 'en' },
-    { lang: 'de' }
+    { lang: 'de' },
+    { lang: 'ua' }
   ]
 }
 
@@ -48,11 +49,12 @@ export async function generateMetadata({
         'en-US': `${baseUrl}/en`,
         'cs-CZ': `${baseUrl}/cs`,
         'de-DE': `${baseUrl}/de`,
+        'uk-UA': `${baseUrl}/ua`,
       },
     },
     openGraph: {
       type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
       url: canonicalUrl,
       siteName: 'IKH Systems',
       title: t.seo.home.title,

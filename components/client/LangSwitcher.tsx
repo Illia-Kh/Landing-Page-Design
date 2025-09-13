@@ -16,6 +16,7 @@ const languageNames: Record<Language, { name: string; nativeName: string }> = {
   en: { name: 'English', nativeName: 'English' },
   cs: { name: 'Czech', nativeName: 'Čeština' },
   de: { name: 'German', nativeName: 'Deutsch' },
+  ua: { name: 'Ukrainian', nativeName: 'Українська' },
 }
 
 export function LangSwitcher({ currentLang, className = '' }: LangSwitcherProps) {
@@ -97,6 +98,7 @@ export function LangSwitcher({ currentLang, className = '' }: LangSwitcherProps)
                       {lang === 'en' && '🇺🇸'}
                       {lang === 'cs' && '🇨🇿'}
                       {lang === 'de' && '🇩🇪'}
+                      {lang === 'ua' && '🇺🇦'}
                     </span>
                     <div className="flex flex-col">
                       <span className="font-medium">{language.nativeName}</span>
