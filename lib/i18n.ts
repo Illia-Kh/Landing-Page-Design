@@ -41,6 +41,18 @@ export interface TranslationDictionary {
       primary: string
       secondary: string
     }
+    carousel: {
+      slides: Array<{
+        image: string
+        alt: string
+        title: string
+        subtitle?: string
+        cta?: {
+          label: string
+          href: string
+        }
+      }>
+    }
   }
   about: {
     title: string
@@ -162,12 +174,46 @@ export const translations: Record<Language, TranslationDictionary> = {
       success: "Success"
     },
     hero: {
-      title: "IKH-TechSystems",
+      title: "IKH Systems",
       subtitle: "Innovative IT Solutions for Business",
       description: "We create modern technological solutions that help companies reach new heights in the digital age.",
       cta: {
         primary: "Get Started",
         secondary: "Learn More"
+      },
+      carousel: {
+        slides: [
+          {
+            image: "/media/banner/hero-analytics.webp",
+            alt: "Analytics dashboard showing business insights and data visualization",
+            title: "Analytics & Insights",
+            subtitle: "Transform your data into actionable business intelligence",
+            cta: {
+              label: "Explore Analytics",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/ciber securaty.webp",
+            alt: "Cybersecurity shield protecting digital infrastructure",
+            title: "Cybersecurity",
+            subtitle: "Protect your business with enterprise-grade security solutions",
+            cta: {
+              label: "Secure Your Business",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/server.webp",
+            alt: "Modern server infrastructure and cloud computing setup",
+            title: "Infrastructure",
+            subtitle: "Scalable and reliable server solutions for your business",
+            cta: {
+              label: "View Solutions",
+              href: "/services"
+            }
+          }
+        ]
       }
     },
     about: {
@@ -262,28 +308,28 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     seo: {
       home: {
-        title: "IKH-TechSystems - Innovative IT Solutions for Business",
+        title: "IKH Systems - Innovative IT Solutions for Business",
         description: "We create modern technological solutions that help companies reach new heights in the digital age.",
         keywords: "IT solutions, web development, mobile applications, software solutions"
       },
       about: {
-        title: "About Us - IKH-TechSystems | Expert Development Team",
+        title: "About Us - IKH Systems | Expert Development Team",
         description: "Meet our expert development team. We specialize in creating innovative digital solutions for modern businesses.",
         keywords: "about us, development team, IT experts, company profile"
       },
       services: {
-        title: "Services - IKH-TechSystems | Web & Mobile Development",
+        title: "Services - IKH Systems | Web & Mobile Development",
         description: "Comprehensive web development, mobile applications, and system integration services for your business.",
         keywords: "web development, mobile development, system integration, IT services"
       },
       contact: {
-        title: "Contact Us - IKH-TechSystems | Get In Touch",
+        title: "Contact Us - IKH Systems | Get In Touch",
         description: "Ready to start your project? Contact our expert team for consultation and project estimates.",
         keywords: "contact, consultation, project estimate, get in touch"
       },
       logoPortfolio: {
-        title: "Logo Portfolio - IKH-TechSystems | Work Examples",
-        description: "Logo and branding portfolio from IKH-TechSystems. Examples of work and creative solutions.",
+        title: "Logo Portfolio - IKH Systems | Work Examples",
+        description: "Logo and branding portfolio from IKH Systems. Examples of work and creative solutions.",
         keywords: "portfolio, logos, branding, work examples"
       }
     }
@@ -311,12 +357,46 @@ export const translations: Record<Language, TranslationDictionary> = {
       success: "Úspěch"
     },
     hero: {
-      title: "IKH-TechSystems",
+      title: "IKH Systems",
       subtitle: "Inovativní IT řešení pro byznys",
       description: "Vytváříme moderní technologická řešení, která pomáhají společnostem dosáhnout nových výšin v digitální éře.",
       cta: {
         primary: "Začít",
         secondary: "Více informací"
+      },
+      carousel: {
+        slides: [
+          {
+            image: "/media/banner/hero-analytics.webp",
+            alt: "Analytický dashboard zobrazující obchodní přehledy a vizualizaci dat",
+            title: "Analytika & Přehledy",
+            subtitle: "Transformujte svá data na akční obchodní inteligenci",
+            cta: {
+              label: "Prozkoumat analytiku",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/ciber securaty.webp",
+            alt: "Kybernetický štít chránící digitální infrastrukturu",
+            title: "Kybernetická bezpečnost",
+            subtitle: "Chraňte svůj byznys řešeními na úrovni podniku",
+            cta: {
+              label: "Zabezpečit byznys",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/server.webp",
+            alt: "Moderní serverová infrastruktura a cloudové řešení",
+            title: "Infrastruktura",
+            subtitle: "Škálovatelná a spolehlivá serverová řešení pro váš byznys",
+            cta: {
+              label: "Zobrazit řešení",
+              href: "/services"
+            }
+          }
+        ]
       }
     },
     about: {
@@ -411,28 +491,28 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     seo: {
       home: {
-        title: "IKH-TechSystems - Inovativní IT řešení pro byznys",
+        title: "IKH Systems - Inovativní IT řešení pro byznys",
         description: "Vytváříme moderní technologická řešení, která pomáhají společnostem dosáhnout nových výšin v digitální éře.",
         keywords: "IT řešení, webový vývoj, mobilní aplikace, softwarová řešení"
       },
       about: {
-        title: "O nás - IKH-TechSystems | Expertní vývojový tým",
+        title: "O nás - IKH Systems | Expertní vývojový tým",
         description: "Seznamte se s naším expertním vývojovým týmem. Specializujeme se na vytváření inovativních digitálních řešení.",
         keywords: "o nás, vývojový tým, IT experti, profil společnosti"
       },
       services: {
-        title: "Služby - IKH-TechSystems | Webový a mobilní vývoj",
+        title: "Služby - IKH Systems | Webový a mobilní vývoj",
         description: "Komplexní služby webového vývoje, mobilních aplikací a integrace systémů pro váš byznys.",
         keywords: "webový vývoj, mobilní vývoj, integrace systémů, IT služby"
       },
       contact: {
-        title: "Kontakt - IKH-TechSystems | Spojte se s námi",
+        title: "Kontakt - IKH Systems | Spojte se s námi",
         description: "Připraveni začít váš projekt? Kontaktujte náš expertní tým pro konzultaci a odhad projektu.",
         keywords: "kontakt, konzultace, odhad projektu, spojte se s námi"
       },
       logoPortfolio: {
-        title: "Logo Portfolio - IKH-TechSystems | Příklady práce",
-        description: "Portfolio loga a brandingu od IKH-TechSystems. Příklady práce a kreativních řešení.",
+        title: "Logo Portfolio - IKH Systems | Příklady práce",
+        description: "Portfolio loga a brandingu od IKH Systems. Příklady práce a kreativních řešení.",
         keywords: "portfolio, loga, branding, příklady práce"
       }
     }
@@ -460,12 +540,46 @@ export const translations: Record<Language, TranslationDictionary> = {
       success: "Erfolgreich abgeschlossen"
     },
     hero: {
-      title: "IKH-TechSystems",
+      title: "IKH Systems",
       subtitle: "Innovative IT-Lösungen für Unternehmen",
       description: "Wir schaffen moderne technologische Lösungen, die Unternehmen dabei helfen, im digitalen Zeitalter neue Höhen zu erreichen.",
       cta: {
         primary: "Loslegen",
         secondary: "Mehr erfahren"
+      },
+      carousel: {
+        slides: [
+          {
+            image: "/media/banner/hero-analytics.webp",
+            alt: "Analytics-Dashboard mit Geschäftseinblicken und Datenvisualisierung",
+            title: "Analytics & Einblicke",
+            subtitle: "Verwandeln Sie Ihre Daten in umsetzbare Geschäftsintelligenz",
+            cta: {
+              label: "Analytics erkunden",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/ciber securaty.webp",
+            alt: "Cybersicherheitsschild zum Schutz der digitalen Infrastruktur",
+            title: "Cybersicherheit",
+            subtitle: "Schützen Sie Ihr Unternehmen mit Sicherheitslösungen auf Unternehmensebene",
+            cta: {
+              label: "Unternehmen sichern",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/server.webp",
+            alt: "Moderne Serverinfrastruktur und Cloud-Computing-Setup",
+            title: "Infrastruktur",
+            subtitle: "Skalierbare und zuverlässige Serverlösungen für Ihr Unternehmen",
+            cta: {
+              label: "Lösungen anzeigen",
+              href: "/services"
+            }
+          }
+        ]
       }
     },
     about: {
@@ -560,28 +674,28 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     seo: {
       home: {
-        title: "IKH-TechSystems - Innovative IT-Lösungen für Unternehmen",
+        title: "IKH Systems - Innovative IT-Lösungen für Unternehmen",
         description: "Wir schaffen moderne technologische Lösungen, die Unternehmen dabei helfen, im digitalen Zeitalter neue Höhen zu erreichen.",
         keywords: "IT-Lösungen, Webentwicklung, mobile Anwendungen, Softwarelösungen"
       },
       about: {
-        title: "Über uns - IKH-TechSystems | Expertelles Entwicklungsteam",
+        title: "Über uns - IKH Systems | Expertelles Entwicklungsteam",
         description: "Lernen Sie unser expertelles Entwicklungsteam kennen. Wir spezialisieren uns auf innovative digitale Lösungen.",
         keywords: "über uns, Entwicklungsteam, IT-Experten, Unternehmensprofil"
       },
       services: {
-        title: "Dienstleistungen - IKH-TechSystems | Web- & Mobile-Entwicklung",
+        title: "Dienstleistungen - IKH Systems | Web- & Mobile-Entwicklung",
         description: "Umfassende Webentwicklung, mobile Anwendungen und Systemintegrationsdienste für Ihr Unternehmen.",
         keywords: "Webentwicklung, mobile Entwicklung, Systemintegration, IT-Dienstleistungen"
       },
       contact: {
-        title: "Kontakt - IKH-TechSystems | Nehmen Sie Kontakt auf",
+        title: "Kontakt - IKH Systems | Nehmen Sie Kontakt auf",
         description: "Bereit, Ihr Projekt zu starten? Kontaktieren Sie unser Expertenteam für Beratung und Projektschätzungen.",
         keywords: "Kontakt, Beratung, Projektschätzung, Kontakt aufnehmen"
       },
       logoPortfolio: {
-        title: "Logo-Portfolio - IKH-TechSystems | Arbeitsbeispiele",
-        description: "Logo- und Branding-Portfolio von IKH-TechSystems. Beispiele für Arbeit und kreative Lösungen.",
+        title: "Logo-Portfolio - IKH Systems | Arbeitsbeispiele",
+        description: "Logo- und Branding-Portfolio von IKH Systems. Beispiele für Arbeit und kreative Lösungen.",
         keywords: "Portfolio, Logos, Branding, Arbeitsbeispiele"
       }
     }

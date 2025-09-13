@@ -11,6 +11,7 @@ interface MotionSectionProps extends Omit<MotionProps, 'children'> {
   direction?: 'up' | 'down' | 'left' | 'right' | 'fade'
   distance?: number
   once?: boolean
+  immediate?: boolean // New prop for immediate animation
 }
 
 /**
@@ -25,6 +26,7 @@ export function MotionSection({
   direction = 'up',
   distance = 50,
   once = true,
+  immediate = false,
   ...motionProps
 }: MotionSectionProps) {
   // Define animation variants based on direction
@@ -81,9 +83,10 @@ export function MotionSection({
     <motion.div
       className={className}
       initial={variants.initial}
-      whileInView={variants.animate}
+      animate={immediate ? variants.animate : undefined}
+      whileInView={immediate ? undefined : variants.animate}
       transition={variants.transition}
-      viewport={{ once, margin: '-10%' }}
+      viewport={immediate ? undefined : { once, margin: '-10%' }}
       {...motionProps}
     >
       {children}
@@ -99,6 +102,7 @@ interface MotionStaggerProps {
   className?: string
   staggerDelay?: number
   direction?: 'up' | 'down' | 'left' | 'right' | 'fade'
+  immediate?: boolean // New prop for immediate animation
 }
 
 export function MotionStagger({
@@ -106,6 +110,7 @@ export function MotionStagger({
   className = '',
   staggerDelay = 0.1,
   direction = 'up',
+  immediate = false,
 }: MotionStaggerProps) {
   const container = {
     hidden: { opacity: 0 },
@@ -150,8 +155,9 @@ export function MotionStagger({
       className={className}
       variants={container}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: '-10%' }}
+      animate={immediate ? "show" : undefined}
+      whileInView={immediate ? undefined : "show"}
+      viewport={immediate ? undefined : { once: true, margin: '-10%' }}
     >
       {Array.isArray(children)
         ? children.map((child, index) => (

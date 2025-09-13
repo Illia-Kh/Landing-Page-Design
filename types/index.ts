@@ -1,6 +1,18 @@
 // Language types
 export type Language = 'cs' | 'en' | 'de'
 
+// Hero carousel types
+export interface HeroSlide {
+  image: string
+  alt: string
+  title: string
+  subtitle?: string
+  cta?: {
+    label: string
+    href: string
+  }
+}
+
 // Page types - representing the old SPA routes
 export type Page = 'home' | 'about' | 'services' | 'contact' | 'logo-showcase'
 

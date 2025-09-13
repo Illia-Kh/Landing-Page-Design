@@ -3,13 +3,13 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | IKH-TechSystems',
-    default: 'IKH-TechSystems - Innovative IT Solutions',
+    template: '%s | IKH Systems',
+    default: 'IKH Systems - Innovative IT Solutions',
   },
   description: 'Modern technological solutions that help companies reach new heights in the digital age.',
   keywords: ['IT solutions', 'web development', 'mobile applications', 'software development'],
   authors: [{ name: 'Illia Khromov' }],
-  creator: 'IKH-TechSystems',
+  creator: 'IKH Systems',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ikhsystems.com'),
   alternates: {
     canonical: '/',
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    siteName: 'IKH-TechSystems',
-    title: 'IKH-TechSystems - Innovative IT Solutions',
+    siteName: 'IKH Systems',
+    title: 'IKH Systems - Innovative IT Solutions',
     description: 'Modern technological solutions that help companies reach new heights in the digital age.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IKH-TechSystems - Innovative IT Solutions',
+    title: 'IKH Systems - Innovative IT Solutions',
     description: 'Modern technological solutions that help companies reach new heights in the digital age.',
   },
   robots: {

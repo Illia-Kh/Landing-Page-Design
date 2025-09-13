@@ -1,15 +1,46 @@
-# 🚀 IKH-TechSystems — Production-Ready Landing Page
+# 🚀 IKH-TechSystems — Production-Ready Landing Page v0.3.1
 
-A modern, high-performance landing page built with **Next.js 15**, **App Router**, **TypeScript**, and **Tailwind CSS**. This project features comprehensive SEO optimization, internationalization (i18n), performance monitoring, and production-ready security measures.
+A modern, high-performance landing page built with **Next.js 15**, **App Router**, **TypeScript**, and **Tailwind CSS**. This project features comprehensive SEO optimization, internationalization (i18n), performance monitoring, production-ready security measures, and advanced UI components with dark mode support.
+
+## 🆕 What's New in v0.3.1
+
+### 🎨 Enhanced UI/UX
+- **Dark Mode Support**: Complete dark/light theme toggle with system preference detection
+- **Hero Carousel**: Interactive image carousel with autoplay and navigation controls
+- **Motion Animations**: Smooth Framer Motion animations throughout the interface
+- **Responsive Design**: Improved mobile and tablet experience
+
+### 🏢 Location-Based Pages
+- **City-Specific Landing Pages**: Dedicated pages for major Czech cities
+  - Praha (Prague)
+  - Brno
+  - Ostrava
+  - Plzeň
+  - Liberec
+- **SEO-Optimized Content**: Location-specific titles, descriptions, and metadata
+- **Local Business Focus**: Tailored content for each city's market
+
+### 🧩 Component Architecture
+- **Modular Layout Components**: Separated Header, Footer, and Navigation
+- **Client-Side Components**: Optimized for interactivity and performance
+- **Reusable Sections**: Hero, Services, Challenges, and Location pages
+- **Theme System**: Centralized theme management with CSS variables
+
+### 🎯 Performance Improvements
+- **Optimized Images**: WebP format with proper sizing and lazy loading
+- **Bundle Splitting**: Improved code splitting for faster loading
+- **Motion Optimization**: Reduced motion support for accessibility
+- **Carousel Performance**: Efficient autoplay with visibility detection
 
 ## ✨ Key Features
 
 ### 🏗️ Modern Architecture
 - **Next.js 15** with App Router
 - **TypeScript** for type safety
-- **Tailwind CSS** for styling
-- **Framer Motion** for animations
+- **Tailwind CSS** for styling with dark mode support
+- **Framer Motion** for smooth animations and transitions
 - **ISR (Incremental Static Regeneration)** with 24-hour revalidation
+- **Embla Carousel** for interactive image galleries
 
 ### 🌍 Internationalization (i18n)
 - **3 Languages**: Czech (cs), English (en), German (de)
@@ -46,6 +77,13 @@ A modern, high-performance landing page built with **Next.js 15**, **App Router*
 - **Real-time feedback** with proper error handling
 - **Analytics tracking** for form submissions
 
+### 🎨 UI Components & Theming
+- **Dark Mode Toggle**: System preference detection with smooth transitions
+- **Hero Carousel**: Auto-playing image carousel with navigation controls
+- **Motion Components**: Framer Motion animations with accessibility support
+- **Theme System**: CSS variables for consistent theming
+- **Responsive Layout**: Mobile-first design with breakpoint optimization
+
 ### 🔒 Security & Headers
 - **Security Headers**: X-Content-Type-Options, Referrer-Policy, X-Frame-Options
 - **HSTS** for HTTPS enforcement
@@ -63,6 +101,13 @@ A modern, high-performance landing page built with **Next.js 15**, **App Router*
 ### Prerequisites
 - Node.js ≥20.0.0
 - npm ≥9.0.0
+
+### New Dependencies in v0.3.1
+- **embla-carousel**: ^8.6.0 - Modern carousel library
+- **embla-carousel-autoplay**: ^8.6.0 - Autoplay functionality
+- **embla-carousel-react**: ^8.6.0 - React integration
+- **framer-motion**: ^12.23.12 - Animation library
+- **lucide-react**: ^0.542.0 - Icon library
 
 ### Installation
 
@@ -122,18 +167,37 @@ npm run lint
 │   │   ├── about/         # About page
 │   │   ├── contacts/      # Contact page
 │   │   ├── services/      # Services page
+│   │   ├── locations/     # Location-specific pages
+│   │   │   ├── praha/     # Prague landing page
+│   │   │   ├── brno/      # Brno landing page
+│   │   │   ├── ostrava/   # Ostrava landing page
+│   │   │   ├── plzen/     # Plzeň landing page
+│   │   │   └── liberec/   # Liberec landing page
 │   │   └── layout.tsx     # Language-specific layout
 │   ├── api/               # API routes
 │   │   └── contact/       # Contact form handler
-│   ├── globals.css        # Global styles
+│   ├── globals.css        # Global styles with dark mode
 │   ├── layout.tsx         # Root layout
 │   ├── robots.ts          # Robots.txt generator
 │   └── sitemap.ts         # Sitemap generator
 ├── components/            # React components
 │   ├── client/           # Client-side components
+│   │   ├── ContactForm.tsx    # Contact form with validation
+│   │   ├── HeroCarousel.tsx   # Interactive image carousel
+│   │   ├── LangSwitcher.tsx   # Language selection
+│   │   ├── MotionSection.tsx  # Animated sections
+│   │   └── ThemeToggle.tsx    # Dark/light mode toggle
+│   ├── layout/           # Layout components
+│   │   ├── Header.tsx     # Site header with navigation
+│   │   ├── Footer.tsx     # Site footer with links
+│   │   └── Nav.tsx        # Navigation menu
 │   ├── sections/         # Page sections
+│   │   ├── Hero.tsx       # Hero section with carousel
+│   │   ├── HeroSection.tsx # Legacy hero component
+│   │   ├── ServicesShowcase.tsx # Services display
+│   │   ├── ChallengesSection.tsx # Challenges section
+│   │   └── LocationPage.tsx # Location-specific content
 │   ├── Analytics.tsx     # Google Analytics & Meta Pixel
-│   ├── ContactForm.tsx   # Contact form with validation
 │   ├── PageViewTracker.tsx # Analytics page tracking
 │   └── StructuredData.tsx # Schema.org JSON-LD
 ├── lib/                  # Utility libraries
@@ -162,12 +226,44 @@ NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
 NEXT_PUBLIC_META_PIXEL_ID=XXXXXXXXXXXXXXXXX
 ```
 
+## 🧩 Component Library
+
+### Layout Components
+- **Header**: Sticky navigation with logo, menu, language switcher, and theme toggle
+- **Footer**: Comprehensive footer with contact info, links, and location-specific content
+- **Nav**: Responsive navigation menu with mobile support
+
+### Interactive Components
+- **HeroCarousel**: Auto-playing image carousel with:
+  - Touch/swipe support
+  - Keyboard navigation
+  - Accessibility features
+  - Reduced motion support
+  - Visibility-based autoplay control
+- **ThemeToggle**: Dark/light mode switcher with:
+  - System preference detection
+  - Smooth transitions
+  - Persistent storage
+  - Hydration-safe rendering
+
+### Section Components
+- **Hero**: Main landing section with carousel integration
+- **LocationPage**: Reusable template for city-specific pages
+- **ServicesShowcase**: Service display with animations
+- **ChallengesSection**: Problem/solution presentation
+
+### Utility Components
+- **MotionSection**: Wrapper for Framer Motion animations
+- **LangSwitcher**: Language selection with proper routing
+- **ContactForm**: Form with validation and analytics tracking
+
 ## 🔍 SEO Features
 
 ### Structured Data
 - **Organization Schema**: Company information
 - **WebSite Schema**: Site-wide metadata
 - **Service Schema**: Individual service descriptions
+- **LocalBusiness Schema**: Location-specific business data
 
 ### Metadata Management
 - **Dynamic metadata** generation per page/language
@@ -175,12 +271,14 @@ NEXT_PUBLIC_META_PIXEL_ID=XXXXXXXXXXXXXXXXX
 - **Hreflang attributes** for international SEO
 - **Open Graph** images and metadata
 - **Twitter Cards** optimization
+- **Location-specific SEO** for city pages
 
 ### Performance Optimization
 - **Image optimization** with next/image
 - **Bundle splitting** for optimal loading
 - **Static generation** with ISR
 - **Security headers** for improved rankings
+- **WebP/AVIF** image format support
 
 ## 📊 Analytics & Tracking
 
@@ -210,11 +308,17 @@ NEXT_PUBLIC_META_PIXEL_ID=XXXXXXXXXXXXXXXXX
 - ✅ Contact form submission
 - ✅ Basic accessibility checks
 - ✅ Performance basics validation
+- ✅ Dark mode toggle functionality
+- ✅ Hero carousel navigation and autoplay
+- ✅ Location pages load correctly
+- ✅ Theme persistence across sessions
 
 ### Performance Monitoring
 - **Lighthouse CI** integration ready
 - **Core Web Vitals** monitoring
 - **Performance budget** enforcement
+- **Motion performance** validation
+- **Carousel performance** testing
 
 ## 🚀 Deployment
 
@@ -279,6 +383,11 @@ npm run build
 - [ ] Contact form submits successfully
 - [ ] Error handling works (404, form errors)
 - [ ] Mobile responsiveness is optimal
+- [ ] Dark mode toggle works correctly
+- [ ] Theme preference persists across sessions
+- [ ] Hero carousel autoplay and navigation work
+- [ ] Location pages load with correct content
+- [ ] Motion animations respect reduced motion preference
 
 ### Analytics & Tracking
 - [ ] Google Analytics is tracking page views
@@ -291,6 +400,30 @@ npm run build
 - [ ] HTTPS is enforced
 - [ ] No sensitive data exposed in client
 - [ ] Form validation prevents XSS/injection
+
+## 🔄 Migration Guide
+
+### Upgrading to v0.3.1
+
+If you're upgrading from a previous version:
+
+1. **Install new dependencies**:
+   ```bash
+   npm install embla-carousel embla-carousel-autoplay embla-carousel-react framer-motion lucide-react
+   ```
+
+2. **Update your components**:
+   - Replace old hero components with new `Hero` component
+   - Add `ThemeToggle` to your header
+   - Update layout components to use new structure
+
+3. **Add location pages** (optional):
+   - Create location-specific pages in `app/[lang]/locations/`
+   - Use `LocationPage` component for consistent structure
+
+4. **Update styling**:
+   - Ensure dark mode CSS variables are properly configured
+   - Test theme switching functionality
 
 ## 🤝 Contributing
 
@@ -307,6 +440,28 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙋‍♂️ Support
 
 For support, email contact@ikhsystems.com or create an issue in the repository.
+
+---
+
+## 📋 Version History
+
+### v0.3.1 (Current)
+- ✨ Added dark mode support with system preference detection
+- 🎠 Implemented interactive hero carousel with autoplay
+- 🏢 Created location-specific landing pages for major Czech cities
+- 🎨 Enhanced UI with Framer Motion animations
+- 🧩 Refactored component architecture for better maintainability
+- ⚡ Improved performance with optimized images and bundle splitting
+- 🔧 Added comprehensive theme system with CSS variables
+
+### v1.0.0 (Previous)
+- 🚀 Initial release with Next.js 15 and App Router
+- 🌍 Multi-language support (Czech, English, German)
+- 🔍 Complete SEO optimization with structured data
+- 📊 Analytics integration (Google Analytics 4, Meta Pixel)
+- 📝 Contact form with server actions and validation
+- 🧪 E2E testing with Playwright
+- 🔒 Security headers and production-ready configuration
 
 ---
 

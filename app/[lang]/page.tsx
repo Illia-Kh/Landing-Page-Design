@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
-import { HeroSection } from '@/components/sections/HeroSection'
+import { Hero } from '@/components/sections/Hero'
 import { ServicesShowcase } from '@/components/sections/ServicesShowcase'
 import { ChallengesSection } from '@/components/sections/ChallengesSection'
 
@@ -55,7 +55,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
-      <HeroSection lang={language} />
+      <Hero lang={language} />
       <ServicesShowcase lang={language} />
       <ChallengesSection lang={language} />
     </>

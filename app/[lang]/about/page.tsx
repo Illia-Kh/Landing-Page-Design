@@ -93,30 +93,11 @@ export default async function AboutPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Navigation */}
-      <nav className="py-6 border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-bold text-gray-900 dark:text-white">
-            IKH-TechSystems
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              {t.common.navigation.home}
-            </Link>
-            <Link href={`/${lang}/services`} className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              {t.common.navigation.services}
-            </Link>
-            <Link href={`/${lang}/contacts`} className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              {t.common.navigation.contact}
-            </Link>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-6">
-          <MotionSection className="text-center max-w-4xl mx-auto">
+          <MotionSection className="text-center max-w-4xl mx-auto" immediate={true}>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               {t.about.title}
             </h1>

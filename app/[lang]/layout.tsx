@@ -6,6 +6,8 @@ import { Language } from '@/types'
 import { Analytics } from '@/components/Analytics'
 import { PageViewTracker } from '@/components/PageViewTracker'
 import { StructuredData } from '@/components/StructuredData'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 import { env } from '@/lib/env'
 
 // ISR configuration
@@ -52,7 +54,7 @@ export async function generateMetadata({
       type: 'website',
       locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
       url: canonicalUrl,
-      siteName: 'IKH-TechSystems',
+      siteName: 'IKH Systems',
       title: t.seo.home.title,
       description: t.seo.home.description,
       images: [
@@ -101,7 +103,7 @@ export default async function LangLayout({
   }
   
   return (
-    <div className="min-h-screen bg-background" lang={lang}>
+    <div className="min-h-screen bg-background flex flex-col" lang={lang}>
       {/* Structured Data */}
       <StructuredData type="Organization" lang={lang as Language} />
       <StructuredData type="WebSite" lang={lang as Language} />
@@ -110,7 +112,16 @@ export default async function LangLayout({
       <Analytics />
       <PageViewTracker />
       
-      {children}
+      {/* Header */}
+      <Header lang={lang as Language} />
+      
+      {/* Main Content */}
+      <main className="flex-1">
+        {children}
+      </main>
+      
+      {/* Footer */}
+      <Footer lang={lang as Language} />
     </div>
   )
 }
