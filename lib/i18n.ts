@@ -1,7 +1,7 @@
 import { Language } from '@/types'
 
 // Supported languages
-export const locales: Language[] = ['cs', 'en', 'de']
+export const locales: Language[] = ['cs', 'en', 'de', 'ua']
 export const defaultLocale: Language = 'en'
 
 // SEO-optimized domain URLs for each locale  
@@ -697,6 +697,189 @@ export const translations: Record<Language, TranslationDictionary> = {
         title: "Logo-Portfolio - IKH Systems | Arbeitsbeispiele",
         description: "Logo- und Branding-Portfolio von IKH Systems. Beispiele für Arbeit und kreative Lösungen.",
         keywords: "Portfolio, Logos, Branding, Arbeitsbeispiele"
+      }
+    }
+  },
+  ua: {
+    common: {
+      navigation: {
+        home: "Головна",
+        about: "Про нас",
+        services: "Послуги",
+        contact: "Контакти",
+        logoPortfolio: "Портфоліо логотипів"
+      },
+      actions: {
+        learnMore: "Дізнатися більше",
+        getStarted: "Почати",
+        contactUs: "Зв'язатися з нами",
+        readMore: "Читати далі",
+        close: "Закрити",
+        submit: "Надіслати",
+        cancel: "Скасувати"
+      },
+      loading: "Завантаження...",
+      error: "Сталася помилка",
+      success: "Успішно виконано"
+    },
+    hero: {
+      title: "IKH Systems",
+      subtitle: "Інноваційні IT рішення для бізнесу",
+      description: "Ми створюємо сучасні технологічні рішення, які допомагають компаніям досягати нових висот у цифрову епоху.",
+      cta: {
+        primary: "Почати",
+        secondary: "Дізнатися більше"
+      },
+      carousel: {
+        slides: [
+          {
+            image: "/media/banner/hero-analytics.webp",
+            alt: "Дашборд аналітики з бізнес-аналітикою та візуалізацією даних",
+            title: "Аналітика та інсайти",
+            subtitle: "Перетворіть свої дані на дієві бізнес-рішення",
+            cta: {
+              label: "Досліджувати аналітику",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/ciber securaty.webp",
+            alt: "Щит кібербезпеки для захисту цифрової інфраструктури",
+            title: "Кібербезпека",
+            subtitle: "Захистіть свій бізнес рішеннями корпоративного рівня",
+            cta: {
+              label: "Захистити бізнес",
+              href: "/services"
+            }
+          },
+          {
+            image: "/media/banner/server.webp",
+            alt: "Сучасна серверна інфраструктура та хмарні обчислення",
+            title: "Інфраструктура",
+            subtitle: "Масштабовані та надійні серверні рішення для вашого бізнесу",
+            cta: {
+              label: "Переглянути рішення",
+              href: "/services"
+            }
+          }
+        ]
+      }
+    },
+    about: {
+      title: "Про нас",
+      subtitle: "Будуємо майбутнє з технологіями",
+      description: "Ми команда пристрасних розробників та дизайнерів, які створюють передові цифрові рішення.",
+      team: {
+        title: "Наша команда",
+        members: [
+          {
+            name: "Ілля Хромов",
+            role: "Головний розробник",
+            experience: "5+ років"
+          }
+        ]
+      },
+      mission: {
+        title: "Наша місія",
+        description: "Надавати виняткові цифрові рішення через інноваційні технологічні підходи."
+      },
+      innovations: {
+        title: "Інновації",
+        description: "Ми залишаємося на передовій технологій, щоб пропонувати найсучасніші рішення."
+      },
+      achievements: {
+        title: "Досягнення",
+        description: "Успішні проекти з винятковою якістю та продуктивністю."
+      }
+    },
+    challenges: {
+      title: "Виклики, які ми вирішуємо",
+      subtitle: "Від концепції до цифрової реальності",
+      items: [
+        {
+          title: "Веб-розробка",
+          description: "Сучасні, адаптивні веб-сайти та додатки"
+        },
+        {
+          title: "Мобільні рішення",
+          description: "Кросплатформені мобільні додатки"
+        },
+        {
+          title: "Інтеграція систем",
+          description: "Безперебійна інтеграція бізнес-систем"
+        }
+      ]
+    },
+    services: {
+      title: "Наші послуги",
+      subtitle: "Комплексні цифрові рішення",
+      items: [
+        {
+          title: "Веб-розробка",
+          description: "Full-stack веб-додатки з сучасними технологіями",
+          features: ["React/Next.js", "Node.js", "Дизайн баз даних", "Розробка API"]
+        },
+        {
+          title: "Мобільна розробка",
+          description: "Нативні та кросплатформені мобільні додатки",
+          features: ["React Native", "iOS/Android", "Оптимізація App Store", "Продуктивність"]
+        },
+        {
+          title: "Інтеграція систем",
+          description: "Інтеграція корпоративних систем та автоматизація",
+          features: ["Інтеграція API", "Міграція баз даних", "Автоматизація процесів", "Хмарні рішення"]
+        }
+      ]
+    },
+    contact: {
+      title: "Зв'язатися з нами",
+      subtitle: "Давайте разом створимо щось дивовижне",
+      form: {
+        name: {
+          label: "Ім'я",
+          placeholder: "Ваше ім'я"
+        },
+        email: {
+          label: "Email",
+          placeholder: "ваш@email.ua"
+        },
+        message: {
+          label: "Повідомлення",
+          placeholder: "Розкажіть нам про ваш проект..."
+        },
+        submit: "Надіслати повідомлення"
+      },
+      info: {
+        email: "contact@ikhsystems.com",
+        phone: "+420 123 456 789",
+        address: "Прага, Чеська Республіка"
+      }
+    },
+    seo: {
+      home: {
+        title: "IKH Systems - Інноваційні IT рішення для бізнесу",
+        description: "Ми створюємо сучасні технологічні рішення, які допомагають компаніям досягати нових висот у цифрову епоху.",
+        keywords: "IT рішення, веб-розробка, мобільні додатки, програмні рішення"
+      },
+      about: {
+        title: "Про нас - IKH Systems | Експертна команда розробників",
+        description: "Познайомтеся з нашою експертною командою розробників. Ми спеціалізуємося на створенні інноваційних цифрових рішень.",
+        keywords: "про нас, команда розробників, IT експерти, профіль компанії"
+      },
+      services: {
+        title: "Послуги - IKH Systems | Веб та мобільна розробка",
+        description: "Комплексні послуги веб-розробки, мобільних додатків та інтеграції систем для вашого бізнесу.",
+        keywords: "веб-розробка, мобільна розробка, інтеграція систем, IT послуги"
+      },
+      contact: {
+        title: "Контакти - IKH Systems | Зв'язатися з нами",
+        description: "Готові розпочати свій проект? Зв'яжіться з нашою експертною командою для консультації та оцінки проекту.",
+        keywords: "контакти, консультація, оцінка проекту, зв'язатися"
+      },
+      logoPortfolio: {
+        title: "Портфоліо логотипів - IKH Systems | Приклади робіт",
+        description: "Портфоліо логотипів та брендингу від IKH Systems. Приклади робіт та креативних рішень.",
+        keywords: "портфоліо, логотипи, брендинг, приклади робіт"
       }
     }
   }

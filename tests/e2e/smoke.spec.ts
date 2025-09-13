@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-const languages = ['cs', 'en', 'de']
+const languages = ['cs', 'en', 'de', 'ua']
 const pages = [
   { path: '', title: 'IKH-TechSystems' },
   { path: '/about', title: 'About Us' },

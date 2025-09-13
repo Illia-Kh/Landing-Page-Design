@@ -1,5 +1,5 @@
 // Language types
-export type Language = 'cs' | 'en' | 'de'
+export type Language = 'cs' | 'en' | 'de' | 'ua'
 
 // Hero carousel types
 export interface HeroSlide {

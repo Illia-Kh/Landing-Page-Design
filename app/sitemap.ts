@@ -25,7 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
           languages: Object.fromEntries(
             languages.map(alternateLang => [
               alternateLang === 'en' ? 'en-US' : 
-              alternateLang === 'cs' ? 'cs-CZ' : 'de-DE',
+              alternateLang === 'cs' ? 'cs-CZ' : 
+              alternateLang === 'de' ? 'de-DE' : 'uk-UA',
               `${baseUrl}/${alternateLang}${page}`
             ])
           )
