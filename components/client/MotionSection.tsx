@@ -22,9 +22,9 @@ export function MotionSection({
   children,
   className = '',
   delay = 0,
-  duration = 0.6,
+  duration = 0.4,
   direction = 'up',
-  distance = 50,
+  distance = 30,
   once = true,
   immediate = false,
   ...motionProps
@@ -126,13 +126,13 @@ export function MotionStagger({
     hidden: (() => {
       switch (direction) {
         case 'up':
-          return { opacity: 0, y: 30 }
+          return { opacity: 0, y: 20 }
         case 'down':
-          return { opacity: 0, y: -30 }
+          return { opacity: 0, y: -20 }
         case 'left':
-          return { opacity: 0, x: 30 }
+          return { opacity: 0, x: 20 }
         case 'right':
-          return { opacity: 0, x: -30 }
+          return { opacity: 0, x: -20 }
         case 'fade':
           return { opacity: 0 }
         default:
@@ -144,7 +144,7 @@ export function MotionStagger({
       x: 0,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     },

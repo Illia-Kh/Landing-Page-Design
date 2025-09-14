@@ -3,6 +3,7 @@ import { Language } from '@/types'
 import { Nav } from './Nav'
 import { LangSwitcher } from '@/components/client/LangSwitcher'
 import { ThemeToggle } from '@/components/client/ThemeToggle'
+import { Logo } from '@/components/ui/Logo'
 
 interface HeaderProps {
   lang: Language
@@ -10,16 +11,16 @@ interface HeaderProps {
 
 export function Header({ lang }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="section-container">
         <div className="flex h-16 items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Link 
               href={`/${lang}`}
-              className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+              className="hover:opacity-80 transition-opacity"
             >
-              IKH Systems
+              <Logo priority={true} variant="header" />
             </Link>
           </div>
           

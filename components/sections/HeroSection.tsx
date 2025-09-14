@@ -20,7 +20,7 @@ export function HeroSection({ lang }: HeroSectionProps) {
 
 
       {/* Hero content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 section-container text-center">
         <MotionStagger className="space-y-8" staggerDelay={0.2} immediate={true}>
           <div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
@@ -29,24 +29,19 @@ export function HeroSection({ lang }: HeroSectionProps) {
             </h1>
           </div>
           
+        
           <div>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               {t.hero.description}
             </p>
-          </div>
+          </div>ом банере 
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex justify-center">
             <Link
               href={`/${lang}/contacts`}
               className="px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
               {t.hero.cta.primary}
-            </Link>
-            <Link
-              href={`/${lang}/about`}
-              className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold text-lg hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-            >
-              {t.hero.cta.secondary}
             </Link>
           </div>
         </MotionStagger>

@@ -27,6 +27,7 @@
     "lighthouse": "lighthouse http://localhost:3000 --output=json --output=html --output-path=./lighthouse-report"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -34,7 +35,8 @@
     "lucide-react": "^0.542.0",
     "next": "^15.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",

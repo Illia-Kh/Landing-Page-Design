@@ -17,7 +17,6 @@ export function Nav({ lang }: NavProps) {
   const navItems: Array<{ href: Route; label: string }> = [
     { href: `/${lang}` as Route, label: t.common.navigation.home },
     { href: `/${lang}/services` as Route, label: t.common.navigation.services },
-    { href: `/${lang}/about` as Route, label: t.common.navigation.about },
     { href: `/${lang}/contacts` as Route, label: t.common.navigation.contact },
   ]
 

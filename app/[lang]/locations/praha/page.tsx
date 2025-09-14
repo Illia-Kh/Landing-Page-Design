@@ -1,5 +1,46 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
-import type { Language } from '@/types'
+
+// ISR configuration
+export const revalidate = 86400 // 24 hours
+
+// Generate metadata for the Prague page
+export async function generateMetadata({ 
+  params 
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params
+  
+  if (!isSupportedLanguage(lang)) {
+    return {}
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.praha
+  
+  return {
+    title: locationData.title,
+    description: locationData.description,
+    keywords: locationData.keywords,
+    alternates: {
+      canonical: getLocalizedUrl('/locations/praha', lang as Language),
+    },
+    openGraph: {
+      title: locationData.title,
+      description: locationData.description,
+      url: getLocalizedUrl('/locations/praha', lang as Language),
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locationData.title,
+      description: locationData.description,
+    },
+  }
+}
 
 interface PrahaPageProps {
   params: Promise<{ lang: Language }>
@@ -7,13 +48,22 @@ interface PrahaPageProps {
 
 export default async function PrahaPage({ params }: PrahaPageProps) {
   const { lang } = await params
+  
+  // Validate language parameter
+  if (!isSupportedLanguage(lang)) {
+    notFound()
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.praha
+  
   return (
     <LocationPage
       city="Praha"
       slug="praha"
-      title="Tvorba webových stránek a webdesign v Praze"
-      description="Potřebujete profesionální tvorba webu Praha? Naše agentura se specializuje na moderní webdesign Praha a vytváříme webové stránky, které pomáhají místním podnikům růst. Nabízíme kompletní řešení od návrhu až po spuštění, včetně optimalizace pro vyhledávače a mobilní zařízení. Naše zkušenosti s pražským trhem nám umožňují vytvářet weby, které skutečně fungují a přinášejí výsledky. Spolupracujeme s restauracemi, obchody, službami i technologickými firmami po celé Praze. Každý projekt přistupujeme individuálně a zaměřujeme se na potřeby vašich zákazníků. Kontaktujte nás a domluvte si konzultaci."
-      lang={lang}
+      title={locationData.title}
+      description={locationData.description}
+      lang={lang as Language}
     />
   )
 }

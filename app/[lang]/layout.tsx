@@ -6,7 +6,7 @@ import { Language } from '@/types'
 import { Analytics } from '@/components/Analytics'
 import { PageViewTracker } from '@/components/PageViewTracker'
 import { StructuredData } from '@/components/StructuredData'
-import { Header } from '@/components/layout/Header'
+import { ScrollHeader } from '@/components/client/ScrollHeader'
 import { Footer } from '@/components/layout/Footer'
 import { env } from '@/lib/env'
 
@@ -115,10 +115,10 @@ export default async function LangLayout({
       <PageViewTracker />
       
       {/* Header */}
-      <Header lang={lang as Language} />
+      <ScrollHeader lang={lang as Language} />
       
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         {children}
       </main>
       

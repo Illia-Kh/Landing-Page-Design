@@ -1,5 +1,46 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
-import type { Language } from '@/types'
+
+// ISR configuration
+export const revalidate = 86400 // 24 hours
+
+// Generate metadata for the Plzeň page
+export async function generateMetadata({ 
+  params 
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params
+  
+  if (!isSupportedLanguage(lang)) {
+    return {}
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.plzen
+  
+  return {
+    title: locationData.title,
+    description: locationData.description,
+    keywords: locationData.keywords,
+    alternates: {
+      canonical: getLocalizedUrl('/locations/plzen', lang as Language),
+    },
+    openGraph: {
+      title: locationData.title,
+      description: locationData.description,
+      url: getLocalizedUrl('/locations/plzen', lang as Language),
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locationData.title,
+      description: locationData.description,
+    },
+  }
+}
 
 interface PlzenPageProps {
   params: Promise<{ lang: Language }>
@@ -7,13 +48,22 @@ interface PlzenPageProps {
 
 export default async function PlzenPage({ params }: PlzenPageProps) {
   const { lang } = await params
+  
+  // Validate language parameter
+  if (!isSupportedLanguage(lang)) {
+    notFound()
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.plzen
+  
   return (
     <LocationPage
       city="Plzeň"
       slug="plzen"
-      title="Tvorba webových stránek a webdesign v Plzni"
-      description="Hledáte profesionální tvorba webu Plzeň? Naše agentura vytváří moderní webdesign Plzeň pro podniky v Plzeňském kraji. Specializujeme se na vytváření webů, které pomáhají místním firmám oslovit své zákazníky a zvýšit prodeje. Nabízíme kompletní řešení včetně responzivního designu, e-commerce a SEO optimalizace. Spolupracujeme s pivovary, restauracemi, obchody, lékaři a dalšími podniky po celé Plzni. Každý web navrhujeme s ohledem na specifické potřeby vašeho oboru a cílové skupiny. Naše řešení jsou spolehlivá, rychlá a připravená na budoucí rozvoj. Kontaktujte nás a domluvte si konzultaci."
-      lang={lang}
+      title={locationData.title}
+      description={locationData.description}
+      lang={lang as Language}
     />
   )
 }

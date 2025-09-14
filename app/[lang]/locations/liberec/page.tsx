@@ -1,5 +1,46 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
-import type { Language } from '@/types'
+
+// ISR configuration
+export const revalidate = 86400 // 24 hours
+
+// Generate metadata for the Liberec page
+export async function generateMetadata({ 
+  params 
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params
+  
+  if (!isSupportedLanguage(lang)) {
+    return {}
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.liberec
+  
+  return {
+    title: locationData.title,
+    description: locationData.description,
+    keywords: locationData.keywords,
+    alternates: {
+      canonical: getLocalizedUrl('/locations/liberec', lang as Language),
+    },
+    openGraph: {
+      title: locationData.title,
+      description: locationData.description,
+      url: getLocalizedUrl('/locations/liberec', lang as Language),
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locationData.title,
+      description: locationData.description,
+    },
+  }
+}
 
 interface LiberecPageProps {
   params: Promise<{ lang: Language }>
@@ -7,13 +48,22 @@ interface LiberecPageProps {
 
 export default async function LiberecPage({ params }: LiberecPageProps) {
   const { lang } = await params
+  
+  // Validate language parameter
+  if (!isSupportedLanguage(lang)) {
+    notFound()
+  }
+
+  const t = getTranslation(lang as Language)
+  const locationData = t.locations.liberec
+  
   return (
     <LocationPage
       city="Liberec"
       slug="liberec"
-      title="Tvorba webových stránek a webdesign v Liberci"
-      description="Potřebujete spolehlivou tvorba webu Liberec? Naše tým se specializuje na moderní webdesign Liberec pro podniky v Libereckém kraji. Vytváříme weby, které pomáhají místním firmám zvýšit svou online viditelnost a přilákat nové zákazníky. Nabízíme responzivní design, rychlé načítání a optimalizaci pro vyhledávače. Spolupracujeme s obchody, restauracemi, ubytováním, službami a dalšími podniky po celém Libereckém kraji. Každý projekt řešíme individuálně s důrazem na funkčnost a uživatelskou přívětivost. Naše weby jsou připravené na růst a snadno se spravují. Kontaktujte nás a domluvte si konzultaci."
-      lang={lang}
+      title={locationData.title}
+      description={locationData.description}
+      lang={lang as Language}
     />
   )
 }

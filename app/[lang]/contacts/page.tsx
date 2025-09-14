@@ -106,8 +106,8 @@ export default async function ContactsPage({ params }: PageProps) {
     <div className="min-h-screen bg-white dark:bg-gray-900">
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-6">
+      <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="section-container">
           <MotionSection className="text-center max-w-4xl mx-auto" immediate={true}>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               {t.contact.title}
@@ -120,9 +120,9 @@ export default async function ContactsPage({ params }: PageProps) {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <MotionStagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20" staggerDelay={0.1}>
+      <section className="section-padding">
+        <div className="section-container">
+          <MotionStagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20" staggerDelay={0.05}>
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon
               
@@ -203,23 +203,57 @@ export default async function ContactsPage({ params }: PageProps) {
                   </ul>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex justify-center">
                   <Link
                     href={`/${lang}/services`}
-                    className="flex-1 px-6 py-3 bg-gradient-primary text-white rounded-lg font-semibold text-center hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                    className="px-8 py-3 bg-gradient-primary text-white rounded-lg font-semibold text-center hover:shadow-lg transform hover:scale-105 transition-all duration-200"
                   >
                     {t.common.navigation.services}
-                  </Link>
-                  <Link
-                    href={`/${lang}/about`}
-                    className="flex-1 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold text-center hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-                  >
-                    {t.common.navigation.about}
                   </Link>
                 </div>
               </div>
             </MotionSection>
           </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="section-padding bg-gray-50 dark:bg-gray-800">
+        <div className="section-container">
+          <MotionSection className="text-center max-w-4xl mx-auto mb-16" immediate={true}>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              {t.contact.team.title}
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              {t.contact.team.subtitle}
+            </p>
+          </MotionSection>
+
+          <MotionStagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
+            {t.contact.team.members.map((member, index) => (
+              <div key={index} className="group">
+                <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 text-center">
+                  {/* Member Photo */}
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                  </div>
+                  
+                  {/* Member Info */}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-lg text-blue-600 dark:text-blue-400 font-semibold mb-4">
+                    {member.position}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {member.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </MotionStagger>
         </div>
       </section>
     </div>

@@ -56,8 +56,8 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <Hero lang={language} />
-      <ServicesShowcase lang={language} />
       <ChallengesSection lang={language} />
+      <ServicesShowcase lang={language} />
     </>
   )
 }

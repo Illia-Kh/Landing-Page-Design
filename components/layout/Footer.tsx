@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
+import { Logo } from '@/components/ui/Logo'
 
 interface FooterProps {
   lang: Language
@@ -14,7 +15,6 @@ export function Footer({ lang }: FooterProps) {
   const navItems: Array<{ href: Route; label: string }> = [
     { href: `/${lang}` as Route, label: t.common.navigation.home },
     { href: `/${lang}/services` as Route, label: t.common.navigation.services },
-    { href: `/${lang}/about` as Route, label: t.common.navigation.about },
     { href: `/${lang}/contacts` as Route, label: t.common.navigation.contact },
   ]
 
@@ -27,119 +27,101 @@ export function Footer({ lang }: FooterProps) {
   ]
 
   return (
-    <footer className="border-t border-border/40 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Branding and Copyright */}
-          <div className="space-y-4">
+    <footer className="bg-gray-50 dark:bg-gray-900">
+      <div className="section-container py-6">
+        {/* Main Footer Content */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+          {/* Logo and Copyright */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <Link 
               href={`/${lang}`}
-              className="text-lg font-bold text-foreground hover:text-primary transition-colors"
+              className="hover:opacity-80 transition-opacity"
             >
-              IKH Systems
+              <Logo variant="footer" />
             </Link>
-            <p className="text-sm text-muted-foreground">
-              © {currentYear} IKH Systems. All rights reserved.
-            </p>
-            <p className="text-sm text-muted-foreground opacity-75">
-              {t.hero.description}
-            </p>
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              <p>© {currentYear} IKH Systems. All rights reserved.</p>
+            </div>
           </div>
           
-          {/* Contact Information and Links */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground">
-              {t.contact.title}
-            </h3>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <div>
-                <span className="font-medium">Email:</span>{' '}
-                <a 
-                  href={`mailto:${t.contact.info.email}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  {t.contact.info.email}
-                </a>
-              </div>
-              <div>
-                <span className="font-medium">Phone:</span>{' '}
-                <a 
-                  href={`tel:${t.contact.info.phone}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  {t.contact.info.phone}
-                </a>
-              </div>
-              <div>
-                <span className="font-medium">Address:</span>{' '}
-                {t.contact.info.address}
-              </div>
+          {/* Navigation Links */}
+          <div className="flex flex-wrap gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        
+        {/* Contact Info - Flat Layout */}
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            {/* Contact Details */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm text-gray-600 dark:text-gray-400">
+              <a 
+                href={`mailto:${t.contact.info.email}`}
+                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                {t.contact.info.email}
+              </a>
+              <a 
+                href={`tel:${t.contact.info.phone}`}
+                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                {t.contact.info.phone}
+              </a>
+              <span>{t.contact.info.address}</span>
             </div>
             
-            {/* Social Links Placeholders */}
-            <div className="flex space-x-4 pt-2">
+            {/* Social Links */}
+            <div className="flex gap-4">
               <a 
                 href="#" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors opacity-75"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="Telegram"
               >
                 Telegram
               </a>
               <a 
                 href="#" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors opacity-75"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="Facebook"
               >
                 Facebook
               </a>
               <a 
                 href="#" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors opacity-75"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 LinkedIn
               </a>
             </div>
-            
-            {/* Quick Navigation */}
-            <div className="pt-4">
-              <h4 className="text-sm font-medium text-foreground mb-2">
-                Quick Links
-              </h4>
-              <div className="flex flex-wrap gap-x-4 gap-y-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Lokální zastoupení - Czech only */}
-            {lang === 'cs' && (
-              <div className="pt-4">
-                <h4 className="text-sm font-medium text-foreground mb-2">
-                  Lokální zastoupení
-                </h4>
-                <div className="flex flex-wrap gap-x-4 gap-y-1">
-                  {locationItems.map((item) => (
-                    <Link
-                      key={item.slug}
-                      href={`/${lang}/locations/${item.slug}` as Route}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
+        
+        {/* Local Representation - Czech only */}
+        {lang === 'cs' && (
+          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <span className="font-medium">Lokální zastoupení:</span>
+              {locationItems.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/${lang}/locations/${item.slug}` as Route}
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   )

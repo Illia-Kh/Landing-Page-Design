@@ -8,6 +8,13 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      spacing: {
+        'section': '5rem', // 80px - стандартный отступ для секций
+        'container': '1rem', // 16px - базовый отступ контейнера
+        'container-sm': '1.5rem', // 24px - отступ для планшетов
+        'container-lg': '2rem', // 32px - отступ для десктопов
+        'container-xl': '2.5rem', // 40px - отступ для больших экранов
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

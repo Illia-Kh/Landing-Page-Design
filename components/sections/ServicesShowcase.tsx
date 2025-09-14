@@ -1,8 +1,11 @@
+'use client'
+
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
 import { Code, Smartphone, Layers, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { scrollToElementCenter } from '@/lib/scroll-utils'
 
 interface ServicesShowcaseProps {
   lang: Language
@@ -18,8 +21,8 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
   const t = getTranslation(lang)
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section className="section-padding bg-white dark:bg-gray-900">
+      <div className="section-container">
         <MotionSection className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {t.services.title}
@@ -34,9 +37,19 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
             const IconComponent = Object.values(serviceIcons)[index] || Code
             
             return (
-              <div 
+              <Link
                 key={index}
-                className="group relative p-8 bg-gradient-secondary rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                href={`/${lang}/services`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  // Navigate to services page first
+                  window.location.href = `/${lang}/services`
+                  // Then scroll to center after a short delay
+                  setTimeout(() => {
+                    scrollToElementCenter(`service-${index + 1}`, 100)
+                  }, 100)
+                }}
+                className="group relative p-8 bg-gradient-secondary rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block"
               >
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <IconComponent className="w-8 h-8 text-white" />
@@ -50,7 +63,7 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
                   {service.description}
                 </p>
                 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li 
                       key={featureIndex}
@@ -61,14 +74,7 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
                     </li>
                   ))}
                 </ul>
-                
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                    {t.common.actions.learnMore}
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
+              </Link>
             )
           })}
         </MotionStagger>
