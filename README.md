@@ -43,8 +43,8 @@ A modern, high-performance landing page built with **Next.js 15**, **App Router*
 - **Embla Carousel** for interactive image galleries
 
 ### 🌍 Internationalization (i18n)
-- **3 Languages**: Czech (cs), English (en), German (de)
-- Localized routes: `/cs`, `/en`, `/de`
+- **4 Languages**: Czech (cs), English (en), German (de), Ukrainian (ua)
+- Localized routes: `/cs`, `/en`, `/de`, `/ua`
 - Language-specific metadata and SEO
 - Automatic hreflang generation
 
