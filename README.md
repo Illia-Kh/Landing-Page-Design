@@ -43,8 +43,8 @@ A modern, high-performance landing page built with **Next.js 15**, **App Router*
 - **Embla Carousel** for interactive image galleries
 
 ### 🌍 Internationalization (i18n)
-- **3 Languages**: Czech (cs), English (en), German (de)
-- Localized routes: `/cs`, `/en`, `/de`
+- **4 Languages**: Czech (cs), English (en), German (de), Ukrainian (ua)
+- Localized routes: `/cs`, `/en`, `/de`, `/ua`
 - Language-specific metadata and SEO
 - Automatic hreflang generation
 
@@ -193,7 +193,6 @@ npm run lint
 │   │   └── Nav.tsx        # Navigation menu
 │   ├── sections/         # Page sections
 │   │   ├── Hero.tsx       # Hero section with carousel
-│   │   ├── HeroSection.tsx # Legacy hero component
 │   │   ├── ServicesShowcase.tsx # Services display
 │   │   ├── ChallengesSection.tsx # Challenges section
 │   │   └── LocationPage.tsx # Location-specific content
@@ -319,6 +318,23 @@ NEXT_PUBLIC_META_PIXEL_ID=XXXXXXXXXXXXXXXXX
 - **Performance budget** enforcement
 - **Motion performance** validation
 - **Carousel performance** testing
+
+## 🧹 Code Quality & Optimization
+
+### Recent Cleanup (Latest)
+- ✅ **Removed dead code**: Eliminated migration files and unused components
+- ✅ **Fixed TypeScript warnings**: Replaced all `any` types with proper TypeScript types
+- ✅ **Optimized imports**: Cleaned up unused imports and variables
+- ✅ **Updated documentation**: Aligned README and SEO docs with current Next.js architecture
+- ✅ **Removed legacy components**: Eliminated unused `HeroSection.tsx` component
+- ✅ **Type safety improvements**: Enhanced API route type safety and validation
+
+### Code Quality Standards
+- **Zero ESLint warnings**: Strict linting configuration with unused imports detection
+- **TypeScript strict mode**: Full type safety enforcement
+- **Clean architecture**: Separated client/server components properly
+- **Consistent naming**: Standardized component and file naming conventions
+- **Optimized bundles**: Removed unused dependencies and dead code
 
 ## 🚀 Deployment
 

@@ -121,7 +121,7 @@ export interface EnvConfig {
 }
 
 // API response types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean
   data?: T
   error?: string
@@ -146,5 +146,5 @@ export interface TrackingEvent {
   category: string
   label?: string
   value?: number
-  custom_parameters?: Record<string, any>
+  custom_parameters?: Record<string, unknown>
 }
