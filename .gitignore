@@ -87,9 +87,19 @@ jspm_packages/
 .out
 .storybook-out
 
+# Next.js build output - exclude from git
+out/
+
 # Temporary folders
 tmp/
 temp/
 
 # Vite
 .vite/
+
+# Backup files
+*.bak
+*.backup
+
+# Audit artifacts (keep docs but exclude raw data files)
+docs/seo-audit-raw.json

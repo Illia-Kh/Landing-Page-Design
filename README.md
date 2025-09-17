@@ -1,247 +1,484 @@
-# 🚀 IKH Systems — Landing Page (React + Vite + Tailwind)
+# 🚀 IKH-TechSystems — Production-Ready Landing Page v0.3.1
 
-Современная, высокопроизводительная лендинг‑страница для IKH Systems с упором на SEO, мультиязычность, PWA и качественный UI. Репозиторий оптимизирован для разработки, сборки и продакшен‑развертывания через Docker/Nginx и поддерживает авто‑деплой с сервера.
+A modern, high-performance landing page built with **Next.js 15**, **App Router**, **TypeScript**, and **Tailwind CSS**. This project features comprehensive SEO optimization, internationalization (i18n), performance monitoring, production-ready security measures, and advanced UI components with dark mode support.
 
----
+## 🆕 What's New in v0.3.1
 
-## 📌 Ключевые возможности
-- **Современный стек**: React 18 + TypeScript + Vite 5
-- **UI/UX**: Tailwind CSS 3, Radix UI, Lucide Icons, анимации Framer Motion
-- **Карусели и медиа**: Embla Carousel
-- **SEO‑компоненты**: `SEO.tsx`, `StructuredData.tsx`, `Hreflang.tsx`
-- **PWA**: `vite-plugin-pwa` (service worker, manifest, авто‑обновление)
-- **Мультиязычность**: RU / EN / DE / CS, авто‑детект языка браузера
-- **Производительность**: ручное разбиение чанков, gzip, кэш статики в Nginx
-- **Деплой**: Dockerfile, docker-compose, Nginx, скрипты авто‑деплоя
+### 🎨 Enhanced UI/UX
+- **Dark Mode Support**: Complete dark/light theme toggle with system preference detection
+- **Hero Carousel**: Interactive image carousel with autoplay and navigation controls
+- **Motion Animations**: Smooth Framer Motion animations throughout the interface
+- **Responsive Design**: Improved mobile and tablet experience
 
----
+### 🏢 Location-Based Pages
+- **City-Specific Landing Pages**: Dedicated pages for major Czech cities
+  - Praha (Prague)
+  - Brno
+  - Ostrava
+  - Plzeň
+  - Liberec
+- **SEO-Optimized Content**: Location-specific titles, descriptions, and metadata
+- **Local Business Focus**: Tailored content for each city's market
 
-## 🧱 Технологии и версии
-- React: 18.3.x
-- TypeScript: 5.3.x
-- Vite: 5.x
-- Tailwind CSS: 3.3.x
-- vite-plugin-pwa: 0.17.x
-- UI: Radix UI, Lucide React, Embla Carousel, Framer Motion
+### 🧩 Component Architecture
+- **Modular Layout Components**: Separated Header, Footer, and Navigation
+- **Client-Side Components**: Optimized for interactivity and performance
+- **Reusable Sections**: Hero, Services, Challenges, and Location pages
+- **Theme System**: Centralized theme management with CSS variables
 
-См. точные версии в `package.json`.
+### 🎯 Performance Improvements
+- **Optimized Images**: WebP format with proper sizing and lazy loading
+- **Bundle Splitting**: Improved code splitting for faster loading
+- **Motion Optimization**: Reduced motion support for accessibility
+- **Carousel Performance**: Efficient autoplay with visibility detection
 
----
+## ✨ Key Features
 
-## ⚙️ Требования
-- Node.js >= 18
-- npm >= 9
-- Git (для работы с репозиторием)
+### 🏗️ Modern Architecture
+- **Next.js 15** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling with dark mode support
+- **Framer Motion** for smooth animations and transitions
+- **ISR (Incremental Static Regeneration)** with 24-hour revalidation
+- **Embla Carousel** for interactive image galleries
 
----
+### 🌍 Internationalization (i18n)
+- **4 Languages**: Czech (cs), English (en), German (de), Ukrainian (ua)
+- Localized routes: `/cs`, `/en`, `/de`, `/ua`
+- Language-specific metadata and SEO
+- Automatic hreflang generation
 
-## ▶️ Быстрый старт (локально)
+### 🔍 SEO Optimization
+- **Structured Data**: Schema.org JSON-LD (Organization, WebSite, Service)
+- **Complete Metadata**: Title, description, keywords, canonical URLs
+- **Open Graph & Twitter Cards**: Full social media optimization
+- **Sitemap.xml**: Auto-generated with hreflang attributes
+- **Robots.txt**: Optimized for search engines
+- **Core Web Vitals**: Optimized for performance scores
+
+### 📊 Analytics & Tracking
+- **Google Analytics 4** integration
+- **Meta Pixel** support
+- **Page view tracking** with pathname changes
+- **Event tracking** for form submissions
+- **Privacy-compliant** analytics
+
+### ⚡ Performance Optimized
+- **Next.js Image** optimization (WebP/AVIF)
+- **Static Generation** for all pages
+- **Chunked bundles** for optimal loading
+- **Security headers** implementation
+- **Lighthouse Score Targets**: Performance ≥85, SEO ≥90, Accessibility ≥90
+
+### 📝 Contact Form
+- **Server Actions** with API routes
+- **Client & Server validation**
+- **Anti-spam protection** (honeypot + timestamp)
+- **Real-time feedback** with proper error handling
+- **Analytics tracking** for form submissions
+
+### 🎨 UI Components & Theming
+- **Dark Mode Toggle**: System preference detection with smooth transitions
+- **Hero Carousel**: Auto-playing image carousel with navigation controls
+- **Motion Components**: Framer Motion animations with accessibility support
+- **Theme System**: CSS variables for consistent theming
+- **Responsive Layout**: Mobile-first design with breakpoint optimization
+
+### 🔒 Security & Headers
+- **Security Headers**: X-Content-Type-Options, Referrer-Policy, X-Frame-Options
+- **HSTS** for HTTPS enforcement
+- **CSP-ready** configuration
+- **XSS Protection** headers
+
+### 🧪 Testing & QA
+- **Playwright E2E tests** for critical user journeys
+- **Smoke tests** for all language versions
+- **SEO validation** tests
+- **Performance monitoring** setup
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js ≥20.0.0
+- npm ≥9.0.0
+
+### New Dependencies in v0.3.1
+- **embla-carousel**: ^8.6.0 - Modern carousel library
+- **embla-carousel-autoplay**: ^8.6.0 - Autoplay functionality
+- **embla-carousel-react**: ^8.6.0 - React integration
+- **framer-motion**: ^12.23.12 - Animation library
+- **lucide-react**: ^0.542.0 - Icon library
+
+### Installation
+
 ```bash
-# Установка зависимостей
+# Clone the repository
+git clone <repository-url>
+cd Landing-Page-Design
+
+# Install dependencies
 npm install
 
-# Запуск в dev-режиме (порт 3000)
+# Install Playwright browsers (for testing)
+npm run test:install
+
+# Set up environment variables
+cp .env.local.example .env.local
+# Edit .env.local with your configuration
+```
+
+### Development
+
+```bash
+# Start development server
 npm run dev
 
-# Сборка продакшен‑бандла в папку dist
+# Open http://localhost:3000
+```
+
+### Production Build
+
+```bash
+# Build for production
 npm run build
 
-# Предпросмотр собранной версии
-npm run preview
+# Start production server
+npm start
 ```
 
-Если порт 3000 занят, настройте `server.port` в `vite.config.ts` или освободите порт.
+### Testing
 
----
-
-## 📜 Скрипты
 ```bash
-npm run dev          # Dev сервер Vite
-npm run build        # Продакшен сборка в dist/
-npm run preview      # Предпросмотр dist/
-npm run lint         # ESLint (ошибки = 0 предупреждений)
-npm run lint:fix     # ESLint c авто‑исправлением
-npm run format       # Prettier для src/**/*.{ts,tsx,css,md}
-npm run type-check   # Проверка типов (tsc --noEmit)
-npm run analyze      # Сборка + анализ бандла (vite-bundle-analyzer)
-npm run test         # Запуск тестов (Vitest)
-npm run test:ui      # UI‑режим Vitest
-npm run test:coverage# Покрытие тестов
-```
-Примечание: для `analyze` используется `npx vite-bundle-analyzer`. Для тестов требуется Vitest (см. `scripts`).
+# Run E2E tests
+npm run test:e2e
 
----
+# Run E2E tests with UI
+npm run test:e2e:ui
 
-## 📂 Структура проекта
-```
-src/
-├── components/
-│   ├── ui/                 # Набор UI-компонентов (Radix/shadcn-style)
-│   ├── Header.tsx          # Шапка сайта
-│   ├── Footer.tsx          # Подвал
-│   ├── Hero.tsx            # Герой‑секция
-│   ├── (removed)           # Gallery.tsx — removed
-│   ├── Router.tsx          # Кастомный роутер (см. ниже)
-│   ├── SEO.tsx             # Управление мета‑тегами
-│   ├── StructuredData.tsx  # Schema.org разметка
-│   └── Hreflang.tsx        # hreflang ссылки
-├── pages/                  # Страницы: Home, About, Services, Contact, др.
-├── hooks/                  # Хуки (напр. useTheme)
-├── styles/                 # Стили (globals.css, variables.css)
-├── utils/                  # Утилиты (напр. language.ts)
-├── types/                  # Типы TS
-├── main.tsx                # Точка входа
-└── App.tsx                 # Корневой компонент
-
-public/                     # Статика (favicon, robots.txt, sitemap.xml)
-dist/                       # Результат сборки (продакшен)
+# Lint code
+npm run lint
 ```
 
----
+## 📁 Project Structure
 
-## 🧭 Роутинг
-Кастомный роутер без внешних зависимостей, с анимациями переходов:
-- `src/components/Router.tsx` экспортирует `Router` и `Route`
-- `Page` тип: "home" | "about" | "services" | "contact"
-- Анимации на базе Framer Motion (`AnimatePresence`, `motion.div`)
+```
+├── app/                    # Next.js App Router
+│   ├── [lang]/            # Internationalized routes
+│   │   ├── about/         # About page
+│   │   ├── contacts/      # Contact page
+│   │   ├── services/      # Services page
+│   │   ├── locations/     # Location-specific pages
+│   │   │   ├── praha/     # Prague landing page
+│   │   │   ├── brno/      # Brno landing page
+│   │   │   ├── ostrava/   # Ostrava landing page
+│   │   │   ├── plzen/     # Plzeň landing page
+│   │   │   └── liberec/   # Liberec landing page
+│   │   └── layout.tsx     # Language-specific layout
+│   ├── api/               # API routes
+│   │   └── contact/       # Contact form handler
+│   ├── globals.css        # Global styles with dark mode
+│   ├── layout.tsx         # Root layout
+│   ├── robots.ts          # Robots.txt generator
+│   └── sitemap.ts         # Sitemap generator
+├── components/            # React components
+│   ├── client/           # Client-side components
+│   │   ├── ContactForm.tsx    # Contact form with validation
+│   │   ├── HeroCarousel.tsx   # Interactive image carousel
+│   │   ├── LangSwitcher.tsx   # Language selection
+│   │   ├── MotionSection.tsx  # Animated sections
+│   │   └── ThemeToggle.tsx    # Dark/light mode toggle
+│   ├── layout/           # Layout components
+│   │   ├── Header.tsx     # Site header with navigation
+│   │   ├── Footer.tsx     # Site footer with links
+│   │   └── Nav.tsx        # Navigation menu
+│   ├── sections/         # Page sections
+│   │   ├── Hero.tsx       # Hero section with carousel
+│   │   ├── ServicesShowcase.tsx # Services display
+│   │   ├── ChallengesSection.tsx # Challenges section
+│   │   └── LocationPage.tsx # Location-specific content
+│   ├── Analytics.tsx     # Google Analytics & Meta Pixel
+│   ├── PageViewTracker.tsx # Analytics page tracking
+│   └── StructuredData.tsx # Schema.org JSON-LD
+├── lib/                  # Utility libraries
+│   ├── env.ts           # Environment configuration
+│   ├── i18n.ts          # Internationalization
+│   └── utils.ts         # Utility functions
+├── tests/               # Testing
+│   └── e2e/            # End-to-end tests
+├── types/              # TypeScript type definitions
+├── next.config.mjs     # Next.js configuration
+├── playwright.config.ts # Playwright test configuration
+└── tailwind.config.js  # Tailwind CSS configuration
+```
 
----
+## 🌐 Environment Configuration
 
-## 🌓 Темизация и UI
-- Tailwind CSS с кастомными переменными в `src/styles/variables.css`
-- Компоненты на базе Radix UI (в `src/components/ui`)
-- Иконки: Lucide
-- Готовые элементы: аккордеон, диалоги, дровер, формы, таблицы и др.
+Create `.env.local` file:
 
----
-
-## 🌍 Мультиязычность
-- Поддерживаемые языки: `ru`, `en`, `de`, `cs`
-- Авто‑детект языка браузера: `getNavigatorLanguage()` из `src/utils/language.ts`
-- Хранение выбранного языка может осуществляться через URL/LocalStorage (см. реализацию приложения)
-- Компонент `Hreflang.tsx` добавляет `<link rel="alternate" hreflang>` для SEO
-
----
-
-## 🔍 SEO
-- `SEO.tsx`: мета‑теги (title, description, keywords, Open Graph, Twitter, canonical)
-- `StructuredData.tsx`: JSON‑LD (Organization, LocalBusiness, Service, ContactPage, BreadcrumbList)
-- `Hreflang.tsx`: корректные hreflang ссылки, включая `x-default`
-- `sitemap.xml`, `robots.txt` в `public/`
-
-Совет: заполняйте реальные значения (URL, изображения, контакты) для корректной индексации.
-
----
-
-## ⚡ Производительность
-- Разделение чанков в `vite.config.ts` (`manualChunks`: vendor/ui)
-- Минификация `terser`, отключены sourcemaps в продакшене
-- Gzip и агрессивное кэширование статики в `nginx.conf`
-- Оптимизация изображений и шрифтов на уровне проекта (см. компоненты/стили)
-
----
-
-## 📱 PWA
-- Подключен `vite-plugin-pwa` (авто‑обновление service worker)
-- В продакшене генерируются `dist/manifest.webmanifest`, `dist/sw.js` и пр.
-- Регистрация SW — автоматически, см. конфиг в `vite.config.ts`
-
----
-
-## 🔧 Качество кода
-- ESLint (`npm run lint`, zero‑warnings policy)
-- Prettier (`npm run format`)
-- TypeScript строгий (`npm run type-check`)
-- Тесты (Vitest) — см. `npm run test*`
-
----
-
-## 🐳 Продакшен через Docker
-### Вариант 1: Docker build/run
 ```bash
-# Сборка образа
-docker build -t ikh-landing .
+# Required
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 
-# Запуск контейнера (Nginx на 80 порту)
-docker run --name ikh-landing -p 80:80 --restart unless-stopped -d ikh-landing
+# Analytics (Optional)
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_META_PIXEL_ID=XXXXXXXXXXXXXXXXX
 ```
-Образ собирается многоступенчато: билд на Node 18, затем статика обслуживается Nginx с конфигом `nginx.conf`.
 
-### Вариант 2: docker-compose
+## 🧩 Component Library
+
+### Layout Components
+- **Header**: Sticky navigation with logo, menu, language switcher, and theme toggle
+- **Footer**: Comprehensive footer with contact info, links, and location-specific content
+- **Nav**: Responsive navigation menu with mobile support
+
+### Interactive Components
+- **HeroCarousel**: Auto-playing image carousel with:
+  - Touch/swipe support
+  - Keyboard navigation
+  - Accessibility features
+  - Reduced motion support
+  - Visibility-based autoplay control
+- **ThemeToggle**: Dark/light mode switcher with:
+  - System preference detection
+  - Smooth transitions
+  - Persistent storage
+  - Hydration-safe rendering
+
+### Section Components
+- **Hero**: Main landing section with carousel integration
+- **LocationPage**: Reusable template for city-specific pages
+- **ServicesShowcase**: Service display with animations
+- **ChallengesSection**: Problem/solution presentation
+
+### Utility Components
+- **MotionSection**: Wrapper for Framer Motion animations
+- **LangSwitcher**: Language selection with proper routing
+- **ContactForm**: Form with validation and analytics tracking
+
+## 🔍 SEO Features
+
+### Structured Data
+- **Organization Schema**: Company information
+- **WebSite Schema**: Site-wide metadata
+- **Service Schema**: Individual service descriptions
+- **LocalBusiness Schema**: Location-specific business data
+
+### Metadata Management
+- **Dynamic metadata** generation per page/language
+- **Canonical URLs** with proper language mapping
+- **Hreflang attributes** for international SEO
+- **Open Graph** images and metadata
+- **Twitter Cards** optimization
+- **Location-specific SEO** for city pages
+
+### Performance Optimization
+- **Image optimization** with next/image
+- **Bundle splitting** for optimal loading
+- **Static generation** with ISR
+- **Security headers** for improved rankings
+- **WebP/AVIF** image format support
+
+## 📊 Analytics & Tracking
+
+### Google Analytics 4
+- **Page view tracking** on route changes
+- **Event tracking** for user interactions
+- **Form submission tracking** with success/error states
+
+### Meta Pixel
+- **Page view events**
+- **Custom event tracking**
+- **Conversion tracking** ready
+
+### Privacy Compliance
+- **Consent management** ready
+- **GDPR-compliant** tracking
+- **Analytics opt-out** support
+
+## 🧪 Testing Strategy
+
+### E2E Tests Coverage
+- ✅ All language versions load correctly
+- ✅ Navigation between pages works
+- ✅ Language switcher functionality
+- ✅ SEO files accessibility (sitemap.xml, robots.txt)
+- ✅ Meta tags presence and validation
+- ✅ Contact form submission
+- ✅ Basic accessibility checks
+- ✅ Performance basics validation
+- ✅ Dark mode toggle functionality
+- ✅ Hero carousel navigation and autoplay
+- ✅ Location pages load correctly
+- ✅ Theme persistence across sessions
+
+### Performance Monitoring
+- **Lighthouse CI** integration ready
+- **Core Web Vitals** monitoring
+- **Performance budget** enforcement
+- **Motion performance** validation
+- **Carousel performance** testing
+
+## 🧹 Code Quality & Optimization
+
+### Recent Cleanup (Latest)
+- ✅ **Removed dead code**: Eliminated migration files and unused components
+- ✅ **Fixed TypeScript warnings**: Replaced all `any` types with proper TypeScript types
+- ✅ **Optimized imports**: Cleaned up unused imports and variables
+- ✅ **Updated documentation**: Aligned README and SEO docs with current Next.js architecture
+- ✅ **Removed legacy components**: Eliminated unused `HeroSection.tsx` component
+- ✅ **Type safety improvements**: Enhanced API route type safety and validation
+
+### Code Quality Standards
+- **Zero ESLint warnings**: Strict linting configuration with unused imports detection
+- **TypeScript strict mode**: Full type safety enforcement
+- **Clean architecture**: Separated client/server components properly
+- **Consistent naming**: Standardized component and file naming conventions
+- **Optimized bundles**: Removed unused dependencies and dead code
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
 ```bash
-docker-compose up -d
+# Deploy to Vercel
+npx vercel
+
+# Set environment variables in Vercel dashboard
 ```
-- Сервис: `ikh-website`
-- Порт: `80:80`
-- Логи Nginx: маунт `./logs:/var/log/nginx`
 
----
-
-## 🌐 Nginx (коротко)
-Конфиг `nginx.conf`:
-- SPA‑роутинг: `try_files $uri $uri/ /index.html;`
-- Gzip: включён для основных типов
-- Кэширование статики: 1 год, `Cache-Control: public, immutable`
-- Базовые security‑заголовки: X-Frame-Options, X-Content-Type-Options и др.
-
----
-
-## 🤖 Авто‑деплой с сервера (main ветка)
-Проекты на продакшене обновляются из ветки `main`.
-
-- Скрипт деплоя: `deploy.sh`
-  - `git fetch origin main` → `git pull`
-  - `npm install` → `npm run build`
-  - Копирование `dist/*` в веб‑директорию
-  - `systemctl reload nginx`
-
-- Настройка таймера/cron: `setup-auto-deploy.sh`
-  - Создаёт `auto-deploy.service` и `auto-deploy.timer` (каждые 5 минут)
-  - Ведёт логи в `/var/log/auto-deploy.log`
-
-- Пошаговое руководство: см. `AUTO-DEPLOY-SETUP.md`
-
-Быстрые команды на сервере:
+### Docker
 ```bash
-# Ручной запуск деплоя
-./deploy.sh
+# Build Docker image
+docker build -t landing-page .
 
-# Проверка таймера
-systemctl status auto-deploy.timer
-
-# Просмотр логов
-tail -f /var/log/auto-deploy.log
+# Run container
+docker run -p 3000:3000 landing-page
 ```
 
+### Traditional Hosting
+```bash
+# Build static export (if needed)
+npm run build
+# Deploy the .next folder
+```
+
+## 🎯 Performance Targets
+
+### Lighthouse Scores
+- **Performance**: ≥ 85
+- **SEO**: ≥ 90
+- **Accessibility**: ≥ 90
+- **Best Practices**: ≥ 90
+
+### Core Web Vitals
+- **LCP (Largest Contentful Paint)**: < 2.5s
+- **FID (First Input Delay)**: < 100ms
+- **CLS (Cumulative Layout Shift)**: < 0.1
+
+## 📋 Production QA Checklist
+
+### SEO Validation
+- [ ] All pages have unique, descriptive titles
+- [ ] Meta descriptions are compelling and < 160 characters
+- [ ] Canonical URLs are correctly set
+- [ ] Hreflang attributes are properly configured
+- [ ] Structured data validates on Google's Rich Results Test
+- [ ] Sitemap.xml is accessible and contains all pages
+- [ ] Robots.txt allows search engine crawling
+
+### Performance Validation
+- [ ] Lighthouse Performance score ≥ 85
+- [ ] All images are optimized and have alt text
+- [ ] Core Web Vitals are within thresholds
+- [ ] No render-blocking resources
+- [ ] CSS and JS are minified
+
+### Functionality Testing
+- [ ] All language versions work correctly
+- [ ] Navigation between pages functions properly
+- [ ] Contact form submits successfully
+- [ ] Error handling works (404, form errors)
+- [ ] Mobile responsiveness is optimal
+- [ ] Dark mode toggle works correctly
+- [ ] Theme preference persists across sessions
+- [ ] Hero carousel autoplay and navigation work
+- [ ] Location pages load with correct content
+- [ ] Motion animations respect reduced motion preference
+
+### Analytics & Tracking
+- [ ] Google Analytics is tracking page views
+- [ ] Form submissions are tracked
+- [ ] Analytics consent (if implemented) works
+- [ ] Meta Pixel events fire correctly
+
+### Security & Headers
+- [ ] Security headers are properly set
+- [ ] HTTPS is enforced
+- [ ] No sensitive data exposed in client
+- [ ] Form validation prevents XSS/injection
+
+## 🔄 Migration Guide
+
+### Upgrading to v0.3.1
+
+If you're upgrading from a previous version:
+
+1. **Install new dependencies**:
+   ```bash
+   npm install embla-carousel embla-carousel-autoplay embla-carousel-react framer-motion lucide-react
+   ```
+
+2. **Update your components**:
+   - Replace old hero components with new `Hero` component
+   - Add `ThemeToggle` to your header
+   - Update layout components to use new structure
+
+3. **Add location pages** (optional):
+   - Create location-specific pages in `app/[lang]/locations/`
+   - Use `LocationPage` component for consistent structure
+
+4. **Update styling**:
+   - Ensure dark mode CSS variables are properly configured
+   - Test theme switching functionality
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙋‍♂️ Support
+
+For support, email contact@ikhsystems.com or create an issue in the repository.
+
 ---
 
-## 🚀 Деплой без Docker (статический хостинг)
-1) Соберите проект: `npm run build`
-2) Загрузите содержимое `dist/` на ваш статический хостинг (Netlify, Vercel, S3+CloudFront, и т.п.)
-3) Убедитесь, что для SPA настроен редирект всех путей на `index.html`
+## 📋 Version History
+
+### v0.3.1 (Current)
+- ✨ Added dark mode support with system preference detection
+- 🎠 Implemented interactive hero carousel with autoplay
+- 🏢 Created location-specific landing pages for major Czech cities
+- 🎨 Enhanced UI with Framer Motion animations
+- 🧩 Refactored component architecture for better maintainability
+- ⚡ Improved performance with optimized images and bundle splitting
+- 🔧 Added comprehensive theme system with CSS variables
+
+### v1.0.0 (Previous)
+- 🚀 Initial release with Next.js 15 and App Router
+- 🌍 Multi-language support (Czech, English, German)
+- 🔍 Complete SEO optimization with structured data
+- 📊 Analytics integration (Google Analytics 4, Meta Pixel)
+- 📝 Contact form with server actions and validation
+- 🧪 E2E testing with Playwright
+- 🔒 Security headers and production-ready configuration
 
 ---
 
-## 🧩 Полезные заметки
-- Обновите доменные параметры (base URL, контакты, соцсети) в SEO/Schema файлах перед релизом
-- Для корректной локализации добавьте переводы контента на все поддерживаемые языки
-- Если порт 80 занят в Docker/compose — остановите конфликтующие сервисы или измените маппинг
-
----
-
-## 🤝 Вклад
-- Вносите изменения в отдельной ветке, пишите понятные коммиты
-- Проверяйте линт/типы/тесты перед PR
-- Следуйте существующему стилю кода и архитектуре компонентов
-
----
-
-## 📄 Лицензия
-MIT. При необходимости добавьте файл `LICENSE` с текстом лицензии.
-
----
-
-## 📬 Контакты
-- Веб‑сайт: https://ikhsystems.com
-- Поддержка: укажите корпоративный e‑mail/telegram при необходимости
-  
+**Built with ❤️ by [Illia Khromov](https://github.com/Illia-Kh)**
