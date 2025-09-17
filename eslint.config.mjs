@@ -4,6 +4,15 @@ import tseslint from 'typescript-eslint';
 import nextPlugin from '@next/eslint-plugin-next';
 import unusedImports from 'eslint-plugin-unused-imports';
 
+// Import Next.js config
+import { FlatCompat } from '@eslint/eslintrc';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({ baseDirectory: __dirname });
+
 export default [
   // Игнорируем ненужные файлы и папки
   {
@@ -28,14 +37,8 @@ export default [
   // Базовые JS-правила
   js.configs.recommended,
 
-  // Next.js core-web-vitals
-  {
-    name: 'next/core-web-vitals',
-    plugins: { '@next/next': nextPlugin },
-    rules: {
-      ...nextPlugin.configs['core-web-vitals'].rules,
-    },
-  },
+  // Next.js config через compat
+  ...compat.extends('next/core-web-vitals'),
 
   // TypeScript рекомендации (parser настраивает typescript-eslint из коробки)
   ...tseslint.configs.recommended,

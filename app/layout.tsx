@@ -52,6 +52,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
+      <head>
+        <meta name="google" content="notranslate" />
+      </head>
       <body className="font-sans antialiased">
         {children}
       </body>

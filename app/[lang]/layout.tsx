@@ -105,25 +105,54 @@ export default async function LangLayout({
   }
   
   return (
-    <div className="min-h-screen bg-background flex flex-col" lang={lang}>
-      {/* Structured Data */}
-      <StructuredData type="Organization" lang={lang as Language} />
-      <StructuredData type="WebSite" lang={lang as Language} />
-      
-      {/* Analytics */}
-      <Analytics />
-      <PageViewTracker />
-      
-      {/* Header */}
-      <ScrollHeader lang={lang as Language} />
-      
-      {/* Main Content */}
-      <main className="flex-1 pt-16">
-        {children}
-      </main>
-      
-      {/* Footer */}
-      <Footer lang={lang as Language} />
-    </div>
+    <html lang={lang} translate="no">
+      <head>
+        {/* Translation Control */}
+        <meta name="google" content="notranslate" />
+        <meta name="robots" content="notranslate" />
+        <meta httpEquiv="Content-Language" content={lang} />
+        
+        {/* Mobile Optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="IKH Systems" />
+        
+        {/* Browser Optimization */}
+        <meta name="theme-color" content="#3b82f6" />
+        <meta name="msapplication-TileColor" content="#3b82f6" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        
+        {/* Performance Hints */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* iOS Safari Optimization */}
+        <meta name="format-detection" content="telephone=yes" />
+        <meta name="format-detection" content="email=yes" />
+        <meta name="format-detection" content="address=yes" />
+      </head>
+      <body className="min-h-screen bg-background flex flex-col">
+        {/* Structured Data */}
+        <StructuredData type="Organization" lang={lang as Language} />
+        <StructuredData type="WebSite" lang={lang as Language} />
+        
+        {/* Analytics */}
+        <Analytics />
+        <PageViewTracker />
+        
+        {/* Header */}
+        <ScrollHeader lang={lang as Language} />
+        
+        {/* Main Content */}
+        <main className="flex-1 pt-16">
+          {children}
+        </main>
+        
+        {/* Footer */}
+        <Footer lang={lang as Language} />
+      </body>
+    </html>
   )
 }

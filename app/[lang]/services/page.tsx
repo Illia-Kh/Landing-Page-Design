@@ -425,28 +425,6 @@ export default async function ServicesPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding">
-        <div className="section-container">
-          <MotionSection className="text-center">
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 p-12 rounded-2xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                {t.common.actions.getStarted}
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                {t.hero.description}
-              </p>
-              <Link
-                href={`/${lang}/contacts`}
-                className="inline-flex items-center px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-              >
-                {t.common.actions.contactUs}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </div>
-          </MotionSection>
-        </div>
-      </section>
     </div>
   )
 }

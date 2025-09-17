@@ -140,19 +140,76 @@ export interface TranslationDictionary {
         description: string
       }>
     }
+    pricing: {
+      title: string
+      subtitle: string
+      disclaimer: string
+      disclaimerHighlight: string
+      primaryService: {
+        title: string
+        description: string
+        price: string
+        features: string[]
+      }
+      secondaryService: {
+        title: string
+        description: string
+        price: string
+        features: string[]
+      }
+      cta: string
+    }
   }
   contact: {
     title: string
     subtitle: string
+    getInTouch: {
+      title: string
+      subtitle: string
+      labels: {
+        email: string
+        phone: string
+        address: string
+        businessHours: string
+        ourLocation: string
+      }
+      businessHours: {
+        schedule: string
+        days: {
+          monday: string
+          tuesday: string
+          wednesday: string
+          thursday: string
+          friday: string
+          weekend: string
+        }
+        closed: string
+      }
+      messaging: {
+        whatsapp: string
+        telegram: string
+        comingSoon: string
+      }
+      cta: string
+    }
     team: {
       title: string
       subtitle: string
+      freelancersNote: string
       members: Array<{
         name: string
         position: string
         description: string
         image: string
+        isLead?: boolean
       }>
+      technologies: {
+        title: string
+        items: Array<{
+          name: string
+          logo: string
+        }>
+      }
     }
     form: {
       name: {
@@ -265,8 +322,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       carousel: {
         slides: [
           {
-            image: "/media/banner/1.webp",
-            alt: "Modern web development with React and Next.js frameworks",
+            image: "/media/banner/web-development.webp",
+            alt: "Professional web development services using React and Next.js for modern business solutions in Czech Republic",
             title: "Web Development",
             subtitle: "Full-stack web applications with modern technologies",
             cta: {
@@ -275,18 +332,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/2.webp",
-            alt: "Mobile app development for iOS and Android platforms",
-            title: "Mobile Development",
-            subtitle: "Native and cross-platform mobile applications",
-            cta: {
-              label: "Discover Mobile Apps",
-              href: "/services#service-2"
-            }
-          },
-          {
-            image: "/media/banner/3.webp",
-            alt: "System integration and API development for enterprise solutions",
+            image: "/media/banner/system-integration.webp",
+            alt: "Enterprise system integration and automation solutions for seamless business process optimization",
             title: "System Integration",
             subtitle: "Enterprise system integration and automation",
             cta: {
@@ -295,8 +342,18 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/hero-analytics.webp",
-            alt: "Analytics dashboard showing business insights and data visualization",
+            image: "/media/banner/mobile-development.webp",
+            alt: "Cross-platform mobile app development for iOS and Android with React Native technology",
+            title: "Mobile Development",
+            subtitle: "Native and cross-platform mobile applications",
+            cta: {
+              label: "Discover Mobile Apps",
+              href: "/services#service-2"
+            }
+          },
+          {
+            image: "/media/banner/analytics.webp",
+            alt: "Business analytics dashboard showing data visualization and performance metrics for informed decision making",
             title: "Analytics & Insights",
             subtitle: "Transform your data into actionable business intelligence",
             cta: {
@@ -305,8 +362,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/ciber securaty.webp",
-            alt: "Cybersecurity shield protecting digital infrastructure",
+            image: "/media/banner/cybersecurity.webp",
+            alt: "Enterprise cybersecurity solutions protecting digital infrastructure and sensitive business data",
             title: "Cybersecurity",
             subtitle: "Protect your business with enterprise-grade security solutions",
             cta: {
@@ -315,8 +372,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/server.webp",
-            alt: "Modern server infrastructure and cloud computing setup",
+            image: "/media/banner/infrastructure.webp",
+            alt: "Cloud server infrastructure and hosting solutions for scalable business applications and websites",
             title: "Infrastructure",
             subtitle: "Scalable and reliable server solutions for your business",
             cta: {
@@ -452,34 +509,108 @@ export const translations: Record<Language, TranslationDictionary> = {
           { title: "Process Automation", description: "Streamline business workflows and operations" },
           { title: "Cloud Solutions", description: "Scalable cloud infrastructure and services" }
         ]
+      },
+      pricing: {
+        title: "Preliminary Pricing",
+        subtitle: "Transparent pricing for our core services",
+        disclaimer: "All prices are preliminary and may vary based on project complexity and requirements.",
+        disclaimerHighlight: "For accurate pricing, please contact us for a detailed consultation.",
+        primaryService: {
+          title: "Web Development",
+          description: "Our main expertise - modern web applications",
+          price: "From €2,500",
+          features: [
+            "React/Next.js frontend",
+            "Node.js backend",
+            "Database design",
+            "API development",
+            "Responsive design",
+            "SEO optimization"
+          ]
+        },
+        secondaryService: {
+          title: "Frontend Development",
+          description: "Specialized frontend solutions",
+          price: "From €1,500",
+          features: [
+            "Modern UI/UX design",
+            "React components",
+            "Performance optimization",
+            "Cross-browser compatibility",
+            "Mobile-first approach"
+          ]
+        },
+        cta: "Get Accurate Quote"
       }
     },
     contact: {
       title: "Contact Us",
       subtitle: "Let's Build Something Amazing Together",
+      getInTouch: {
+        title: "Get in Touch",
+        subtitle: "Ready to start your project? Contact us today!",
+        labels: {
+          email: "Email",
+          phone: "Phone",
+          address: "Address",
+          businessHours: "Business Hours",
+          ourLocation: "Our Location"
+        },
+        businessHours: {
+          schedule: "Mon-Fri 9:00-17:00",
+          days: {
+            monday: "Monday",
+            tuesday: "Tuesday", 
+            wednesday: "Wednesday",
+            thursday: "Thursday",
+            friday: "Friday",
+            weekend: "Weekend"
+          },
+          closed: "Closed"
+        },
+        messaging: {
+          whatsapp: "WhatsApp",
+          telegram: "Telegram",
+          comingSoon: "Coming soon"
+        },
+        cta: "Ready to transform your digital presence? Let's create something amazing together!"
+      },
       team: {
         title: "Our Team",
         subtitle: "The experts behind your success",
+        freelancersNote: "We collaborate with talented freelancers to deliver exceptional results",
         members: [
           {
-            name: "Alex Johnson",
+            name: "Illia Kharchenko",
             position: "Lead Developer",
-            description: "Full-stack developer with 8+ years of experience in React, Node.js, and cloud technologies.",
-            image: "/team/alex-johnson.jpg"
+            description: "Full-stack developer with 3+ years of experience in React, Node.js, and cloud technologies.",
+            image: "/team/illia-kharchenko.jpg",
+            isLead: true
           },
           {
-            name: "Maria Rodriguez",
-            position: "UI/UX Designer",
-            description: "Creative designer specializing in user experience and modern web interfaces.",
-            image: "/team/maria-rodriguez.jpg"
+            name: "Ilyzabet Zakharchenko",
+            position: "Designer",
+            description: "Creative designer specializing in modern interfaces.",
+            image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "David Chen",
-            position: "Project Manager",
-            description: "Experienced project manager ensuring smooth delivery and client satisfaction.",
-            image: "/team/david-chen.jpg"
+            name: "Alex Sosnovsky",
+            position: "Developer",
+            description: "Experienced developer focused on quality solutions.",
+            image: "/team/alex-sosnovsky.jpg"
           }
-        ]
+        ],
+        technologies: {
+          title: "Powered by industry-leading technologies",
+          items: [
+            { name: "OpenAI", logo: "/logos/openai.svg" },
+            { name: "Cursor", logo: "/logos/cursor.svg" },
+            { name: "GitHub", logo: "/logos/github.svg" },
+            { name: "Vercel", logo: "/logos/vercel.svg" },
+            { name: "Next.js", logo: "/logos/nextjs.svg" },
+            { name: "React", logo: "/logos/react.svg" }
+          ]
+        }
       },
       form: {
         name: {
@@ -497,9 +628,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         submit: "Send Message"
       },
       info: {
-        email: "contact@ikhsystems.com",
-        phone: "+420 123 456 789",
-        address: "Prague, Czech Republic"
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "Liberec, Czech Republic"
       }
     },
     seo: {
@@ -589,8 +720,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       carousel: {
         slides: [
           {
-            image: "/media/banner/1.webp",
-            alt: "Moderní webový vývoj s React a Next.js frameworky",
+            image: "/media/banner/web-development.webp",
+            alt: "Profesionální tvorba webových stránek pomocí React a Next.js pro moderní podnikatelská řešení v České republice",
             title: "Webový vývoj",
             subtitle: "Full-stack webové aplikace s moderními technologiemi",
             cta: {
@@ -599,18 +730,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/2.webp",
-            alt: "Vývoj mobilních aplikací pro iOS a Android platformy",
-            title: "Mobilní vývoj",
-            subtitle: "Nativní a multiplatformní mobilní aplikace",
-            cta: {
-              label: "Objevit mobilní aplikace",
-              href: "/services#service-2"
-            }
-          },
-          {
-            image: "/media/banner/3.webp",
-            alt: "Systémová integrace a API vývoj pro podniková řešení",
+            image: "/media/banner/system-integration.webp",
+            alt: "Podniková systémová integrace a automatizační řešení pro bezproblémovou optimalizaci obchodních procesů",
             title: "Systémová integrace",
             subtitle: "Podniková systémová integrace a automatizace",
             cta: {
@@ -619,8 +740,18 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/hero-analytics.webp",
-            alt: "Analytický dashboard zobrazující obchodní přehledy a vizualizaci dat",
+            image: "/media/banner/mobile-development.webp",
+            alt: "Multiplatformní vývoj mobilních aplikací pro iOS a Android s React Native technologií",
+            title: "Mobilní vývoj",
+            subtitle: "Nativní a multiplatformní mobilní aplikace",
+            cta: {
+              label: "Objevit mobilní aplikace",
+              href: "/services#service-2"
+            }
+          },
+          {
+            image: "/media/banner/analytics.webp",
+            alt: "Obchodní analytický dashboard zobrazující vizualizaci dat a metriky výkonu pro informovaná rozhodnutí",
             title: "Analytika & Přehledy",
             subtitle: "Transformujte svá data na akční obchodní inteligenci",
             cta: {
@@ -629,8 +760,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/ciber securaty.webp",
-            alt: "Kybernetický štít chránící digitální infrastrukturu",
+            image: "/media/banner/cybersecurity.webp",
+            alt: "Podniková řešení kybernetické bezpečnosti chránící digitální infrastrukturu a citlivá obchodní data",
             title: "Kybernetická bezpečnost",
             subtitle: "Chraňte svůj byznys řešeními na úrovni podniku",
             cta: {
@@ -639,8 +770,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/server.webp",
-            alt: "Moderní serverová infrastruktura a cloudové řešení",
+            image: "/media/banner/infrastructure.webp",
+            alt: "Cloudová serverová infrastruktura a hostingová řešení pro škálovatelné podnikové aplikace a webové stránky",
             title: "Infrastruktura",
             subtitle: "Škálovatelná a spolehlivá serverová řešení pro váš byznys",
             cta: {
@@ -776,34 +907,108 @@ export const translations: Record<Language, TranslationDictionary> = {
           { title: "Automatizace procesů", description: "Zjednodušte pracovní postupy a operace byznysu" },
           { title: "Cloudová řešení", description: "Škálovatelná cloudová infrastruktura a služby" }
         ]
+      },
+      pricing: {
+        title: "Předběžné ceny",
+        subtitle: "Transparentní ceny za naše hlavní služby",
+        disclaimer: "Všechny ceny jsou předběžné a mohou se lišit podle složitosti a požadavků projektu.",
+        disclaimerHighlight: "Pro přesné ceny nás prosím kontaktujte pro detailní konzultaci.",
+        primaryService: {
+          title: "Webový vývoj",
+          description: "Naše hlavní odbornost - moderní webové aplikace",
+          price: "Od 2 500 €",
+          features: [
+            "React/Next.js frontend",
+            "Node.js backend",
+            "Návrh databáze",
+            "Vývoj API",
+            "Responzivní design",
+            "SEO optimalizace"
+          ]
+        },
+        secondaryService: {
+          title: "Frontend vývoj",
+          description: "Specializované frontend řešení",
+          price: "Od 1 500 €",
+          features: [
+            "Moderní UI/UX design",
+            "React komponenty",
+            "Optimalizace výkonu",
+            "Křížová kompatibilita prohlížečů",
+            "Mobile-first přístup"
+          ]
+        },
+        cta: "Získat přesnou nabídku"
       }
     },
     contact: {
       title: "Kontaktujte nás",
       subtitle: "Pojďme spolu vytvořit něco úžasného",
+      getInTouch: {
+        title: "Spojte se s námi",
+        subtitle: "Připraveni začít váš projekt? Kontaktujte nás ještě dnes!",
+        labels: {
+          email: "Email",
+          phone: "Telefon",
+          address: "Adresa",
+          businessHours: "Pracovní doba",
+          ourLocation: "Naše lokace"
+        },
+        businessHours: {
+          schedule: "Po-Pá 9:00-17:00",
+          days: {
+            monday: "Pondělí",
+            tuesday: "Úterý",
+            wednesday: "Středa", 
+            thursday: "Čtvrtek",
+            friday: "Pátek",
+            weekend: "Víkend"
+          },
+          closed: "Zavřeno"
+        },
+        messaging: {
+          whatsapp: "WhatsApp",
+          telegram: "Telegram",
+          comingSoon: "Již brzy"
+        },
+        cta: "Připraveni transformovat vaši digitální přítomnost? Pojďme spolu vytvořit něco úžasného!"
+      },
       team: {
         title: "Náš tým",
-        subtitle: "Expertí za vaším úspěchem",
+        subtitle: "Experti za vaším úspěchem",
+        freelancersNote: "Spolupracujeme s talentovanými freelancery pro výjimečné výsledky",
         members: [
           {
-            name: "Alex Johnson",
+            name: "Illia Kharchenko",
             position: "Hlavní vývojář",
-            description: "Full-stack vývojář s 8+ lety zkušeností v React, Node.js a cloudových technologiích.",
-            image: "/team/alex-johnson.jpg"
+            description: "Full-stack vývojář s 3+ lety zkušeností v React, Node.js a cloudových technologiích.",
+            image: "/team/illia-kharchenko.jpg",
+            isLead: true
           },
           {
-            name: "Maria Rodriguez",
-            position: "UI/UX Designérka",
-            description: "Kreativní designérka specializující se na uživatelskou zkušenost a moderní webová rozhraní.",
-            image: "/team/maria-rodriguez.jpg"
+            name: "Ilyzabet Zakharchenko",
+            position: "Designérka",
+            description: "Kreativní designérka specializující se na moderní rozhraní.",
+            image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "David Chen",
-            position: "Projektový manažer",
-            description: "Zkušený projektový manažer zajišťující plynulé dodání a spokojenost klientů.",
-            image: "/team/david-chen.jpg"
+            name: "Alex Sosnovsky",
+            position: "Vývojář",
+            description: "Zkušený vývojář zaměřený na kvalitní řešení.",
+            image: "/team/alex-sosnovsky.jpg"
           }
-        ]
+        ],
+        technologies: {
+          title: "Poháněno předními technologiemi v oboru",
+          items: [
+            { name: "OpenAI", logo: "/logos/openai.svg" },
+            { name: "Cursor", logo: "/logos/cursor.svg" },
+            { name: "GitHub", logo: "/logos/github.svg" },
+            { name: "Vercel", logo: "/logos/vercel.svg" },
+            { name: "Next.js", logo: "/logos/nextjs.svg" },
+            { name: "React", logo: "/logos/react.svg" }
+          ]
+        }
       },
       form: {
         name: {
@@ -821,9 +1026,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         submit: "Odeslat zprávu"
       },
       info: {
-        email: "contact@ikhsystems.com",
+        email: "info@ikhsystems.com",
         phone: "+420 123 456 789",
-        address: "Praha, Česká republika"
+        address: "Liberec, Česká republika"
       }
     },
     seo: {
@@ -913,8 +1118,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       carousel: {
         slides: [
           {
-            image: "/media/banner/1.webp",
-            alt: "Moderne Webentwicklung mit React und Next.js Frameworks",
+            image: "/media/banner/web-development.webp",
+            alt: "Professionelle Webentwicklung mit React und Next.js für moderne Unternehmenslösungen in der Tschechischen Republik",
             title: "Webentwicklung",
             subtitle: "Full-Stack-Webanwendungen mit modernen Technologien",
             cta: {
@@ -923,18 +1128,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/2.webp",
-            alt: "Mobile App-Entwicklung für iOS und Android Plattformen",
-            title: "Mobile Entwicklung",
-            subtitle: "Native und plattformübergreifende mobile Anwendungen",
-            cta: {
-              label: "Mobile Apps entdecken",
-              href: "/services#service-2"
-            }
-          },
-          {
-            image: "/media/banner/3.webp",
-            alt: "Systemintegration und API-Entwicklung für Unternehmenslösungen",
+            image: "/media/banner/system-integration.webp",
+            alt: "Unternehmenssystemintegration und Automatisierungslösungen für nahtlose Geschäftsprozessoptimierung",
             title: "Systemintegration",
             subtitle: "Unternehmenssystemintegration und Automatisierung",
             cta: {
@@ -943,8 +1138,18 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/hero-analytics.webp",
-            alt: "Analytics-Dashboard mit Geschäftseinblicken und Datenvisualisierung",
+            image: "/media/banner/mobile-development.webp",
+            alt: "Plattformübergreifende Mobile-App-Entwicklung für iOS und Android mit React Native Technologie",
+            title: "Mobile Entwicklung",
+            subtitle: "Native und plattformübergreifende mobile Anwendungen",
+            cta: {
+              label: "Mobile Apps entdecken",
+              href: "/services#service-2"
+            }
+          },
+          {
+            image: "/media/banner/analytics.webp",
+            alt: "Business-Analytics-Dashboard mit Datenvisualisierung und Leistungsmetriken für fundierte Entscheidungsfindung",
             title: "Analytics & Einblicke",
             subtitle: "Verwandeln Sie Ihre Daten in umsetzbare Geschäftsintelligenz",
             cta: {
@@ -953,8 +1158,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/ciber securaty.webp",
-            alt: "Cybersicherheitsschild zum Schutz der digitalen Infrastruktur",
+            image: "/media/banner/cybersecurity.webp",
+            alt: "Unternehmen-Cybersicherheitslösungen zum Schutz digitaler Infrastruktur und sensibler Geschäftsdaten",
             title: "Cybersicherheit",
             subtitle: "Schützen Sie Ihr Unternehmen mit Sicherheitslösungen auf Unternehmensebene",
             cta: {
@@ -963,8 +1168,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/server.webp",
-            alt: "Moderne Serverinfrastruktur und Cloud-Computing-Setup",
+            image: "/media/banner/infrastructure.webp",
+            alt: "Cloud-Serverinfrastruktur und Hosting-Lösungen für skalierbare Geschäftsanwendungen und Websites",
             title: "Infrastruktur",
             subtitle: "Skalierbare und zuverlässige Serverlösungen für Ihr Unternehmen",
             cta: {
@@ -1100,34 +1305,108 @@ export const translations: Record<Language, TranslationDictionary> = {
           { title: "Prozessautomatisierung", description: "Streamline Geschäftsworkflows und -operationen" },
           { title: "Cloud-Lösungen", description: "Skalierbare Cloud-Infrastruktur und -dienste" }
         ]
+      },
+      pricing: {
+        title: "Vorläufige Preise",
+        subtitle: "Transparente Preise für unsere Kernleistungen",
+        disclaimer: "Alle Preise sind vorläufig und können je nach Projektkomplexität und -anforderungen variieren.",
+        disclaimerHighlight: "Für genaue Preise kontaktieren Sie uns bitte für eine detaillierte Beratung.",
+        primaryService: {
+          title: "Webentwicklung",
+          description: "Unsere Hauptexpertise - moderne Webanwendungen",
+          price: "Ab 2.500 €",
+          features: [
+            "React/Next.js Frontend",
+            "Node.js Backend",
+            "Datenbankdesign",
+            "API-Entwicklung",
+            "Responsive Design",
+            "SEO-Optimierung"
+          ]
+        },
+        secondaryService: {
+          title: "Frontend-Entwicklung",
+          description: "Spezialisierte Frontend-Lösungen",
+          price: "Ab 1.500 €",
+          features: [
+            "Modernes UI/UX-Design",
+            "React-Komponenten",
+            "Leistungsoptimierung",
+            "Browserübergreifende Kompatibilität",
+            "Mobile-First-Ansatz"
+          ]
+        },
+        cta: "Genaues Angebot erhalten"
       }
     },
     contact: {
       title: "Kontaktieren Sie uns",
       subtitle: "Lassen Sie uns gemeinsam etwas Großartiges schaffen",
+      getInTouch: {
+        title: "Kontakt aufnehmen",
+        subtitle: "Bereit, Ihr Projekt zu starten? Kontaktieren Sie uns heute!",
+        labels: {
+          email: "E-Mail",
+          phone: "Telefon",
+          address: "Adresse",
+          businessHours: "Geschäftszeiten",
+          ourLocation: "Unser Standort"
+        },
+        businessHours: {
+          schedule: "Mo-Fr 9:00-17:00",
+          days: {
+            monday: "Montag",
+            tuesday: "Dienstag",
+            wednesday: "Mittwoch",
+            thursday: "Donnerstag", 
+            friday: "Freitag",
+            weekend: "Wochenende"
+          },
+          closed: "Geschlossen"
+        },
+        messaging: {
+          whatsapp: "WhatsApp",
+          telegram: "Telegram",
+          comingSoon: "Demnächst"
+        },
+        cta: "Bereit, Ihre digitale Präsenz zu transformieren? Lassen Sie uns gemeinsam etwas Großartiges schaffen!"
+      },
       team: {
         title: "Unser Team",
         subtitle: "Die Experten hinter Ihrem Erfolg",
+        freelancersNote: "Wir arbeiten mit talentierten Freelancern für außergewöhnliche Ergebnisse zusammen",
         members: [
           {
-            name: "Alex Johnson",
+            name: "Illia Kharchenko",
             position: "Lead-Entwickler",
-            description: "Full-Stack-Entwickler mit 8+ Jahren Erfahrung in React, Node.js und Cloud-Technologien.",
-            image: "/team/alex-johnson.jpg"
+            description: "Full-Stack-Entwickler mit 3+ Jahren Erfahrung in React, Node.js und Cloud-Technologien.",
+            image: "/team/illia-kharchenko.jpg",
+            isLead: true
           },
           {
-            name: "Maria Rodriguez",
-            position: "UI/UX-Designerin",
-            description: "Kreative Designerin, spezialisiert auf Benutzererfahrung und moderne Web-Interfaces.",
-            image: "/team/maria-rodriguez.jpg"
+            name: "Ilyzabet Zakharchenko",
+            position: "Designerin",
+            description: "Kreative Designerin, spezialisiert auf moderne Interfaces.",
+            image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "David Chen",
-            position: "Projektmanager",
-            description: "Erfahrener Projektmanager, der für reibungslose Lieferung und Kundenzufriedenheit sorgt.",
-            image: "/team/david-chen.jpg"
+            name: "Alex Sosnovsky",
+            position: "Entwickler",
+            description: "Erfahrener Entwickler mit Fokus auf Qualitätslösungen.",
+            image: "/team/alex-sosnovsky.jpg"
           }
-        ]
+        ],
+        technologies: {
+          title: "Angetrieben von branchenführenden Technologien",
+          items: [
+            { name: "OpenAI", logo: "/logos/openai.svg" },
+            { name: "Cursor", logo: "/logos/cursor.svg" },
+            { name: "GitHub", logo: "/logos/github.svg" },
+            { name: "Vercel", logo: "/logos/vercel.svg" },
+            { name: "Next.js", logo: "/logos/nextjs.svg" },
+            { name: "React", logo: "/logos/react.svg" }
+          ]
+        }
       },
       form: {
         name: {
@@ -1145,9 +1424,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         submit: "Nachricht senden"
       },
       info: {
-        email: "contact@ikhsystems.com",
-        phone: "+420 123 456 789",
-        address: "Prag, Tschechische Republik"
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "Liberec, Tschechische Republik"
       }
     },
     seo: {
@@ -1237,8 +1516,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       carousel: {
         slides: [
           {
-            image: "/media/banner/1.webp",
-            alt: "Сучасна веб-розробка з React та Next.js фреймворками",
+            image: "/media/banner/web-development.webp",
+            alt: "Професійна веб-розробка з React та Next.js для сучасних бізнес-рішень в Чеській Республіці",
             title: "Веб-розробка",
             subtitle: "Full-stack веб-додатки з сучасними технологіями",
             cta: {
@@ -1247,18 +1526,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/2.webp",
-            alt: "Розробка мобільних додатків для iOS та Android платформ",
-            title: "Мобільна розробка",
-            subtitle: "Нативні та крос-платформні мобільні додатки",
-            cta: {
-              label: "Відкрити мобільні додатки",
-              href: "/services#service-2"
-            }
-          },
-          {
-            image: "/media/banner/3.webp",
-            alt: "Системна інтеграція та API розробка для корпоративних рішень",
+            image: "/media/banner/system-integration.webp",
+            alt: "Корпоративна системна інтеграція та автоматизаційні рішення для безшовної оптимізації бізнес-процесів",
             title: "Системна інтеграція",
             subtitle: "Корпоративна системна інтеграція та автоматизація",
             cta: {
@@ -1267,8 +1536,18 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/hero-analytics.webp",
-            alt: "Дашборд аналітики з бізнес-аналітикою та візуалізацією даних",
+            image: "/media/banner/mobile-development.webp",
+            alt: "Крос-платформна розробка мобільних додатків для iOS та Android з React Native технологією",
+            title: "Мобільна розробка",
+            subtitle: "Нативні та крос-платформні мобільні додатки",
+            cta: {
+              label: "Відкрити мобільні додатки",
+              href: "/services#service-2"
+            }
+          },
+          {
+            image: "/media/banner/analytics.webp",
+            alt: "Бізнес-аналітичний дашборд з візуалізацією даних та метриками продуктивності для обґрунтованих рішень",
             title: "Аналітика та інсайти",
             subtitle: "Перетворіть свої дані на дієві бізнес-рішення",
             cta: {
@@ -1277,8 +1556,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/ciber securaty.webp",
-            alt: "Щит кібербезпеки для захисту цифрової інфраструктури",
+            image: "/media/banner/cybersecurity.webp",
+            alt: "Корпоративні рішення кібербезпеки для захисту цифрової інфраструктури та чутливих бізнес-даних",
             title: "Кібербезпека",
             subtitle: "Захистіть свій бізнес рішеннями корпоративного рівня",
             cta: {
@@ -1287,8 +1566,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             }
           },
           {
-            image: "/media/banner/server.webp",
-            alt: "Сучасна серверна інфраструктура та хмарні обчислення",
+            image: "/media/banner/infrastructure.webp",
+            alt: "Хмарна серверна інфраструктура та хостинг рішення для масштабованих бізнес-додатків та веб-сайтів",
             title: "Інфраструктура",
             subtitle: "Масштабовані та надійні серверні рішення для вашого бізнесу",
             cta: {
@@ -1424,34 +1703,108 @@ export const translations: Record<Language, TranslationDictionary> = {
           { title: "Автоматизація процесів", description: "Спрощення бізнес-процесів та операцій" },
           { title: "Хмарні рішення", description: "Масштабована хмарна інфраструктура та послуги" }
         ]
+      },
+      pricing: {
+        title: "Попередні ціни",
+        subtitle: "Прозорі ціни на наші основні послуги",
+        disclaimer: "Всі ціни є попередніми і можуть відрізнятися залежно від складності та вимог проекту.",
+        disclaimerHighlight: "Для точних цін будь ласка, зв'яжіться з нами для детальної консультації.",
+        primaryService: {
+          title: "Веб-розробка",
+          description: "Наша основна експертиза - сучасні веб-додатки",
+          price: "Від 2 500 €",
+          features: [
+            "React/Next.js frontend",
+            "Node.js backend",
+            "Дизайн баз даних",
+            "Розробка API",
+            "Адаптивний дизайн",
+            "SEO оптимізація"
+          ]
+        },
+        secondaryService: {
+          title: "Frontend розробка",
+          description: "Спеціалізовані frontend рішення",
+          price: "Від 1 500 €",
+          features: [
+            "Сучасний UI/UX дизайн",
+            "React компоненти",
+            "Оптимізація продуктивності",
+            "Кросплатформна сумісність",
+            "Mobile-first підхід"
+          ]
+        },
+        cta: "Отримати точну пропозицію"
       }
     },
     contact: {
-      title: "Зв'язатися з нами",
+      title: "Зв'язатися з нами", 
       subtitle: "Давайте разом створимо щось дивовижне",
+      getInTouch: {
+        title: "Зв'яжіться з нами",
+        subtitle: "Готові розпочати ваш проект? Зв'яжіться з нами сьогодні!",
+        labels: {
+          email: "Email",
+          phone: "Телефон",
+          address: "Адреса",
+          businessHours: "Робочі години",
+          ourLocation: "Наша локація"
+        },
+        businessHours: {
+          schedule: "Пн-Пт 9:00-17:00",
+          days: {
+            monday: "Понеділок",
+            tuesday: "Вівторок",
+            wednesday: "Середа",
+            thursday: "Четвер",
+            friday: "П'ятниця",
+            weekend: "Вихідні"
+          },
+          closed: "Зачинено"
+        },
+        messaging: {
+          whatsapp: "WhatsApp",
+          telegram: "Telegram",
+          comingSoon: "Незабаром"
+        },
+        cta: "Готові трансформувати вашу цифрову присутність? Давайте разом створимо щось дивовижне!"
+      },
       team: {
         title: "Наша команда",
         subtitle: "Експерти за вашим успіхом",
+        freelancersNote: "Ми співпрацюємо з талановитими фрілансерами для виняткових результатів",
         members: [
           {
-            name: "Alex Johnson",
+            name: "Illia Kharchenko",
             position: "Головний розробник",
-            description: "Full-stack розробник з 8+ роками досвіду в React, Node.js та хмарних технологіях.",
-            image: "/team/alex-johnson.jpg"
+            description: "Full-stack розробник з 3+ роками досвіду в React, Node.js та хмарних технологіях.",
+            image: "/team/illia-kharchenko.jpg",
+            isLead: true
           },
           {
-            name: "Maria Rodriguez",
-            position: "UI/UX Дизайнерка",
-            description: "Креативна дизайнерка, що спеціалізується на користувацькому досвіді та сучасних веб-інтерфейсах.",
-            image: "/team/maria-rodriguez.jpg"
+            name: "Ilyzabet Zakharchenko",
+            position: "Дизайнерка",
+            description: "Креативна дизайнерка, що спеціалізується на сучасних інтерфейсах.",
+            image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "David Chen",
-            position: "Проектний менеджер",
-            description: "Досвідчений проектний менеджер, що забезпечує плавну доставку та задоволеність клієнтів.",
-            image: "/team/david-chen.jpg"
+            name: "Alex Sosnovsky",
+            position: "Розробник",
+            description: "Досвідчений розробник, зосереджений на якісних рішеннях.",
+            image: "/team/alex-sosnovsky.jpg"
           }
-        ]
+        ],
+        technologies: {
+          title: "Працюємо з провідними технологіями галузі",
+          items: [
+            { name: "OpenAI", logo: "/logos/openai.svg" },
+            { name: "Cursor", logo: "/logos/cursor.svg" },
+            { name: "GitHub", logo: "/logos/github.svg" },
+            { name: "Vercel", logo: "/logos/vercel.svg" },
+            { name: "Next.js", logo: "/logos/nextjs.svg" },
+            { name: "React", logo: "/logos/react.svg" }
+          ]
+        }
       },
       form: {
         name: {
@@ -1469,9 +1822,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         submit: "Надіслати повідомлення"
       },
       info: {
-        email: "contact@ikhsystems.com",
-        phone: "+420 123 456 789",
-        address: "Прага, Чеська Республіка"
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "Ліберець, Чеська Республіка"
       }
     },
     seo: {
