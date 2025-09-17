@@ -133,7 +133,7 @@ export default async function LangLayout({
         <meta name="format-detection" content="email=yes" />
         <meta name="format-detection" content="address=yes" />
       </head>
-      <body className="min-h-screen bg-background flex flex-col">
+      <body className="font-sans antialiased min-h-screen bg-background flex flex-col">
         {/* Structured Data */}
         <StructuredData type="Organization" lang={lang as Language} />
         <StructuredData type="WebSite" lang={lang as Language} />
