@@ -1027,7 +1027,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       },
       info: {
         email: "info@ikhsystems.com",
-        phone: "+420 123 456 789",
+        phone: "+420 728 209 012",
         address: "Liberec, Česká republika"
       }
     },
