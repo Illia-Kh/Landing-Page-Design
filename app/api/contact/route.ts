@@ -2,21 +2,27 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ContactFormData, ContactFormResponse } from '@/types'
 
 // Basic validation schema
-const validateContactForm = (data: any): data is ContactFormData => {
+const validateContactForm = (data: unknown): data is ContactFormData => {
+  if (typeof data !== 'object' || data === null) {
+    return false
+  }
+  
+  const obj = data as Record<string, unknown>
+  
   return (
-    typeof data.name === 'string' &&
-    data.name.length >= 2 &&
-    data.name.length <= 100 &&
-    typeof data.email === 'string' &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) &&
-    typeof data.message === 'string' &&
-    data.message.length >= 10 &&
-    data.message.length <= 1000
+    typeof obj.name === 'string' &&
+    obj.name.length >= 2 &&
+    obj.name.length <= 100 &&
+    typeof obj.email === 'string' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(obj.email) &&
+    typeof obj.message === 'string' &&
+    obj.message.length >= 10 &&
+    obj.message.length <= 1000
   )
 }
 
 // Basic anti-spam honeypot check
-const checkHoneypot = (data: any): boolean => {
+const checkHoneypot = (data: Record<string, unknown>): boolean => {
   // Check for honeypot field (should be empty)
   if (data.website || data.url || data.homepage) {
     return false
@@ -25,11 +31,11 @@ const checkHoneypot = (data: any): boolean => {
 }
 
 // Basic time-based spam check
-const checkTimestamp = (data: any): boolean => {
+const checkTimestamp = (data: Record<string, unknown>): boolean => {
   const now = Date.now()
   const timestamp = data.timestamp
   
-  if (!timestamp) return false
+  if (typeof timestamp !== 'number') return false
   
   // Form should take at least 3 seconds to fill
   const minTime = 3000
@@ -44,6 +50,43 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
   try {
     const data = await request.json()
 
+    // Ensure data is an object
+    if (typeof data !== 'object' || data === null) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid request data',
+          message: 'Request must contain valid JSON object.',
+        },
+        { status: 400 }
+      )
+    }
+
+    const formData = data as Record<string, unknown>
+
+    // Check anti-spam measures first (before validation)
+    if (!checkHoneypot(formData)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Spam detected',
+          message: 'Your submission appears to be spam.',
+        },
+        { status: 422 }
+      )
+    }
+
+    if (!checkTimestamp(formData)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid submission timing',
+          message: 'Please try submitting the form again.',
+        },
+        { status: 422 }
+      )
+    }
+
     // Validate form data
     if (!validateContactForm(data)) {
       return NextResponse.json(
@@ -56,34 +99,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
       )
     }
 
-    // Check anti-spam measures
-    if (!checkHoneypot(data)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Spam detected',
-          message: 'Your submission appears to be spam.',
-        },
-        { status:422 }
-      )
-    }
-
-    if (!checkTimestamp(data)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid submission timing',
-          message: 'Please try submitting the form again.',
-        },
-        { status:422 }
-      )
-    }
+    // At this point, data is validated as ContactFormData
+    const validatedData = data as ContactFormData
 
     // Clean and sanitize data
     const cleanData: ContactFormData = {
-      name: data.name.trim(),
-      email: data.email.trim().toLowerCase(),
-      message: data.message.trim(),
+      name: validatedData.name.trim(),
+      email: validatedData.email.trim().toLowerCase(),
+      message: validatedData.message.trim(),
     }
 
     // Log the submission (in production, you would save to database or send email)

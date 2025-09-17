@@ -32,7 +32,7 @@ export function LangSwitcher({ currentLang, className = '' }: LangSwitcherProps)
     segments[1] = newLang // Replace the language segment
     const newPath = segments.join('/')
     
-    router.push(newPath as any) // Type assertion for Next.js router
+    router.push(newPath as `/${string}`)
   }
 
   const currentLanguage = languageNames[currentLang]
