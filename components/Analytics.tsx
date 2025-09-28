@@ -18,7 +18,7 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+          gtag('js', new Date().toISOString());
           gtag('config', '${gaId}', {
             page_title: document.title,
             page_location: window.location.href,

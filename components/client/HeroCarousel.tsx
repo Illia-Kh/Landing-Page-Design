@@ -37,9 +37,15 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Check for reduced motion preference
   useEffect(() => {
+    if (!mounted) return
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     setPrefersReducedMotion(mediaQuery.matches)
     
@@ -49,7 +55,7 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
     
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
+  }, [mounted])
 
   // Stop autoplay if user prefers reduced motion
   useEffect(() => {

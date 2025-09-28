@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
+import { StructuredData } from '@/components/StructuredData'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -58,12 +59,28 @@ export default async function OstravaPage({ params }: OstravaPageProps) {
   const locationData = t.locations.ostrava
   
   return (
-    <LocationPage
-      city="Ostrava"
-      slug="ostrava"
-      title={locationData.title}
-      description={locationData.description}
-      lang={lang as Language}
-    />
+    <>
+      <LocationPage
+        city="Ostrava"
+        slug="ostrava"
+        title={locationData.title}
+        description={locationData.description}
+        lang={lang as Language}
+      />
+      
+      {/* Structured Data for Ostrava */}
+      <StructuredData
+        type="Place"
+        lang={lang as Language}
+        placeData={{
+          name: "Ostrava",
+          address: "Ostrava, Czech Republic",
+          coordinates: {
+            lat: 49.8209,
+            lng: 18.2625
+          }
+        }}
+      />
+    </>
   )
 }

@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
-import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
-import { ContactForm } from '@/components/client/ContactForm'
-import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown } from 'lucide-react'
+// import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown, Linkedin, Facebook } from 'lucide-react'
 import { env } from '@/lib/env'
+import { StructuredData } from '@/components/StructuredData'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -38,25 +38,16 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
       url: canonicalUrl,
       siteName: 'IKH-TechSystems',
       title: t.seo.contact.title,
       description: t.seo.contact.description,
-      images: [
-        {
-          url: `${baseUrl}/og-contact.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t.seo.contact.title,
-        }
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t.seo.contact.title,
       description: t.seo.contact.description,
-      images: [`${baseUrl}/og-contact.jpg`],
     },
   }
 }
@@ -77,21 +68,21 @@ export default async function ContactsPage({ params }: PageProps) {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="section-container">
-          <MotionSection className="text-center max-w-4xl mx-auto" immediate={true}>
+          <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               {t.contact.title}
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t.contact.subtitle}
             </p>
-          </MotionSection>
+          </div>
         </div>
       </section>
 
       {/* Unified Contact Block */}
       <section className="section-padding">
         <div className="section-container">
-          <MotionSection className="mb-20">
+          <div className="mb-20">
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 
@@ -135,7 +126,7 @@ export default async function ContactsPage({ params }: PageProps) {
                       >
                         {t.contact.info.phone}
                       </a>
-                      <div className="flex space-x-2">
+                      <div className="flex flex-wrap gap-2">
                         <a
                           href="https://wa.me/420728209012"
                           target="_blank"
@@ -145,14 +136,33 @@ export default async function ContactsPage({ params }: PageProps) {
                           <MessageCircle className="w-4 h-4 mr-1" />
                           {t.contact.getInTouch.messaging.whatsapp}
                         </a>
-                        <button
-                          disabled
-                          className="inline-flex items-center px-3 py-1 bg-blue-500 opacity-50 text-white text-sm rounded-full cursor-not-allowed"
-                          title={t.contact.getInTouch.messaging.comingSoon}
+                        <a
+                          href="https://www.linkedin.com/company/108555725"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-full transition-colors"
+                        >
+                          <Linkedin className="w-4 h-4 mr-1" />
+                          LinkedIn
+                        </a>
+                        <a
+                          href="https://www.facebook.com/ikhsystems"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-full transition-colors"
+                        >
+                          <Facebook className="w-4 h-4 mr-1" />
+                          Facebook
+                        </a>
+                        <a
+                          href="https://t.me/IKH%20Systems"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-full transition-colors"
                         >
                           <Send className="w-4 h-4 mr-1" />
                           {t.contact.getInTouch.messaging.telegram}
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -243,40 +253,30 @@ export default async function ContactsPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </MotionSection>
+          </div>
 
-          {/* Contact Form Section */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Form */}
-            <MotionSection direction="left">
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                  {t.common.actions.contactUs}
+          {/* Additional Information Section */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-gray-700">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t.common.actions.getStarted}
                 </h2>
-                <ContactForm lang={lang as Language} />
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                  {t.hero.description}
+                </p>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  We&rsquo;re here to help you transform your ideas into reality. Get in touch with us today!
+                </p>
               </div>
-            </MotionSection>
 
-            {/* Additional Info */}
-            <MotionSection direction="right" delay={0.3}>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    {t.common.actions.getStarted}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    {t.hero.description}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    We&rsquo;re here to help you transform your ideas into reality. Get in touch with us today!
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Why Choose Us */}
+                <div className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
                     Why Choose Us?
-                  </h4>
-                  <ul className="space-y-3">
+                  </h3>
+                  <ul className="space-y-4">
                     {[
                       '5+ years of experience',
                       'Modern technology stack',
@@ -284,20 +284,52 @@ export default async function ContactsPage({ params }: PageProps) {
                       'Quality assurance'
                     ].map((item, index) => (
                       <li key={index} className="flex items-center text-gray-700 dark:text-gray-300">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                        {item}
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mr-4 flex-shrink-0"></div>
+                        <span className="font-medium">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="text-center">
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {t.contact.getInTouch.cta}
-                  </p>
+                {/* Quick Contact */}
+                <div className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
+                    Quick Contact
+                  </h3>
+                  <div className="space-y-4">
+                    <a 
+                      href={`mailto:${t.contact.info.email}`}
+                      className="flex items-center justify-center p-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors"
+                    >
+                      <Mail className="w-5 h-5 mr-3" />
+                      Send Email
+                    </a>
+                    <a 
+                      href={`tel:${t.contact.info.phone.replace(/\s/g, '')}`}
+                      className="flex items-center justify-center p-4 bg-green-600 hover:bg-green-700 text-white rounded-xl transition-colors"
+                    >
+                      <Phone className="w-5 h-5 mr-3" />
+                      Call Us
+                    </a>
+                    <a 
+                      href="https://wa.me/420728209012"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center p-4 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-colors"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-3" />
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
-            </MotionSection>
+
+              <div className="text-center mt-8">
+                <p className="text-xl font-semibold text-gray-900 dark:text-white">
+                  {t.contact.getInTouch.cta}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -305,7 +337,7 @@ export default async function ContactsPage({ params }: PageProps) {
       {/* Team Section */}
       <section className="section-padding bg-gray-50 dark:bg-gray-800">
         <div className="section-container">
-          <MotionSection className="text-center max-w-4xl mx-auto mb-16" immediate={true}>
+          <div className="text-center max-w-4xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t.contact.team.title}
             </h2>
@@ -315,11 +347,11 @@ export default async function ContactsPage({ params }: PageProps) {
             <p className="text-lg text-gray-500 dark:text-gray-400">
               {t.contact.team.freelancersNote}
             </p>
-          </MotionSection>
+          </div>
 
           {/* Lead Developer Card */}
           {t.contact.team.members.filter(member => member.isLead).map((leader, index) => (
-            <MotionSection key={index} className="mb-12">
+            <div key={index} className="mb-12">
               <div className="max-w-4xl mx-auto">
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-600 relative overflow-hidden">
                   {/* Star Badge */}
@@ -353,11 +385,11 @@ export default async function ContactsPage({ params }: PageProps) {
                   </div>
                 </div>
               </div>
-            </MotionSection>
+            </div>
           ))}
 
           {/* Other Team Members */}
-          <MotionStagger className="grid md:grid-cols-2 gap-6 mb-12" staggerDelay={0.1}>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             {t.contact.team.members.filter(member => !member.isLead).map((member, index) => (
               <div key={index} className="group">
                 <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 text-center">
@@ -381,10 +413,45 @@ export default async function ContactsPage({ params }: PageProps) {
                 </div>
               </div>
             ))}
-          </MotionStagger>
+          </div>
 
         </div>
       </section>
+
+      {/* Structured Data */}
+      <StructuredData 
+        type="ContactPoint" 
+        lang={lang as Language}
+        contactData={{
+          email: t.contact.info.email,
+          phone: t.contact.info.phone,
+          address: t.contact.info.address
+        }}
+      />
+      <StructuredData 
+        type="LocalBusiness" 
+        lang={lang as Language}
+        contactData={{
+          email: t.contact.info.email,
+          phone: t.contact.info.phone,
+          address: t.contact.info.address
+        }}
+      />
+      
+      {/* Team Members Structured Data */}
+      {t.contact.team.members.map((member, index) => (
+        <StructuredData
+          key={index}
+          type="Person"
+          lang={lang as Language}
+          personData={{
+            name: member.name,
+            position: member.position,
+            description: member.description,
+            isLead: member.isLead
+          }}
+        />
+      ))}
     </div>
   )
 }

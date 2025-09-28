@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
+import { StructuredData } from '@/components/StructuredData'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -58,12 +59,28 @@ export default async function LiberecPage({ params }: LiberecPageProps) {
   const locationData = t.locations.liberec
   
   return (
-    <LocationPage
-      city="Liberec"
-      slug="liberec"
-      title={locationData.title}
-      description={locationData.description}
-      lang={lang as Language}
-    />
+    <>
+      <LocationPage
+        city="Liberec"
+        slug="liberec"
+        title={locationData.title}
+        description={locationData.description}
+        lang={lang as Language}
+      />
+      
+      {/* Structured Data for Liberec */}
+      <StructuredData
+        type="Place"
+        lang={lang as Language}
+        placeData={{
+          name: "Liberec",
+          address: "Liberec, Czech Republic",
+          coordinates: {
+            lat: 50.7663,
+            lng: 15.0543
+          }
+        }}
+      />
+    </>
   )
 }

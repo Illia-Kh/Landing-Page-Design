@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import LocationPage from '@/components/sections/LocationPage'
+import { StructuredData } from '@/components/StructuredData'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -58,12 +59,28 @@ export default async function PrahaPage({ params }: PrahaPageProps) {
   const locationData = t.locations.praha
   
   return (
-    <LocationPage
-      city="Praha"
-      slug="praha"
-      title={locationData.title}
-      description={locationData.description}
-      lang={lang as Language}
-    />
+    <>
+      <LocationPage
+        city="Praha"
+        slug="praha"
+        title={locationData.title}
+        description={locationData.description}
+        lang={lang as Language}
+      />
+      
+      {/* Structured Data for Prague */}
+      <StructuredData
+        type="Place"
+        lang={lang as Language}
+        placeData={{
+          name: "Prague",
+          address: "Prague, Czech Republic",
+          coordinates: {
+            lat: 50.0755,
+            lng: 14.4378
+          }
+        }}
+      />
+    </>
   )
 }

@@ -3,7 +3,7 @@ import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
 import { Logo } from '@/components/ui/Logo'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, Linkedin, Facebook, Send } from 'lucide-react'
 
 interface FooterProps {
   lang: Language
@@ -11,7 +11,8 @@ interface FooterProps {
 
 export function Footer({ lang }: FooterProps) {
   const t = getTranslation(lang)
-  const currentYear = new Date().getFullYear()
+  // Use a static year to avoid hydration mismatch
+  const currentYear = 2024
   
   const navItems: Array<{ href: Route; label: string }> = [
     { href: `/${lang}` as Route, label: t.common.navigation.home },
@@ -135,6 +136,36 @@ export function Footer({ lang }: FooterProps) {
                   <MessageCircle className="w-3 h-3 mr-1" />
                   WhatsApp
                 </a>
+                <a 
+                  href="https://www.linkedin.com/company/108555725" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-3 h-3 mr-1" />
+                  LinkedIn
+                </a>
+                <a 
+                  href="https://www.facebook.com/ikhsystems" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-3 h-3 mr-1" />
+                  Facebook
+                </a>
+                <a 
+                  href="https://t.me/IKH%20Systems" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="Telegram"
+                >
+                  <Send className="w-3 h-3 mr-1" />
+                  Telegram
+                </a>
               </div>
             </div>
           </div>
@@ -192,7 +223,10 @@ export function Footer({ lang }: FooterProps) {
                 "addressCountry": "CZ"
               },
               "sameAs": [
-                `https://wa.me/420728209012`
+                "https://wa.me/420728209012",
+                "https://www.linkedin.com/company/108555725",
+                "https://www.facebook.com/ikhsystems",
+                "https://t.me/IKH%20Systems"
               ],
               "serviceArea": {
                 "@type": "Country",

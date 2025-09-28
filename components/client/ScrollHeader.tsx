@@ -11,8 +11,14 @@ interface ScrollHeaderProps {
 export function ScrollHeader({ lang }: ScrollHeaderProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       
@@ -45,7 +51,7 @@ export function ScrollHeader({ lang }: ScrollHeaderProps) {
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll)
     }
-  }, [lastScrollY])
+  }, [lastScrollY, mounted])
 
   return (
     <div 

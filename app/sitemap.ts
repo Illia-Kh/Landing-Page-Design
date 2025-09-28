@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = env.NEXT_PUBLIC_SITE_URL
   const languages = locales
   const pages = ['', '/about', '/services', '/contacts']
+  const locations = ['/locations/praha', '/locations/brno', '/locations/ostrava', '/locations/plzen', '/locations/liberec']
 
   const sitemap: MetadataRoute.Sitemap = []
 
@@ -28,6 +29,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
               alternateLang === 'cs' ? 'cs-CZ' : 
               alternateLang === 'de' ? 'de-DE' : 'uk-UA',
               `${baseUrl}/${alternateLang}${page}`
+            ])
+          )
+        }
+      })
+    })
+
+    // Add location pages for each language
+    locations.forEach(location => {
+      const url = `${baseUrl}/${lang}${location}`
+      
+      sitemap.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: {
+          languages: Object.fromEntries(
+            languages.map(alternateLang => [
+              alternateLang === 'en' ? 'en-US' : 
+              alternateLang === 'cs' ? 'cs-CZ' : 
+              alternateLang === 'de' ? 'de-DE' : 'uk-UA',
+              `${baseUrl}/${alternateLang}${location}`
             ])
           )
         }

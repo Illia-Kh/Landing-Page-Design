@@ -588,13 +588,13 @@ export const translations: Record<Language, TranslationDictionary> = {
             isLead: true
           },
           {
-            name: "Ilyzabet Zakharchenko",
+            name: "Elyzabet Zakharchenko",
             position: "Designer",
             description: "Creative designer specializing in modern interfaces.",
             image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "Alex Sosnovsky",
+            name: "Alexander Sosnovsky",
             position: "Developer",
             description: "Experienced developer focused on quality solutions.",
             image: "/team/alex-sosnovsky.jpg"
@@ -986,13 +986,13 @@ export const translations: Record<Language, TranslationDictionary> = {
             isLead: true
           },
           {
-            name: "Ilyzabet Zakharchenko",
+            name: "Elyzabet Zakharchenko",
             position: "Designérka",
             description: "Kreativní designérka specializující se na moderní rozhraní.",
             image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "Alex Sosnovsky",
+            name: "Alexander Sosnovsky",
             position: "Vývojář",
             description: "Zkušený vývojář zaměřený na kvalitní řešení.",
             image: "/team/alex-sosnovsky.jpg"
@@ -1384,13 +1384,13 @@ export const translations: Record<Language, TranslationDictionary> = {
             isLead: true
           },
           {
-            name: "Ilyzabet Zakharchenko",
+            name: "Elyzabet Zakharchenko",
             position: "Designerin",
             description: "Kreative Designerin, spezialisiert auf moderne Interfaces.",
             image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "Alex Sosnovsky",
+            name: "Alexander Sosnovsky",
             position: "Entwickler",
             description: "Erfahrener Entwickler mit Fokus auf Qualitätslösungen.",
             image: "/team/alex-sosnovsky.jpg"
@@ -1782,13 +1782,13 @@ export const translations: Record<Language, TranslationDictionary> = {
             isLead: true
           },
           {
-            name: "Ilyzabet Zakharchenko",
+            name: "Elyzabet Zakharchenko",
             position: "Дизайнерка",
             description: "Креативна дизайнерка, що спеціалізується на сучасних інтерфейсах.",
             image: "/team/ilyzabet-zakharchenko.jpg"
           },
           {
-            name: "Alex Sosnovsky",
+            name: "Alexander Sosnovsky",
             position: "Розробник",
             description: "Досвідчений розробник, зосереджений на якісних рішеннях.",
             image: "/team/alex-sosnovsky.jpg"

@@ -40,25 +40,16 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
+      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
       url: canonicalUrl,
       siteName: 'IKH-TechSystems',
       title: t.seo.services.title,
       description: t.seo.services.description,
-      images: [
-        {
-          url: `${baseUrl}/og-services.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t.seo.services.title,
-        }
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t.seo.services.title,
       description: t.seo.services.description,
-      images: [`${baseUrl}/og-services.jpg`],
     },
   }
 }

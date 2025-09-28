@@ -64,12 +64,3 @@ export const trackEvent = (
     })
   }
 }
-
-// Track form submissions
-export const trackFormSubmission = (formName: string, success: boolean) => {
-  trackEvent(
-    success ? 'form_submit_success' : 'form_submit_error',
-    'engagement',
-    formName
-  )
-}
