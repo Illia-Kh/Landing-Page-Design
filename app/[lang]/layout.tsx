@@ -10,6 +10,7 @@ import { ScrollHeader } from '@/components/client/ScrollHeader'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/client/ThemeProvider'
 import { HtmlLangSetter } from '@/components/client/HtmlLangSetter'
+import { CookieConsent } from '@/components/client/CookieConsent'
 import { env } from '@/lib/env'
 
 // ISR configuration
@@ -120,6 +121,9 @@ export default async function LangLayout({
       
       {/* Footer */}
       <Footer lang={lang as Language} />
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsent lang={lang as Language} />
     </ThemeProvider>
   )
 }

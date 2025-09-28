@@ -1,8 +1,15 @@
-# 🚀 IKH-TechSystems — Production-Ready Landing Page v0.3.1
+# 🚀 IKH Systems — Production-Ready Landing Page v0.4.0
 
-A modern, high-performance landing page built with **Next.js 15**, **App Router**, **TypeScript**, and **Tailwind CSS**. This project features comprehensive SEO optimization, internationalization (i18n), performance monitoring, production-ready security measures, and advanced UI components with dark mode support.
+A modern, high-performance landing page built with **Next.js 15**, **App Router**, **TypeScript**, and **Tailwind CSS**. This project features comprehensive SEO optimization, internationalization (i18n), performance monitoring, production-ready security measures, advanced UI components with dark mode support, and complete legal compliance pages.
 
-## 🆕 What's New in v0.3.1
+## 🆕 What's New in v0.4.0
+
+### 📋 Legal Compliance Pages
+- **Cookie Policy**: Comprehensive cookie usage information with GDPR compliance
+- **Privacy Policy**: Complete data protection and privacy information
+- **Terms of Service**: Detailed terms and conditions for service usage
+- **Multi-language Support**: All legal pages available in 4 languages (EN, CS, DE, UA)
+- **SEO Optimized**: Each legal page has proper metadata and structured data
 
 ### 🎨 Enhanced UI/UX
 - **Dark Mode Support**: Complete dark/light theme toggle with system preference detection
@@ -461,7 +468,16 @@ For support, email contact@ikhsystems.com or create an issue in the repository.
 
 ## 📋 Version History
 
-### v0.3.1 (Current)
+### v0.4.0 (Current)
+- 📋 Added comprehensive legal compliance pages (Cookie Policy, Privacy Policy, Terms of Service)
+- 🌍 Multi-language legal pages support (EN, CS, DE, UA)
+- 🔧 Updated contact information across all legal pages
+- 🎨 Enhanced mobile navigation with auto-close functionality
+- 🧹 Streamlined footer design and removed redundant elements
+- 📊 Updated sitemap with all new legal pages
+- ⚡ Performance optimizations and bug fixes
+
+### v0.3.1 (Previous)
 - ✨ Added dark mode support with system preference detection
 - 🎠 Implemented interactive hero carousel with autoplay
 - 🏢 Created location-specific landing pages for major Czech cities

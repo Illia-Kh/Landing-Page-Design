@@ -2,6 +2,7 @@
 
 import Script from 'next/script'
 import { analyticsConfig } from '@/lib/env'
+import { useEffect, useState } from 'react'
 
 interface GoogleAnalyticsProps {
   gaId: string
@@ -53,7 +54,49 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
 }
 
 export function Analytics() {
-  if (!analyticsConfig.enabled) {
+  const [hasAnalyticsConsent, setHasAnalyticsConsent] = useState(false)
+  const [isConsentChecked, setIsConsentChecked] = useState(false)
+
+  useEffect(() => {
+    // Check cookie consent
+    const checkConsent = () => {
+      try {
+        const consent = localStorage.getItem('cookie-consent')
+        if (consent) {
+          // Check if consent is a valid JSON object
+          if (consent.startsWith('{') && consent.endsWith('}')) {
+            const preferences = JSON.parse(consent)
+            setHasAnalyticsConsent(preferences.analytics === true)
+          } else {
+            // Handle legacy string values like "accepted"
+            setHasAnalyticsConsent(consent === 'accepted')
+            // Clear legacy value to prevent future issues
+            localStorage.removeItem('cookie-consent')
+          }
+        }
+        setIsConsentChecked(true)
+      } catch (error) {
+        console.error('Error checking cookie consent:', error)
+        setIsConsentChecked(true)
+      }
+    }
+
+    checkConsent()
+
+    // Listen for consent changes
+    const handleConsentChange = () => {
+      checkConsent()
+    }
+
+    window.addEventListener('cookieConsentChanged', handleConsentChange)
+    
+    return () => {
+      window.removeEventListener('cookieConsentChanged', handleConsentChange)
+    }
+  }, [])
+
+  // Don't render analytics if disabled or no consent
+  if (!analyticsConfig.enabled || !isConsentChecked || !hasAnalyticsConsent) {
     return null
   }
 

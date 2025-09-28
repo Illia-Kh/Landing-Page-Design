@@ -59,7 +59,7 @@ export function Header({ lang }: HeaderProps) {
             <div className="section-container py-4">
               <div className="space-y-4">
                 {/* Navigation */}
-                <Nav lang={lang} mobile />
+                <Nav lang={lang} mobile onMobileMenuClose={() => setIsMobileMenuOpen(false)} />
                 
                 {/* System Controls */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">

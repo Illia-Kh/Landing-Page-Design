@@ -2,7 +2,7 @@ import { siteConfig } from '@/lib/env'
 import { Language } from '@/types'
 
 interface StructuredDataProps {
-  type: 'Organization' | 'WebSite' | 'Service' | 'ContactPoint' | 'LocalBusiness' | 'Person' | 'Place'
+  type: 'Organization' | 'WebSite' | 'Service' | 'ContactPoint' | 'LocalBusiness' | 'Person' | 'Place' | 'WebPage'
   lang: Language
   serviceData?: {
     name: string
@@ -27,9 +27,14 @@ interface StructuredDataProps {
       lng: number
     }
   }
+  webPageData?: {
+    name: string
+    description: string
+    url: string
+  }
 }
 
-export function StructuredData({ type, lang, serviceData, contactData, personData, placeData }: StructuredDataProps) {
+export function StructuredData({ type, lang, serviceData, contactData, personData, placeData, webPageData }: StructuredDataProps) {
   const getSchema = () => {
     const baseUrl = siteConfig.url
     const langCode = lang === 'en' ? 'en-US' : lang === 'cs' ? 'cs-CZ' : 'de-DE'
@@ -204,6 +209,26 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
           containedInPlace: {
             '@type': 'Country',
             name: 'Czech Republic',
+          },
+        }
+
+      case 'WebPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: webPageData?.name || '',
+          description: webPageData?.description || '',
+          url: webPageData?.url || '',
+          inLanguage: langCode,
+          isPartOf: {
+            '@type': 'WebSite',
+            name: siteConfig.name,
+            url: `${baseUrl}/${lang}`,
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: siteConfig.name,
+            url: `${baseUrl}/${lang}`,
           },
         }
 

@@ -9,9 +9,10 @@ import type { Route } from 'next'
 interface NavProps {
   lang: Language
   mobile?: boolean
+  onMobileMenuClose?: () => void
 }
 
-export function Nav({ lang, mobile = false }: NavProps) {
+export function Nav({ lang, mobile = false, onMobileMenuClose }: NavProps) {
   const pathname = usePathname()
   const t = getTranslation(lang)
   
@@ -30,6 +31,7 @@ export function Nav({ lang, mobile = false }: NavProps) {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onMobileMenuClose}
               className={`px-4 py-3 text-base font-medium transition-colors rounded-lg ${
                 isActive 
                   ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-semibold' 

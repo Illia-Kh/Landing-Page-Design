@@ -10,7 +10,7 @@ export const getLocalizedUrl = (path: string, locale: Language): string => {
   return `${baseUrl}/${locale}${path}`
 }
 
-// Translation interface
+// Translation interface - Updated with cookies support
 export interface TranslationDictionary {
   common: {
     navigation: {
@@ -284,6 +284,209 @@ export interface TranslationDictionary {
       title: string
       description: string
       keywords: string
+    }
+  }
+  cookies: {
+    title: string
+    description: string
+    keywords: string
+    lastUpdated: string
+    introduction: {
+      title: string
+      content: string
+    }
+    whatAre: {
+      title: string
+      content: string
+    }
+    types: {
+      title: string
+      necessary: {
+        title: string
+        description: string
+        examples: string
+      }
+      analytics: {
+        title: string
+        description: string
+        examples: string
+      }
+      marketing: {
+        title: string
+        description: string
+        examples: string
+      }
+    }
+    usage: {
+      title: string
+      content: string
+      purposes: string[]
+    }
+    managing: {
+      title: string
+      content: string
+      browser: {
+        title: string
+        content: string
+      }
+      ourSite: {
+        title: string
+        content: string
+      }
+    }
+    thirdParty: {
+      title: string
+      content: string
+      table: {
+        service: string
+        purpose: string
+        privacy: string
+        privacyLink: string
+      }
+      services: Array<{
+        name: string
+        purpose: string
+        privacyUrl: string
+      }>
+    }
+    duration: {
+      title: string
+      content: string
+      types: string[]
+    }
+    updates: {
+      title: string
+      content: string
+    }
+    contact: {
+      title: string
+      content: string
+      email: string
+      phone: string
+    }
+  }
+  privacy: {
+    title: string
+    description: string
+    keywords: string
+    lastUpdated: string
+    introduction: {
+      title: string
+      content: string
+    }
+    informationCollection: {
+      title: string
+      personal: {
+        title: string
+        content: string
+      }
+      automatic: {
+        title: string
+        content: string
+      }
+    }
+    usage: {
+      title: string
+      content: string
+      purposes: string[]
+    }
+    dataSharing: {
+      title: string
+      content: string
+    }
+    dataSecurity: {
+      title: string
+      content: string
+    }
+    yourRights: {
+      title: string
+      content: string
+      rights: string[]
+    }
+    contact: {
+      title: string
+      content: string
+      email: string
+      phone: string
+    }
+    changes: {
+      title: string
+      content: string
+    }
+  }
+  terms: {
+    title: string
+    description: string
+    keywords: string
+    lastUpdated: string
+    introduction: {
+      title: string
+      content: string
+    }
+    acceptance: {
+      title: string
+      content: string
+    }
+    use: {
+      title: string
+      content: string
+      permitted: {
+        title: string
+        activities: string[]
+      }
+      prohibited: {
+        title: string
+        activities: string[]
+      }
+    }
+    intellectualProperty: {
+      title: string
+      content: string
+      rights: string[]
+    }
+    privacy: {
+      title: string
+      content: string
+    }
+    disclaimer: {
+      title: string
+      content: string
+      items: string[]
+    }
+    limitation: {
+      title: string
+      content: string
+    }
+    indemnification: {
+      title: string
+      content: string
+    }
+    termination: {
+      title: string
+      content: string
+    }
+    governingLaw: {
+      title: string
+      content: string
+    }
+    changes: {
+      title: string
+      content: string
+    }
+    contact: {
+      title: string
+      content: string
+      email: string
+      phone: string
+      address: string
+    }
+    severability: {
+      title: string
+      content: string
+    }
+    entireAgreement: {
+      title: string
+      content: string
     }
   }
 }
@@ -686,6 +889,252 @@ export const translations: Record<Language, TranslationDictionary> = {
         description: "Professional web development and web design services in Liberec. We help local businesses in the Liberec region establish strong online presence with modern, SEO-optimized websites.",
         keywords: "web development Liberec, web design Liberec, website creation Liberec, digital agency Liberec"
       }
+    },
+    cookies: {
+      title: "Cookie Policy - IKH Systems | Cookie Usage",
+      description: "Cookie policy and usage information for IKH Systems. Learn about the cookies we use and how to manage your preferences.",
+      keywords: "cookie policy, cookies, tracking, preferences",
+      lastUpdated: "Last updated: December 2024",
+      introduction: {
+        title: "Cookie Policy",
+        content: "This Cookie Policy explains how IKH Systems uses cookies and similar technologies when you visit our website."
+      },
+      whatAre: {
+        title: "What are cookies?",
+        content: "Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and to provide information to website owners."
+      },
+      types: {
+        title: "Types of cookies we use",
+        necessary: {
+          title: "Necessary cookies",
+          description: "These cookies are essential for the website to function properly.",
+          examples: "Session cookies, security cookies"
+        },
+        analytics: {
+          title: "Analytics cookies",
+          description: "These cookies help us understand how visitors interact with our website.",
+          examples: "Google Analytics, visitor tracking"
+        },
+        marketing: {
+          title: "Marketing cookies",
+          description: "These cookies are used to deliver relevant advertisements to you.",
+          examples: "Advertising cookies, social media cookies"
+        }
+      },
+      usage: {
+        title: "How we use cookies",
+        content: "We use cookies to improve your experience on our website, analyze site traffic, and personalize content.",
+        purposes: [
+          "Website functionality",
+          "Performance monitoring",
+          "User experience improvement",
+          "Marketing and advertising"
+        ]
+      },
+      managing: {
+        title: "Managing cookies",
+        content: "You can control and manage cookies in various ways.",
+        browser: {
+          title: "Browser settings",
+          content: "Most browsers allow you to refuse or accept cookies through their settings."
+        },
+        ourSite: {
+          title: "Our website",
+          content: "You can manage your cookie preferences using our cookie consent banner."
+        }
+      },
+      thirdParty: {
+        title: "Third-party cookies",
+        content: "We may use third-party services that set their own cookies.",
+        table: {
+          service: "Service",
+          purpose: "Purpose",
+          privacy: "Privacy Policy",
+          privacyLink: "View Policy"
+        },
+        services: [
+          {
+            name: "Google Analytics",
+            purpose: "Website analytics",
+            privacyUrl: "https://policies.google.com/privacy"
+          },
+          {
+            name: "Google Tag Manager",
+            purpose: "Tag management",
+            privacyUrl: "https://policies.google.com/privacy"
+          }
+        ]
+      },
+      duration: {
+        title: "Cookie duration",
+        content: "Cookies can be either session cookies or persistent cookies.",
+        types: [
+          "Session cookies (deleted when you close your browser)",
+          "Persistent cookies (remain on your device for a set period)"
+        ]
+      },
+      updates: {
+        title: "Updates to this policy",
+        content: "We may update this Cookie Policy from time to time. We will notify you of any changes by posting the new policy on this page."
+      },
+        contact: {
+          title: "Contact us",
+          content: "If you have any questions about our use of cookies, please contact us.",
+          email: "info@ikhsystems.com",
+          phone: "+420 728 209 012"
+        }
+    },
+    privacy: {
+      title: "Privacy Policy - IKH Systems | Data Protection",
+      description: "Privacy policy and data protection information for IKH Systems. Learn how we collect, use, and protect your personal information.",
+      keywords: "privacy policy, data protection, GDPR, personal information",
+      lastUpdated: "Last updated: December 2024",
+      introduction: {
+        title: "Privacy Policy",
+        content: "This Privacy Policy explains how IKH Systems collects, uses, and protects your personal information."
+      },
+      informationCollection: {
+        title: "Information We Collect",
+        personal: {
+          title: "Personal Information",
+          content: "We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us."
+        },
+        automatic: {
+          title: "Automatic Information",
+          content: "We automatically collect certain information when you use our services, including device information and usage data."
+        }
+      },
+      usage: {
+        title: "How We Use Your Information",
+        content: "We use the information we collect to provide, maintain, and improve our services.",
+        purposes: [
+          "Service delivery",
+          "Customer support",
+          "Marketing communications",
+          "Legal compliance"
+        ]
+      },
+      dataSharing: {
+        title: "Information Sharing",
+        content: "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent."
+      },
+      dataSecurity: {
+        title: "Data Security",
+        content: "We implement appropriate security measures to protect your personal information against unauthorized access."
+      },
+      yourRights: {
+        title: "Your Rights",
+        content: "You have certain rights regarding your personal information.",
+        rights: [
+          "Access your data",
+          "Correct inaccurate data",
+          "Delete your data",
+          "Object to processing"
+        ]
+      },
+      contact: {
+        title: "Contact Us",
+        content: "If you have any questions about this Privacy Policy, please contact us.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      },
+      changes: {
+        title: "Changes to This Policy",
+        content: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page."
+      }
+    },
+    terms: {
+      title: "Terms of Service - IKH Systems | Legal Terms",
+      description: "Terms of service and legal information for IKH Systems. Understand your rights and obligations when using our services.",
+      keywords: "terms of service, legal terms, user agreement, conditions",
+      lastUpdated: "Last updated: December 2024",
+      introduction: {
+        title: "Terms of Service",
+        content: "These Terms of Service govern your use of IKH Systems' services and website."
+      },
+      acceptance: {
+        title: "Acceptance of Terms",
+        content: "By accessing or using our services, you agree to be bound by these Terms of Service."
+      },
+      use: {
+        title: "Use of Services",
+        content: "You may use our services only for lawful purposes and in accordance with these Terms.",
+        permitted: {
+          title: "Permitted Uses",
+          activities: [
+            "Access and use our services for lawful purposes",
+            "Create and maintain your account",
+            "Use our services as intended"
+          ]
+        },
+        prohibited: {
+          title: "Prohibited Uses",
+          activities: [
+            "No unauthorized access",
+            "No harmful activities",
+            "No intellectual property violations",
+            "No spam or abuse"
+          ]
+        }
+      },
+      intellectualProperty: {
+        title: "Intellectual Property",
+        content: "All content, trademarks, and intellectual property on our website are owned by IKH Systems or our licensors.",
+        rights: [
+          "Copyright protection",
+          "Trademark rights",
+          "Patent rights",
+          "Trade secrets"
+        ]
+      },
+      privacy: {
+        title: "Privacy",
+        content: "Your privacy is important to us. Please review our Privacy Policy for information about how we collect and use your data."
+      },
+      disclaimer: {
+        title: "Disclaimer",
+        content: "Our services are provided 'as is' without warranties of any kind.",
+        items: [
+          "No warranty of merchantability",
+          "No warranty of fitness for purpose",
+          "No warranty of non-infringement"
+        ]
+      },
+      limitation: {
+        title: "Limitation of Liability",
+        content: "In no event shall IKH Systems be liable for any indirect, incidental, special, or consequential damages."
+      },
+      indemnification: {
+        title: "Indemnification",
+        content: "You agree to indemnify and hold harmless IKH Systems from any claims arising from your use of our services."
+      },
+      termination: {
+        title: "Termination",
+        content: "We may terminate or suspend your access to our services at any time, with or without notice."
+      },
+      governingLaw: {
+        title: "Governing Law",
+        content: "These Terms shall be governed by and construed in accordance with the laws of the Czech Republic."
+      },
+      changes: {
+        title: "Changes to Terms",
+        content: "We reserve the right to modify these Terms at any time. Continued use of our services constitutes acceptance of the modified Terms."
+      },
+      contact: {
+        title: "Contact Information",
+        content: "If you have any questions about these Terms of Service, please contact us.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "IKH Systems, Prague, Czech Republic"
+      },
+      severability: {
+        title: "Severability",
+        content: "If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect."
+      },
+      entireAgreement: {
+        title: "Entire Agreement",
+        content: "These Terms constitute the entire agreement between you and IKH Systems regarding the use of our services."
+      }
     }
   },
   cs: {
@@ -1083,6 +1532,252 @@ export const translations: Record<Language, TranslationDictionary> = {
         title: "Tvorba webových stránek a webdesign v Liberci | IKH Systems",
         description: "Profesionální tvorba webu Liberec a webdesign Liberec. Pomáháme místním podnikům v Libereckém kraji vytvořit silnou online přítomnost s moderními, SEO optimalizovanými weby.",
         keywords: "tvorba webu Liberec, webdesign Liberec, vytvoření webu Liberec, digitální agentura Liberec"
+      }
+    },
+    cookies: {
+      title: "Zásady cookies - IKH Systems | Používání cookies",
+      description: "Zásady cookies a informace o používání cookies pro IKH Systems. Zjistěte, jaké cookies používáme a jak spravovat vaše preference.",
+      keywords: "zásady cookies, cookies, sledování, preference",
+      lastUpdated: "Poslední aktualizace: prosinec 2024",
+      introduction: {
+        title: "Zásady cookies",
+        content: "Tyto zásady cookies vysvětlují, jak IKH Systems používá cookies a podobné technologie při návštěvě našeho webu."
+      },
+      whatAre: {
+        title: "Co jsou cookies?",
+        content: "Cookies jsou malé textové soubory, které se ukládají na váš počítač nebo mobilní zařízení při návštěvě webu. Jsou široce používány k tomu, aby weby fungovaly efektivněji a poskytovaly informace vlastníkům webů."
+      },
+      types: {
+        title: "Typy cookies, které používáme",
+        necessary: {
+          title: "Nezbytné cookies",
+          description: "Tyto cookies jsou nezbytné pro správné fungování webu.",
+          examples: "Session cookies, bezpečnostní cookies"
+        },
+        analytics: {
+          title: "Analytické cookies",
+          description: "Tyto cookies nám pomáhají pochopit, jak návštěvníci interagují s naším webem.",
+          examples: "Google Analytics, sledování návštěvníků"
+        },
+        marketing: {
+          title: "Marketingové cookies",
+          description: "Tyto cookies se používají k doručování relevantních reklam.",
+          examples: "Reklamní cookies, cookies sociálních sítí"
+        }
+      },
+      usage: {
+        title: "Jak používáme cookies",
+        content: "Používáme cookies ke zlepšení vašeho zážitku na našem webu, analýze návštěvnosti a personalizaci obsahu.",
+        purposes: [
+          "Funkčnost webu",
+          "Monitorování výkonu",
+          "Zlepšení uživatelského zážitku",
+          "Marketing a reklama"
+        ]
+      },
+      managing: {
+        title: "Správa cookies",
+        content: "Cookies můžete kontrolovat a spravovat různými způsoby.",
+        browser: {
+          title: "Nastavení prohlížeče",
+          content: "Většina prohlížečů vám umožňuje odmítnout nebo přijmout cookies prostřednictvím jejich nastavení."
+        },
+        ourSite: {
+          title: "Náš web",
+          content: "Své preference cookies můžete spravovat pomocí našeho banneru pro souhlas s cookies."
+        }
+      },
+      thirdParty: {
+        title: "Cookies třetích stran",
+        content: "Můžeme používat služby třetích stran, které nastavují své vlastní cookies.",
+        table: {
+          service: "Služba",
+          purpose: "Účel",
+          privacy: "Zásady ochrany osobních údajů",
+          privacyLink: "Zobrazit zásady"
+        },
+        services: [
+          {
+            name: "Google Analytics",
+            purpose: "Webová analytika",
+            privacyUrl: "https://policies.google.com/privacy"
+          },
+          {
+            name: "Google Tag Manager",
+            purpose: "Správa tagů",
+            privacyUrl: "https://policies.google.com/privacy"
+          }
+        ]
+      },
+      duration: {
+        title: "Doba trvání cookies",
+        content: "Cookies mohou být buď session cookies nebo trvalé cookies.",
+        types: [
+          "Session cookies (odstraněny při zavření prohlížeče)",
+          "Trvalé cookies (zůstávají na vašem zařízení po stanovenou dobu)"
+        ]
+      },
+      updates: {
+        title: "Aktualizace těchto zásad",
+        content: "Tyto zásady cookies můžeme čas od času aktualizovat. O všech změnách vás budeme informovat zveřejněním nových zásad na této stránce."
+      },
+      contact: {
+        title: "Kontaktujte nás",
+        content: "Pokud máte jakékoli otázky ohledně našeho používání cookies, kontaktujte nás.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      }
+    },
+    privacy: {
+      title: "Zásady ochrany osobních údajů - IKH Systems | Ochrana dat",
+      description: "Zásady ochrany osobních údajů a informace o ochraně dat pro IKH Systems. Zjistěte, jak shromažďujeme, používáme a chráníme vaše osobní údaje.",
+      keywords: "zásady ochrany osobních údajů, ochrana dat, GDPR, osobní údaje",
+      lastUpdated: "Poslední aktualizace: prosinec 2024",
+      introduction: {
+        title: "Zásady ochrany osobních údajů",
+        content: "Tyto zásady ochrany osobních údajů vysvětlují, jak IKH Systems shromažďuje, používá a chrání vaše osobní údaje."
+      },
+      informationCollection: {
+        title: "Informace, které shromažďujeme",
+        personal: {
+          title: "Osobní údaje",
+          content: "Shromažďujeme informace, které nám poskytujete přímo, například když si vytvoříte účet, provedete nákup nebo nás kontaktujete."
+        },
+        automatic: {
+          title: "Automatické informace",
+          content: "Automaticky shromažďujeme určité informace při používání našich služeb, včetně informací o zařízení a údajů o používání."
+        }
+      },
+      usage: {
+        title: "Jak používáme vaše informace",
+        content: "Používáme shromážděné informace k poskytování, údržbě a zlepšování našich služeb.",
+        purposes: [
+          "Poskytování služeb",
+          "Zákaznická podpora",
+          "Marketingové komunikace",
+          "Právní shoda"
+        ]
+      },
+      dataSharing: {
+        title: "Sdílení informací",
+        content: "Neprodáváme, nevyměňujeme ani jinak nepředáváme vaše osobní údaje třetím stranám bez vašeho souhlasu."
+      },
+      dataSecurity: {
+        title: "Zabezpečení dat",
+        content: "Implementujeme vhodná bezpečnostní opatření k ochraně vašich osobních údajů před neoprávněným přístupem."
+      },
+      yourRights: {
+        title: "Vaše práva",
+        content: "Máte určitá práva týkající se vašich osobních údajů.",
+        rights: [
+          "Přístup k vašim datům",
+          "Oprava nepřesných údajů",
+          "Smazání vašich dat",
+          "Námitka proti zpracování"
+        ]
+      },
+      contact: {
+        title: "Kontaktujte nás",
+        content: "Pokud máte jakékoli otázky ohledně těchto zásad ochrany osobních údajů, kontaktujte nás.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      },
+      changes: {
+        title: "Změny těchto zásad",
+        content: "Tyto zásady ochrany osobních údajů můžeme čas od času aktualizovat. O všech změnách vás budeme informovat zveřejněním nových zásad na této stránce."
+      }
+    },
+    terms: {
+      title: "Obchodní podmínky - IKH Systems | Právní podmínky",
+      description: "Obchodní podmínky a právní informace pro IKH Systems. Pochopte svá práva a povinnosti při používání našich služeb.",
+      keywords: "obchodní podmínky, právní podmínky, uživatelská smlouva, podmínky",
+      lastUpdated: "Poslední aktualizace: prosinec 2024",
+      introduction: {
+        title: "Obchodní podmínky",
+        content: "Tyto obchodní podmínky upravují vaše používání služeb a webu IKH Systems."
+      },
+      acceptance: {
+        title: "Přijetí podmínek",
+        content: "Přístupem a používáním našich služeb souhlasíte s tím, že budete vázáni těmito obchodními podmínkami."
+      },
+      use: {
+        title: "Používání služeb",
+        content: "Naše služby můžete používat pouze pro zákonné účely a v souladu s těmito podmínkami.",
+        permitted: {
+          title: "Povolené použití",
+          activities: [
+            "Přístup a používání našich služeb pro zákonné účely",
+            "Vytvoření a údržba vašeho účtu",
+            "Používání našich služeb podle určení"
+          ]
+        },
+        prohibited: {
+          title: "Zakázané použití",
+          activities: [
+            "Žádný neoprávněný přístup",
+            "Žádné škodlivé aktivity",
+            "Žádné porušování duševního vlastnictví",
+            "Žádný spam nebo zneužívání"
+          ]
+        }
+      },
+      intellectualProperty: {
+        title: "Duševní vlastnictví",
+        content: "Veškerý obsah, ochranné známky a duševní vlastnictví na našem webu jsou vlastněny IKH Systems nebo našimi poskytovateli licence.",
+        rights: [
+          "Ochrana autorských práv",
+          "Práva k ochranným známkám",
+          "Práva k patentům",
+          "Obchodní tajemství"
+        ]
+      },
+      privacy: {
+        title: "Ochrana osobních údajů",
+        content: "Vaše soukromí je pro nás důležité. Přečtěte si naše zásady ochrany osobních údajů pro informace o tom, jak shromažďujeme a používáme vaše data."
+      },
+      disclaimer: {
+        title: "Prohlášení o vyloučení odpovědnosti",
+        content: "Naše služby jsou poskytovány 'tak, jak jsou' bez záruk jakéhokoli druhu.",
+        items: [
+          "Žádná záruka prodejnosti",
+          "Žádná záruka vhodnosti pro účel",
+          "Žádná záruka neporušování práv"
+        ]
+      },
+      limitation: {
+        title: "Omezení odpovědnosti",
+        content: "V žádném případě nebude IKH Systems odpovědná za jakékoli nepřímé, náhodné, zvláštní nebo následné škody."
+      },
+      indemnification: {
+        title: "Odškodnění",
+        content: "Souhlasíte s tím, že budete odškodňovat a držet IKH Systems bez újmy před jakýmikoli nároky vyplývajícími z vašeho používání našich služeb."
+      },
+      termination: {
+        title: "Ukončení",
+        content: "Můžeme ukončit nebo pozastavit váš přístup k našim službám kdykoli, s oznámením nebo bez něj."
+      },
+      governingLaw: {
+        title: "Rozhodné právo",
+        content: "Tyto podmínky se řídí a vykládají v souladu se zákony České republiky."
+      },
+      changes: {
+        title: "Změny podmínek",
+        content: "Můžeme tyto podmínky kdykoli upravit. O všech změnách vás budeme informovat zveřejněním nových podmínek na této stránce."
+      },
+      contact: {
+        title: "Kontaktní informace",
+        content: "Pokud máte jakékoli otázky ohledně těchto obchodních podmínek, kontaktujte nás.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "IKH Systems, Praha, Česká republika"
+      },
+      severability: {
+        title: "Oddělitelnost",
+        content: "Pokud bude jakékoli ustanovení těchto podmínek považováno za nevymahatelné, zbývající ustanovení zůstanou v plné síle a účinnosti."
+      },
+      entireAgreement: {
+        title: "Celá smlouva",
+        content: "Tyto podmínky představují celou smlouvu mezi vámi a IKH Systems týkající se používání našich služeb."
       }
     }
   },
@@ -1482,6 +2177,252 @@ export const translations: Record<Language, TranslationDictionary> = {
         description: "Professionelle Webentwicklung und Webdesign-Services in Reichenberg. Wir helfen lokalen Unternehmen in der Reichenberger Region, eine starke Online-Präsenz mit modernen, SEO-optimierten Websites aufzubauen.",
         keywords: "Webentwicklung Reichenberg, Webdesign Reichenberg, Website-Erstellung Reichenberg, Digitalagentur Reichenberg"
       }
+    },
+    cookies: {
+      title: "Cookie-Richtlinie - IKH Systems | Cookie-Nutzung",
+      description: "Cookie-Richtlinie und Informationen zur Cookie-Nutzung für IKH Systems. Erfahren Sie, welche Cookies wir verwenden und wie Sie Ihre Einstellungen verwalten können.",
+      keywords: "Cookie-Richtlinie, Cookies, Tracking, Einstellungen",
+      lastUpdated: "Zuletzt aktualisiert: Dezember 2024",
+      introduction: {
+        title: "Cookie-Richtlinie",
+        content: "Diese Cookie-Richtlinie erklärt, wie IKH Systems Cookies und ähnliche Technologien beim Besuch unserer Website verwendet."
+      },
+      whatAre: {
+        title: "Was sind Cookies?",
+        content: "Cookies sind kleine Textdateien, die auf Ihrem Computer oder mobilen Gerät gespeichert werden, wenn Sie eine Website besuchen. Sie werden häufig verwendet, um Websites effizienter zu machen und Website-Eigentümern Informationen zu liefern."
+      },
+      types: {
+        title: "Arten von Cookies, die wir verwenden",
+        necessary: {
+          title: "Notwendige Cookies",
+          description: "Diese Cookies sind für das ordnungsgemäße Funktionieren der Website unerlässlich.",
+          examples: "Session-Cookies, Sicherheits-Cookies"
+        },
+        analytics: {
+          title: "Analyse-Cookies",
+          description: "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
+          examples: "Google Analytics, Besucherverfolgung"
+        },
+        marketing: {
+          title: "Marketing-Cookies",
+          description: "Diese Cookies werden verwendet, um relevante Werbung zu liefern.",
+          examples: "Werbe-Cookies, Social-Media-Cookies"
+        }
+      },
+      usage: {
+        title: "Wie wir Cookies verwenden",
+        content: "Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern, den Website-Traffic zu analysieren und Inhalte zu personalisieren.",
+        purposes: [
+          "Website-Funktionalität",
+          "Leistungsüberwachung",
+          "Verbesserung der Benutzererfahrung",
+          "Marketing und Werbung"
+        ]
+      },
+      managing: {
+        title: "Verwaltung von Cookies",
+        content: "Sie können Cookies auf verschiedene Weise kontrollieren und verwalten.",
+        browser: {
+          title: "Browser-Einstellungen",
+          content: "Die meisten Browser ermöglichen es Ihnen, Cookies über ihre Einstellungen abzulehnen oder zu akzeptieren."
+        },
+        ourSite: {
+          title: "Unsere Website",
+          content: "Sie können Ihre Cookie-Einstellungen über unser Cookie-Einverständnis-Banner verwalten."
+        }
+      },
+      thirdParty: {
+        title: "Drittanbieter-Cookies",
+        content: "Wir können Dienste von Drittanbietern verwenden, die ihre eigenen Cookies setzen.",
+        table: {
+          service: "Dienst",
+          purpose: "Zweck",
+          privacy: "Datenschutzrichtlinie",
+          privacyLink: "Richtlinie anzeigen"
+        },
+        services: [
+          {
+            name: "Google Analytics",
+            purpose: "Web-Analyse",
+            privacyUrl: "https://policies.google.com/privacy"
+          },
+          {
+            name: "Google Tag Manager",
+            purpose: "Tag-Verwaltung",
+            privacyUrl: "https://policies.google.com/privacy"
+          }
+        ]
+      },
+      duration: {
+        title: "Cookie-Dauer",
+        content: "Cookies können entweder Session-Cookies oder persistente Cookies sein.",
+        types: [
+          "Session-Cookies (werden beim Schließen des Browsers gelöscht)",
+          "Persistente Cookies (bleiben für einen festgelegten Zeitraum auf Ihrem Gerät)"
+        ]
+      },
+      updates: {
+        title: "Aktualisierungen dieser Richtlinie",
+        content: "Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite veröffentlichen."
+      },
+      contact: {
+        title: "Kontaktieren Sie uns",
+        content: "Wenn Sie Fragen zu unserer Verwendung von Cookies haben, kontaktieren Sie uns bitte.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      }
+    },
+    privacy: {
+      title: "Datenschutzrichtlinie - IKH Systems | Datenschutz",
+      description: "Datenschutzrichtlinie und Datenschutzinformationen für IKH Systems. Erfahren Sie, wie wir Ihre persönlichen Daten sammeln, verwenden und schützen.",
+      keywords: "Datenschutzrichtlinie, Datenschutz, GDPR, persönliche Daten",
+      lastUpdated: "Zuletzt aktualisiert: Dezember 2024",
+      introduction: {
+        title: "Datenschutzrichtlinie",
+        content: "Diese Datenschutzrichtlinie erklärt, wie IKH Systems Ihre persönlichen Daten sammelt, verwendet und schützt."
+      },
+      informationCollection: {
+        title: "Informationen, die wir sammeln",
+        personal: {
+          title: "Persönliche Daten",
+          content: "Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, z.B. wenn Sie ein Konto erstellen, einen Kauf tätigen oder uns kontaktieren."
+        },
+        automatic: {
+          title: "Automatische Informationen",
+          content: "Wir sammeln automatisch bestimmte Informationen, wenn Sie unsere Dienste nutzen, einschließlich Geräteinformationen und Nutzungsdaten."
+        }
+      },
+      usage: {
+        title: "Wie wir Ihre Informationen verwenden",
+        content: "Wir verwenden die gesammelten Informationen, um unsere Dienste bereitzustellen, zu warten und zu verbessern.",
+        purposes: [
+          "Dienstleistungserbringung",
+          "Kundensupport",
+          "Marketing-Kommunikation",
+          "Rechtliche Compliance"
+        ]
+      },
+      dataSharing: {
+        title: "Informationsweitergabe",
+        content: "Wir verkaufen, tauschen oder übertragen Ihre persönlichen Daten nicht an Dritte ohne Ihre Zustimmung."
+      },
+      dataSecurity: {
+        title: "Datensicherheit",
+        content: "Wir implementieren angemessene Sicherheitsmaßnahmen zum Schutz Ihrer persönlichen Daten vor unbefugtem Zugriff."
+      },
+      yourRights: {
+        title: "Ihre Rechte",
+        content: "Sie haben bestimmte Rechte bezüglich Ihrer persönlichen Daten.",
+        rights: [
+          "Zugang zu Ihren Daten",
+          "Korrektur ungenauer Daten",
+          "Löschung Ihrer Daten",
+          "Widerspruch gegen die Verarbeitung"
+        ]
+      },
+      contact: {
+        title: "Kontaktieren Sie uns",
+        content: "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      },
+      changes: {
+        title: "Änderungen an dieser Richtlinie",
+        content: "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite veröffentlichen."
+      }
+    },
+    terms: {
+      title: "Nutzungsbedingungen - IKH Systems | Rechtliche Bedingungen",
+      description: "Nutzungsbedingungen und rechtliche Informationen für IKH Systems. Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung unserer Dienste.",
+      keywords: "Nutzungsbedingungen, rechtliche Bedingungen, Benutzervereinbarung, Bedingungen",
+      lastUpdated: "Zuletzt aktualisiert: Dezember 2024",
+      introduction: {
+        title: "Nutzungsbedingungen",
+        content: "Diese Nutzungsbedingungen regeln Ihre Nutzung der Dienste und der Website von IKH Systems."
+      },
+      acceptance: {
+        title: "Annahme der Bedingungen",
+        content: "Durch den Zugriff auf und die Nutzung unserer Dienste stimmen Sie zu, an diese Nutzungsbedingungen gebunden zu sein."
+      },
+      use: {
+        title: "Nutzung der Dienste",
+        content: "Sie dürfen unsere Dienste nur für rechtmäßige Zwecke und in Übereinstimmung mit diesen Bedingungen nutzen.",
+        permitted: {
+          title: "Erlaubte Nutzung",
+          activities: [
+            "Zugriff und Nutzung unserer Dienste für rechtmäßige Zwecke",
+            "Erstellen und Verwalten Ihres Kontos",
+            "Nutzung unserer Dienste wie vorgesehen"
+          ]
+        },
+        prohibited: {
+          title: "Verbotene Nutzung",
+          activities: [
+            "Kein unbefugter Zugriff",
+            "Keine schädlichen Aktivitäten",
+            "Keine Verletzung geistigen Eigentums",
+            "Kein Spam oder Missbrauch"
+          ]
+        }
+      },
+      intellectualProperty: {
+        title: "Geistiges Eigentum",
+        content: "Alle Inhalte, Marken und geistiges Eigentum auf unserer Website gehören IKH Systems oder unseren Lizenzgebern.",
+        rights: [
+          "Urheberrechtsschutz",
+          "Markenrechte",
+          "Patentrechte",
+          "Geschäftsgeheimnisse"
+        ]
+      },
+      privacy: {
+        title: "Datenschutz",
+        content: "Ihre Privatsphäre ist uns wichtig. Bitte lesen Sie unsere Datenschutzrichtlinie für Informationen darüber, wie wir Ihre Daten sammeln und verwenden."
+      },
+      disclaimer: {
+        title: "Haftungsausschluss",
+        content: "Unsere Dienste werden 'wie besehen' ohne Gewährleistungen jeglicher Art bereitgestellt.",
+        items: [
+          "Keine Gewährleistung der Marktgängigkeit",
+          "Keine Gewährleistung der Eignung für einen bestimmten Zweck",
+          "Keine Gewährleistung der Nichtverletzung"
+        ]
+      },
+      limitation: {
+        title: "Haftungsbeschränkung",
+        content: "In keinem Fall haftet IKH Systems für indirekte, zufällige, besondere oder Folgeschäden."
+      },
+      indemnification: {
+        title: "Schadloshaltung",
+        content: "Sie stimmen zu, IKH Systems von allen Ansprüchen freizustellen, die aus Ihrer Nutzung unserer Dienste entstehen."
+      },
+      termination: {
+        title: "Beendigung",
+        content: "Wir können Ihren Zugang zu unseren Diensten jederzeit mit oder ohne Vorankündigung beenden oder aussetzen."
+      },
+      governingLaw: {
+        title: "Geltendes Recht",
+        content: "Diese Bedingungen unterliegen den Gesetzen der Tschechischen Republik."
+      },
+      changes: {
+        title: "Änderungen der Bedingungen",
+        content: "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wir werden Sie über wesentliche Änderungen informieren."
+      },
+      contact: {
+        title: "Kontaktinformationen",
+        content: "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "IKH Systems, Prag, Tschechische Republik"
+      },
+      severability: {
+        title: "Trennbarkeit",
+        content: "Falls eine Bestimmung dieser Bedingungen als nicht durchsetzbar erachtet wird, bleiben die übrigen Bestimmungen in vollem Umfang in Kraft."
+      },
+      entireAgreement: {
+        title: "Gesamte Vereinbarung",
+        content: "Diese Bedingungen stellen die gesamte Vereinbarung zwischen Ihnen und IKH Systems bezüglich der Nutzung unserer Dienste dar."
+      }
     }
   },
   ua: {
@@ -1879,6 +2820,252 @@ export const translations: Record<Language, TranslationDictionary> = {
         title: "Веб-розробка та веб-дизайн у Лібереці | IKH Systems",
         description: "Професійні послуги веб-розробки та веб-дизайну в Лібереці. Ми допомагаємо місцевим бізнесам у Ліберецькому краї створити сильну онлайн-присутність з сучасними, SEO-оптимізованими веб-сайтами.",
         keywords: "веб-розробка Ліберець, веб-дизайн Ліберець, створення веб-сайту Ліберець, цифрова агенція Ліберець"
+      }
+    },
+    cookies: {
+      title: "Політика cookies - IKH Systems | Використання cookies",
+      description: "Політика cookies та інформація про використання cookies для IKH Systems. Дізнайтеся, які cookies ми використовуємо та як керувати вашими налаштуваннями.",
+      keywords: "політика cookies, cookies, відстеження, налаштування",
+      lastUpdated: "Останнє оновлення: грудень 2024",
+      introduction: {
+        title: "Політика cookies",
+        content: "Ця політика cookies пояснює, як IKH Systems використовує cookies та подібні технології під час відвідування нашого веб-сайту."
+      },
+      whatAre: {
+        title: "Що таке cookies?",
+        content: "Cookies - це невеликі текстові файли, які зберігаються на вашому комп'ютері або мобільному пристрої під час відвідування веб-сайту. Вони широко використовуються для того, щоб веб-сайти працювали ефективніше та надавали інформацію власникам веб-сайтів."
+      },
+      types: {
+        title: "Типи cookies, які ми використовуємо",
+        necessary: {
+          title: "Необхідні cookies",
+          description: "Ці cookies є необхідними для правильного функціонування веб-сайту.",
+          examples: "Session cookies, cookies безпеки"
+        },
+        analytics: {
+          title: "Аналітичні cookies",
+          description: "Ці cookies допомагають нам зрозуміти, як відвідувачі взаємодіють з нашим веб-сайтом.",
+          examples: "Google Analytics, відстеження відвідувачів"
+        },
+        marketing: {
+          title: "Маркетингові cookies",
+          description: "Ці cookies використовуються для показу релевантної реклами.",
+          examples: "Рекламні cookies, cookies соціальних мереж"
+        }
+      },
+      usage: {
+        title: "Як ми використовуємо cookies",
+        content: "Ми використовуємо cookies для покращення вашого досвіду на нашому веб-сайті, аналізу трафіку та персоналізації контенту.",
+        purposes: [
+          "Функціональність веб-сайту",
+          "Моніторинг продуктивності",
+          "Покращення користувацького досвіду",
+          "Маркетинг та реклама"
+        ]
+      },
+      managing: {
+        title: "Керування cookies",
+        content: "Ви можете контролювати та керувати cookies різними способами.",
+        browser: {
+          title: "Налаштування браузера",
+          content: "Більшість браузерів дозволяє відхилити або прийняти cookies через їх налаштування."
+        },
+        ourSite: {
+          title: "Наш веб-сайт",
+          content: "Ви можете керувати своїми налаштуваннями cookies за допомогою нашого банера згоди на cookies."
+        }
+      },
+      thirdParty: {
+        title: "Cookies третіх сторін",
+        content: "Ми можемо використовувати сервіси третіх сторін, які встановлюють свої власні cookies.",
+        table: {
+          service: "Сервіс",
+          purpose: "Мета",
+          privacy: "Політика конфіденційності",
+          privacyLink: "Переглянути політику"
+        },
+        services: [
+          {
+            name: "Google Analytics",
+            purpose: "Веб-аналітика",
+            privacyUrl: "https://policies.google.com/privacy"
+          },
+          {
+            name: "Google Tag Manager",
+            purpose: "Керування тегами",
+            privacyUrl: "https://policies.google.com/privacy"
+          }
+        ]
+      },
+      duration: {
+        title: "Тривалість cookies",
+        content: "Cookies можуть бути або session cookies, або постійними cookies.",
+        types: [
+          "Session cookies (видаляються при закритті браузера)",
+          "Постійні cookies (залишаються на вашому пристрої протягом встановленого періоду)"
+        ]
+      },
+      updates: {
+        title: "Оновлення цієї політики",
+        content: "Ми можемо час від часу оновлювати цю політику cookies. Ми повідомимо вас про будь-які зміни, опублікувавши нову політику на цій сторінці."
+      },
+      contact: {
+        title: "Зв'яжіться з нами",
+        content: "Якщо у вас є будь-які питання щодо нашого використання cookies, будь ласка, зв'яжіться з нами.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      }
+    },
+    privacy: {
+      title: "Політика конфіденційності - IKH Systems | Захист даних",
+      description: "Політика конфіденційності та інформація про захист даних для IKH Systems. Дізнайтеся, як ми збираємо, використовуємо та захищаємо вашу особисту інформацію.",
+      keywords: "політика конфіденційності, захист даних, GDPR, особиста інформація",
+      lastUpdated: "Останнє оновлення: грудень 2024",
+      introduction: {
+        title: "Політика конфіденційності",
+        content: "Ця політика конфіденційності пояснює, як IKH Systems збирає, використовує та захищає вашу особисту інформацію."
+      },
+      informationCollection: {
+        title: "Інформація, яку ми збираємо",
+        personal: {
+          title: "Особиста інформація",
+          content: "Ми збираємо інформацію, яку ви надаєте нам безпосередньо, наприклад, коли ви створюєте обліковий запис, здійснюєте покупку або зв'язуєтеся з нами."
+        },
+        automatic: {
+          title: "Автоматична інформація",
+          content: "Ми автоматично збираємо певну інформацію, коли ви використовуєте наші послуги, включаючи інформацію про пристрій та дані про використання."
+        }
+      },
+      usage: {
+        title: "Як ми використовуємо вашу інформацію",
+        content: "Ми використовуємо зібрану інформацію для надання, підтримки та покращення наших послуг.",
+        purposes: [
+          "Надання послуг",
+          "Підтримка клієнтів",
+          "Маркетингові комунікації",
+          "Правова відповідність"
+        ]
+      },
+      dataSharing: {
+        title: "Обмін інформацією",
+        content: "Ми не продаємо, не обмінюємо та не передаємо вашу особисту інформацію третім сторонам без вашої згоди."
+      },
+      dataSecurity: {
+        title: "Безпека даних",
+        content: "Ми впроваджуємо відповідні заходи безпеки для захисту вашої особистої інформації від несанкціонованого доступу."
+      },
+      yourRights: {
+        title: "Ваші права",
+        content: "Ви маєте певні права щодо вашої особистої інформації.",
+        rights: [
+          "Доступ до ваших даних",
+          "Виправлення неточних даних",
+          "Видалення ваших даних",
+          "Заперечення проти обробки"
+        ]
+      },
+      contact: {
+        title: "Зв'яжіться з нами",
+        content: "Якщо у вас є будь-які питання щодо цієї політики конфіденційності, будь ласка, зв'яжіться з нами.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012"
+      },
+      changes: {
+        title: "Зміни до цієї політики",
+        content: "Ми можемо час від часу оновлювати цю політику конфіденційності. Ми повідомимо вас про будь-які зміни, опублікувавши нову політику на цій сторінці."
+      }
+    },
+    terms: {
+      title: "Умови використання - IKH Systems | Правові умови",
+      description: "Умови використання та правова інформація для IKH Systems. Зрозумійте свої права та обов'язки при використанні наших послуг.",
+      keywords: "умови використання, правові умови, користувацька угода, умови",
+      lastUpdated: "Останнє оновлення: грудень 2024",
+      introduction: {
+        title: "Умови використання",
+        content: "Ці умови використання регулюють ваше використання послуг та веб-сайту IKH Systems."
+      },
+      acceptance: {
+        title: "Прийняття умов",
+        content: "Отримуючи доступ та використовуючи наші послуги, ви погоджуєтеся дотримуватися цих умов використання."
+      },
+      use: {
+        title: "Використання послуг",
+        content: "Ви можете використовувати наші послуги лише для законних цілей та відповідно до цих умов.",
+        permitted: {
+          title: "Дозволене використання",
+          activities: [
+            "Доступ та використання наших послуг для законних цілей",
+            "Створення та ведення вашого облікового запису",
+            "Використання наших послуг за призначенням"
+          ]
+        },
+        prohibited: {
+          title: "Заборонене використання",
+          activities: [
+            "Без несанкціонованого доступу",
+            "Без шкідливих дій",
+            "Без порушення інтелектуальної власності",
+            "Без спаму або зловживань"
+          ]
+        }
+      },
+      intellectualProperty: {
+        title: "Інтелектуальна власність",
+        content: "Весь контент, торгові марки та інтелектуальна власність на нашому веб-сайті належать IKH Systems або нашим ліцензіарам.",
+        rights: [
+          "Захист авторських прав",
+          "Права на торгові марки",
+          "Права на патенти",
+          "Торгові секрети"
+        ]
+      },
+      privacy: {
+        title: "Конфіденційність",
+        content: "Ваша конфіденційність важлива для нас. Будь ласка, ознайомтеся з нашою політикою конфіденційності для інформації про те, як ми збираємо та використовуємо ваші дані."
+      },
+      disclaimer: {
+        title: "Відмова від відповідальності",
+        content: "Наші послуги надаються 'як є' без гарантій будь-якого роду.",
+        items: [
+          "Без гарантії товарності",
+          "Без гарантії придатності для мети",
+          "Без гарантії непорушення прав"
+        ]
+      },
+      limitation: {
+        title: "Обмеження відповідальності",
+        content: "В жодному разі IKH Systems не несе відповідальності за будь-які непрямі, випадкові, спеціальні або наслідкові збитки."
+      },
+      indemnification: {
+        title: "Відшкодування",
+        content: "Ви погоджуєтеся відшкодовувати та звільняти IKH Systems від будь-яких претензій, що виникають з вашого використання наших послуг."
+      },
+      termination: {
+        title: "Припинення",
+        content: "Ми можемо припинити або призупинити ваш доступ до наших послуг у будь-який час, з повідомленням або без нього."
+      },
+      governingLaw: {
+        title: "Застосовне право",
+        content: "Ці умови регулюються та тлумачаться відповідно до законів Чеської Республіки."
+      },
+      changes: {
+        title: "Зміни до умов",
+        content: "Ми залишаємо за собою право змінювати ці умови у будь-який час. Ми повідомимо вас про будь-які істотні зміни."
+      },
+      contact: {
+        title: "Контактна інформація",
+        content: "Якщо у вас є будь-які питання щодо цих умов використання, будь ласка, зв'яжіться з нами.",
+        email: "info@ikhsystems.com",
+        phone: "+420 728 209 012",
+        address: "IKH Systems, Прага, Чеська Республіка"
+      },
+      severability: {
+        title: "Роздільність",
+        content: "Якщо будь-яке положення цих умов буде визнано недійсним, інші положення залишаться в повній силі та дії."
+      },
+      entireAgreement: {
+        title: "Повна угода",
+        content: "Ці умови становлять повну угоду між вами та IKH Systems щодо використання наших послуг."
       }
     }
   }
