@@ -2,7 +2,7 @@ import { siteConfig } from '@/lib/env'
 import { Language } from '@/types'
 
 interface StructuredDataProps {
-  type: 'Organization' | 'WebSite' | 'Service' | 'ContactPoint' | 'LocalBusiness' | 'Person' | 'Place' | 'WebPage'
+  type: 'Organization' | 'WebSite' | 'Service' | 'ContactPoint' | 'LocalBusiness' | 'Person' | 'Place' | 'WebPage' | 'FAQPage'
   lang: Language
   serviceData?: {
     name: string
@@ -32,9 +32,15 @@ interface StructuredDataProps {
     description: string
     url: string
   }
+  faqData?: {
+    questions: Array<{
+      question: string
+      answer: string
+    }>
+  }
 }
 
-export function StructuredData({ type, lang, serviceData, contactData, personData, placeData, webPageData }: StructuredDataProps) {
+export function StructuredData({ type, lang, serviceData, contactData, personData, placeData, webPageData, faqData }: StructuredDataProps) {
   const getSchema = () => {
     const baseUrl = siteConfig.url
     const langCode = lang === 'en' ? 'en-US' : lang === 'cs' ? 'cs-CZ' : 'de-DE'
@@ -146,11 +152,15 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
           email: contactData?.email || siteConfig.contact.email,
           address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Liberec',
+            addressLocality: placeData?.name || 'Liberec',
             addressCountry: 'CZ',
-            streetAddress: contactData?.address || 'Liberec, Czech Republic',
+            streetAddress: placeData?.address || 'Liberec, Czech Republic',
           },
-          geo: {
+          geo: placeData?.coordinates ? {
+            '@type': 'GeoCoordinates',
+            latitude: placeData.coordinates.lat,
+            longitude: placeData.coordinates.lng,
+          } : {
             '@type': 'GeoCoordinates',
             latitude: 50.7663,
             longitude: 15.0543,
@@ -161,9 +171,46 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
             opens: '09:00',
             closes: '17:00',
           },
-          priceRange: '$$',
-          paymentAccepted: 'Cash, Credit Card, Bank Transfer',
-          currenciesAccepted: 'EUR, CZK',
+          areaServed: {
+            '@type': 'City',
+            name: placeData?.name || 'Liberec',
+          },
+          serviceArea: {
+            '@type': 'GeoCircle',
+            geoMidpoint: {
+              '@type': 'GeoCoordinates',
+              latitude: placeData?.coordinates?.lat || 50.7663,
+              longitude: placeData?.coordinates?.lng || 15.0543,
+            },
+            geoRadius: '50000',
+          },
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: `Web Development Services in ${placeData?.name || 'Liberec'}`,
+            itemListElement: [
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Web Development',
+                  description: `Custom website development for ${placeData?.name || 'Liberec'} businesses`,
+                },
+              },
+              {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: 'Local SEO',
+                  description: `Search engine optimization for ${placeData?.name || 'Liberec'} market visibility`,
+                },
+              },
+            ],
+          },
+          sameAs: [
+            'https://www.linkedin.com/company/108555725',
+            'https://www.facebook.com/ikhsystems',
+          ],
+          inLanguage: langCode,
         }
 
       case 'Person':
@@ -230,6 +277,20 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
             name: siteConfig.name,
             url: `${baseUrl}/${lang}`,
           },
+        }
+
+      case 'FAQPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqData?.questions?.map(faq => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })) || [],
         }
 
       default:

@@ -70,7 +70,7 @@ export default async function BrnoPage({ params }: BrnoPageProps) {
       
       {/* Structured Data for Brno */}
       <StructuredData
-        type="Place"
+        type="LocalBusiness"
         lang={lang as Language}
         placeData={{
           name: "Brno",
@@ -79,6 +79,30 @@ export default async function BrnoPage({ params }: BrnoPageProps) {
             lat: 49.1951,
             lng: 16.6068
           }
+        }}
+      />
+      <StructuredData
+        type="FAQPage"
+        lang={lang as Language}
+        faqData={{
+          questions: [
+            {
+              question: "How quickly can you deliver a website for my Brno business?",
+              answer: "Standard business websites typically launch within 3-4 weeks. Complex e-commerce or custom systems may require 6-8 weeks depending on requirements."
+            },
+            {
+              question: "Do you provide ongoing support for businesses in Brno?",
+              answer: "Yes, we offer comprehensive maintenance packages including updates, security monitoring, and performance optimization specifically tailored for Brno market conditions."
+            },
+            {
+              question: "Can you help with local SEO for Brno specifically?",
+              answer: "Absolutely. We optimize for Brno-specific keywords, manage Google My Business listings, and implement local schema markup to improve visibility in Brno search results."
+            },
+            {
+              question: "What makes your approach different for Brno businesses?",
+              answer: "We understand Brno's business ecosystem, local competition, and regional market dynamics. Our solutions are designed for Czech compliance and local customer behavior patterns."
+            }
+          ]
         }}
       />
     </>

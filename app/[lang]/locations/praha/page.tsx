@@ -70,7 +70,7 @@ export default async function PrahaPage({ params }: PrahaPageProps) {
       
       {/* Structured Data for Prague */}
       <StructuredData
-        type="Place"
+        type="LocalBusiness"
         lang={lang as Language}
         placeData={{
           name: "Prague",
@@ -79,6 +79,30 @@ export default async function PrahaPage({ params }: PrahaPageProps) {
             lat: 50.0755,
             lng: 14.4378
           }
+        }}
+      />
+      <StructuredData
+        type="FAQPage"
+        lang={lang as Language}
+        faqData={{
+          questions: [
+            {
+              question: "How quickly can you deliver a website for my Prague business?",
+              answer: "Standard business websites typically launch within 3-4 weeks. Complex e-commerce or custom systems may require 6-8 weeks depending on requirements."
+            },
+            {
+              question: "Do you provide ongoing support for businesses in Prague?",
+              answer: "Yes, we offer comprehensive maintenance packages including updates, security monitoring, and performance optimization specifically tailored for Prague market conditions."
+            },
+            {
+              question: "Can you help with local SEO for Prague specifically?",
+              answer: "Absolutely. We optimize for Prague-specific keywords, manage Google My Business listings, and implement local schema markup to improve visibility in Prague search results."
+            },
+            {
+              question: "What makes your approach different for Prague businesses?",
+              answer: "We understand Prague's business ecosystem, local competition, and regional market dynamics. Our solutions are designed for Czech compliance and local customer behavior patterns."
+            }
+          ]
         }}
       />
     </>

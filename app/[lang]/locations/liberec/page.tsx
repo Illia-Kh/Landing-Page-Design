@@ -70,7 +70,7 @@ export default async function LiberecPage({ params }: LiberecPageProps) {
       
       {/* Structured Data for Liberec */}
       <StructuredData
-        type="Place"
+        type="LocalBusiness"
         lang={lang as Language}
         placeData={{
           name: "Liberec",
@@ -79,6 +79,30 @@ export default async function LiberecPage({ params }: LiberecPageProps) {
             lat: 50.7663,
             lng: 15.0543
           }
+        }}
+      />
+      <StructuredData
+        type="FAQPage"
+        lang={lang as Language}
+        faqData={{
+          questions: [
+            {
+              question: "How quickly can you deliver a website for my Liberec business?",
+              answer: "Standard business websites typically launch within 3-4 weeks. Complex e-commerce or custom systems may require 6-8 weeks depending on requirements."
+            },
+            {
+              question: "Do you provide ongoing support for businesses in Liberec?",
+              answer: "Yes, we offer comprehensive maintenance packages including updates, security monitoring, and performance optimization specifically tailored for Liberec market conditions."
+            },
+            {
+              question: "Can you help with local SEO for Liberec specifically?",
+              answer: "Absolutely. We optimize for Liberec-specific keywords, manage Google My Business listings, and implement local schema markup to improve visibility in Liberec search results."
+            },
+            {
+              question: "What makes your approach different for Liberec businesses?",
+              answer: "We understand Liberec's business ecosystem, local competition, and regional market dynamics. Our solutions are designed for Czech compliance and local customer behavior patterns."
+            }
+          ]
         }}
       />
     </>

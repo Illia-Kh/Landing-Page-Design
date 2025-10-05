@@ -865,29 +865,29 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     locations: {
       praha: {
-        title: "Web Development and Web Design in Prague | IKH Systems",
-        description: "Professional web development and web design services in Prague. We create modern websites that help local businesses grow and attract customers. Our Prague-based team understands the local market and delivers results.",
-        keywords: "web development Prague, web design Prague, website creation Prague, digital agency Prague"
+        title: "Modern Web Systems & Engineering Solutions in Prague | IKH Systems",
+        description: "Professional web development and digital systems in Prague. Local engineering expertise for Czech businesses. Fast, reliable, measurable growth.",
+        keywords: "web development Prague, digital systems Prague, local SEO Prague, web engineering Prague, business automation Prague, e-commerce Prague, website design Prague, digital transformation Prague"
       },
       brno: {
-        title: "Web Development and Web Design in Brno | IKH Systems",
-        description: "Expert web development and web design services in Brno. We help local businesses establish strong online presence with modern, responsive websites optimized for search engines.",
-        keywords: "web development Brno, web design Brno, website creation Brno, digital agency Brno"
+        title: "Modern Web Systems & Engineering Solutions in Brno | IKH Systems",
+        description: "Professional web development and digital systems in Brno. Local engineering expertise for Moravian businesses. Fast, reliable, measurable growth.",
+        keywords: "web development Brno, digital systems Brno, local SEO Brno, web engineering Brno, business automation Brno, e-commerce Brno, website design Brno, digital transformation Brno"
       },
       ostrava: {
-        title: "Web Development and Web Design in Ostrava | IKH Systems",
-        description: "Professional web development and web design services in Ostrava. We specialize in creating websites for industrial companies, shops, restaurants, and services in the Moravian-Silesian region.",
-        keywords: "web development Ostrava, web design Ostrava, website creation Ostrava, digital agency Ostrava"
+        title: "Modern Web Systems & Engineering Solutions in Ostrava | IKH Systems",
+        description: "Professional web development and digital systems in Ostrava. Local engineering expertise for Northern Moravia. Fast, reliable, measurable growth.",
+        keywords: "web development Ostrava, digital systems Ostrava, local SEO Ostrava, web engineering Ostrava, business automation Ostrava, e-commerce Ostrava, website design Ostrava, digital transformation Ostrava"
       },
       plzen: {
-        title: "Web Development and Web Design in Plzeň | IKH Systems",
-        description: "Quality web development and web design services in Plzeň. We create modern websites for local businesses, helping them increase their online presence and attract new customers.",
-        keywords: "web development Plzeň, web design Plzeň, website creation Plzeň, digital agency Plzeň"
+        title: "Modern Web Systems & Engineering Solutions in Plzeň | IKH Systems",
+        description: "Professional web development and digital systems in Plzeň. Local engineering expertise for Western Bohemia. Fast, reliable, measurable growth.",
+        keywords: "web development Plzeň, digital systems Plzeň, local SEO Plzeň, web engineering Plzeň, business automation Plzeň, e-commerce Plzeň, website design Plzeň, digital transformation Plzeň"
       },
       liberec: {
-        title: "Web Development and Web Design in Liberec | IKH Systems",
-        description: "Professional web development and web design services in Liberec. We help local businesses in the Liberec region establish strong online presence with modern, SEO-optimized websites.",
-        keywords: "web development Liberec, web design Liberec, website creation Liberec, digital agency Liberec"
+        title: "Modern Web Systems & Engineering Solutions in Liberec | IKH Systems",
+        description: "Professional web development and digital systems in Liberec. Local engineering expertise for Northern Bohemia. Fast, reliable, measurable growth.",
+        keywords: "web development Liberec, digital systems Liberec, local SEO Liberec, web engineering Liberec, business automation Liberec, e-commerce Liberec, website design Liberec, digital transformation Liberec"
       }
     },
     cookies: {
@@ -1509,29 +1509,29 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     locations: {
       praha: {
-        title: "Tvorba webových stránek a webdesign v Praze | IKH Systems",
-        description: "Profesionální tvorba webu Praha a webdesign Praha. Vytváříme moderní webové stránky, které pomáhají místním podnikům růst a přitahovat zákazníky. Náš pražský tým rozumí místnímu trhu a přináší výsledky.",
-        keywords: "tvorba webu Praha, webdesign Praha, vytvoření webu Praha, digitální agentura Praha"
+        title: "Moderní webové systémy a inženýrská řešení v Praze | IKH Systems",
+        description: "Profesionální webový vývoj a digitální systémy v Praze. Lokální inženýrská expertíza pro české firmy. Rychle, spolehlivě, měřitelný růst.",
+        keywords: "webový vývoj Praha, digitální systémy Praha, lokální SEO Praha, webové inženýrství Praha, automatizace podnikání Praha, e-commerce Praha, design webových stránek Praha, digitální transformace Praha"
       },
       brno: {
-        title: "Tvorba webových stránek a webdesign v Brně | IKH Systems",
-        description: "Expertní tvorba webu Brno a webdesign Brno. Pomáháme místním podnikům vytvořit silnou online přítomnost s moderními, responzivními weby optimalizovanými pro vyhledávače.",
-        keywords: "tvorba webu Brno, webdesign Brno, vytvoření webu Brno, digitální agentura Brno"
+        title: "Moderní webové systémy a inženýrská řešení v Brně | IKH Systems",
+        description: "Profesionální webový vývoj a digitální systémy v Brně. Lokální inženýrská expertíza pro moravské firmy. Rychle, spolehlivě, měřitelný růst.",
+        keywords: "webový vývoj Brno, digitální systémy Brno, lokální SEO Brno, webové inženýrství Brno, automatizace podnikání Brno, e-commerce Brno, design webových stránek Brno, digitální transformace Brno"
       },
       ostrava: {
-        title: "Tvorba webových stránek a webdesign v Ostravě | IKH Systems",
-        description: "Profesionální tvorba webu Ostrava a webdesign Ostrava. Specializujeme se na vytváření webů pro průmyslové podniky, obchody, restaurace a služby v Moravskoslezském kraji.",
-        keywords: "tvorba webu Ostrava, webdesign Ostrava, vytvoření webu Ostrava, digitální agentura Ostrava"
+        title: "Moderní webové systémy a inženýrská řešení v Ostravě | IKH Systems",
+        description: "Profesionální webový vývoj a digitální systémy v Ostravě. Lokální inženýrská expertíza pro severní Moravu. Rychle, spolehlivě, měřitelný růst.",
+        keywords: "webový vývoj Ostrava, digitální systémy Ostrava, lokální SEO Ostrava, webové inženýrství Ostrava, automatizace podnikání Ostrava, e-commerce Ostrava, design webových stránek Ostrava, digitální transformace Ostrava"
       },
       plzen: {
-        title: "Tvorba webových stránek a webdesign v Plzni | IKH Systems",
-        description: "Kvalitní tvorba webu Plzeň a webdesign Plzeň. Vytváříme moderní webové stránky pro místní podniky, pomáháme jim zvýšit online přítomnost a přitáhnout nové zákazníky.",
-        keywords: "tvorba webu Plzeň, webdesign Plzeň, vytvoření webu Plzeň, digitální agentura Plzeň"
+        title: "Moderní webové systémy a inženýrská řešení v Plzni | IKH Systems",
+        description: "Profesionální webový vývoj a digitální systémy v Plzni. Lokální inženýrská expertíza pro západní Čechy. Rychle, spolehlivě, měřitelný růst.",
+        keywords: "webový vývoj Plzeň, digitální systémy Plzeň, lokální SEO Plzeň, webové inženýrství Plzeň, automatizace podnikání Plzeň, e-commerce Plzeň, design webových stránek Plzeň, digitální transformace Plzeň"
       },
       liberec: {
-        title: "Tvorba webových stránek a webdesign v Liberci | IKH Systems",
-        description: "Profesionální tvorba webu Liberec a webdesign Liberec. Pomáháme místním podnikům v Libereckém kraji vytvořit silnou online přítomnost s moderními, SEO optimalizovanými weby.",
-        keywords: "tvorba webu Liberec, webdesign Liberec, vytvoření webu Liberec, digitální agentura Liberec"
+        title: "Moderní webové systémy a inženýrská řešení v Liberci | IKH Systems",
+        description: "Profesionální webový vývoj a digitální systémy v Liberci. Lokální inženýrská expertíza pro severní Čechy. Rychle, spolehlivě, měřitelný růst.",
+        keywords: "webový vývoj Liberec, digitální systémy Liberec, lokální SEO Liberec, webové inženýrství Liberec, automatizace podnikání Liberec, e-commerce Liberec, design webových stránek Liberec, digitální transformace Liberec"
       }
     },
     cookies: {
@@ -2153,29 +2153,29 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     locations: {
       praha: {
-        title: "Webentwicklung und Webdesign in Prag | IKH Systems",
-        description: "Professionelle Webentwicklung und Webdesign-Services in Prag. Wir erstellen moderne Websites, die lokalen Unternehmen beim Wachstum und bei der Kundenakquise helfen. Unser Prager Team versteht den lokalen Markt und liefert Ergebnisse.",
-        keywords: "Webentwicklung Prag, Webdesign Prag, Website-Erstellung Prag, Digitalagentur Prag"
+        title: "Moderne Web-Systeme & Ingenieurlösungen in Prag | IKH Systems",
+        description: "Professionelle Webentwicklung und digitale Systeme in Prag. Lokale Ingenieursexpertise für tschechische Unternehmen. Schnell, zuverlässig, messbares Wachstum.",
+        keywords: "Webentwicklung Prag, digitale Systeme Prag, lokales SEO Prag, Web-Engineering Prag, Geschäftsautomatisierung Prag, E-Commerce Prag, Website-Design Prag, digitale Transformation Prag"
       },
       brno: {
-        title: "Webentwicklung und Webdesign in Brünn | IKH Systems",
-        description: "Experten-Webentwicklung und Webdesign-Services in Brünn. Wir helfen lokalen Unternehmen, eine starke Online-Präsenz mit modernen, suchmaschinenoptimierten responsiven Websites aufzubauen.",
-        keywords: "Webentwicklung Brünn, Webdesign Brünn, Website-Erstellung Brünn, Digitalagentur Brünn"
+        title: "Moderne Web-Systeme & Ingenieurlösungen in Brünn | IKH Systems",
+        description: "Professionelle Webentwicklung und digitale Systeme in Brünn. Lokale Ingenieursexpertise für mährische Unternehmen. Schnell, zuverlässig, messbares Wachstum.",
+        keywords: "Webentwicklung Brünn, digitale Systeme Brünn, lokales SEO Brünn, Web-Engineering Brünn, Geschäftsautomatisierung Brünn, E-Commerce Brünn, Website-Design Brünn, digitale Transformation Brünn"
       },
       ostrava: {
-        title: "Webentwicklung und Webdesign in Ostrava | IKH Systems",
-        description: "Professionelle Webentwicklung und Webdesign-Services in Ostrava. Wir spezialisieren uns auf die Erstellung von Websites für Industrieunternehmen, Geschäfte, Restaurants und Dienstleister in der Mährisch-Schlesischen Region.",
-        keywords: "Webentwicklung Ostrava, Webdesign Ostrava, Website-Erstellung Ostrava, Digitalagentur Ostrava"
+        title: "Moderne Web-Systeme & Ingenieurlösungen in Ostrava | IKH Systems",
+        description: "Professionelle Webentwicklung und digitale Systeme in Ostrava. Lokale Ingenieursexpertise für Nordmähren. Schnell, zuverlässig, messbares Wachstum.",
+        keywords: "Webentwicklung Ostrava, digitale Systeme Ostrava, lokales SEO Ostrava, Web-Engineering Ostrava, Geschäftsautomatisierung Ostrava, E-Commerce Ostrava, Website-Design Ostrava, digitale Transformation Ostrava"
       },
       plzen: {
-        title: "Webentwicklung und Webdesign in Pilsen | IKH Systems",
-        description: "Qualitativ hochwertige Webentwicklung und Webdesign-Services in Pilsen. Wir erstellen moderne Websites für lokale Unternehmen und helfen ihnen, ihre Online-Präsenz zu stärken und neue Kunden zu gewinnen.",
-        keywords: "Webentwicklung Pilsen, Webdesign Pilsen, Website-Erstellung Pilsen, Digitalagentur Pilsen"
+        title: "Moderne Web-Systeme & Ingenieurlösungen in Pilsen | IKH Systems",
+        description: "Professionelle Webentwicklung und digitale Systeme in Pilsen. Lokale Ingenieursexpertise für Westböhmen. Schnell, zuverlässig, messbares Wachstum.",
+        keywords: "Webentwicklung Pilsen, digitale Systeme Pilsen, lokales SEO Pilsen, Web-Engineering Pilsen, Geschäftsautomatisierung Pilsen, E-Commerce Pilsen, Website-Design Pilsen, digitale Transformation Pilsen"
       },
       liberec: {
-        title: "Webentwicklung und Webdesign in Reichenberg | IKH Systems",
-        description: "Professionelle Webentwicklung und Webdesign-Services in Reichenberg. Wir helfen lokalen Unternehmen in der Reichenberger Region, eine starke Online-Präsenz mit modernen, SEO-optimierten Websites aufzubauen.",
-        keywords: "Webentwicklung Reichenberg, Webdesign Reichenberg, Website-Erstellung Reichenberg, Digitalagentur Reichenberg"
+        title: "Moderne Web-Systeme & Ingenieurlösungen in Reichenberg | IKH Systems",
+        description: "Professionelle Webentwicklung und digitale Systeme in Reichenberg. Lokale Ingenieursexpertise für Nordböhmen. Schnell, zuverlässig, messbares Wachstum.",
+        keywords: "Webentwicklung Reichenberg, digitale Systeme Reichenberg, lokales SEO Reichenberg, Web-Engineering Reichenberg, Geschäftsautomatisierung Reichenberg, E-Commerce Reichenberg, Website-Design Reichenberg, digitale Transformation Reichenberg"
       }
     },
     cookies: {
@@ -2797,29 +2797,29 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     locations: {
       praha: {
-        title: "Веб-розробка та веб-дизайн у Празі | IKH Systems",
-        description: "Професійні послуги веб-розробки та веб-дизайну в Празі. Ми створюємо сучасні веб-сайти, які допомагають місцевим бізнесам рости та залучати клієнтів. Наша пражська команда розуміє місцевий ринок і приносить результати.",
-        keywords: "веб-розробка Прага, веб-дизайн Прага, створення веб-сайту Прага, цифрова агенція Прага"
+        title: "Сучасні веб-системи та інженерні рішення в Празі | IKH Systems",
+        description: "Професійна веб-розробка та цифрові системи в Празі. Локальна інженерна експертиза для чеських підприємств. Швидко, надійно, вимірюваний ріст.",
+        keywords: "веб-розробка Прага, цифрові системи Прага, локальне SEO Прага, веб-інженерія Прага, автоматизація бізнесу Прага, електронна комерція Прага, дизайн веб-сайтів Прага, цифрова трансформація Прага"
       },
       brno: {
-        title: "Веб-розробка та веб-дизайн у Брно | IKH Systems",
-        description: "Експертні послуги веб-розробки та веб-дизайну в Брно. Ми допомагаємо місцевим бізнесам створити сильну онлайн-присутність з сучасними, адаптивними веб-сайтами, оптимізованими для пошукових систем.",
-        keywords: "веб-розробка Брно, веб-дизайн Брно, створення веб-сайту Брно, цифрова агенція Брно"
+        title: "Сучасні веб-системи та інженерні рішення в Брно | IKH Systems",
+        description: "Професійна веб-розробка та цифрові системи в Брно. Локальна інженерна експертиза для моравських підприємств. Швидко, надійно, вимірюваний ріст.",
+        keywords: "веб-розробка Брно, цифрові системи Брно, локальне SEO Брно, веб-інженерія Брно, автоматизація бізнесу Брно, електронна комерція Брно, дизайн веб-сайтів Брно, цифрова трансформація Брно"
       },
       ostrava: {
-        title: "Веб-розробка та веб-дизайн у Остраві | IKH Systems",
-        description: "Професійні послуги веб-розробки та веб-дизайну в Остраві. Ми спеціалізуємося на створенні веб-сайтів для промислових підприємств, магазинів, ресторанів та послуг у Моравсько-Сілезькому краї.",
-        keywords: "веб-розробка Острава, веб-дизайн Острава, створення веб-сайту Острава, цифрова агенція Острава"
+        title: "Сучасні веб-системи та інженерні рішення в Остраві | IKH Systems",
+        description: "Професійна веб-розробка та цифрові системи в Остраві. Локальна інженерна експертиза для північної Моравії. Швидко, надійно, вимірюваний ріст.",
+        keywords: "веб-розробка Острава, цифрові системи Острава, локальне SEO Острава, веб-інженерія Острава, автоматизація бізнесу Острава, електронна комерція Острава, дизайн веб-сайтів Острава, цифрова трансформація Острава"
       },
       plzen: {
-        title: "Веб-розробка та веб-дизайн у Пльзені | IKH Systems",
-        description: "Якісні послуги веб-розробки та веб-дизайну в Пльзені. Ми створюємо сучасні веб-сайти для місцевих бізнесів, допомагаємо їм підвищити онлайн-присутність та залучити нових клієнтів.",
-        keywords: "веб-розробка Пльзень, веб-дизайн Пльзень, створення веб-сайту Пльзень, цифрова агенція Пльзень"
+        title: "Сучасні веб-системи та інженерні рішення в Пльзені | IKH Systems",
+        description: "Професійна веб-розробка та цифрові системи в Пльзені. Локальна інженерна експертиза для західної Чехії. Швидко, надійно, вимірюваний ріст.",
+        keywords: "веб-розробка Пльзень, цифрові системи Пльзень, локальне SEO Пльзень, веб-інженерія Пльзень, автоматизація бізнесу Пльзень, електронна комерція Пльзень, дизайн веб-сайтів Пльзень, цифрова трансформація Пльзень"
       },
       liberec: {
-        title: "Веб-розробка та веб-дизайн у Лібереці | IKH Systems",
-        description: "Професійні послуги веб-розробки та веб-дизайну в Лібереці. Ми допомагаємо місцевим бізнесам у Ліберецькому краї створити сильну онлайн-присутність з сучасними, SEO-оптимізованими веб-сайтами.",
-        keywords: "веб-розробка Ліберець, веб-дизайн Ліберець, створення веб-сайту Ліберець, цифрова агенція Ліберець"
+        title: "Сучасні веб-системи та інженерні рішення в Лібереці | IKH Systems",
+        description: "Професійна веб-розробка та цифрові системи в Лібереці. Локальна інженерна експертиза для північної Чехії. Швидко, надійно, вимірюваний ріст.",
+        keywords: "веб-розробка Ліберець, цифрові системи Ліберець, локальне SEO Ліберець, веб-інженерія Ліберець, автоматизація бізнесу Ліберець, електронна комерція Ліберець, дизайн веб-сайтів Ліберець, цифрова трансформація Ліберець"
       }
     },
     cookies: {

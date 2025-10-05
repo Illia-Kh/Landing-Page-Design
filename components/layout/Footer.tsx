@@ -5,7 +5,7 @@ import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
 import { Logo } from '@/components/ui/Logo'
-import { Settings } from 'lucide-react'
+import { Settings, MapPin, Phone, Mail } from 'lucide-react'
 
 interface FooterProps {
   lang: Language
@@ -16,40 +16,84 @@ export function Footer({ lang }: FooterProps) {
   // Use a static year to avoid hydration mismatch
   const currentYear = 2024
   
-  const navItems: Array<{ href: Route; label: string }> = [
+  // Main navigation items
+  const mainNavItems: Array<{ href: Route; label: string }> = [
     { href: `/${lang}` as Route, label: t.common.navigation.home },
+    { href: `/${lang}/about` as Route, label: 'About' },
     { href: `/${lang}/services` as Route, label: t.common.navigation.services },
     { href: `/${lang}/contacts` as Route, label: t.common.navigation.contact },
   ]
 
+  // Location pages
+  const locationItems: Array<{ href: Route; label: string }> = [
+    { href: `/${lang}/locations/praha` as Route, label: 'Praha' },
+    { href: `/${lang}/locations/brno` as Route, label: 'Brno' },
+    { href: `/${lang}/locations/ostrava` as Route, label: 'Ostrava' },
+    { href: `/${lang}/locations/plzen` as Route, label: 'Plzeň' },
+    { href: `/${lang}/locations/liberec` as Route, label: 'Liberec' },
+  ]
+
+  // Legal pages
+  const legalItems: Array<{ href: Route; label: string }> = [
+    { href: `/${lang}/privacy-policy` as Route, label: 'Privacy Policy' },
+    { href: `/${lang}/cookie-policy` as Route, label: 'Cookie Policy' },
+    { href: `/${lang}/terms-of-service` as Route, label: 'Terms of Service' },
+  ]
+
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
           
           {/* Company Info */}
-          <div>
+          <div className="lg:col-span-1">
             <Link 
               href={`/${lang}`}
               className="inline-block mb-4 hover:opacity-80 transition-opacity"
             >
               <Logo variant="footer" />
             </Link>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
               Modern technological solutions for digital transformation
             </p>
+            
+            {/* Contact Info */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <Mail className="w-4 h-4" />
+                <a 
+                  href={`mailto:${t.contact.info.email}`}
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  {t.contact.info.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <Phone className="w-4 h-4" />
+                <a 
+                  href={`tel:${t.contact.info.phone}`}
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  {t.contact.info.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <MapPin className="w-4 h-4" />
+                <span>{t.contact.info.address}</span>
+              </div>
+            </div>
           </div>
 
-          {/* Navigation */}
+          {/* Main Navigation */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
               Navigation
             </h3>
-            <ul className="space-y-2">
-              {navItems.map((item) => (
+            <ul className="space-y-3">
+              {mainNavItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -62,95 +106,71 @@ export function Footer({ lang }: FooterProps) {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Locations */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">
-              Contact
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+              Locations
             </h3>
-            <div className="space-y-3">
-              <div>
-                <a 
-                  href={`mailto:${t.contact.info.email}`}
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            <ul className="space-y-3">
+              {locationItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal & Settings */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+              Legal
+            </h3>
+            <ul className="space-y-3">
+              {legalItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button
+                  onClick={() => {
+                    const event = new CustomEvent('openCookieSettings')
+                    window.dispatchEvent(event)
+                  }}
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2"
                 >
-                  {t.contact.info.email}
-                </a>
-              </div>
-              <div>
-                <a 
-                  href={`tel:${t.contact.info.phone}`}
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  {t.contact.info.phone}
-                </a>
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                {t.contact.info.address}
-              </div>
-            </div>
+                  <Settings className="w-4 h-4" />
+                  Cookie Settings
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             
             {/* Copyright */}
             <div className="text-sm text-gray-600 dark:text-gray-400">
               © {currentYear} IKH Systems. All rights reserved.
             </div>
 
-            {/* Navigation Links */}
-            <div className="flex flex-wrap gap-6">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
             {/* Business Hours */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-right">
+            <div className="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-right">
               <div>Mon-Fri 9:00-17:00</div>
               <div>Based in Liberec, CZ</div>
             </div>
-          </div>
-
-          {/* Legal Links */}
-          <div className="flex flex-wrap justify-center gap-6 pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
-            <Link
-              href={`/${lang}/privacy-policy`}
-              className="text-xs text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href={`/${lang}/cookie-policy`}
-              className="text-xs text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-            >
-              Cookie Policy
-            </Link>
-            <Link
-              href={`/${lang}/terms-of-service`}
-              className="text-xs text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <button
-              onClick={() => {
-                // Trigger cookie settings modal
-                const event = new CustomEvent('openCookieSettings')
-                window.dispatchEvent(event)
-              }}
-              className="text-xs text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors flex items-center gap-1"
-            >
-              <Settings className="w-3 h-3" />
-              Cookie Settings
-            </button>
           </div>
         </div>
         

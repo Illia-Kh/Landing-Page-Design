@@ -70,7 +70,7 @@ export default async function PlzenPage({ params }: PlzenPageProps) {
       
       {/* Structured Data for Plzen */}
       <StructuredData
-        type="Place"
+        type="LocalBusiness"
         lang={lang as Language}
         placeData={{
           name: "Plzen",
@@ -79,6 +79,30 @@ export default async function PlzenPage({ params }: PlzenPageProps) {
             lat: 49.7384,
             lng: 13.3736
           }
+        }}
+      />
+      <StructuredData
+        type="FAQPage"
+        lang={lang as Language}
+        faqData={{
+          questions: [
+            {
+              question: "How quickly can you deliver a website for my Plzen business?",
+              answer: "Standard business websites typically launch within 3-4 weeks. Complex e-commerce or custom systems may require 6-8 weeks depending on requirements."
+            },
+            {
+              question: "Do you provide ongoing support for businesses in Plzen?",
+              answer: "Yes, we offer comprehensive maintenance packages including updates, security monitoring, and performance optimization specifically tailored for Plzen market conditions."
+            },
+            {
+              question: "Can you help with local SEO for Plzen specifically?",
+              answer: "Absolutely. We optimize for Plzen-specific keywords, manage Google My Business listings, and implement local schema markup to improve visibility in Plzen search results."
+            },
+            {
+              question: "What makes your approach different for Plzen businesses?",
+              answer: "We understand Plzen's business ecosystem, local competition, and regional market dynamics. Our solutions are designed for Czech compliance and local customer behavior patterns."
+            }
+          ]
         }}
       />
     </>

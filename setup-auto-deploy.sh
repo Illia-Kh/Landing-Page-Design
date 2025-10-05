@@ -10,7 +10,7 @@ chmod +x /var/www/ikhsystems.com/deploy.sh
 
 # Создаем cron job для проверки каждые 5 минут
 echo "⏰ Настраиваем cron job..."
-(crontab -l 2>/dev/null; echo "*/5 * * * * /var/www/ikhsystems.com/deploy.sh >> /var/log/auto-deploy.log 2>&1") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * cd /var/www/ikhsystems.com && ./deploy.sh >> /var/log/auto-deploy.log 2>&1") | crontab -
 
 # Создаем лог файл
 touch /var/log/auto-deploy.log
@@ -30,6 +30,7 @@ Type=oneshot
 ExecStart=/var/www/ikhsystems.com/deploy.sh
 User=root
 WorkingDirectory=/var/www/ikhsystems.com
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 [Install]
 WantedBy=multi-user.target

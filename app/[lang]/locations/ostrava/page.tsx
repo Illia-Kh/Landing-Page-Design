@@ -70,7 +70,7 @@ export default async function OstravaPage({ params }: OstravaPageProps) {
       
       {/* Structured Data for Ostrava */}
       <StructuredData
-        type="Place"
+        type="LocalBusiness"
         lang={lang as Language}
         placeData={{
           name: "Ostrava",
@@ -79,6 +79,30 @@ export default async function OstravaPage({ params }: OstravaPageProps) {
             lat: 49.8209,
             lng: 18.2625
           }
+        }}
+      />
+      <StructuredData
+        type="FAQPage"
+        lang={lang as Language}
+        faqData={{
+          questions: [
+            {
+              question: "How quickly can you deliver a website for my Ostrava business?",
+              answer: "Standard business websites typically launch within 3-4 weeks. Complex e-commerce or custom systems may require 6-8 weeks depending on requirements."
+            },
+            {
+              question: "Do you provide ongoing support for businesses in Ostrava?",
+              answer: "Yes, we offer comprehensive maintenance packages including updates, security monitoring, and performance optimization specifically tailored for Ostrava market conditions."
+            },
+            {
+              question: "Can you help with local SEO for Ostrava specifically?",
+              answer: "Absolutely. We optimize for Ostrava-specific keywords, manage Google My Business listings, and implement local schema markup to improve visibility in Ostrava search results."
+            },
+            {
+              question: "What makes your approach different for Ostrava businesses?",
+              answer: "We understand Ostrava's business ecosystem, local competition, and regional market dynamics. Our solutions are designed for Czech compliance and local customer behavior patterns."
+            }
+          ]
         }}
       />
     </>
