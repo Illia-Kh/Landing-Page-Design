@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
+import { localeHref } from '@/lib/localeHref'
 
 interface NavProps {
   lang: Language
@@ -16,9 +17,9 @@ export function Nav({ lang, mobile = false }: NavProps) {
   const t = getTranslation(lang)
   
   const navItems: Array<{ href: Route; label: string }> = [
-    { href: `/${lang}` as Route, label: t.common.navigation.home },
-    { href: `/${lang}/services` as Route, label: t.common.navigation.services },
-    { href: `/${lang}/contacts` as Route, label: t.common.navigation.contact },
+    { href: localeHref(lang, '/') as Route, label: t.common.navigation.home },
+    { href: localeHref(lang, '/services') as Route, label: t.common.navigation.services },
+    { href: localeHref(lang, '/contacts') as Route, label: t.common.navigation.contact },
   ]
 
   if (mobile) {

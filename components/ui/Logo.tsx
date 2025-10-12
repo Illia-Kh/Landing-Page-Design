@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
   className?: string
-  priority?: boolean
   showText?: boolean
   textClassName?: string
   variant?: 'default' | 'header' | 'footer'
@@ -11,7 +9,6 @@ interface LogoProps {
 
 export function Logo({ 
   className, 
-  priority = false, 
   showText = true,
   textClassName,
   variant = 'default'
@@ -56,13 +53,14 @@ export function Logo({
     <div className={cn("logo-container", className)}>
       {/* Logo Image */}
       <div className="relative">
-        <Image
+        <img
           src="/logo/ikh-logo.svg"
           alt="IKH Systems Logo"
           width={imageSize.width}
           height={imageSize.height}
-          priority={priority}
           className={getImageClass()}
+          loading="eager"
+          decoding="async"
         />
       </div>
       
@@ -81,16 +79,17 @@ export function Logo({
 }
 
 // Компактная версия для мобильных
-export function LogoCompact({ className, priority = false }: LogoProps) {
+export function LogoCompact({ className }: LogoProps) {
   return (
     <div className={cn("flex items-center", className)}>
-      <Image
+      <img
         src="/logo/ikh-logo.svg"
         alt="IKH Systems"
         width={40}
         height={40}
-        priority={priority}
         className="h-8 w-auto"
+        loading="eager"
+        decoding="async"
       />
     </div>
   )

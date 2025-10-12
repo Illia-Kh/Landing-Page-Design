@@ -120,7 +120,6 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
                   alt={slide.alt}
                   fill
                   className="object-cover"
-                  priority={index === 0}
                   sizes="(max-width: 768px) 100vw, 384px"
                 />
                 

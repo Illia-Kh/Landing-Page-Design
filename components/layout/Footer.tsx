@@ -4,6 +4,7 @@ import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
 import { Logo } from '@/components/ui/Logo'
 import { MessageCircle } from 'lucide-react'
+import { localeHref } from '@/lib/localeHref'
 
 interface FooterProps {
   lang: Language
@@ -14,9 +15,9 @@ export function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear()
   
   const navItems: Array<{ href: Route; label: string }> = [
-    { href: `/${lang}` as Route, label: t.common.navigation.home },
-    { href: `/${lang}/services` as Route, label: t.common.navigation.services },
-    { href: `/${lang}/contacts` as Route, label: t.common.navigation.contact },
+    { href: localeHref(lang, '/') as Route, label: t.common.navigation.home },
+    { href: localeHref(lang, '/services') as Route, label: t.common.navigation.services },
+    { href: localeHref(lang, '/contacts') as Route, label: t.common.navigation.contact },
   ]
 
   const locationItems = [
@@ -37,7 +38,7 @@ export function Footer({ lang }: FooterProps) {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link 
-              href={`/${lang}`}
+              href={localeHref(lang, '/') as Route}
               className="inline-block mb-4 hover:opacity-80 transition-opacity"
             >
               <Logo variant="footer" />
@@ -55,7 +56,7 @@ export function Footer({ lang }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`/${lang}/services`}
+                  href={localeHref(lang, '/services') as Route}
                   className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   Web Development
@@ -63,7 +64,7 @@ export function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/services`}
+                  href={localeHref(lang, '/services') as Route}
                   className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   Frontend Development
@@ -71,7 +72,7 @@ export function Footer({ lang }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${lang}/services`}
+                  href={localeHref(lang, '/services') as Route}
                   className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   React & Next.js
@@ -89,7 +90,7 @@ export function Footer({ lang }: FooterProps) {
               {locationItems.slice(0, 4).map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/${lang}/locations/${item.slug}` as Route}
+                    href={localeHref(lang, `/locations/${item.slug}`) as Route}
                     className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                   >
                     {item.label}

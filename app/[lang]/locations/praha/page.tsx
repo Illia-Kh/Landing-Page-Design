@@ -1,3 +1,6 @@
+export function generateStaticParams() {
+  return [{ lang: 'cs' }, { lang: 'en' }, { lang: 'de' }, { lang: 'ua' }]
+}
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'

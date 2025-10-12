@@ -1,66 +1,37 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { isSupportedLanguage, getTranslation, LOCALES, BASE_URL_BY_LOCALE } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
 import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
 import { StructuredData } from '@/components/StructuredData'
 import { Code, Layers, CheckCircle, ArrowRight, BarChart3, Shield, Server, Globe, Database, Monitor, Smartphone as Mobile, Settings, Zap, Cloud, HardDrive } from 'lucide-react'
 import Link from 'next/link'
-import { env } from '@/lib/env'
 import { AnchorHandler } from '@/components/client/AnchorHandler'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
 
 // Generate metadata for the services page
-export async function generateMetadata({ 
-  params 
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params
-  
-  if (!isSupportedLanguage(lang)) {
-    return {}
-  }
-
+  if (!isSupportedLanguage(lang)) return {}
   const t = getTranslation(lang as Language)
-  const baseUrl = env.NEXT_PUBLIC_SITE_URL
-  const canonicalUrl = getLocalizedUrl('/services', lang as Language)
-  
+  const fallbackBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://ikhsystems.com'
+  const languages: Record<string, string> = {}
+  for (const l of LOCALES) {
+    const base = (BASE_URL_BY_LOCALE[l] || `${fallbackBase}/${l}`).replace(/\/$/, '')
+    languages[l] = `${base}/services`
+  }
   return {
     title: t.seo.services.title,
     description: t.seo.services.description,
     keywords: t.seo.services.keywords,
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        'en-US': `${baseUrl}/en/services`,
-        'cs-CZ': `${baseUrl}/cs/services`,
-        'de-DE': `${baseUrl}/de/services`,
-      },
-    },
-    openGraph: {
-      type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : 'de_DE',
-      url: canonicalUrl,
-      siteName: 'IKH-TechSystems',
-      title: t.seo.services.title,
-      description: t.seo.services.description,
-      images: [
-        {
-          url: `${baseUrl}/og-services.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t.seo.services.title,
-        }
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t.seo.services.title,
-      description: t.seo.services.description,
-      images: [`${baseUrl}/og-services.jpg`],
-    },
+    alternates: { canonical: languages[lang], languages },
   }
+}
+
+export function generateStaticParams() {
+  return [{ lang: 'cs' }, { lang: 'en' }, { lang: 'de' }, { lang: 'ua' }]
 }
 
 // Icons for the 6 main service blocks

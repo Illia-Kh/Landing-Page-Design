@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isSupportedLanguage, getTranslation, getLocalizedUrl } from '@/lib/i18n'
+import { isSupportedLanguage, getTranslation, LOCALES, BASE_URL_BY_LOCALE } from '@/lib/i18n'
 import { Language } from '@/types'
 import { Analytics } from '@/components/Analytics'
 import { PageViewTracker } from '@/components/PageViewTracker'
@@ -24,67 +24,22 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for each language
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ lang: string }> 
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string, slug?: string[] }> }): Promise<Metadata> {
   const { lang } = await params
-  
-  if (!isSupportedLanguage(lang)) {
-    return {}
-  }
-
+  if (!isSupportedLanguage(lang)) return {}
   const t = getTranslation(lang as Language)
-  const baseUrl = env.NEXT_PUBLIC_SITE_URL
-  const canonicalUrl = getLocalizedUrl('/', lang as Language)
-  
+  const path = '/'
+  const fallbackBase = env.NEXT_PUBLIC_SITE_URL
+  const languages: Record<string, string> = {}
+  for (const l of LOCALES) {
+    const base = (BASE_URL_BY_LOCALE[l] || `${fallbackBase}/${l}`).replace(/\/$/, '')
+    languages[l] = `${base}${path === '/' ? '' : path}`
+  }
   return {
     title: t.seo.home.title,
     description: t.seo.home.description,
     keywords: t.seo.home.keywords,
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        'en-US': `${baseUrl}/en`,
-        'cs-CZ': `${baseUrl}/cs`,
-        'de-DE': `${baseUrl}/de`,
-        'uk-UA': `${baseUrl}/ua`,
-      },
-    },
-    openGraph: {
-      type: 'website',
-      locale: lang === 'en' ? 'en_US' : lang === 'cs' ? 'cs_CZ' : lang === 'de' ? 'de_DE' : 'uk_UA',
-      url: canonicalUrl,
-      siteName: 'IKH Systems',
-      title: t.seo.home.title,
-      description: t.seo.home.description,
-      images: [
-        {
-          url: `${baseUrl}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t.seo.home.title,
-        }
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t.seo.home.title,
-      description: t.seo.home.description,
-      images: [`${baseUrl}/og-image.jpg`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    alternates: { canonical: languages[lang], languages },
   }
 }
 

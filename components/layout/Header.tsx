@@ -7,6 +7,7 @@ import { Nav } from './Nav'
 import { LangSwitcher } from '@/components/client/LangSwitcher'
 import { ThemeToggle } from '@/components/client/ThemeToggle'
 import { Logo } from '@/components/ui/Logo'
+import { localeHref } from '@/lib/localeHref'
 import { Menu, X } from 'lucide-react'
 
 interface HeaderProps {
@@ -22,10 +23,10 @@ export function Header({ lang }: HeaderProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link 
-            href={`/${lang}`}
+            href={localeHref(lang, '/') as `/${string}`}
             className="hover:opacity-80 transition-opacity"
           >
-            <Logo priority={true} variant="header" />
+            <Logo variant="header" />
           </Link>
           
           {/* Desktop Navigation - Centered */}
