@@ -37,6 +37,12 @@ export interface LocalizedPageProps {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+// Form data types
+export interface ContactFormData {
+  name: string
+  email: string
+  message: string
+}
 
 // SEO metadata types
 export interface SeoData {
@@ -122,6 +128,13 @@ export interface ApiResponse<T = unknown> {
   message?: string
 }
 
+// Contact form submission response
+export interface ContactFormResponse extends ApiResponse {
+  data?: {
+    id: string
+    timestamp: number
+  }
+}
 
 // Utility types
 export type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never }
