@@ -1,5 +1,16 @@
 import { Language } from '@/types'
 
+// New i18n constants for locale domains and canonical/hreflang
+export const LOCALES = ['cs','en','de','ua'] as const
+export type Locale = typeof LOCALES[number]
+export const DEFAULT_LOCALE: Locale = 'cs'
+export const BASE_URL_BY_LOCALE: Record<Locale, string> = {
+  cs: process.env.NEXT_PUBLIC_BASE_URL_CS || '',
+  en: process.env.NEXT_PUBLIC_BASE_URL_EN || '',
+  de: process.env.NEXT_PUBLIC_BASE_URL_DE || '',
+  ua: process.env.NEXT_PUBLIC_BASE_URL_UA || '',
+}
+
 // Supported languages
 export const locales: Language[] = ['cs', 'en', 'de', 'ua']
 export const defaultLocale: Language = 'en'

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { ChevronDown, Globe } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Language } from '@/types'
-import { locales } from '@/lib/i18n'
+import { LOCALES } from '@/lib/i18n'
 
 interface LangSwitcherProps {
   currentLang: Language
@@ -78,7 +78,7 @@ export function LangSwitcher({ currentLang, className = '' }: LangSwitcherProps)
               transition={{ duration: 0.2 }}
               className="absolute top-full mt-2 right-0 z-20 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg min-w-[140px] overflow-hidden"
             >
-              {locales.map((lang) => {
+              {LOCALES.map((lang) => {
                 const language = languageNames[lang]
                 const isSelected = lang === currentLang
                 

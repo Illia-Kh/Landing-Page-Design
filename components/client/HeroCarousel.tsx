@@ -10,9 +10,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { HeroSlide, Language } from '@/types'
 
-// Simple blur data URL for placeholder
-const blurDataURL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k='
-
 interface HeroCarouselProps {
   slides: HeroSlide[]
   lang: Language
@@ -40,15 +37,9 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   // Check for reduced motion preference
   useEffect(() => {
-    if (!mounted) return
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     setPrefersReducedMotion(mediaQuery.matches)
     
@@ -58,7 +49,7 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
     
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [mounted])
+  }, [])
 
   // Stop autoplay if user prefers reduced motion
   useEffect(() => {
@@ -121,55 +112,44 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
       {/* Carousel Container */}
       <div className="overflow-hidden rounded-xl shadow-2xl" ref={emblaRef}>
         <div className="flex">
-          {slides.map((slide, index) => {
-            // Optimization strategy for different slides
-            const isFirstSlide = index === 0
-            const isSecondSlide = index === 1
-
-            return (
-              <div key={index} className="flex-[0_0_100%] min-w-0">
-                <div className="relative aspect-[9/16] bg-gray-900 dark:bg-gray-800 min-h-[400px] sm:min-h-[500px]">
-                  <Image
-                    src={slide.image}
-                    alt={slide.alt}
-                    fill
-                    className="object-cover"
-                    priority={isFirstSlide || isSecondSlide}
-                    loading={isFirstSlide ? "eager" : isSecondSlide ? "eager" : "lazy"}
-                    fetchPriority={isFirstSlide ? "high" : isSecondSlide ? "high" : "auto"}
-                    placeholder="blur"
-                    blurDataURL={blurDataURL}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                  />
+          {slides.map((slide, index) => (
+            <div key={index} className="flex-[0_0_100%] min-w-0">
+              <div className="relative aspect-[9/16] bg-gray-900 dark:bg-gray-800">
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 384px"
+                />
                 
-                  {/* Overlay with content */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <h3 className="text-xl font-bold mb-2">{slide.title}</h3>
-                      {slide.subtitle && (
-                        <p className="text-sm text-gray-200 mb-4">{slide.subtitle}</p>
-                      )}
-                      {slide.cta && (
-                        <Link
-                          href={`/${lang}${slide.cta.href}`}
-                          className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-200"
-                          aria-label={`${slide.cta.label} - ${slide.title}`}
-                        >
-                          {slide.cta.label}
-                        </Link>
-                      )}
-                    </motion.div>
-                  </div>
+                {/* Overlay with content */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <h3 className="text-xl font-bold mb-2">{slide.title}</h3>
+                    {slide.subtitle && (
+                      <p className="text-sm text-gray-200 mb-4">{slide.subtitle}</p>
+                    )}
+                    {slide.cta && (
+                      <Link
+                        href={`/${lang}${slide.cta.href}`}
+                        className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-200"
+                        aria-label={`${slide.cta.label} - ${slide.title}`}
+                      >
+                        {slide.cta.label}
+                      </Link>
+                    )}
+                  </motion.div>
                 </div>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
       </div>
 
