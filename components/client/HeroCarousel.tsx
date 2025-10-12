@@ -1,14 +1,14 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaCarouselType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { HeroSlide, Language } from '@/types'
+import { HeroImage } from './HeroImage'
 
 interface HeroCarouselProps {
   slides: HeroSlide[]
@@ -16,6 +16,13 @@ interface HeroCarouselProps {
 }
 
 export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
+  const autoplayPlugin = useMemo(() => Autoplay({
+    delay: 5000,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+    stopOnFocusIn: false,
+  }), [])
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true,
@@ -23,20 +30,20 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
       skipSnaps: false,
       dragFree: false
     },
-    [
-      Autoplay({
-        delay: 5000,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-        stopOnFocusIn: false,
-        rootNode: (emblaRoot) => emblaRoot.parentElement,
-      })
-    ]
+    [autoplayPlugin]
   )
 
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [mountedIdle, setMountedIdle] = useState(false)
+  // Defer carousel mount until the browser is idle to improve LCP/TBT
+  useEffect(() => {
+    const ric: (cb: () => void) => number = (window as any).requestIdleCallback || ((cb: () => void) => window.setTimeout(cb, 200))
+    const cic: (id: number) => void = (window as any).cancelIdleCallback || window.clearTimeout
+    const id = ric(() => setMountedIdle(true))
+    return () => cic(id)
+  }, [])
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -53,26 +60,24 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
 
   // Stop autoplay if user prefers reduced motion
   useEffect(() => {
-    if (emblaApi && prefersReducedMotion) {
-      emblaApi.plugins().autoplay?.stop()
+    if (prefersReducedMotion) {
+      autoplayPlugin.stop()
     }
-  }, [emblaApi, prefersReducedMotion])
+  }, [prefersReducedMotion, autoplayPlugin])
 
   // Handle visibility change to pause autoplay when tab is not visible
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (emblaApi) {
-        if (document.hidden) {
-          emblaApi.plugins().autoplay?.stop()
-        } else if (!prefersReducedMotion) {
-          emblaApi.plugins().autoplay?.play()
-        }
+      if (document.hidden) {
+        autoplayPlugin.stop()
+      } else if (!prefersReducedMotion) {
+        autoplayPlugin.play()
       }
     }
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [emblaApi, prefersReducedMotion])
+  }, [prefersReducedMotion, autoplayPlugin])
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -107,20 +112,38 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
     return null
   }
 
+  if (!mountedIdle) {
+    const first = slides[0]
+    return (
+      <div className="relative w-full max-w-sm mx-auto">
+        <div className="overflow-hidden rounded-xl shadow-2xl">
+          <div className="relative aspect-[9/16] bg-gray-900 dark:bg-gray-800">
+            <HeroImage slide={first} priority isFirst />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <h3 className="text-xl font-bold mb-2">{first.title}</h3>
+              {first.subtitle && (
+                <p className="text-sm text-gray-200">{first.subtitle}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="relative w-full max-w-sm mx-auto">
       {/* Carousel Container */}
-      <div className="overflow-hidden rounded-xl shadow-2xl" ref={emblaRef}>
+      <div className="relative w-full aspect-[9/16] overflow-hidden rounded-xl shadow-2xl" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="relative aspect-[9/16] bg-gray-900 dark:bg-gray-800">
-                <Image
-                  src={slide.image}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 384px"
+                <HeroImage 
+                  slide={slide} 
+                  priority={index === 0} 
+                  isFirst={index === 0}
                 />
                 
                 {/* Overlay with content */}

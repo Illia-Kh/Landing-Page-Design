@@ -1,12 +1,14 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useParams } from 'next/navigation'
 import { isSupportedLanguage } from '@/lib/i18n'
+import type { Language } from '@/types'
 
-export function HtmlLangSetter() {
-  const params = useParams()
-  const lang = params?.lang as string
+interface HtmlLangSetterProps {
+  lang: Language
+}
+
+export function HtmlLangSetter({ lang }: HtmlLangSetterProps) {
 
   useEffect(() => {
     if (lang && isSupportedLanguage(lang)) {

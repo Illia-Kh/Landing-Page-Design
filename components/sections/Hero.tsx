@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import HeroCarouselLoader from '@/components/client/HeroCarouselLoader'
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
-import { HERO_SIZES } from '@/lib/imageSizes'
-import banner from '@/public/media/banner/web-development.webp'
+
 
 interface HeroProps {
   lang: Language
@@ -13,33 +12,25 @@ export function Hero({ lang }: HeroProps) {
   const t = getTranslation(lang)
 
   return (
-    <section className="relative h-[60vh] min-h-[520px] overflow-hidden">
-      <Image
-        src={banner}
-        alt={t.hero.headline}
-        fill
-        priority
-        fetchPriority="high"
-        placeholder="blur"
-        sizes={HERO_SIZES}
-        className="object-cover"
-      />
-
-      <div className="absolute inset-0 grid place-items-center px-6">
-        <div className="max-w-3xl text-center">
+    <section className="relative overflow-hidden">
+      <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-6 items-center py-12 md:py-16">
+        <div className="order-2 md:order-1 text-center md:text-left">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
             {t.hero.headline}
           </h1>
-          <p className="text-base md:text-lg text-white/90 mb-6">
+          <p className="text-base md:text-lg text-muted-foreground mb-6">
             {t.hero.subtitle}
           </p>
           <Link
             href={`/${lang}/contacts`}
-            className="inline-flex items-center justify-center px-6 py-3 bg-white/90 text-gray-900 font-semibold rounded-full hover:bg-white transition"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:opacity-90 transition"
             aria-label={`${t.hero.cta.primary} - ${t.hero.title}`}
           >
             {t.hero.cta.primary}
           </Link>
+        </div>
+        <div className="order-1 md:order-2">
+          <HeroCarouselLoader slides={t.hero.carousel.slides} lang={lang} />
         </div>
       </div>
     </section>

@@ -69,8 +69,19 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
         {/* Performance Hints */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      
+      {/* Preload Hero Image for LCP - Mobile Optimized */}
+      <link
+        rel="preload"
+        as="image"
+        imageSrcSet="/media/banner/web-development-mobile.avif 480w, /media/banner/web-development-mobile-lg.avif 640w, /media/banner/web-development.avif 1280w"
+        imageSizes="(max-width: 600px) 100vw, 600px"
+        href="/media/banner/web-development-mobile-lg.avif"
+        type="image/avif"
+        fetchPriority="high"
+      />
         
         {/* iOS Safari Optimization */}
         <meta name="format-detection" content="telephone=yes" />

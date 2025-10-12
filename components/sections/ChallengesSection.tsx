@@ -1,6 +1,7 @@
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
-import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import MotionSectionClient from '@/components/client/MotionSectionClient'
+import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import { Wallet, Users, Rocket, Shield } from 'lucide-react'
 
 interface ChallengesSectionProps {
@@ -15,13 +16,13 @@ export function ChallengesSection({ lang }: ChallengesSectionProps) {
   return (
     <section className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
       <div className="section-container">
-        <MotionSection className="text-center mb-16">
+        <MotionSectionClient className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {t.challenges.title}
           </h2>
-        </MotionSection>
+        </MotionSectionClient>
 
-        <MotionStagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.15}>
+        <MotionStaggerClient className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.15}>
           {t.challenges.items.map((challenge, index) => {
             const IconComponent = challengeIcons[index] || Wallet
             
@@ -47,7 +48,7 @@ export function ChallengesSection({ lang }: ChallengesSectionProps) {
               </div>
             )
           })}
-        </MotionStagger>
+        </MotionStaggerClient>
       </div>
     </section>
   )

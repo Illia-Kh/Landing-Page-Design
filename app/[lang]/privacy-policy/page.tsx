@@ -23,7 +23,7 @@ export async function generateMetadata({
   
   return {
     title: t.privacy.title,
-    description: t.privacy.description,
+    description: t.privacy.description || 'Full-stack web solutions, system integration and automation in Czechia.',
     keywords: t.privacy.keywords,
     alternates: {
       canonical: canonicalUrl,

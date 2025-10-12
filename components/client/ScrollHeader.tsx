@@ -19,38 +19,44 @@ export function ScrollHeader({ lang }: ScrollHeaderProps) {
 
   useEffect(() => {
     if (!mounted) return
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      
-      // Показываем header при прокрутке вверх или в самом верху
-      if (currentScrollY < lastScrollY || currentScrollY < 10) {
-        setIsVisible(true)
-      } 
-      // Скрываем header при прокрутке вниз (только если прокрутили больше 100px)
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false)
-      }
-      
-      setLastScrollY(currentScrollY)
-    }
-
-    // Throttle scroll events for better performance
-    let ticking = false
-    const throttledHandleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll()
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true })
     
-    return () => {
-      window.removeEventListener('scroll', throttledHandleScroll)
-    }
+    // Defer scroll listener attachment to avoid blocking initial render
+    const timeoutId = setTimeout(() => {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY
+        
+        // Показываем header при прокрутке вверх или в самом верху
+        if (currentScrollY < lastScrollY || currentScrollY < 10) {
+          setIsVisible(true)
+        } 
+        // Скрываем header при прокрутке вниз (только если прокрутили больше 100px)
+        else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false)
+        }
+        
+        setLastScrollY(currentScrollY)
+      }
+
+      // Throttle scroll events for better performance (16ms = 60fps)
+      let ticking = false
+      const throttledHandleScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            handleScroll()
+            ticking = false
+          })
+          ticking = true
+        }
+      }
+
+      window.addEventListener('scroll', throttledHandleScroll, { passive: true })
+      
+      return () => {
+        window.removeEventListener('scroll', throttledHandleScroll)
+      }
+    }, 500) // Defer by 500ms after mount
+    
+    return () => clearTimeout(timeoutId)
   }, [lastScrollY, mounted])
 
   return (

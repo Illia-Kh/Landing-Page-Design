@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
 import type { Language } from '@/types'
+import { getTranslation } from '@/lib/i18n'
 
 interface LocationPageProps {
   city: string
@@ -17,7 +18,7 @@ export default function LocationPage({
   description: _description,
   lang
 }: LocationPageProps) {
-  
+  const t = getTranslation(lang)
   // Location-specific data
   const locationData = {
     praha: {
@@ -64,11 +65,11 @@ export default function LocationPage({
       {/* Hero Section */}
       <section className="text-center mb-16">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-          Moderní inženýrství a webové systémy v {city}
+          {t.locations?.[slug as keyof typeof t.locations]?.title || `${city}`}
         </h1>
         
         <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 max-w-4xl mx-auto">
-          Systémový přístup k digitální infrastruktuře pro {city.toLowerCase()} firmy usilující o měřitelný růst a provozní efektivitu.
+          {t.locations?.[slug as keyof typeof t.locations]?.description || ''}
         </p>
         
         <div className="flex justify-center">
@@ -76,16 +77,14 @@ export default function LocationPage({
             href={`/${lang}/contacts`}
             className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-semibold rounded-lg transition-colors duration-200"
           >
-            Získat bezplatnou konzultaci
+            {t.common.actions.getStarted}
           </Link>
         </div>
       </section>
 
       {/* Value Proposition */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Hodnotová propozice
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{t.challenges.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
@@ -106,9 +105,7 @@ export default function LocationPage({
             }
           ].map((item, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                {item.title}
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{item.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">
                 {item.description}
               </p>
@@ -119,9 +116,7 @@ export default function LocationPage({
 
       {/* Services */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Přehled služeb
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{t.services.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             'Webové stránky',
@@ -139,12 +134,12 @@ export default function LocationPage({
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300">
-                {service === 'Webové stránky' && 'Na míru vytvořené, výkonově optimalizované podnikové weby'}
-                {service === 'E-commerce' && 'Škálovatelné online obchody s integrací plateb'}
-                {service === 'Lokální SEO' && `Viditelnost ve vyhledávání zaměřená na ${city} a Google My Business`}
-                {service === 'Media buying' && 'Cílené reklamní kampaně pro české trhy'}
-                {service === 'Automatizace' && 'Optimalizace pracovních procesů a digitalizace procesů'}
-                {service === 'Analytika' && 'Komplexní sledování a business intelligence'}
+                {service === 'Webové stránky' && t.services.items[0]?.description}
+                {service === 'E-commerce' && t.services.items[0]?.description}
+                {service === 'Lokální SEO' && t.services.items[0]?.description}
+                {service === 'Media buying' && t.services.items[0]?.description}
+                {service === 'Automatizace' && t.services.items[0]?.description}
+                {service === 'Analytika' && t.services.items[0]?.description}
               </p>
             </div>
           ))}
@@ -154,9 +149,7 @@ export default function LocationPage({
 
       {/* Process */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Proces
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{t.services.subtitle}</h2>
         <div className="grid md:grid-cols-5 gap-6">
           {[
             'Objevování',
@@ -186,13 +179,11 @@ export default function LocationPage({
 
       {/* Pricing */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Ceník
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{t.services.pricing.title}</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Webový vývoj
+              {t.services.items[0]?.title || 'Web Development'}
             </h3>
             <p className="text-3xl font-bold text-blue-600 mb-4">
               Od {data.pricing.web}
@@ -203,7 +194,7 @@ export default function LocationPage({
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Digitální systémy
+              {t.services.items[2]?.title || 'Systems'}
             </h3>
             <p className="text-3xl font-bold text-blue-600 mb-4">
               Od {data.pricing.systems}
@@ -214,7 +205,7 @@ export default function LocationPage({
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Plány údržby
+              {t.services.pricing.secondaryService.title}
             </h3>
             <p className="text-3xl font-bold text-blue-600 mb-4">
               Od {data.pricing.maintenance}/měsíc
@@ -265,11 +256,10 @@ export default function LocationPage({
       {/* Final CTA */}
       <section className="text-center bg-blue-50 dark:bg-blue-900/20 p-12 rounded-lg">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-          Pojďme vytvořit váš další systém v {city}
+          {t.common.actions.getStarted}
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          Připraveni transformovat svou {city.toLowerCase()} firmu moderní digitální infrastrukturou? 
-          Náš inženýrský přístup přináší měřitelné výsledky.
+          {t.hero.description}
         </p>
         <div className="flex justify-center">
           <Link

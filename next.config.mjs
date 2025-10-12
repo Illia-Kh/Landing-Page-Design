@@ -2,6 +2,13 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'swiper', 'lucide-react'],
+  },
+  compiler: {
+    removeConsole: { exclude: ['error'] },
+  },
+  compress: true,
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],

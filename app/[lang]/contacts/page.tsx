@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isSupportedLanguage, getTranslation, LOCALES, BASE_URL_BY_LOCALE } from '@/lib/i18n'
 import { Language, PageProps } from '@/types'
-import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
-import { ContactForm } from '@/components/client/ContactForm'
+import MotionSectionClient from '@/components/client/MotionSectionClient'
+import MotionStaggerClient from '@/components/client/MotionStaggerClient'
+import ContactFormClient from '@/components/client/ContactFormClient'
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown } from 'lucide-react'
 
 // ISR configuration
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   return {
     title: t.seo.contact.title,
-    description: t.seo.contact.description,
+    description: t.seo.contact.description || 'Full-stack web solutions, system integration and automation in Czechia.',
     keywords: t.seo.contact.keywords,
     alternates: { canonical: languages[lang], languages },
   }
@@ -48,21 +49,21 @@ export default async function ContactsPage({ params }: PageProps) {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="section-container">
-          <MotionSection className="text-center max-w-4xl mx-auto" immediate={true}>
+          <MotionSectionClient className="text-center max-w-4xl mx-auto" immediate={true}>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               {t.contact.title}
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t.contact.subtitle}
             </p>
-          </MotionSection>
+          </MotionSectionClient>
         </div>
       </section>
 
       {/* Unified Contact Block */}
       <section className="section-padding">
         <div className="section-container">
-          <MotionSection className="mb-20">
+          <MotionSectionClient className="mb-20">
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 
@@ -214,22 +215,22 @@ export default async function ContactsPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </MotionSection>
+          </MotionSectionClient>
 
           {/* Contact Form Section */}
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Form */}
-            <MotionSection direction="left">
+            <MotionSectionClient direction="left">
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                   {t.common.actions.contactUs}
                 </h2>
-                <ContactForm lang={lang as Language} />
+                <ContactFormClient lang={lang as Language} />
               </div>
-            </MotionSection>
+            </MotionSectionClient>
 
             {/* Additional Info */}
-            <MotionSection direction="right" delay={0.3}>
+            <MotionSectionClient direction="right" delay={0.3}>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -268,7 +269,7 @@ export default async function ContactsPage({ params }: PageProps) {
                   </p>
                 </div>
               </div>
-            </MotionSection>
+            </MotionSectionClient>
           </div>
         </div>
       </section>
@@ -276,7 +277,7 @@ export default async function ContactsPage({ params }: PageProps) {
       {/* Team Section */}
       <section className="section-padding bg-gray-50 dark:bg-gray-800">
         <div className="section-container">
-          <MotionSection className="text-center max-w-4xl mx-auto mb-16" immediate={true}>
+          <MotionSectionClient className="text-center max-w-4xl mx-auto mb-16" immediate={true}>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t.contact.team.title}
             </h2>
@@ -286,11 +287,11 @@ export default async function ContactsPage({ params }: PageProps) {
             <p className="text-lg text-gray-500 dark:text-gray-400">
               {t.contact.team.freelancersNote}
             </p>
-          </MotionSection>
+          </MotionSectionClient>
 
           {/* Lead Developer Card */}
           {t.contact.team.members.filter(member => member.isLead).map((leader, index) => (
-            <MotionSection key={index} className="mb-12">
+            <MotionSectionClient key={index} className="mb-12">
               <div className="max-w-4xl mx-auto">
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-600 relative overflow-hidden">
                   {/* Star Badge */}
@@ -324,11 +325,11 @@ export default async function ContactsPage({ params }: PageProps) {
                   </div>
                 </div>
               </div>
-            </MotionSection>
+            </MotionSectionClient>
           ))}
 
           {/* Other Team Members */}
-          <MotionStagger className="grid md:grid-cols-2 gap-6 mb-12" staggerDelay={0.1}>
+          <MotionStaggerClient className="grid md:grid-cols-2 gap-6 mb-12" staggerDelay={0.1}>
             {t.contact.team.members.filter(member => !member.isLead).map((member, index) => (
               <div key={index} className="group">
                 <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 text-center">
@@ -352,7 +353,7 @@ export default async function ContactsPage({ params }: PageProps) {
                 </div>
               </div>
             ))}
-          </MotionStagger>
+          </MotionStaggerClient>
 
         </div>
       </section>

@@ -1,6 +1,6 @@
 {
   "name": "landing-page-design",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "private": true,
   "description": "Next.js 15 App Router landing page with i18n and SSG/ISR",
   "keywords": [
@@ -33,9 +33,9 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
-    "next": "^15.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "^15.5.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
@@ -44,8 +44,8 @@
     "@next/eslint-plugin-next": "^15.5.2",
     "@playwright/test": "^1.55.0",
     "@types/node": "^20.10.0",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "autoprefixer": "^10.4.16",
@@ -54,6 +54,7 @@
     "eslint-plugin-unused-imports": "^4.2.0",
     "playwright": "^1.55.0",
     "postcss": "^8.4.32",
+    "sharp": "^0.34.4",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.42.0"

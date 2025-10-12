@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   return {
     title: t.seo.home.title,
-    description: t.seo.home.description,
+    description: t.seo.home.description || 'Full-stack web solutions, system integration and automation in Czechia.',
     keywords: t.seo.home.keywords,
     alternates: { canonical: languages[lang], languages },
   }

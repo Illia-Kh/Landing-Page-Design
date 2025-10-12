@@ -1,11 +1,9 @@
-'use client'
-
 import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
-import { MotionSection, MotionStagger } from '@/components/client/MotionSection'
+import MotionSectionClient from '@/components/client/MotionSectionClient'
+import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import { Code, Smartphone, Layers, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { scrollToElementCenter } from '@/lib/scroll-utils'
 
 interface ServicesShowcaseProps {
   lang: Language
@@ -23,32 +21,23 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
   return (
     <section className="section-padding bg-white dark:bg-gray-900">
       <div className="section-container">
-        <MotionSection className="text-center mb-16">
+        <MotionSectionClient className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {t.services.title}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t.services.subtitle}
           </p>
-        </MotionSection>
+        </MotionSectionClient>
 
-        <MotionStagger className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
+        <MotionStaggerClient className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
           {t.services.items.map((service, index) => {
             const IconComponent = Object.values(serviceIcons)[index] || Code
             
             return (
               <Link
                 key={index}
-                href={`/${lang}/services`}
-                onClick={(e) => {
-                  e.preventDefault()
-                  // Navigate to services page first
-                  window.location.href = `/${lang}/services`
-                  // Then scroll to center after a short delay
-                  setTimeout(() => {
-                    scrollToElementCenter(`service-${index + 1}`, 100)
-                  }, 100)
-                }}
+                href={`/${lang}/services#service-${index + 1}`}
                 className="group relative p-8 bg-gradient-secondary rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block"
               >
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -77,9 +66,9 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
               </Link>
             )
           })}
-        </MotionStagger>
+        </MotionStaggerClient>
 
-        <MotionSection className="text-center mt-16" delay={0.6}>
+        <MotionSectionClient className="text-center mt-16" delay={0.6}>
           <Link
             href={`/${lang}/services`}
             className="inline-flex items-center px-8 py-4 bg-gradient-primary text-white rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200"
@@ -87,7 +76,7 @@ export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
             {t.common.actions.learnMore}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
-        </MotionSection>
+        </MotionSectionClient>
       </div>
     </section>
   )
