@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import type { HeroSlide, Language } from '@/types'
 
 const HeroCarousel = dynamic(() => import('@/components/client/HeroCarousel').then(m => m.HeroCarousel), {
-  ssr: false,
+  ssr: true, // Enable SSR for better LCP
   loading: () => (
     <div className="relative w-full max-w-sm mx-auto">
       <div className="relative w-full aspect-[9/16] overflow-hidden rounded-xl shadow-2xl">

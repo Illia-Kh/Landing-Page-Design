@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import type { HeroSlide } from '@/types'
-import { heroImageLoader } from '@/lib/imageLoader'
 
 interface HeroImageProps {
   slide: HeroSlide
@@ -25,10 +24,9 @@ export function HeroImage({ slide, priority = false, isFirst = false }: HeroImag
       src={src}
       alt={slide.alt}
       fill
-      loader={isFirst ? heroImageLoader : undefined}
       priority={priority}
       fetchPriority={priority ? 'high' : 'low'}
-      quality={isFirst ? 75 : 70}
+      quality={isFirst ? 80 : 75}
       loading={priority ? 'eager' : 'lazy'}
       decoding="async"
       sizes={mobileSizes}

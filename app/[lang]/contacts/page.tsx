@@ -5,7 +5,7 @@ import { Language, PageProps } from '@/types'
 import MotionSectionClient from '@/components/client/MotionSectionClient'
 import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import ContactFormClient from '@/components/client/ContactFormClient'
-import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown } from 'lucide-react'
+import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown, Linkedin, Facebook } from 'lucide-react'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -107,7 +107,7 @@ export default async function ContactsPage({ params }: PageProps) {
                       >
                         {t.contact.info.phone}
                       </a>
-                      <div className="flex space-x-2">
+                      <div className="flex flex-wrap gap-2">
                         <a
                           href="https://wa.me/420728209012"
                           target="_blank"
@@ -117,14 +117,33 @@ export default async function ContactsPage({ params }: PageProps) {
                           <MessageCircle className="w-4 h-4 mr-1" />
                           {t.contact.getInTouch.messaging.whatsapp}
                         </a>
-                        <button
-                          disabled
-                          className="inline-flex items-center px-3 py-1 bg-blue-500 opacity-50 text-white text-sm rounded-full cursor-not-allowed"
-                          title={t.contact.getInTouch.messaging.comingSoon}
+                        <a
+                          href="https://t.me/420728209012"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-full transition-colors"
                         >
                           <Send className="w-4 h-4 mr-1" />
                           {t.contact.getInTouch.messaging.telegram}
-                        </button>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/company/108555725"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-full transition-colors"
+                        >
+                          <Linkedin className="w-4 h-4 mr-1" />
+                          LinkedIn
+                        </a>
+                        <a
+                          href="https://www.facebook.com/profile.php?id=61580544249647"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-blue-700 hover:bg-blue-800 text-white text-sm rounded-full transition-colors"
+                        >
+                          <Facebook className="w-4 h-4 mr-1" />
+                          Facebook
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -212,6 +231,7 @@ export default async function ContactsPage({ params }: PageProps) {
                       <p className="font-semibold text-gray-900 dark:text-white">{t.contact.info.address}</p>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>

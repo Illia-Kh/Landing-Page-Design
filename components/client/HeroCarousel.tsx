@@ -1,12 +1,11 @@
 'use client'
 
-import { useCallback, useEffect, useState, useMemo } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaCarouselType } from 'embla-carousel'
-import Autoplay from 'embla-carousel-autoplay'
+// Autoplay removed to reduce JS and TBT
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { HeroSlide, Language } from '@/types'
 import { HeroImage } from './HeroImage'
 
@@ -16,12 +15,7 @@ interface HeroCarouselProps {
 }
 
 export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
-  const autoplayPlugin = useMemo(() => Autoplay({
-    delay: 5000,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-    stopOnFocusIn: false,
-  }), [])
+  // Autoplay disabled
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
@@ -30,54 +24,30 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
       skipSnaps: false,
       dragFree: false
     },
-    [autoplayPlugin]
+    []
   )
 
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [mountedIdle, setMountedIdle] = useState(false)
   // Defer carousel mount until the browser is idle to improve LCP/TBT
   useEffect(() => {
-    const ric: (cb: () => void) => number = (window as any).requestIdleCallback || ((cb: () => void) => window.setTimeout(cb, 200))
-    const cic: (id: number) => void = (window as any).cancelIdleCallback || window.clearTimeout
-    const id = ric(() => setMountedIdle(true))
-    return () => cic(id)
-  }, [])
-
-  // Check for reduced motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mediaQuery.matches)
-    
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches)
-    }
-    
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
-
-  // Stop autoplay if user prefers reduced motion
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      autoplayPlugin.stop()
-    }
-  }, [prefersReducedMotion, autoplayPlugin])
-
-  // Handle visibility change to pause autoplay when tab is not visible
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        autoplayPlugin.stop()
-      } else if (!prefersReducedMotion) {
-        autoplayPlugin.play()
+    const scheduleIdleTask = (task: () => void) => {
+      if ('scheduler' in window && 'postTask' in (window as any).scheduler) {
+        (window as any).scheduler.postTask(task, { priority: 'background' });
+      } else if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(task, { timeout: 100 });
+      } else {
+        setTimeout(task, 0);
       }
-    }
+    };
+    
+    scheduleIdleTask(() => setMountedIdle(true));
+  }, [])
 
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [prefersReducedMotion, autoplayPlugin])
+  // Reduced motion not used now that autoplay is removed
+
+  // Autoplay-related effects removed
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -150,11 +120,7 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <div>
                     <h3 className="text-xl font-bold mb-2">{slide.title}</h3>
                     {slide.subtitle && (
                       <p className="text-sm text-gray-200 mb-4">{slide.subtitle}</p>
@@ -168,7 +134,7 @@ export function HeroCarousel({ slides, lang }: HeroCarouselProps) {
                         {slide.cta.label}
                       </Link>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

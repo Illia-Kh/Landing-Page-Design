@@ -72,6 +72,37 @@ export default function RootLayout({
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       
+      {/* Minimal Critical CSS for above-the-fold content */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          *,*::before,*::after{box-sizing:border-box}
+          html{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+          body{margin:0;font-family:inherit;line-height:inherit}
+          .header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.1)}
+          .header-content{display:flex;align-items:center;justify-content:space-between;height:4rem;padding:0 1rem}
+          .logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.25rem;color:#1f2937;text-decoration:none}
+          .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;padding:2rem 1rem}
+          .hero-content h1{font-size:3rem;font-weight:800;margin-bottom:1rem;line-height:1.1}
+          .hero-content p{font-size:1.25rem;margin-bottom:2rem;opacity:.9}
+          .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;font-size:1rem;font-weight:600;text-decoration:none;border-radius:.5rem;transition:all .2s ease;border:none;cursor:pointer}
+          .btn-primary{background:#3b82f6;color:white}
+          .btn-primary:hover{background:#2563eb;transform:translateY(-1px)}
+          @media (prefers-color-scheme:dark){
+            .header{background:rgba(17,24,39,.95);border-bottom-color:rgba(255,255,255,.1)}
+            .logo{color:#f9fafb}
+          }
+        `
+      }} />
+      
+      {/* Preload Logo for faster header rendering */}
+      <link
+        rel="preload"
+        as="image"
+        href="/logo/ikh-logo.svg"
+        type="image/svg+xml"
+        fetchPriority="high"
+      />
+      
       {/* Preload Hero Image for LCP - Mobile Optimized */}
       <link
         rel="preload"
@@ -82,6 +113,17 @@ export default function RootLayout({
         type="image/avif"
         fetchPriority="high"
       />
+      
+      {/* Preload first carousel image for better LCP */}
+      <link
+        rel="preload"
+        as="image"
+        href="/media/banner/web-development.webp"
+        type="image/webp"
+        fetchPriority="high"
+      />
+      
+        
         
         {/* iOS Safari Optimization */}
         <meta name="format-detection" content="telephone=yes" />

@@ -5,7 +5,7 @@ import { env } from '@/lib/env'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['/', '/about', '/services', '/contacts']
+  const paths = ['/', '/services', '/contacts']
   const entries: MetadataRoute.Sitemap = []
   const fallbackBase = env.NEXT_PUBLIC_SITE_URL
 

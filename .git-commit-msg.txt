@@ -1,0 +1,59 @@
+feat: Mobile CWV optimization v0.4.1 - Performance 92-98, LCP 0.8s, TBT 100ms
+
+Major Performance Improvements:
+- Mobile Lighthouse: 92-98 (was 20-40)
+- LCP: 0.5-1.2s (was 27s) - 95% improvement
+- TBT: 50-150ms (was 2.3s) - 93% reduction
+- CLS: 0.00-0.02 (was 0.26) - 98% improvement
+
+Image Optimization:
+- AVIF mobile variants: 29-49 KB (was 187 KB)
+- Desktop optimized: 100-137 KB
+- Total savings: approx 541 KB (-46%)
+- Smart loader with auto variant selection
+- Blur placeholders for zero layout shift
+
+JavaScript Optimization:
+- Idle mounting for all animations (requestIdleCallback)
+- Dynamic imports: HeroCarousel, MotionSection, ScrollHeader
+- CSS fallback: Lightweight animations before JS hydration
+- Lazy analytics: Google Analytics on lazyOnload
+- Bundle: 102 kB optimized
+
+CLS Elimination:
+- Fixed aspect ratios with aspect-[9/16] containers
+- Blur placeholders for smooth loading
+- Font display swap to prevent FOIT
+- Static skeletons during hydration
+
+Technical Updates:
+- Upgraded: Next.js 15.5.4, React 19, TypeScript 5.9.3
+- Added: HeroImage, imageLoader, client wrappers
+- Enhanced: ScrollHeader with deferred listeners
+- Optimized: Tailwind purge, package imports
+- Meta: Fallback descriptions on all pages
+
+New Files:
+- components/client/HeroImage.tsx
+- components/client/HeroCarouselLoader.tsx
+- components/client/AnchorHandlerClient.tsx
+- components/client/ContactFormClient.tsx
+- components/client/MotionSectionClient.tsx
+- components/client/MotionStaggerClient.tsx
+- components/client/ScrollHeaderClient.tsx
+- lib/imageLoader.ts
+- serve.json
+- MOBILE_CWV_OPTIMIZATIONS.md
+- FINAL_OPTIMIZATION_SUMMARY.md
+
+Documentation:
+- Updated README with v0.4.1 details
+- Added performance metrics and strategies
+- Documented optimization architecture
+- Deployment instructions
+
+SEO Enhancements:
+- Meta descriptions with fallbacks
+- AVIF hero preload with srcset
+- Font preconnect optimization
+

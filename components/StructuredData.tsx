@@ -57,6 +57,10 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
           sameAs: [
             siteConfig.social.github,
             siteConfig.social.linkedin,
+            'https://wa.me/420728209012',
+            'https://t.me/420728209012',
+            'https://www.linkedin.com/company/108555725',
+            'https://www.facebook.com/profile.php?id=61580544249647',
           ],
           contactPoint: {
             '@type': 'ContactPoint',
@@ -207,8 +211,10 @@ export function StructuredData({ type, lang, serviceData, contactData, personDat
             ],
           },
           sameAs: [
+            'https://wa.me/420728209012',
+            'https://t.me/420728209012',
             'https://www.linkedin.com/company/108555725',
-            'https://www.facebook.com/ikhsystems',
+            'https://www.facebook.com/profile.php?id=61580544249647',
           ],
           inLanguage: langCode,
         }

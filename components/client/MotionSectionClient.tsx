@@ -11,13 +11,18 @@ export default function MotionSectionClient(props: any) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Defer motion animations until idle
-    const ric: (cb: () => void) => number = (window as any).requestIdleCallback || ((cb: () => void) => window.setTimeout(cb, 800))
-    const id = ric(() => setMounted(true))
-    return () => {
-      const cic: (id: number) => void = (window as any).cancelIdleCallback || window.clearTimeout
-      cic(id)
-    }
+    // Defer motion animations until idle using modern scheduler API
+    const scheduleIdleTask = (task: () => void) => {
+      if ('scheduler' in window && 'postTask' in (window as any).scheduler) {
+        (window as any).scheduler.postTask(task, { priority: 'background' });
+      } else if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(task, { timeout: 100 });
+      } else {
+        setTimeout(task, 0);
+      }
+    };
+    
+    scheduleIdleTask(() => setMounted(true));
   }, [])
 
   if (!mounted) {

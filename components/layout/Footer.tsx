@@ -3,7 +3,7 @@ import { Language } from '@/types'
 import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
 import { Logo } from '@/components/ui/Logo'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, Send, Linkedin, Facebook } from 'lucide-react'
 import { localeHref } from '@/lib/localeHref'
 
 interface FooterProps {
@@ -87,7 +87,7 @@ export function Footer({ lang }: FooterProps) {
               Locations
             </h3>
             <ul className="space-y-2">
-              {locationItems.slice(0, 4).map((item) => (
+              {locationItems.map((item) => (
                 <li key={item.slug}>
                   <Link
                     href={localeHref(lang, `/locations/${item.slug}`) as Route}
@@ -125,7 +125,7 @@ export function Footer({ lang }: FooterProps) {
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 {t.contact.info.address}
               </div>
-              <div className="flex gap-3 pt-2">
+              <div className="flex flex-wrap gap-2 pt-2">
                 <a 
                   href="https://wa.me/420728209012" 
                   target="_blank"
@@ -135,6 +135,36 @@ export function Footer({ lang }: FooterProps) {
                 >
                   <MessageCircle className="w-3 h-3 mr-1" />
                   WhatsApp
+                </a>
+                <a 
+                  href="https://t.me/420728209012" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="Telegram"
+                >
+                  <Send className="w-3 h-3 mr-1" />
+                  Telegram
+                </a>
+                <a 
+                  href="https://www.linkedin.com/company/108555725" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-3 h-3 mr-1" />
+                  LinkedIn
+                </a>
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61580544249647" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-3 h-3 mr-1" />
+                  Facebook
                 </a>
               </div>
             </div>
@@ -193,7 +223,10 @@ export function Footer({ lang }: FooterProps) {
                 "addressCountry": "CZ"
               },
               "sameAs": [
-                `https://wa.me/420728209012`
+                "https://wa.me/420728209012",
+                "https://t.me/420728209012",
+                "https://www.linkedin.com/company/108555725",
+                "https://www.facebook.com/profile.php?id=61580544249647"
               ],
               "serviceArea": {
                 "@type": "Country",

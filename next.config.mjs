@@ -4,9 +4,19 @@ const nextConfig = {
   trailingSlash: true,
   experimental: {
     optimizePackageImports: ['framer-motion', 'swiper', 'lucide-react'],
+    webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
   },
   compiler: {
     removeConsole: { exclude: ['error'] },
+  },
+  // swcMinify is enabled by default in Next.js 13+
+  modularizeImports: {
+    'framer-motion': {
+      transform: 'framer-motion/dist/es/{{member}}',
+    },
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+    },
   },
   compress: true,
   images: {

@@ -62,6 +62,7 @@ export function Logo({
           className={getImageClass()}
           loading="eager"
           decoding="async"
+          fetchPriority="high"
         />
       </div>
       
@@ -91,6 +92,7 @@ export function LogoCompact({ className }: LogoProps) {
         className="h-8 w-auto"
         loading="eager"
         decoding="async"
+        fetchPriority="high"
       />
     </div>
   )
