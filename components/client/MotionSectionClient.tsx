@@ -1,9 +1,7 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { LazySection } from '@/components/LazyLoading'
 import { useEffect, useState } from 'react'
-
-const MotionSection = dynamic(() => import('@/components/client/MotionSection').then(m => m.MotionSection), { ssr: false })
 
 // Using any here intentionally to avoid type coupling with server component inference
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,7 +29,7 @@ export default function MotionSectionClient(props: any) {
     return <div className={className}>{props.children}</div>
   }
 
-  return <MotionSection {...props} />
+  return <LazySection {...props} />
 }
 
 

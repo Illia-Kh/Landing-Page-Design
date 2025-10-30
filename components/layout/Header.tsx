@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Language } from '@/types'
 import { Nav } from './Nav'
+import type { Route } from 'next'
 import { LangSwitcher } from '@/components/client/LangSwitcher'
 import { ThemeToggle } from '@/components/client/ThemeToggle'
 import { Logo } from '@/components/ui/Logo'
@@ -12,9 +13,10 @@ import { Menu, X } from 'lucide-react'
 
 interface HeaderProps {
   lang: Language
+  navItems: Array<{ href: Route; label: string }>
 }
 
-export function Header({ lang }: HeaderProps) {
+export function Header({ lang, navItems }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
@@ -31,7 +33,7 @@ export function Header({ lang }: HeaderProps) {
           
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex flex-1 justify-center">
-            <Nav lang={lang} />
+            <Nav items={navItems} />
           </div>
           
           {/* Desktop System Buttons - Right */}
@@ -60,7 +62,7 @@ export function Header({ lang }: HeaderProps) {
             <div className="section-container py-4">
               <div className="space-y-4">
                 {/* Navigation */}
-                <Nav lang={lang} mobile onMobileMenuClose={() => setIsMobileMenuOpen(false)} />
+                <Nav items={navItems} mobile onMobileMenuClose={() => setIsMobileMenuOpen(false)} />
                 
                 {/* System Controls */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">

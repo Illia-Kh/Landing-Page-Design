@@ -41,12 +41,18 @@ export default async function HomePage({ params }: PageProps) {
   }
 
   const language = lang as Language
+  const t = getTranslation(language)
 
   return (
     <>
-      <Hero lang={language} />
-      <ChallengesSection lang={language} />
-      <ServicesShowcase lang={language} />
+      <Hero lang={language} t={t.hero} />
+      <ChallengesSection lang={language} t={t.challenges} />
+      <ServicesShowcase lang={language} t={{
+        title: t.services.title,
+        subtitle: t.services.subtitle,
+        items: t.services.items,
+        common: t.common
+      }} />
     </>
   )
 }

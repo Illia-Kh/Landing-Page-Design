@@ -6,6 +6,7 @@ import MotionSectionClient from '@/components/client/MotionSectionClient'
 import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import ContactFormClient from '@/components/client/ContactFormClient'
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send, Star, ChevronDown, Linkedin, Facebook } from 'lucide-react'
+import DeferredMap from '@/components/client/DeferredMap'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -206,20 +207,10 @@ export default async function ContactsPage({ params }: PageProps) {
                     </p>
                   </div>
                   
-                  {/* Embedded Map */}
-                  <div className="relative overflow-hidden rounded-xl shadow-lg">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80752.01977716171!2d14.96746526130235!3d50.76629277789486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470936999212df43%3A0x400af0f66155990!2z0JvQuNCx0LXRgNC10YY!5e0!3m2!1sru!2scz!4v1758128226339!5m2!1sru!2scz"
-                      width="100%"
-                      height="300"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none rounded-xl"></div>
-                  </div>
+                  <DeferredMap
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80752.01977716171!2d14.96746526130235!3d50.76629277789486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470936999212df43%3A0x400af0f66155990!2z0JvQuNCx0LXRgNC10YY!5e0!3m2!1sru!2scz!4v1758128226339!5m2!1sru!2scz"
+                    height={300}
+                  />
                   
                   {/* Address */}
                   <div className="flex items-center space-x-3 p-4 bg-white/50 dark:bg-gray-700/50 rounded-xl">

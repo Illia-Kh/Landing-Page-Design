@@ -3,12 +3,14 @@
 import { useEffect, useState } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Language } from '@/types'
+import type { Route } from 'next'
 
 interface ScrollHeaderProps {
   lang: Language
+  navItems: Array<{ href: Route; label: string }>
 }
 
-export function ScrollHeader({ lang }: ScrollHeaderProps) {
+export function ScrollHeader({ lang, navItems }: ScrollHeaderProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [mounted, setMounted] = useState(false)
@@ -65,7 +67,7 @@ export function ScrollHeader({ lang }: ScrollHeaderProps) {
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}
     >
-      <Header lang={lang} />
+      <Header lang={lang} navItems={navItems} />
     </div>
   )
 }

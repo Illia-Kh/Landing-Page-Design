@@ -1,5 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin', 'latin-ext', 'cyrillic'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: {
@@ -103,25 +106,7 @@ export default function RootLayout({
         fetchPriority="high"
       />
       
-      {/* Preload Hero Image for LCP - Mobile Optimized */}
-      <link
-        rel="preload"
-        as="image"
-        imageSrcSet="/media/banner/web-development-mobile.avif 480w, /media/banner/web-development-mobile-lg.avif 640w, /media/banner/web-development.avif 1280w"
-        imageSizes="(max-width: 600px) 100vw, 600px"
-        href="/media/banner/web-development-mobile-lg.avif"
-        type="image/avif"
-        fetchPriority="high"
-      />
       
-      {/* Preload first carousel image for better LCP */}
-      <link
-        rel="preload"
-        as="image"
-        href="/media/banner/web-development.webp"
-        type="image/webp"
-        fetchPriority="high"
-      />
       
         
         
@@ -130,7 +115,7 @@ export default function RootLayout({
         <meta name="format-detection" content="email=yes" />
         <meta name="format-detection" content="address=yes" />
       </head>
-      <body className="font-sans antialiased">
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>

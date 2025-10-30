@@ -1,29 +1,31 @@
 import { Language } from '@/types'
-import { getTranslation } from '@/lib/i18n'
 import MotionSectionClient from '@/components/client/MotionSectionClient'
 import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import { Wallet, Users, Rocket, Shield } from 'lucide-react'
 
 interface ChallengesSectionProps {
   lang: Language
+  t: {
+    title: string
+    items: Array<{ title: string; description: string }>
+  }
 }
 
 const challengeIcons = [Wallet, Users, Rocket, Shield]
 
-export function ChallengesSection({ lang }: ChallengesSectionProps) {
-  const t = getTranslation(lang)
+export function ChallengesSection({ lang: _lang, t }: ChallengesSectionProps) {
 
   return (
     <section className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
       <div className="section-container">
         <MotionSectionClient className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            {t.challenges.title}
+            {t.title}
           </h2>
         </MotionSectionClient>
 
         <MotionStaggerClient className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.15}>
-          {t.challenges.items.map((challenge, index) => {
+          {t.items.map((challenge, index) => {
             const IconComponent = challengeIcons[index] || Wallet
             
             return (

@@ -2,11 +2,12 @@
 
 import dynamic from 'next/dynamic'
 import type { Language } from '@/types'
+import type { Route } from 'next'
 import { useEffect, useState } from 'react'
 
 const ScrollHeader = dynamic(() => import('@/components/client/ScrollHeader').then(m => m.ScrollHeader), { ssr: false })
 
-export default function ScrollHeaderClient({ lang }: { lang: Language }) {
+export default function ScrollHeaderClient({ lang, navItems }: { lang: Language; navItems: Array<{ href: Route; label: string }> }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function ScrollHeaderClient({ lang }: { lang: Language }) {
 
   if (!mounted) return null
 
-  return <ScrollHeader lang={lang} />
+  return <ScrollHeader lang={lang} navItems={navItems} />
 }
 
 

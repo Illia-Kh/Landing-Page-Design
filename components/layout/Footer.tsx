@@ -4,6 +4,7 @@ import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
 import { Logo } from '@/components/ui/Logo'
 import { MessageCircle, Send, Linkedin, Facebook } from 'lucide-react'
+import { OpenCookieSettingsButton } from '@/components/client/OpenCookieSettingsButton'
 import { localeHref } from '@/lib/localeHref'
 
 interface FooterProps {
@@ -191,6 +192,10 @@ export function Footer({ lang }: FooterProps) {
                   {item.label}
                 </Link>
               ))}
+              <OpenCookieSettingsButton
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                label="Cookie Settings"
+              />
             </div>
 
             {/* Business Hours */}

@@ -8,8 +8,10 @@ import { PageViewTracker } from '@/components/PageViewTracker'
 import { StructuredData } from '@/components/StructuredData'
 import ScrollHeaderClient from '@/components/client/ScrollHeaderClient'
 import { Footer } from '@/components/layout/Footer'
+import type { Route } from 'next'
 import { env } from '@/lib/env'
 import { HtmlLangSetter } from '@/components/client/HtmlLangSetter'
+import { CookieConsent } from '@/components/client/CookieConsent'
 
 // ISR configuration
 export const revalidate = 86400 // 24 hours
@@ -60,6 +62,13 @@ export default async function LangLayout({
     notFound()
   }
   
+  const t = getTranslation(lang as Language)
+  const navItems: Array<{ href: Route; label: string }> = [
+    { href: (`/${lang}` as Route), label: t.common.navigation.home },
+    { href: (`/${lang}/services` as Route), label: t.common.navigation.services },
+    { href: (`/${lang}/contacts` as Route), label: t.common.navigation.contact },
+  ]
+
   return (
     <>
       {/* Ensure <html lang> is correct on client without nesting html/body */}
@@ -74,12 +83,15 @@ export default async function LangLayout({
       <PageViewTracker />
 
       {/* Header */}
-      <ScrollHeaderClient lang={lang as Language} />
+      <ScrollHeaderClient lang={lang as Language} navItems={navItems} />
 
       {/* Main Content */}
       <main className="flex-1 pt-16">
         {children}
       </main>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent lang={lang as Language} />
 
       {/* Footer */}
       <Footer lang={lang as Language} />

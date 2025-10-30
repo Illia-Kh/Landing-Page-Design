@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --omit=dev
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -23,7 +23,7 @@ FROM nginx:alpine
 COPY --from=builder /app/out /usr/share/nginx/html
 
 # Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.http.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80

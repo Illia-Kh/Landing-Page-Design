@@ -1,5 +1,4 @@
 import { Language } from '@/types'
-import { getTranslation } from '@/lib/i18n'
 import MotionSectionClient from '@/components/client/MotionSectionClient'
 import MotionStaggerClient from '@/components/client/MotionStaggerClient'
 import { Code, Smartphone, Layers, ArrowRight } from 'lucide-react'
@@ -7,6 +6,12 @@ import Link from 'next/link'
 
 interface ServicesShowcaseProps {
   lang: Language
+  t: {
+    title: string
+    subtitle: string
+    items: Array<{ title: string; description: string; features: string[] }>
+    common: { actions: { learnMore: string } }
+  }
 }
 
 const serviceIcons = {
@@ -15,23 +20,22 @@ const serviceIcons = {
   integration: Layers,
 }
 
-export function ServicesShowcase({ lang }: ServicesShowcaseProps) {
-  const t = getTranslation(lang)
+export function ServicesShowcase({ lang, t }: ServicesShowcaseProps) {
 
   return (
     <section className="section-padding bg-white dark:bg-gray-900">
       <div className="section-container">
         <MotionSectionClient className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            {t.services.title}
+            {t.title}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {t.services.subtitle}
+            {t.subtitle}
           </p>
         </MotionSectionClient>
 
         <MotionStaggerClient className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
-          {t.services.items.map((service, index) => {
+          {t.items.map((service, index) => {
             const IconComponent = Object.values(serviceIcons)[index] || Code
             
             return (

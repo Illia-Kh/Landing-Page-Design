@@ -1,9 +1,7 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { LazyStagger } from '@/components/LazyLoading'
 import { useEffect, useState } from 'react'
-
-const MotionStagger = dynamic(() => import('@/components/client/MotionSection').then(m => m.MotionStagger), { ssr: false })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function MotionStaggerClient(props: any) {
@@ -30,7 +28,7 @@ export default function MotionStaggerClient(props: any) {
     return <div className={className}>{props.children}</div>
   }
 
-  return <MotionStagger {...props} />
+  return <LazyStagger {...props} />
 }
 
 

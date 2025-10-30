@@ -2,31 +2,21 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Language } from '@/types'
-import { getTranslation } from '@/lib/i18n'
 import type { Route } from 'next'
-import { localeHref } from '@/lib/localeHref'
 
 interface NavProps {
-  lang: Language
+  items: Array<{ href: Route; label: string }>
   mobile?: boolean
   onMobileMenuClose?: () => void
 }
 
-export function Nav({ lang, mobile = false, onMobileMenuClose }: NavProps) {
+export function Nav({ items, mobile = false, onMobileMenuClose }: NavProps) {
   const pathname = usePathname()
-  const t = getTranslation(lang)
-  
-  const navItems: Array<{ href: Route; label: string }> = [
-    { href: localeHref(lang, '/') as Route, label: t.common.navigation.home },
-    { href: localeHref(lang, '/services') as Route, label: t.common.navigation.services },
-    { href: localeHref(lang, '/contacts') as Route, label: t.common.navigation.contact },
-  ]
 
   if (mobile) {
     return (
       <nav className="flex flex-col space-y-2">
-        {navItems.map((item) => {
+        {items.map((item) => {
           const isActive = pathname === item.href
           return (
             <Link
@@ -50,7 +40,7 @@ export function Nav({ lang, mobile = false, onMobileMenuClose }: NavProps) {
 
   return (
     <nav className="flex items-center space-x-1">
-      {navItems.map((item) => {
+      {items.map((item) => {
         const isActive = pathname === item.href
         return (
           <Link

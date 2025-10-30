@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  trailingSlash: true,
   experimental: {
     optimizePackageImports: ['framer-motion', 'swiper', 'lucide-react'],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
+    // optimizeCss uses Critters; disabled to avoid external dependency for static export
+    // optimizeCss: true,
+    optimizeServerReact: true,
   },
   compiler: {
     removeConsole: { exclude: ['error'] },
@@ -24,8 +26,14 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [320, 480, 640, 768, 960, 1024, 1280, 1536, 1920],
     imageSizes: [64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   typedRoutes: true,
+  // Performance optimizations
+  poweredByHeader: false,
+  generateEtags: false,
   async headers() {
     return [
       {
@@ -57,6 +65,21 @@ const nextConfig = {
       {
         // Long-term cache for Next.js static assets
         source: '/_next/static/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        // Optimize font loading
+        source: '/fonts/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
+      {
+        // Optimize media files
+        source: '/media/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
