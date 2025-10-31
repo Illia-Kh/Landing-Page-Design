@@ -1,8 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin', 'latin-ext', 'cyrillic'], display: 'swap' })
+// Removed next/font google to avoid build-time network fetch; fonts loaded via <link>
 
 export const metadata: Metadata = {
   title: {
@@ -74,6 +72,7 @@ export default function RootLayout({
         {/* Performance Hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       
       {/* Minimal Critical CSS for above-the-fold content */}
       <style dangerouslySetInnerHTML={{
@@ -115,7 +114,7 @@ export default function RootLayout({
         <meta name="format-detection" content="email=yes" />
         <meta name="format-detection" content="address=yes" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`antialiased`}>
         {children}
       </body>
     </html>
