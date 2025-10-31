@@ -4,7 +4,8 @@ import { env } from '@/lib/env'
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
-  const fallbackBase = env.NEXT_PUBLIC_SITE_URL
+  // Normalize base URL: prefer env, fallback to production domain; remove trailing slash
+  const fallbackBase = (env.NEXT_PUBLIC_SITE_URL || 'https://ikhsystems.com').replace(/\/+$/, '')
   return {
     rules: {
       userAgent: '*',
